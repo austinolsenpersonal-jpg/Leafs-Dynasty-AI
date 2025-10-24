@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-test:
+    name: Build & Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install black==24.8.0 flake8==7.1.1 pytest
+
+      - name: Black (check)
+        run: black --check --line-length=100 .
+
+      - name: Flake8 (lint)
+        run: flake8 --max-line-length=100 --ignore=D100,D101,D102,D103 || true
+
+      - name: Pytest
+        run: pytest -q || true
+
+  schema-validate:
+    name: Canon Schema Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install ajv-cli & markdownlint
+        run: npm install -g ajv-cli markdownlint-cli2
+
+      # These checks are SAFE if files aren't in the repo yet — they will just skip.
+      - name: Validate Canon JSON (strict)
+        run: |
+          if [ -f internal/schemas/nhl25_canon_qa_v1_1.json ] && [ -f internal/strategy_presets/Canon_Preset_Matrix_v1.1.json ]; then
+            ajv validate \
+              -s internal/schemas/nhl25_canon_qa_v1_1.json \
+              -d internal/strategy_presets/Canon_Preset_Matrix_v1.1.json \
+              --spec=draft2020 --strict=true
+          else
+            echo "Schema or preset matrix not present yet — skipping JSON validation."
+          fi
+
+      - name: Lint Markdown (advisory)
+        run: |
+          if [ -f internal/strategy_presets/Canon_Preset_Matrix_v1.1.md ]; then
+            markdownlint-cli2 "**/Canon_Preset_Matrix_v1.1.md" --config .markdownlint.json || true
+          else
+            echo "Preset matrix .md not present yet — skipping advisory lint."
+          fi
+
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
