@@ -1,0 +1,58 @@
+{
+  "canon_version": "1.1",
+  "snapshot_name": "Season 1 Baseline",
+  "timestamp": "2025-10-25T22:47:00-04:00",
+  "environment": "Toronto Maple Leafs Dynasty AI",
+  "seeds": {
+    "NHL": {
+      "team": "Toronto Maple Leafs",
+      "status": "locked",
+      "strategies_source": "Next-Gen Canon v1.1 Annotated",
+      "goalie_pair": {
+        "starter": "Joseph Woll",
+        "backup": "Anthony Stolarz"
+      }
+    },
+    "AHL": {
+      "team": "Toronto Marlies",
+      "status": "locked",
+      "mirror": "NHL Canon v1.1",
+      "goalie_pair": {
+        "starter": "Dennis Hildeby",
+        "backup": "Matt Murray"
+      }
+    }
+  },
+  "contracts": {
+    "import_status": "complete",
+    "cap_snapshot": "verified"
+  },
+  "goalie_plan": {
+    "mode": "Dynamic by Matchup",
+    "presets": [
+      "Balanced",
+      "Aggressive",
+      "Conservative"
+    ],
+    "auto_mirror": true,
+    "fatigue_tracking": true,
+    "current_distribution": {
+      "Aggressive": 44,
+      "Balanced": 32,
+      "Conservative": 24
+    }
+  },
+  "rotation_map": {
+    "range": "Oct 2024 – Apr 2025",
+    "Woll_starts": 66,
+    "Stolarz_starts": 30,
+    "Hildeby_starts": 66,
+    "Murray_starts": 30,
+    "qa_status": "PASS"
+  },
+  "metadata": {
+    "created_by": "NHL GPT Architect",
+    "owner": "Austin Olsen",
+    "notes": "Unified Leafs + Marlies Canon ready for 2025 Playoffs."
+  }
+}
