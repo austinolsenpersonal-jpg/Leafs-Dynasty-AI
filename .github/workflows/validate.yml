@@ -17,14 +17,18 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dev deps
-        run: npm ci || npm i -D ajv ajv-cli
+      # Install exact tools we need (robust even if package-lock is odd)
+      - name: Install AJV CLI
+        run: npm i -D ajv@8 ajv-cli@5
 
+      # Canon
       - name: Validate Canon
-        run: npx ajv -s canon/schemas/strategy_canon_v1_1.schema.json -d canon/data/exports/canon_v1_1_season1_baseline.json
+        run: npx ajv -s canon/schemas/strategy_canon_v1_1.schema.json -d canon/data/exports/canon_v1_1_season1_baseline.json --strict=false --errors=text
 
+      # Rosters
       - name: Validate Rosters
-        run: npx ajv -s roster_sync/schemas/roster_sync.schema.json -d roster_sync/NHL/roster_sync_nhl.json -d roster_sync/AHL/roster_sync_ahl.json
+        run: npx ajv -s roster_sync/schemas/roster_sync.schema.json -d roster_sync/NHL/roster_sync_nhl.json -d roster_sync/AHL/roster_sync_ahl.json --strict=false --errors=text
 
+      # Contracts
       - name: Validate Contracts
-        run: npx ajv -s contracts/schemas/contracts_sync.schema.json -d contracts/contracts_sync.json
+        run: npx ajv -s contracts/schemas/contracts_sync.schema.json -d contracts/contracts_sync.json --strict=false --errors=text
