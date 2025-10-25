@@ -1,0 +1,10 @@
+﻿{
+  "name": "leafs-dynasty-ai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "validate:canon": "ajv -s canon/schemas/strategy_canon_v1_1.schema.json -d canon/data/exports/canon_v1_1_season1_baseline.json",
+    "validate:roster": "ajv -s roster_sync/schemas/roster_sync.schema.json -d roster_sync/NHL/roster_sync_nhl.json -d roster_sync/AHL/roster_sync_ahl.json",
+    "validate:contracts": "ajv -s contracts/schemas/contracts_sync.schema.json -d contracts/contracts_sync.json"
+  }
+}
