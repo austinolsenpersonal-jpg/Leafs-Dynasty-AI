@@ -1,0 +1,380 @@
+{
+  "export_meta": {
+    "project": "NHL 25 Franchise Dynasty AI",
+    "canon_version": "v4.1",
+    "generated": "2025-10-27T15:08:01",
+    "source": "User-defined (Leafs + Marlies)",
+    "notes": [
+      "Old-Gen UI order",
+      "Neutral/balanced special-teams sliders and formations unless specified",
+      "Opponent-specific variants can be applied by game plan later"
+    ]
+  },
+  "NHL": {
+    "Team_Strategies": {
+      "Forecheck": "1-2-2 Aggressive",
+      "Neutral Zone": "1-3-1",
+      "Trap/Forecheck Slider": 6,
+      "Defensive Pressure": "Tight Point",
+      "Defensive Strategy": "Collapse",
+      "Offensive Pressure": "Aggressive",
+      "Control Breakout": "Strong Side Slant",
+      "Quick Breakout": "Stay Wide",
+      "Line Match": "Auto"
+    },
+    "Offensive_Lines": [
+      {
+        "Line": "L1",
+        "Players": [
+          "M. Knies",
+          "A. Matthews",
+          "M. Marner"
+        ],
+        "Offensive Strategy": "Overload",
+        "CarryDump": 0,
+        "CycleShoot": 10,
+        "EfficiencyEnergy": 0,
+        "DontBlockBlock": 10
+      },
+      {
+        "Line": "L2",
+        "Players": [
+          "S. Laughton",
+          "J. Tavares",
+          "W. Nylander"
+        ],
+        "Offensive Strategy": "Behind the Net",
+        "CarryDump": 2,
+        "CycleShoot": 8,
+        "EfficiencyEnergy": 2,
+        "DontBlockBlock": 8
+      },
+      {
+        "Line": "L3",
+        "Players": [
+          "M. Domi",
+          "N. Robertson",
+          "D. Kampf"
+        ],
+        "Offensive Strategy": "Crash the Net",
+        "CarryDump": 4,
+        "CycleShoot": 6,
+        "EfficiencyEnergy": 4,
+        "DontBlockBlock": 6
+      },
+      {
+        "Line": "L4",
+        "Players": [
+          "S. Lorentz",
+          "B. McMann",
+          "P. Holmberg"
+        ],
+        "Offensive Strategy": "Crash the Net",
+        "CarryDump": 6,
+        "CycleShoot": 4,
+        "EfficiencyEnergy": 6,
+        "DontBlockBlock": 4
+      }
+    ],
+    "Defensive_Pairs": [
+      {
+        "Pair": "D1",
+        "Players": [
+          "M. Rielly",
+          "B. Carlo"
+        ],
+        "HoldLinePinch": 0,
+        "CycleShoot": 10
+      },
+      {
+        "Pair": "D2",
+        "Players": [
+          "J. McCabe",
+          "J. Hakanpaa"
+        ],
+        "HoldLinePinch": 0,
+        "CycleShoot": 10
+      },
+      {
+        "Pair": "D3",
+        "Players": [
+          "O. Ekman-Larsson",
+          "C. Tanev"
+        ],
+        "HoldLinePinch": 0,
+        "CycleShoot": 10
+      }
+    ],
+    "Goalies": [
+      {
+        "Starter": "J. Woll"
+      },
+      {
+        "Backup": "A. Stolarz"
+      }
+    ],
+    "Special_Teams": {
+      "PowerPlay": {
+        "Defaults": {
+          "Formation": "1-3-1",
+          "FaceoffFormation": "Normal",
+          "OffensivePressure": "Standard",
+          "PowerplayBreakout": "Center Lane Option",
+          "QuickBreakout": "Stay Wide",
+          "Sliders": {
+            "CarryDump": 5,
+            "CycleShoot": 5,
+            "EfficiencyEnergy": 5,
+            "DontBlockBlock": 5
+          }
+        },
+        "PP1": {
+          "Players": {
+            "Center": "J. Tavares",
+            "RightWing": "A. Matthews",
+            "LeftWing": "M. Marner",
+            "LeftDefense": "W. Nylander",
+            "RightDefense": "M. Rielly"
+          }
+        },
+        "PP2": {
+          "Players": {
+            "Center": "S. Laughton",
+            "RightWing": "M. Domi",
+            "LeftWing": "M. Knies",
+            "LeftDefense": "S. Lorentz",
+            "RightDefense": "O. Ekman-Larsson"
+          }
+        }
+      },
+      "PenaltyKill": {
+        "Defaults": {
+          "Formation": "Diamond",
+          "FaceoffFormation": "Normal",
+          "Sliders": {
+            "CarryDump": 5,
+            "CycleShoot": 5,
+            "EfficiencyEnergy": 5,
+            "DontBlockBlock": 5
+          }
+        },
+        "PK1": {
+          "Players": {
+            "Center": "D. Kampf",
+            "Wing": "N. Robertson",
+            "LeftDefense": "C. Tanev",
+            "RightDefense": "B. Carlo"
+          }
+        },
+        "PK2": {
+          "Players": {
+            "Center": "S. Laughton",
+            "Wing": "B. McMann",
+            "LeftDefense": "M. Rielly",
+            "RightDefense": "J. McCabe"
+          }
+        },
+        "PK3": {
+          "Players": {
+            "Center": "W. Nylander",
+            "Wing": "M. Marner",
+            "LeftDefense": "J. Hakanpaa",
+            "RightDefense": "O. Ekman-Larsson"
+          }
+        }
+      }
+    },
+    "Scratches": [
+      "P. Myers",
+      "M. Pacioretty"
+    ]
+  },
+  "AHL": {
+    "Team_Strategies": {
+      "Forecheck": "1-2-2 Aggressive",
+      "Neutral Zone": "1-3-1",
+      "Trap/Forecheck Slider": 5,
+      "Defensive Pressure": "Normal",
+      "Defensive Strategy": "Collapse",
+      "Offensive Pressure": "Standard",
+      "Control Breakout": "Strong Side Slant",
+      "Quick Breakout": "Stay Wide",
+      "Line Match": "Auto"
+    },
+    "Offensive_Lines": [
+      {
+        "Line": "L1",
+        "Players": [
+          "Cal Jarnkrok",
+          "Ronnie Hervonen",
+          "Logan Shaw"
+        ],
+        "Offensive Strategy": "Overload",
+        "CarryDump": 5,
+        "CycleShoot": 5,
+        "EfficiencyEnergy": 5,
+        "DontBlockBlock": 5
+      },
+      {
+        "Line": "L2",
+        "Players": [
+          "Alexander Nylander",
+          "Nick Abbruzzese",
+          "Ryan Tverberg"
+        ],
+        "Offensive Strategy": "Behind the Net",
+        "CarryDump": 5,
+        "CycleShoot": 5,
+        "EfficiencyEnergy": 5,
+        "DontBlockBlock": 5
+      },
+      {
+        "Line": "L3",
+        "Players": [
+          "Jacob Quillen",
+          "Alex Steeves",
+          "Veti Metinen"
+        ],
+        "Offensive Strategy": "Crash the Net",
+        "CarryDump": 5,
+        "CycleShoot": 5,
+        "EfficiencyEnergy": 6,
+        "DontBlockBlock": 5
+      },
+      {
+        "Line": "L4",
+        "Players": [
+          "Brandon Baddock",
+          "Cedric Pair",
+          "Reece Johnson"
+        ],
+        "Offensive Strategy": "Crash the Net",
+        "CarryDump": 5,
+        "CycleShoot": 5,
+        "EfficiencyEnergy": 7,
+        "DontBlockBlock": 5
+      }
+    ],
+    "Defensive_Pairs": [
+      {
+        "Pair": "D1",
+        "Players": [
+          "Miku Kalkanen",
+          "Topi Niemela"
+        ],
+        "HoldLinePinch": 5,
+        "CycleShoot": 5
+      },
+      {
+        "Pair": "D2",
+        "Players": [
+          "Dakota Mermis",
+          "William Villeneuve"
+        ],
+        "HoldLinePinch": 5,
+        "CycleShoot": 4
+      },
+      {
+        "Pair": "D3",
+        "Players": [
+          "Nicholas Matanen",
+          "Matt Benning"
+        ],
+        "HoldLinePinch": 4,
+        "CycleShoot": 3
+      }
+    ],
+    "Goalies": [
+      {
+        "Starter": "Dennis Hildeby"
+      },
+      {
+        "Backup": "Matt Murray"
+      }
+    ],
+    "Special_Teams": {
+      "PowerPlay": {
+        "Defaults": {
+          "Formation": "1-3-1",
+          "FaceoffFormation": "Normal",
+          "OffensivePressure": "Standard",
+          "PowerplayBreakout": "Center Lane Option",
+          "QuickBreakout": "Stay Wide",
+          "Sliders": {
+            "CarryDump": 5,
+            "CycleShoot": 5,
+            "EfficiencyEnergy": 5,
+            "DontBlockBlock": 5
+          }
+        },
+        "PP1": {
+          "Players": {
+            "Center": "Nick Abbruzzese",
+            "RightWing": "Logan Shaw",
+            "LeftWing": "Cal Jarnkrok",
+            "LeftDefense": "Miku Kalkanen",
+            "RightDefense": "Topi Niemela"
+          }
+        },
+        "PP2": {
+          "Players": {
+            "Center": "Ronnie Hervonen",
+            "RightWing": "Ryan Tverberg",
+            "LeftWing": "Alexander Nylander",
+            "LeftDefense": "Nicholas Matanen",
+            "RightDefense": "Matt Benning"
+          }
+        }
+      },
+      "PenaltyKill": {
+        "Defaults": {
+          "Formation": "Diamond",
+          "FaceoffFormation": "Normal",
+          "Sliders": {
+            "CarryDump": 5,
+            "CycleShoot": 5,
+            "EfficiencyEnergy": 5,
+            "DontBlockBlock": 5
+          }
+        },
+        "PK1": {
+          "Players": {
+            "Center": "Reece Johnson",
+            "Wing": "Brandon Baddock",
+            "LeftDefense": "Dakota Mermis",
+            "RightDefense": "Matt Benning"
+          }
+        },
+        "PK2": {
+          "Players": {
+            "Center": "Alex Steeves",
+            "Wing": "Jacob Quillen",
+            "LeftDefense": "Miku Kalkanen",
+            "RightDefense": "Topi Nwamala"
+          }
+        },
+        "PK3": {
+          "Players": {
+            "Center": "Cedric Pair",
+            "Wing": "Ryan Tverberg",
+            "LeftDefense": "Nicholas Matanen",
+            "RightDefense": "William Villeneuve"
+          }
+        }
+      }
+    },
+    "Scratches": [
+      "Robert Mastrosimon",
+      "Cade Weber",
+      "Artur Akhetmov",
+      "Tommy Miller",
+      "Kyle Clifford",
+      "Joe Blandisi",
+      "Blake Smith",
+      "Braden Kressler",
+      "Matthew Barbaloni",
+      "Sam Stephens",
+      "Mike Koster"
+    ]
+  }
+}
