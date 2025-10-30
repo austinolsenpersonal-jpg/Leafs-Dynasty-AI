@@ -1,0 +1,130 @@
+{
+  "patch": "Elite-Ops v4.4",
+  "description": "Adds M71 Injury Matrix, M73 Trade Negotiation AI, and M75 Player Development Tracker 2.0. No Canon changes. Designed to layer on v4.3E Guardian baseline.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "base_tag": "v4.3E-Guardian"
+  },
+  "create_dirs": [
+    "LeafsAI/Health",
+    "LeafsAI/Trades",
+    "LeafsAI/Development",
+    "snapshots/auto",
+    "elite"
+  ],
+  "modules": [
+    {
+      "id": "M71",
+      "name": "Injury Simulation Matrix",
+      "enabled": true,
+      "schedule": "WEEKLY_SUN_22_00_LOCAL",
+      "inputs": {
+        "roster_file": "LeafsAI/LeafsRoster_master_v1.2.json",
+        "chemistry_source": "elite/chemistry_latest.json",
+        "fatigue_source": "LeafsAI/GoaliePlan/*.json"
+      },
+      "config": {
+        "simulations": 100,
+        "fatigue_floor": 45,
+        "fatigue_risk_curve": "quadratic",
+        "return_fields": [
+          "player",
+          "pos",
+          "risk_pct_7d",
+          "risk_pct_14d",
+          "likely_type",
+          "notes"
+        ]
+      },
+      "output": "LeafsAI/Health/injury_matrix_week{{iso_week}}.json"
+    },
+    {
+      "id": "M73",
+      "name": "Trade Negotiation AI",
+      "enabled": true,
+      "triggers": [
+        "trade_block_update",
+        "command:/trade_eval"
+      ],
+      "inputs": {
+        "contracts_file": "LeafsAI/LeafsContracts_seed_v1.1.json",
+        "finance_file": "LeafsAI/Finance_seed.json",
+        "seed_master": "LeafsAI/LeafsSeeds_Master_v4.1.json"
+      },
+      "config": {
+        "weights": {
+          "war_value": 0.45,
+          "age_curve": 0.1,
+          "contract_efficiency": 0.2,
+          "cap_delta": 0.15,
+          "morale_impact": 0.1
+        },
+        "guardrails": {
+          "protect_rounds": [
+            1,
+            2
+          ],
+          "cap_buffer_min_m": 0.5
+        },
+        "verdict_thresholds": {
+          "win": 0.2,
+          "fair": -0.05,
+          "risk": -0.05
+        }
+      },
+      "output": "LeafsAI/Trades/trade_eval_${date}.json"
+    },
+    {
+      "id": "M75",
+      "name": "Player Development Tracker 2.0",
+      "enabled": true,
+      "triggers": [
+        "ahl_sim_upload",
+        "command:/prospect_report"
+      ],
+      "inputs": {
+        "ahl_dev_file": "LeafsAI/AHLDev_tracker_v1.1.json",
+        "chemistry_source": "elite/chemistry_latest.json",
+        "usage_snapshots": "snapshots/auto/*_AHL_usage.json"
+      },
+      "config": {
+        "model": "ahl_dev_v2",
+        "features": [
+          "toi_pct",
+          "pp_pk_usage",
+          "chem_delta",
+          "xg_contrib",
+          "mentor_pairing"
+        ],
+        "return_fields": [
+          "player",
+          "eta_to_nhl_months",
+          "promotion_flag",
+          "notes"
+        ]
+      },
+      "output": "LeafsAI/Development/dev_tracker_v2.json"
+    }
+  ],
+  "automation": {
+    "weekly_tasks": [
+      "injury_forecast_check",
+      "trade_risk_audit",
+      "dev_tracker_refresh"
+    ],
+    "post_game_pipeline": [
+      "analytics_update",
+      "chemistry_refresh",
+      "snapshot_auto_save"
+    ]
+  },
+  "git": {
+    "tag": "v4.4-EliteOps+TradeSim",
+    "commit_message": "feat: v4.4 Elite-Ops + TradeSim modules (M71/M73/M75) \u2014 no Canon changes"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/qa_weekly --tasks \"injury_forecast_check, trade_risk_audit, dev_tracker_refresh\""
+  ]
+}
