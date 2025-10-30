@@ -1,0 +1,31 @@
+{
+  "root": ["README.md", "CHANGELOG.md"],
+  "Architect": {
+    "core": [
+      "Architect_Config_v6.1.json",
+      "OldGen_Strategy_Canon_v4.1.txt"
+    ]
+  },
+  "LeafsAI": {
+    "core": [
+      "Canon_v4.1_Full_Franchise.json",
+      "LeafsSeeds_Master_v4.1.json"
+    ],
+    "seeds": [
+      "LeafsRoster_master_v1.2.json",
+      "LeafsContracts_seed_v1.1.json",
+      "Finance_seed.json",
+      "AHLDev_tracker_v1.1.json",
+      "TradeDeadlinePlanner_seed_v1.2.json",
+      "ScoutingAssignments_seed.json"
+    ],
+    "subfolders": {
+      "Matchups": "Stores per-game JSON plans",
+      "Operations": "Ops deltas, QA snapshots",
+      "GoaliePlan": "Rotation and fatigue maps"
+    }
+  },
+  "canon": ["legacy or frozen Canon archives"],
+  "internal": ["QA reports, schema validators"],
+  "releases": ["versioned tags and baselines"]
+}
