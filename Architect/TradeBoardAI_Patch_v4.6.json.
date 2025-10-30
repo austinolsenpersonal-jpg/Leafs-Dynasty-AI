@@ -1,0 +1,105 @@
+{
+  "patch": "Trade Board AI v4.6",
+  "description": "Adds live Trade Board AI that ranks league-wide targets using Exec Matrix + Trade Risk + Scout weights. No Canon changes. Designed to layer on v4.5 ExecutiveOps.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "base_tag": "v4.5-ExecutiveOps"
+  },
+  "create_dirs": [
+    "LeafsAI/Trades/TradeBoard",
+    "LeafsAI/Scouting/Weights",
+    "executive/reports",
+    "snapshots/auto"
+  ],
+  "modules": [
+    {
+      "id": "M110",
+      "name": "Trade Board AI",
+      "enabled": true,
+      "schedule": "WEEKLY_MON_09_00_LOCAL",
+      "inputs": {
+        "contracts": "LeafsAI/LeafsContracts_seed_v1.1.json",
+        "finance": "LeafsAI/Finance_seed.json",
+        "ops_delta": "LeafsAI/Season1/Operations/*.json",
+        "exec_matrix": "executive/Executive_Matrix_state.json",
+        "risk_index": "executive/Risk_Sentinel_state.json",
+        "scout_weights": "LeafsAI/Scouting/Weights/weights_v1.json"
+      },
+      "config": {
+        "ranking_formula": "0.35*fit + 0.25*contract_eff + 0.15*cap_delta + 0.15*chem_gain + 0.10*risk_inverse",
+        "guardrails": {
+          "protect_rounds": [1, 2],
+          "cap_buffer_min_m": 0.5,
+          "morale_drop_max_pct": 2.0
+        },
+        "tiers": {
+          "A+": { "min_score": 0.85 },
+          "A":  { "min_score": 0.75 },
+          "B":  { "min_score": 0.60 },
+          "C":  { "min_score": 0.45 }
+        }
+      },
+      "output": "LeafsAI/Trades/TradeBoard/board_week{{iso_week}}.json"
+    },
+    {
+      "id": "M111",
+      "name": "League Value Sync",
+      "enabled": true,
+      "triggers": ["command:/trade_board_sync", "qa_weekly"],
+      "inputs": {
+        "league_rosters": "elite/league/rosters_latest.json",
+        "league_contracts": "elite/league/contracts_latest.json",
+        "injury_report": "LeafsAI/Health/injury_matrix_week*.json"
+      },
+      "config": {
+        "decay_days": 14,
+        "injury_penalty_pct": 0.10,
+        "rental_penalty_pct": 0.06
+      },
+      "output": "LeafsAI/Trades/TradeBoard/league_values.json"
+    },
+    {
+      "id": "M112",
+      "name": "Scout Weights Integrator",
+      "enabled": true,
+      "triggers": ["command:/scout_weights_update"],
+      "inputs": {
+        "weights": "LeafsAI/Scouting/Weights/weights_v1.json",
+        "pattern_memory": "elite/patterns/*.json"
+      },
+      "config": {
+        "defaults": {
+          "xG_for": 0.25,
+          "xG_against": 0.25,
+          "transition": 0.15,
+          "netfront": 0.15,
+          "age_curve": 0.10,
+          "handedness_need": 0.10
+        }
+      },
+      "output": "LeafsAI/Scouting/Weights/weights_active.json"
+    }
+  ],
+  "automation": {
+    "weekly_tasks": [
+      "trade_board_refresh",
+      "league_value_sync",
+      "governance_guardrails"
+    ],
+    "post_game_pipeline": [
+      "analytics_update",
+      "chemistry_refresh",
+      "snapshot_auto_save"
+    ]
+  },
+  "git": {
+    "tag": "v4.6-TradeBoardAI",
+    "commit_message": "feat: v4.6 Trade Board AI (M110/M111/M112) — Canon preserved"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/trade_board_sync",
+    "/qa_weekly --tasks \"trade_board_refresh, league_value_sync, governance_guardrails\""
+  ]
+}
