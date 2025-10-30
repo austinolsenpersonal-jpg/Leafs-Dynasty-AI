@@ -1,46 +1,86 @@
-![Validate JSON](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI/actions/workflows/validate.yml/badge.svg)
+# 🏒 Toronto Maple Leafs Dynasty AI  
+**Franchise Control System — NHL 25 (Old-Gen & Next-Gen)**  
 
-# Leafs Dynasty AI
-
-This repo tracks the **Canon** (locked baselines), **Roster/Contracts sync**, and **release bundles** for Austin Olsen’s NHL 25 Toronto Maple Leafs Dynasty AI.
-
----
-
-## 📁 Project Structure
-
-**Architect/**
-- `Architect_Config_v6.1.json` – base instructions + Canon link  
-- `OldGen_Strategy_Canon_v4.1.txt` – official strategy rulebook  
-
-**LeafsAI/**
-- `LeafsSeeds_Master_v4.1.json` – merged Seeds (GoaliePlan, PP, Scouting, Deadline, Finance, AHL Dev)  
-- `LeafsRoster_master_v1.2.json` – active roster baseline  
-- `LeafsContracts_seed_v1.1.json` – contracts + cap snapshot  
-- `Finance_seed.json` – arena and promotion data  
+[![Canon v4.1](https://img.shields.io/badge/Canon-v4.1-blue)](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI/releases/tag/v4.1-Full-Franchise)  
+[![Ops v4.2](https://img.shields.io/badge/Ops-v4.2--mobile--baseline%2Bops--overrides-green)](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI/releases/tag/v4.2-mobile-baseline%2Bops-overrides)  
+[![Status](https://img.shields.io/badge/Mode-Dual--Ops%20Active-success)](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI)
 
 ---
 
-## 🧭 Usage
+### 📘 Overview  
+This repository maintains the **Canon**, **Operational Seeds**, and **Matchup Overrides** for  
+_Austin Olsen’s Toronto Maple Leafs Franchise in NHL 25_.  
 
-- The **Architect GPT** builds and validates Canon files and Seeds.  
-- The **Leafs Dynasty Suite AI** operates day-to-day franchise logic using Canon v4.1.  
-- Run `/verify_strategies` after any roster or system change to maintain sync.
-
----
-
-## 🏁 Current Baseline
-
-**Season 1 Baseline (Oct 2025)**  
-- Canon v4.1 Locked  
-- Architect_Config v6.1 active  
-- LeafsSeeds_Master v4.1 merged  
-- Six total active files (under 10 limit)
+- Architect Config: **v6.1**  
+- Canon Version: **v4.1 (Full Franchise)**  
+- Operational Branch: **v4.2 (Mobile Baseline + Ops Overrides)**  
+- Current Phase: Regular Season — November Segment  
+- Dual-Ops Mode: **Enabled (Gameplay + Front Office)**  
 
 ---
 
-## 🧾 Version History
+### 📂 Repository Structure  
 
-| Version | Date | Changes |
-|:--------:|:----:|:--------|
-| **v4.1** | Oct 26 2025 | Merged Seeds, added Architect_Config v6.1, removed legacy Seeds & Link Config. |
-| **v4.0** | Sep 2025 | Initial Canon release with separate Seeds structure. |
+```
+Architect/                  → Core Canon + Strategy Config  
+LeafsAI/                    → Dynasty Ops & Game Data  
+ ├── Canon_v4.1_Full_Franchise.json  
+ ├── LeafsSeeds_Master_v4.1.json  
+ ├── Season1/Operations/     → Ops delta & segment data  
+ ├── Matchups/               → Game-by-game scouting / strategies  
+ ├── GoaliePlan/             → Rotation / fatigue plans  
+ ├── LeafsContracts_seed_v1.1.json  
+ ├── Finance_seed.json  
+ └── AHLDev_tracker_v1.1.json  
+```
+
+---
+
+### 🧭 Canon State  
+
+- Verified Canon v4.1 (unchanged)  
+- Active Ops Version: **v4.2-mobile-baseline+ops-overrides**  
+- Latest Snapshot: `Matchup_EDM_Prep_2024-11-16`  
+- QA Integrity: ✅ **PASS** (Roster / Cap / Systems / Finance)  
+
+---
+
+### 🏷️ Tags  
+
+| Tag | Description |  
+|-----|--------------|  
+| [v4.1-Full-Franchise](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI/releases/tag/v4.1-Full-Franchise) | Original Canon baseline |  
+| [v4.2-mobile-baseline+ops-overrides](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI/releases/tag/v4.2-mobile-baseline%2Bops-overrides) | Ops updates (WSH lock + EDM prep + goalie plan) |  
+
+---
+
+### 🧰 Commands Reference  
+
+```
+/resync_baseline --from "v4.1-Full-Franchise"  
+/apply_matchup --source "Matchup_WSH_FullLock_2024-11-13" --format json  
+/verify_strategies && /lock_strategies  
+```
+
+---
+
+### 📈 Changelog Summary  
+
+**v4.2 (Mobile Baseline + Ops Overrides)**  
+- Added WSH full-lock and EDM prep files  
+- Integrated goalie rotation plan  
+- Canon v4.1 preserved, verified QA integrity  
+- Added Dual-Ops mobile support for GitHub and iPhone sync  
+
+**v4.1 (Full Franchise Baseline)**  
+- Original Canon + Architect Config v6.1  
+- LeafsSeeds Master merged (Finance, Scouting, AHL Dev)  
+- All legacy seeds removed, 6-file baseline created  
+
+---
+
+### 🧑‍💼 Maintained By  
+
+**Austin Olsen**  
+Toronto Maple Leafs — Dynasty AI Project  
+📦 Canon v4.1 • Architect v6.1 • Ops v4.2  
