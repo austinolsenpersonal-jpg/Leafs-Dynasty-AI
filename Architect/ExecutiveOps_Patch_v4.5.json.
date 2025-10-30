@@ -1,0 +1,78 @@
+{
+  "patch": "Executive-Ops v4.5",
+  "description": "Adds automation + dashboards: weekly QA, auto-snapshots after each sim, Performance Trend visual (M97P), and Finance Projection model (M78F). No Canon changes.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "base_tag": "v4.4-EliteOps+TradeSim"
+  },
+  "create_dirs": [
+    "snapshots/auto",
+    "elite/visuals",
+    "LeafsAI/Reports"
+  ],
+  "modules": [
+    {
+      "id": "M97P",
+      "name": "Performance Trend Visual",
+      "enabled": true,
+      "inputs": {
+        "analytics_log": "LeafsAI/Reports/analytics_*.json",
+        "chemistry_latest": "elite/chemistry_latest.json",
+        "injury_index": "LeafsAI/Health/injury_matrix_week*.json"
+      },
+      "config": {
+        "window_games": 10,
+        "lines": ["xG_for", "xG_against", "chem_index", "injury_index"],
+        "output_type": "dashboard"
+      },
+      "output": "elite/visuals/performance_trend_dashboard.json"
+    },
+    {
+      "id": "M78F",
+      "name": "Finance Projection Model",
+      "enabled": true,
+      "inputs": {
+        "finance_seed": "LeafsAI/Finance_seed.json",
+        "promo_history": "LeafsAI/Reports/promo_*.json",
+        "attendance_log": "LeafsAI/Reports/attendance_*.json"
+      },
+      "config": {
+        "horizon_games": 10,
+        "promo_cap_pre_jan_pct": 75,
+        "return_fields": ["projected_revenue_m", "promo_roi_pct", "morale_trend"]
+      },
+      "output": "LeafsAI/Reports/finance_projection_next10.json"
+    }
+  ],
+  "automation": {
+    "weekly_tasks": [
+      "qa_weekly_full",
+      "finance_projection_refresh",
+      "performance_trend_refresh"
+    ],
+    "post_game_pipeline": [
+      "analytics_update",
+      "chemistry_refresh",
+      "snapshot_auto_save",
+      "performance_trend_refresh"
+    ],
+    "schedules": {
+      "qa_weekly_full": "WEEKLY_SUN_09_00_LOCAL",
+      "finance_projection_refresh": "WEEKLY_SUN_09_05_LOCAL",
+      "performance_trend_refresh": "WEEKLY_SUN_09_10_LOCAL",
+      "snapshot_auto_save": "ON_POST_SIM"
+    }
+  },
+  "git": {
+    "tag": "v4.5-ExecutiveOps",
+    "commit_message": "feat: v4.5 Executive-Ops — auto-QA weekly, auto-snapshots, Performance Trend (M97P) + Finance Projection (M78F)"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/qa_weekly --auto every_sunday",
+    "/snapshot_auto --mode full --interval after_each_sim",
+    "/enable_visual \"performance_trend\" --mode dashboard",
+    "/finance_audit"
+  ]
+}
