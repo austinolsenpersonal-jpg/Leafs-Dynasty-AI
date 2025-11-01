@@ -1,0 +1,77 @@
+{
+  "patch": "Trade & Contract Pack v5.1",
+  "description": "Front-office AI suite improving trade logic, agent behavior, and cap forecasting.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "min_stack": ["DynastyMax v4.9", "Elite Convergence v5.0"]
+  },
+  "modules": [
+    {
+      "id": "M121",
+      "name": "Dynamic Trade Evaluator",
+      "enabled": true,
+      "inputs": {
+        "roster_data": "contracts/roster_summary.json",
+        "market_values": "analytics/trade_values.json"
+      },
+      "config": {
+        "evaluate_window": 30,
+        "trend_weight": 0.65
+      }
+    },
+    {
+      "id": "M122",
+      "name": "Real-Time Market Volatility Engine",
+      "enabled": true,
+      "inputs": {
+        "league_trades": "analytics/league_trades.json",
+        "morale": "elite/morale_current.json"
+      },
+      "config": {
+        "volatility_scale": 0.7,
+        "reaction_speed": 0.8
+      }
+    },
+    {
+      "id": "M124",
+      "name": "Agent Mood Negotiator",
+      "enabled": true,
+      "inputs": {
+        "player_morale": "elite/morale_current.json",
+        "chemistry": "elite/chemistry_latest.json"
+      },
+      "config": {
+        "negotiation_tone": "adaptive",
+        "trust_factor_weight": 0.4
+      }
+    },
+    {
+      "id": "M127",
+      "name": "Cap Projection Forecaster",
+      "enabled": true,
+      "inputs": {
+        "contracts": "contracts/active_contracts.json",
+        "budget": "finance/team_budget.json"
+      },
+      "config": {
+        "forecast_years": 5,
+        "inflation_rate": 0.02
+      }
+    },
+    {
+      "id": "M128",
+      "name": "Arbitration Analyzer",
+      "enabled": true,
+      "inputs": {
+        "player_stats": "analytics/player_metrics.json",
+        "comps": "analytics/arbitration_comps.json"
+      },
+      "config": {
+        "risk_threshold": 0.25,
+        "auto_flag_highrisk": true
+      }
+    }
+  ],
+  "checksum": "TC-Pack-v5.1-CanonSafe"
+}
