@@ -1,0 +1,151 @@
+{
+  "patch": "Elite Convergence Suite v5.0",
+  "description": "Unifies chemistry, overlays, roster automation, and stability into one elite-tier layer. Canon v4.1 preserved (read-only).",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "base_tag": "v4.9-DynastyMax"
+  },
+  "safety": {
+    "overwrite": "none",
+    "immutable_paths": [
+      "LeafsAI/Canon_v4.1_Full_Franchise.json",
+      "Architect/OldGen_Strategy_Canon_v4.1.txt"
+    ],
+    "backup_on_apply": true
+  },
+  "create_dirs": [
+    "elite",
+    "elite/ui",
+    "elite/runtime",
+    "snapshots/auto",
+    "executive/reports",
+    "LeafsAI/Health",
+    "LeafsAI/Development",
+    "LeafsAI/AHL",
+    "LeafsAI/Matchups",
+    "LeafsAI/GoaliePlan"
+  ],
+  "modules": [
+    {
+      "id": "M111",
+      "name": "RealChem Sync",
+      "enabled": true,
+      "inputs": {
+        "roster_file": "LeafsAI/LeafsRoster_master_v1.2.json",
+        "analytics_feed": "elite/analytics_latest.json",
+        "morale_feed": "elite/morale_vector.json"
+      },
+      "config": {
+        "decay_control": true,
+        "carryover_between_games": true,
+        "weights": { "links": 0.5, "zone_overlap": 0.3, "recent_form": 0.2 }
+      },
+      "output": "elite/chemistry_latest.json"
+    },
+    {
+      "id": "M112",
+      "name": "Tactical Weather Engine",
+      "enabled": true,
+      "inputs": {
+        "schedule_context": "elite/runtime/schedule.json",
+        "arena_profile": "LeafsAI/Finance_seed.json"
+      },
+      "config": {
+        "ice_drag_range": [0.0, 0.06],
+        "fatigue_variance": [0.0, 0.05],
+        "home_ice_bias": 0.01
+      },
+      "effects": {
+        "goalie_sv_volatility": 0.008,
+        "pass_speed_scalar": 0.97,
+        "shift_recovery_scalar": 0.99
+      },
+      "output": "elite/runtime/tactical_weather_state.json"
+    },
+    {
+      "id": "M113",
+      "name": "Adaptive Roster Pipeline",
+      "enabled": true,
+      "triggers": [
+        "injury_event",
+        "fatigue_threshold",
+        "command:/ahl_callup",
+        "command:/ahl_senddown"
+      ],
+      "inputs": {
+        "ahl_dev": "LeafsAI/AHLDev_tracker_v1.1.json",
+        "contracts": "LeafsAI/LeafsContracts_seed_v1.1.json",
+        "roster": "LeafsAI/LeafsRoster_master_v1.2.json",
+        "injury_matrix": "LeafsAI/Health/injury_matrix_week*.json"
+      },
+      "config": {
+        "callup_policy": "two_way_first",
+        "pto_alerts": true,
+        "mentorship_preserve": true,
+        "cap_buffer_min_m": 0.5
+      },
+      "output": "LeafsAI/AHL/pipeline_actions_${date}.json"
+    },
+    {
+      "id": "M114",
+      "name": "Dynasty Vision UI",
+      "enabled": true,
+      "inputs": {
+        "heat_trap": "elite/heat_trap_latest.json",
+        "bench_alerts": "elite/bench_alerts_latest.json",
+        "injury_overlay": "elite/injury_heatmap_latest.json",
+        "chemistry": "elite/chemistry_latest.json",
+        "analytics": "elite/analytics_latest.json"
+      },
+      "config": {
+        "mode": "overlay",
+        "hud_pack": "elite/ui/hud_manifest.json",
+        "bind_to": ["sim_report", "analytics_report"]
+      },
+      "output": "elite/ui/dynasty_vision_state.json"
+    },
+    {
+      "id": "M115",
+      "name": "Error Correction Kernel",
+      "enabled": true,
+      "triggers": ["pre_lock", "pre_matchup", "snapshot_create"],
+      "inputs": {
+        "canon_rulebook": "Architect/OldGen_Strategy_Canon_v4.1.txt",
+        "active_preset": "elite/runtime/active_preset.json",
+        "strategies": "LeafsAI/Canon_v4.1_Full_Franchise.json"
+      },
+      "config": {
+        "detect_reverts": true,
+        "reject_out_of_menu_values": true,
+        "auto_fix_minor": true
+      },
+      "output": "elite/runtime/validation_report_${date}.json"
+    }
+  ],
+  "automation": {
+    "weekly_tasks": [
+      "qa_cycle",
+      "morale_reindex",
+      "chemistry_refresh",
+      "snapshot_auto_save"
+    ],
+    "post_game_pipeline": [
+      "analytics_update",
+      "dynasty_vision_refresh",
+      "realchem_sync",
+      "snapshot_auto_save"
+    ]
+  },
+  "git": {
+    "tag": "v5.0-EliteConvergence",
+    "commit_message": "feat: Elite Convergence Suite v5.0 — RealChem, Tactical Weather, Adaptive Roster, Dynasty Vision, Error Kernel (Canon v4.1 preserved)"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/qa_weekly --tasks \"cache_flush, integrity_rescan, morale_reindex, chemistry_refresh\"",
+    "/verify_strategies && /lock_strategies",
+    "/analytics_report --range last_game",
+    "/sim_report --prep_check"
+  ]
+}
