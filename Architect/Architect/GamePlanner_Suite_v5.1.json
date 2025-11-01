@@ -1,0 +1,98 @@
+{
+  "patch": "GamePlanner Suite v5.1",
+  "description": "Coach-layer upgrades that automate matchup, fatigue, and scenario planning.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "min_stack": ["DynastyMax v4.9", "Elite Convergence v5.0"]
+  },
+  "create_dirs": [
+    "planner",
+    "planner/presets",
+    "planner/reports",
+    "snapshots/auto"
+  ],
+  "modules": [
+    {
+      "id": "M134",
+      "name": "GamePlan Architect AI",
+      "enabled": true,
+      "triggers": ["command:/matchup", "pre_game"],
+      "inputs": {
+        "opponent_memory": "elite/pattern_memory.json",
+        "analytics": "snapshots/auto/*_analytics.json",
+        "chemistry": "elite/chemistry_latest.json",
+        "weather": "planner/telemetry/ice_conditions.json"
+      },
+      "config": {
+        "preset_base": "Matchup_Default_v4.8_UI.json",
+        "auto_build": true,
+        "inherit_lines": true,
+        "inherit_special_teams": true,
+        "score_state_bias": "balanced",
+        "output_mode": "preset_json"
+      },
+      "output": "planner/presets/AutoPreset_${opponent}.json"
+    },
+    {
+      "id": "M135",
+      "name": "Tactical Scenario Trainer",
+      "enabled": true,
+      "triggers": ["pre_game 60m", "command:/scenario_sim"],
+      "inputs": {
+        "scenarios": "planner/scenarios/default_set.json",
+        "bench_ai": "elite/bench_ai_core.json"
+      },
+      "config": {
+        "iterations": 20,
+        "coverage": ["PP", "PK", "5on5", "EmptyNet"],
+        "response_bias": 0.4
+      }
+    },
+    {
+      "id": "M136",
+      "name": "Goalie Rotation Optimizer 2.0",
+      "enabled": true,
+      "triggers": ["command:/goalie_plan", "pre_trip"],
+      "inputs": {
+        "travel_data": "planner/travel_routes.json",
+        "opponent_shots": "analytics/shot_patterns.json",
+        "morale_state": "elite/morale_current.json"
+      },
+      "config": {
+        "rotation_logic": "fatigue + style_match",
+        "pull_threshold": 4,
+        "min_gap_days": 1
+      }
+    },
+    {
+      "id": "M137",
+      "name": "Pre-Scout AutoPrep",
+      "enabled": true,
+      "triggers": ["auto 12h_pre_game"],
+      "inputs": {
+        "opponent_roster": "planner/opponent_cards/${opponent}.json",
+        "pattern_memory": "elite/pattern_memory.json"
+      },
+      "config": {
+        "auto_apply": true,
+        "notify": true
+      }
+    },
+    {
+      "id": "M138",
+      "name": "Dynamic Timeout AI 2.0",
+      "enabled": true,
+      "triggers": ["live_game"],
+      "inputs": {
+        "crowd_impact": "analytics/crowd_momentum.json",
+        "ref_tendency": "analytics/ref_patterns.json"
+      },
+      "config": {
+        "timeout_bias": "momentum",
+        "score_sensitivity": 0.3
+      }
+    }
+  ],
+  "checksum": "GP-Suite-v5.1-CanonSafe"
+}
