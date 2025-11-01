@@ -1,0 +1,140 @@
+{
+  "patch": "GamePlanner Suite v5.1",
+  "description": "Coach-layer upgrades that auto-build pregame plans, speed up in-game reactions, and optimize goalie rotation. Canon v4.1 safe.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "min_stack": ["DynastyMax v4.9", "Elite Convergence v5.0"]
+  },
+  "create_dirs": [
+    "planner",
+    "planner/presets",
+    "planner/reports",
+    "snapshots/auto"
+  ],
+  "modules": [
+    {
+      "id": "M134",
+      "name": "GamePlan Architect AI",
+      "enabled": true,
+      "triggers": ["command:/matchup", "pre_game_12h"],
+      "inputs": {
+        "opponent_memory": "elite/pattern_memory/*.json",
+        "analytics": "snapshots/auto/*_analytics.json",
+        "chemistry": "elite/chemistry_latest.json",
+        "weather": "planner/telemetry/ice_conditions.json"
+      },
+      "config": {
+        "preset_base": "Matchup_Default_v4.8_UI.json",
+        "auto_build": true,
+        "inherit_lines": true,
+        "inherit_special_teams": true,
+        "score_state_bias": "balanced",
+        "output_mode": "preset_json"
+      },
+      "output": "planner/presets/AutoPreset_${opponent}_${date}.json"
+    },
+    {
+      "id": "M135",
+      "name": "Tactical Scenario Trainer",
+      "enabled": true,
+      "triggers": ["pre_game_60m", "command:/scenario_train"],
+      "inputs": {
+        "scenario_pack": "planner/scenarios/standard_20.json",
+        "bench_rules": "elite/bench_rules.json"
+      },
+      "config": {
+        "sim_depth": 20,
+        "pp_variants": ["Overload", "Umbrella"],
+        "pk_variants": ["Diamond", "Passive Box"],
+        "protect_lead_profiles": ["Final10_v1.0", "Reclaim_v1.1"]
+      },
+      "output": "planner/reports/scenario_train_${opponent}_${date}.json"
+    },
+    {
+      "id": "M136",
+      "name": "Goalie Rotation Optimizer 2.0",
+      "enabled": true,
+      "triggers": ["schedule_update", "command:/goalie_plan"],
+      "inputs": {
+        "calendar": "planner/schedule/month_view.json",
+        "opponent_shot_profiles": "elite/opponent_shots/*.json",
+        "morale": "elite/morale_vector.json",
+        "fatigue": "LeafsAI/GoaliePlan/*.json",
+        "travel": "planner/travel/distances.json"
+      },
+      "config": {
+        "b2b_protect": true,
+        "travel_weight": 0.15,
+        "shot_style_weight": 0.25,
+        "morale_weight": 0.15,
+        "fatigue_weight": 0.45,
+        "pull_rule": "4GA_or_SV<.860_after_40",
+        "min_buffer_days_for_reset": 3
+      },
+      "output": "LeafsAI/GoaliePlan/auto_plan_${start_date}_${end_date}.json"
+    },
+    {
+      "id": "M137",
+      "name": "Pre-Scout AutoPrep",
+      "enabled": true,
+      "triggers": ["pre_game_12h", "command:/pre_scout"],
+      "inputs": {
+        "opponent_roster": "elite/opponent_rosters/*.json",
+        "pattern_memory": "elite/pattern_memory/*.json",
+        "league_trends": "trades/board/TradeBoard_Scan_*.json"
+      },
+      "config": {
+        "apply_systems": true,
+        "safe_overrides_only": true,
+        "write_to_preset": true,
+        "fallback_to_canon": true
+      },
+      "output": "planner/presets/AutoPreset_${opponent}_${date}.json"
+    },
+    {
+      "id": "M138",
+      "name": "Dynamic Timeout AI 2.0",
+      "enabled": true,
+      "triggers": ["in_game"],
+      "inputs": {
+        "bench_fatigue": "elite/live/bench_fatigue.json",
+        "momentum": "elite/live/momentum.json",
+        "crowd": "elite/live/crowd_response.json",
+        "refs": "elite/live/penalty_tendency.json"
+      },
+      "config": {
+        "priority_rules": [
+          {"rule": "icing_top_line_fatigue>=70", "priority": "HIGH"},
+          {"rule": "two_ga_within_3min", "priority": "MED"},
+          {"rule": "dz_trap_>=90s_and_team_fatigue>60", "priority": "MED_LOW"}
+        ],
+        "crowd_momentum_bonus": 0.05,
+        "ref_tendency_cooldown": true,
+        "lock_tactics_seconds_after_to": 30
+      },
+      "output": "planner/reports/timeout_events_${game_id}.json"
+    }
+  ],
+  "automation": {
+    "pregame_chain": [
+      "M137:pre_scout_applied",
+      "M134:auto_preset_generated",
+      "M135:scenario_trained",
+      "M136:goalie_plan_refreshed"
+    ],
+    "postgame_chain": [
+      "analytics_update",
+      "chemistry_refresh",
+      "snapshot_auto_save"
+    ]
+  },
+  "git": {
+    "commit_message": "feat(GamePlanner v5.1): Install M134–M138 (auto pregame plans, scenario trainer, GR 2.0, pre-scout, dynamic timeout)",
+    "tag": "v5.1-GamePlanner"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/qa_weekly --tasks \"iq_sync_check, scenario_tune, goalie_plan_audit\""
+  ]
+}
