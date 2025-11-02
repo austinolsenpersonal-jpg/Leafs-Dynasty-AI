@@ -1,0 +1,100 @@
+{
+  "patch": "Scouting Expansion v5.2.1",
+  "description": "Deepens scouting: unified prospect grades, draft WAR projections, positional-need forecasting, and live linkage to Trade/Contract + RealChem. Canon-safe.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "base_tag": "Elite_v5.1"
+  },
+  "create_dirs": [
+    "LeafsAI/Scouting",
+    "planner/scouting",
+    "executive/reports"
+  ],
+  "modules": [
+    {
+      "id": "M171",
+      "name": "Prospect Grade Unifier",
+      "enabled": true,
+      "inputs": {
+        "ahl_dev_file": "LeafsAI/Development/dev_tracker_automentor_v5.2.json",
+        "external_scout_feeds": [
+          "Elite_Scout_AI.json"
+        ]
+      },
+      "config": {
+        "weights": { "tools": 0.25, "iq": 0.20, "skating": 0.15, "production": 0.20, "age_curve": 0.10, "injury_risk": 0.10 },
+        "normalize": true,
+        "scale": "A+–F"
+      },
+      "output": "LeafsAI/Scouting/prospect_grades_unified_v5.2.json"
+    },
+    {
+      "id": "M172",
+      "name": "Draft Value Projection",
+      "enabled": true,
+      "inputs": {
+        "prospect_grades": "LeafsAI/Scouting/prospect_grades_unified_v5.2.json"
+      },
+      "config": {
+        "model": "draft_war_curve_v2",
+        "horizon_years": 5,
+        "return_fields": ["player","pos","league","projected_WAR_5y","boom_prob","bust_prob","notes"]
+      },
+      "output": "LeafsAI/Scouting/draft_value_projection_v5.2.json"
+    },
+    {
+      "id": "M173",
+      "name": "Positional Need Forecaster",
+      "enabled": true,
+      "inputs": {
+        "contracts_file": "LeafsAI/LeafsContracts_seed_v1.1.json",
+        "roster_file": "LeafsAI/LeafsRoster_master_v1.2.json",
+        "realchem_file": "elite/chemistry_latest.json"
+      },
+      "config": {
+        "horizon_seasons": ["2024-25","2025-26","2026-27"],
+        "roles": ["1C","2C","1RW","2RW","1LW","2LW","RD1","RD2","LD1","LD2","G1","G2"]
+      },
+      "output": "LeafsAI/Scouting/positional_needs_forecast_v5.2.json"
+    },
+    {
+      "id": "M174",
+      "name": "Scout-Trade Bridge",
+      "enabled": true,
+      "triggers": ["trade_outlook_refresh","command:/trade_targets"],
+      "inputs": {
+        "draft_value_file": "LeafsAI/Scouting/draft_value_projection_v5.2.json",
+        "needs_file": "LeafsAI/Scouting/positional_needs_forecast_v5.2.json",
+        "market_curve": "executive/reports/TradeContract_DeepDive_v5.1_2024-11-27.json"
+      },
+      "config": {
+        "prospect_inflation_index": 1.00,
+        "deadline_volatility_beta": 0.20,
+        "guardrails": { "protect_rounds": [1,2] }
+      },
+      "output": "planner/scouting/trade_scout_matrix_v5.2.json"
+    }
+  ],
+  "automation": {
+    "weekly_tasks": [
+      "scout_refresh",
+      "prospect_sync",
+      "needs_forecast_update"
+    ],
+    "pre_game_pipeline": [
+      "pre_scout_autoprep"
+    ]
+  },
+  "git": {
+    "tag": "v5.2.1-Scouting",
+    "commit_message": "feat: Scouting Expansion v5.2.1 — unified grades, draft WAR, positional needs, and trade bridge (Canon-safe)"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/scout_report --scope full --export \"LeafsAI/Scouting/scout_matrix_v5.2.json\"",
+    "/pre_scout --opponent \"${next_opponent}\" --export \"planner/opponent_cards/${next_opponent}_card_auto.json\"",
+    "/trade_outlook",
+    "/qa_weekly --tasks \"scout_refresh, prospect_sync, needs_forecast_update\""
+  ]
+}
