@@ -1,0 +1,144 @@
+{
+  "suite": "Performance Insight Suite v5.3",
+  "description": "Adds live fatigue analytics, bench substitution predictor, momentum-pair model, opponent pressure index, and live strategy recommender. Canon-safe and compatible with v5.2.",
+  "requires": {
+    "canon": "v4.1",
+    "elite_convergence": "v5.0",
+    "gameplanner": "v5.1",
+    "trade_contract": "v5.1",
+    "system_intelligence": "v5.1",
+    "analytics_expansion": "v5.2"
+  },
+  "create_dirs": [
+    "reports",
+    "analytics",
+    "analytics/live",
+    "analytics/csv",
+    "overlays"
+  ],
+  "modules": [
+    {
+      "id": "M180",
+      "name": "Fatigue Analytics Engine",
+      "enabled": true,
+      "inputs": {
+        "shift_events": "analytics/live/shift_events.json",
+        "chemistry_source": "elite/chemistry_latest.json"
+      },
+      "config": {
+        "window_shifts": 5,
+        "decay_model": "nonlinear",
+        "export_graph": true
+      },
+      "output": "analytics/fatigue_linepair_timeseries.json"
+    },
+    {
+      "id": "M181",
+      "name": "Bench Substitution Predictor",
+      "enabled": true,
+      "triggers": ["live_track", "command:/bench_advice"],
+      "inputs": {
+        "fatigue_data": "analytics/fatigue_linepair_timeseries.json",
+        "realchem": "elite/chemistry_latest.json"
+      },
+      "config": {
+        "suggest_threshold_pct": 78,
+        "timeout_hint_pct": 72,
+        "protect_lead_bias": 0.15
+      },
+      "output": "analytics/live/bench_recommendations.json"
+    },
+    {
+      "id": "M182",
+      "name": "Momentum Pair Model",
+      "enabled": true,
+      "inputs": {
+        "event_stream": "analytics/live/event_stream.json",
+        "war_baseline": "analytics/war_baseline_team.json"
+      },
+      "config": {
+        "pair_types": ["F-F", "D-D", "F-D"],
+        "min_toi_seconds": 180
+      },
+      "return_fields": [
+        "pair",
+        "momentum_score",
+        "expected_war_delta",
+        "recommendation"
+      ],
+      "output": "analytics/momentum_pairs.json"
+    },
+    {
+      "id": "M183",
+      "name": "Opponent Pressure Index",
+      "enabled": true,
+      "triggers": ["live_track"],
+      "inputs": {
+        "entries_exits": "analytics/live/entry_exit_tracker.json",
+        "oz_time": "analytics/live/zone_time.json"
+      },
+      "config": {
+        "refresh_seconds": 15,
+        "scale": "0-100",
+        "overlay": true
+      },
+      "output": "overlays/pressure_index_live.json"
+    },
+    {
+      "id": "M184",
+      "name": "Live Strategy Recommender",
+      "enabled": true,
+      "triggers": ["live_track", "period_break"],
+      "inputs": {
+        "fatigue_data": "analytics/fatigue_linepair_timeseries.json",
+        "pressure_index": "overlays/pressure_index_live.json",
+        "momentum_pairs": "analytics/momentum_pairs.json"
+      },
+      "config": {
+        "max_changes_per_period": 3,
+        "suggestions": ["forecheck","def_pressure","off_pressure","breakout","quick_breakout","timeout"],
+        "respect_scenario_engine": true
+      },
+      "output": "analytics/live/live_strategy_recs.json"
+    }
+  ],
+  "overlays": [
+    {
+      "name": "pressure_ring",
+      "source": "overlays/pressure_index_live.json",
+      "ui_link": "dynasty_vision_ui",
+      "refresh_seconds": 15
+    },
+    {
+      "name": "bench_recs",
+      "source": "analytics/live/bench_recommendations.json",
+      "ui_link": "dynasty_vision_ui",
+      "refresh_seconds": 20
+    }
+  ],
+  "exports": {
+    "reports_pdf": "reports/Performance_Insight_v5.3_PostGame.pdf",
+    "csv_bundle": [
+      "analytics/fatigue_linepair_timeseries.json",
+      "analytics/momentum_pairs.json",
+      "overlays/pressure_index_live.json",
+      "analytics/live/live_strategy_recs.json"
+    ]
+  },
+  "automation": {
+    "post_game_pipeline": [
+      "fatigue_export",
+      "momentum_pair_snapshot",
+      "pressure_index_summary",
+      "generate_performance_report_pdf"
+    ]
+  },
+  "git": {
+    "tag": "v5.3-Performance-Insight",
+    "commit_message": "feat(PerfInsight v5.3): fatigue engine, bench predictor, momentum pairs, pressure index, live strategy recommender — canon-safe"
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/qa_weekly --tasks \"iq_sync_check, fatigue_telemetry_verify, pressure_overlay_check\""
+  ]
+}
