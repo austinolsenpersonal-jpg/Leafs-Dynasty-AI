@@ -1,89 +1,132 @@
 {
   "patch": "Analytics Expansion v5.2",
-  "description": "Deep analytics + export + visual upgrades. Canon v4.1 safe.",
-  "requires": { "canon": "v4.1", "architect": "v6.1" },
+  "description": "Deepens RealChem/Momentum/Dynasty Vision telemetry: shift-level xG, shot origins, entry tracking, goalie rebound xG, faceoff maps. Canon-safe.",
+  "requires": {
+    "canon": "v4.1",
+    "architect": "v6.1",
+    "compat": ["Elite_Convergence_v5.0", "GamePlanner_v5.1", "SystemIntel_v5.1", "Stability_Kernel_v3.0"]
+  },
+  "create_dirs": [
+    "analytics",
+    "analytics/live",
+    "analytics/reports",
+    "analytics/archive",
+    "overlays"
+  ],
   "modules": [
     {
       "id": "M170",
-      "name": "Shot Quality & Danger Engine",
+      "name": "Shift-Level xG Engine",
       "enabled": true,
-      "inputs": { "source": "sim_reports/*, elite/xg_stream.json" },
-      "outputs": { "file": "analytics/xg_shot_quality_lastN.json" },
-      "config": { "window_games": 10, "bucket_scheme": "low,med,high,royalRd" }
+      "inputs": {
+        "source": "dynasty_vision_core",
+        "chemistry": "elite/chemistry_latest.json"
+      },
+      "config": {
+        "rolling_window_games": 10,
+        "export_every_period": true
+      },
+      "output": "analytics/live/shift_xg_stream.json"
     },
     {
       "id": "M171",
-      "name": "Zone Entry/Exit Tracker",
+      "name": "Shot-Origin & Danger Map",
       "enabled": true,
-      "inputs": { "telemetry": "dynasty_vision_ui/telemetry.json" },
-      "outputs": { "file": "analytics/entries_exits_lastN.json" },
-      "config": { "window_games": 10, "trackers": ["carry","chip","dump","clean_exit","failed_exit"] }
+      "inputs": { "source": "dynasty_vision_core" },
+      "config": { "bin_size_ft": 5, "danger_model": "hd_v3" },
+      "output": "analytics/live/shot_danger_map.json"
     },
     {
       "id": "M172",
-      "name": "Goalie xSV Model 2.0",
+      "name": "Entry/Exit Tracker (PP/PK aware)",
       "enabled": true,
-      "inputs": { "shots": "analytics/xg_shot_quality_lastN.json", "goalies": "LeafsAI/GoaliePlan/*.json" },
-      "outputs": { "file": "analytics/goalie_xsv_model.json" },
-      "config": { "normalize_weather": true, "min_shots": 75 }
+      "inputs": { "source": "gameplanner_scout" },
+      "config": {
+        "track": ["controlled_entries", "dump_ins", "clean_exits", "failed_exits"],
+        "special_teams": true
+      },
+      "output": "analytics/live/entries_exits.json"
     },
     {
       "id": "M173",
-      "name": "PP/PK Micro-Tendencies",
+      "name": "Goalie Rebound xG & Heat",
       "enabled": true,
-      "inputs": { "special": "sim_reports/special_teams_lastN.json" },
-      "outputs": { "file": "analytics/pp_pk_micro.json" },
-      "config": { "rotation_every_games": 10, "pp_variants": ["Umbrella","Overload"], "pk_variants": ["Diamond","Passive Box"] }
+      "inputs": { "source": "dynasty_vision_core" },
+      "config": { "rebound_window_s": 3.0, "low_blocker_bias": true },
+      "output": "analytics/live/rebound_xg.json"
     },
     {
       "id": "M174",
-      "name": "Bench Event Timeline",
+      "name": "Faceoff Outcome Mapper",
       "enabled": true,
-      "inputs": { "bench": "dynasty_vision_ui/bench_events.json" },
-      "outputs": { "file": "analytics/bench_timeline_last_game.json" }
+      "inputs": { "source": "dynasty_vision_core" },
+      "config": { "zones": ["OZ","NZ","DZ"], "handedness_factor": true },
+      "output": "analytics/live/faceoff_map.json"
     },
     {
       "id": "M175",
-      "name": "Analytics Report Generator v2",
+      "name": "Rush vs Cycle Attribution",
       "enabled": true,
-      "inputs": {
-        "xg": "analytics/xg_shot_quality_lastN.json",
-        "entries": "analytics/entries_exits_lastN.json",
-        "goalie": "analytics/goalie_xsv_model.json",
-        "special": "analytics/pp_pk_micro.json"
-      },
-      "outputs": { "pdf": "reports/Analytics_Report_v5.2_Last10.pdf" },
-      "config": { "theme": "dynasty_dark", "include_overlays": ["heat_trap","injury_heatmap","discipline_heatmap"] }
+      "inputs": { "source": "dynasty_vision_core" },
+      "config": { "rush_time_s": 6, "cycle_time_s": 12 },
+      "output": "analytics/live/rush_cycle_split.json"
     },
     {
       "id": "M176",
-      "name": "CSV/Sheets Export Bridge",
+      "name": "PP Entry Book (Blue-to-Blue vs Three-High)",
       "enabled": true,
-      "inputs": {
-        "summary": "reports/Analytics_Report_v5.2_Last10.pdf",
-        "tables": ["analytics/xg_shot_quality_lastN.json","analytics/entries_exits_lastN.json","analytics/pp_pk_micro.json"]
-      },
-      "outputs": { "zip": "exports/analytics_last10_csv.zip" },
-      "config": { "csv": true, "schema_version": "5.2" }
+      "inputs": { "source": "special_teams_optimizer" },
+      "config": { "aggregate_every": "game" },
+      "output": "analytics/live/pp_entry_book.json"
+    },
+    {
+      "id": "M177",
+      "name": "Dynasty Vision Layer: Analytics Suite",
+      "enabled": true,
+      "overlays": [
+        {"id":"xg_shotmap","source":"analytics/live/shot_danger_map.json"},
+        {"id":"entries_exits","source":"analytics/live/entries_exits.json"},
+        {"id":"rebound_risk","source":"analytics/live/rebound_xg.json"},
+        {"id":"faceoff_heat","source":"analytics/live/faceoff_map.json"},
+        {"id":"rush_cycle","source":"analytics/live/rush_cycle_split.json"}
+      ],
+      "output": "overlays/analytics_suite_layers.json"
     }
   ],
   "automation": {
     "post_game_pipeline": [
-      "update_xg_engine (M170)",
-      "update_entries_exits (M171)",
-      "update_goalie_xsv (M172)",
-      "update_pp_pk (M173)",
-      "generate_report_v2 (M175)",
-      "export_csv (M176)"
+      "analytics_update",
+      "chemistry_refresh",
+      "snapshot_auto_save",
+      "export_reports"
+    ],
+    "exports": [
+      {
+        "name": "Performance_Pulse_Summary",
+        "source": [
+          "analytics/live/shift_xg_stream.json",
+          "analytics/live/shot_danger_map.json",
+          "analytics/live/entries_exits.json",
+          "analytics/live/rebound_xg.json",
+          "analytics/live/faceoff_map.json",
+          "analytics/live/rush_cycle_split.json"
+        ],
+        "target": "analytics/reports/Performance_Pulse_Summary_latest.json",
+        "archive": "analytics/archive/Performance_Pulse_Summary_${date}.json"
+      }
     ]
   },
   "git": {
     "tag": "v5.2-AnalyticsExpansion",
-    "commit_message": "feat(analytics): v5.2 expansion (M170–M176) — shot quality, entries/exits, goalie xSV, PP/PK micro, report v2, CSV export"
+    "commit_message": "feat(analytics): v5.2 expansion — shift-level xG, shot danger, entries/exits, rebound xG, FO maps, rush/cycle; overlays wired to Dynasty Vision"
   },
   "post_install_commands": [
     "/verify_patch",
-    "/analytics_report --range last_10 --modules \"xg,entries,goalie,pp_pk\"",
-    "/enable_overlay \"discipline_heatmap\" --source M161 --link \"dynasty_vision_ui\""
+    "/enable_overlay \"xg_shotmap\" --source overlays/analytics_suite_layers.json",
+    "/enable_overlay \"entries_exits\" --source overlays/analytics_suite_layers.json",
+    "/enable_overlay \"rebound_risk\" --source overlays/analytics_suite_layers.json",
+    "/enable_overlay \"faceoff_heat\" --source overlays/analytics_suite_layers.json",
+    "/enable_overlay \"rush_cycle\" --source overlays/analytics_suite_layers.json",
+    "/qa_weekly --tasks \"analytics_latency_check, overlay_sync_check, rebound_bias_verify\""
   ]
 }
