@@ -1,0 +1,43 @@
+{
+  "patch": "AutoBridge Scout→Trade/Draft v5.2",
+  "description": "Automatically pushes updated prospect readiness, regional coverage, and needs forecasts into trade_outlook and draft_forecast on a biweekly cadence. Canon-safe.",
+  "requires": { "canon": "v4.1", "architect": "v6.1" },
+  "modules": [
+    {
+      "id": "M176",
+      "name": "Scout→FrontOffice Bridge",
+      "enabled": true,
+      "inputs": {
+        "prospect_grades": "LeafsAI/Scouting/prospect_grades_unified_v5.2.json",
+        "draft_value": "LeafsAI/Scouting/draft_value_projection_v5.2.json",
+        "needs_forecast": "LeafsAI/Scouting/positional_needs_forecast_v5.2.json",
+        "scout_matrix": "LeafsAI/Scouting/scout_matrix_v5.2.json"
+      },
+      "config": {
+        "protect_rounds": [1, 2],
+        "min_confidence": 0.80,
+        "volatility_beta": 0.20
+      },
+      "output": "planner/scouting/trade_scout_matrix_v5.2.json"
+    }
+  ],
+  "automation": {
+    "biweekly_tasks": [
+      "scout_refresh",
+      "prospect_sync",
+      "needs_forecast_update",
+      "bridge_push_trade",
+      "bridge_push_draft"
+    ]
+  },
+  "post_install_commands": [
+    "/verify_patch",
+    "/trade_outlook --export \"executive/reports/trade_outlook_biweekly.json\"",
+    "/draft_forecast --export \"executive/reports/draft_forecast_biweekly.json\"",
+    "/qa_weekly --tasks \"scout_refresh, prospect_sync, needs_forecast_update\""
+  ],
+  "git": {
+    "tag": "v5.2-AutoBridge",
+    "commit_message": "feat: AutoBridge Scout→Trade/Draft v5.2 (biweekly, canon-safe)"
+  }
+}
