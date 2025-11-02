@@ -1,0 +1,158 @@
+{
+  "report": "Trade & Contract Deep-Dive",
+  "version": "v5.1",
+  "timestamp": "2024-11-27T00:00:00-05:00",
+  "canon": "v4.1 (locked)",
+  "cap_state": {
+    "space_m": 1.31,
+    "buffer_rule_m": 0.50,
+    "spc_count": "47/50",
+    "notes": "Maintain ≥ $0.5M live buffer; avoid bonus overage risk."
+  },
+
+  "extension_candidates": [
+    {
+      "player": "Max Domi",
+      "pos": "F (RW/C)",
+      "status": "UFA in sim",
+      "term_options": [2, 3],
+      "aav_m": {"min": 3.25, "target": 3.75, "max": 4.25},
+      "fit": "L2 BTN driver, chemistry positive",
+      "guardrails": "Front-load light; include performance bonus ladder where allowed",
+      "exec_note": "Value positive if WAR ≥ +1.6 pace; re-check in January snapshot."
+    },
+    {
+      "player": "Scott Laughton",
+      "pos": "C/LW",
+      "status": "Team control",
+      "term_options": [3],
+      "aav_m": {"min": 2.75, "target": 3.10, "max": 3.40},
+      "fit": "L3 two-way C, FO/PK utility",
+      "guardrails": "No NTC; keep trade flexibility",
+      "exec_note": "Extension only if PK share ≥ 1:30/gm continues."
+    },
+    {
+      "player": "Timothy Liljegren (proxy for RD depth if on roster)",
+      "pos": "RD",
+      "status": "Team-control/RFA-like",
+      "term_options": [2],
+      "aav_m": {"min": 2.25, "target": 2.75, "max": 3.25},
+      "fit": "Transitional RD; insurance if Durzi-type deal not executed",
+      "guardrails": "Cap buffer must remain ≥ $0.5M post-sign."
+    },
+    {
+      "player": "Connor Dewar / Depth F (placeholder)",
+      "pos": "Bottom-6 F",
+      "status": "Depth",
+      "term_options": [1, 2],
+      "aav_m": {"min": 0.95, "target": 1.10, "max": 1.30},
+      "fit": "PK/energy depth",
+      "guardrails": "Two-way if possible; avoid term >2."
+    }
+  ],
+
+  "arbitration_watch": [
+    {
+      "player": "Nick Robertson",
+      "risk": "Medium",
+      "comp_range_aav_m": {"low": 1.70, "mid": 2.10, "high": 2.60},
+      "exec_play": "Bridge 1yr @ ~2.0M or trade in RD upgrade package",
+      "note": "Chem improving; keep leverage if top-6 minutes limited."
+    }
+  ],
+
+  "trade_windows": {
+    "now_to_dec15": "Discount window vs deadline premium; RD market tightening.",
+    "jan15_to_feb25": "Banked-cap strategy optimal; market premium begins.",
+    "deadline_week": "Premium ~+25–30%; chemistry gel time lower."
+  },
+
+  "tierA_targets": [
+    {
+      "player": "Sean Durzi",
+      "team": "UTA/ARI org in sim",
+      "pos": "RD",
+      "cap_hit_m": 6.0,
+      "contract": "multi-year",
+      "fit_score": 0.89,
+      "war_delta_2yr": "+0.42",
+      "morale_delta": "Neutral/+",
+      "cap_solution_paths": [
+        "Move Jarnkrok + Pacioretty + Myers (~$4.625M out) → legal with ~0.5M buffer",
+        "Alternate: include retained $ and a depth add-back"
+      ],
+      "package_examples": [
+        "Robertson + 2025 3rd",
+        "Robertson + Jarnkrok (cap) + conditional 4th"
+      ],
+      "exec_flag": "Run M100X decision matrix pre-commit"
+    },
+    {
+      "player": "Dante Fabbro",
+      "team": "NSH",
+      "pos": "RD",
+      "cap_hit_m": 2.4,
+      "fit_score": 0.88,
+      "note": "Defensive RD; easier cap fit; smaller WAR bump."
+    },
+    {
+      "player": "Sean Walker / Roy (org dependent)",
+      "pos": "RD",
+      "cap_hit_m": 2.7,
+      "fit_score": 0.85,
+      "note": "Depth RD market alternates; check interest matrix before bid."
+    }
+  ],
+
+  "decision_paths": [
+    {
+      "name": "Conservative",
+      "moves": ["Hold RD upgrade until Feb if record ≥ .600", "Bridge Robertson ~2.0M 1yr"],
+      "pros": "Cap flexibility; zero morale risk",
+      "cons": "Smaller WAR gains",
+      "exec_score": 0.86
+    },
+    {
+      "name": "Hybrid (Recommended)",
+      "moves": [
+        "Scout Durzi/Fabbro; pre-approve two cap-legal frameworks",
+        "Trigger trade if RD injury or PK slippage > 2pp",
+        "Extension ladder ready for Domi at target 3.75M x3"
+      ],
+      "pros": "Best balance of WAR, morale, cap",
+      "cons": "Requires discipline on pick protection",
+      "exec_score": 0.90
+    },
+    {
+      "name": "Aggressive",
+      "moves": [
+        "Acquire Durzi now (cap shuffle Option C)",
+        "Shop Pacioretty/Myers for space",
+        "Front-office push for Presidents’ race"
+      ],
+      "pros": "Max immediate WAR (+0.20 to +0.25)",
+      "cons": "Lower EOM buffer; fewer deadline options",
+      "exec_score": 0.88
+    }
+  ],
+
+  "calendar": [
+    {"date": "2024-12-05", "action": "Agent mood pulse — Domi/Laughton"},
+    {"date": "2025-01-02", "action": "Cap horizon refresh — 3-yr forecast"},
+    {"date": "2025-02-01", "action": "Durzi re-evaluation checkpoint (What-If M90)"},
+    {"date": "2025-02-20", "action": "Arb prep pack — Robertson comps"}
+  ],
+
+  "automations": {
+    "weekly": ["value_curve_sync", "agent_mood_scan"],
+    "monthly": ["finance_horizon_check", "cap_outlook_5yr"],
+    "pre_deadline": ["trade_board_refresh", "what_if_recalc"]
+  },
+
+  "guardrails": {
+    "protect_rounds": [1, 2],
+    "min_cap_buffer_m": 0.5,
+    "morale_floor_team": 85,
+    "notes": "If buffer < $0.5M post-move, require add'l cap-out or retention."
+  }
+}
