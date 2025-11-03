@@ -1,0 +1,32 @@
+{
+  "name": "Lines Sanity Check",
+  "canon_version": "v4.1",
+  "updated": "2024-11-28",
+  "required_files": [
+    {
+      "path": "LeafsAI/Architect/lines/NHL_Lines_2024-11-28.json",
+      "must_exist": true,
+      "required_keys": ["forwards", "defense", "pp", "pk", "extras"],
+      "notes": "NHL lines verified from 2024-11-27 screenshots."
+    },
+    {
+      "path": "LeafsAI/Architect/lines/AHL_Lines_2024-11-28.json",
+      "must_exist": true,
+      "required_keys": ["forwards", "defense", "pp", "pk", "extras"],
+      "notes": "AHL lines verified from 2024-11-28 screenshots."
+    }
+  ],
+  "architect_config_check": {
+    "file": "LeafsAI/Architect/Architect_Config_v6.1.json",
+    "keys_that_should_point_to_lines": {
+      "paths.lines.nhl": "LeafsAI/Architect/lines/NHL_Lines_2024-11-28.json",
+      "paths.lines.ahl": "LeafsAI/Architect/lines/AHL_Lines_2024-11-28.json"
+    }
+  },
+  "on_fail_instructions": [
+    "Verify both files exist at the exact paths above (case-sensitive).",
+    "Open Architect_Config_v6.1.json and confirm paths.lines.nhl/ahl match exactly.",
+    "If a key is missing in a lines file, add empty arrays for missing sections (pp, pk, extras).",
+    "If still failing, rename both files to the exact names shown and re-commit."
+  ]
+}
