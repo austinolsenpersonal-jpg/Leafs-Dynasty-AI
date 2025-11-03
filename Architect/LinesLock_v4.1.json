@@ -1,0 +1,35 @@
+{
+  "patch_name": "Dual-Sync Canon Patch – LinesLock v4.1",
+  "version": "4.1",
+  "applies_to": "Canon v4.1",
+  "created_on": "2024-11-28",
+  "modules": {
+    "lines_lock": {
+      "enabled": true,
+      "auto_load_on_boot": true,
+      "checksum_enforce": true,
+      "fallback": "last_known_good",
+      "nhl_lines_file": "Lines/NHL_Lines_2024-11-28.json",
+      "ahl_lines_file": "Lines/AHL_Lines_2024-11-28.json"
+    }
+  },
+  "integrations": {
+    "architect_config_hook": {
+      "file": "Architect/Architect_Config_v6.1.json",
+      "set": {
+        "lines": {
+          "auto_load": true,
+          "require_match": "Canon_v4.1",
+          "sources": {
+            "nhl": "Lines/NHL_Lines_2024-11-28.json",
+            "ahl": "Lines/AHL_Lines_2024-11-28.json"
+          }
+        }
+      }
+    }
+  },
+  "savepoints": [
+    { "tag": "LinesLock_Installed_2024-11-28" }
+  ],
+  "notes": "Locks NHL & AHL lines to Canon v4.1. On load, Architect pulls both files; if a mismatch is detected, it reverts to the last-known-good set and logs the diff."
+}
