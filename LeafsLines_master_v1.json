@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "team": "Toronto Maple Leafs",
+    "version": "LeafsLines_master_v1.0",
+    "linked_to": "Canon_v4.1",
+    "last_updated": "2025-11-03"
+  },
+  "NHL": {
+    "Forwards": {
+      "L1": ["Matthew Knies", "Auston Matthews", "Mitchell Marner"],
+      "L2": ["Scott Laughton", "John Tavares", "William Nylander"],
+      "L3": ["Max Domi", "Nick Robertson", "David Kämpf"],
+      "L4": ["Steven Lorentz", "Bobby McMann", "Pontus Holmberg"]
+    },
+    "Defense": {
+      "D1": ["Morgan Rielly", "Brandon Carlo"],
+      "D2": ["Jake McCabe", "Jani Hakanpää"],
+      "D3": ["Oliver Ekman-Larsson", "Chris Tanev"]
+    },
+    "Goalies": ["Joseph Woll", "Anthony Stolarz"],
+    "Scratches": ["Philippe Myers", "Mark Giordano"]
+  },
+  "AHL": {
+    "Forwards": {},
+    "Defense": {},
+    "Goalies": {},
+    "Scratches": []
+  }
+}
