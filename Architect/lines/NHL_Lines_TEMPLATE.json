@@ -1,0 +1,34 @@
+{
+  "team": "Toronto Maple Leafs",
+  "league": "NHL",
+  "canon_version": "v4.1",
+  "updated": "TEMPLATE",
+  "forwards": [
+    { "line": 1, "LW": "", "C": "", "RW": "" },
+    { "line": 2, "LW": "", "C": "", "RW": "" },
+    { "line": 3, "LW": "", "C": "", "RW": "" },
+    { "line": 4, "LW": "", "C": "", "RW": "" }
+  ],
+  "defense": [
+    { "pair": 1, "LD": "", "RD": "" },
+    { "pair": 2, "LD": "", "RD": "" },
+    { "pair": 3, "LD": "", "RD": "" }
+  ],
+  "pp": [
+    { "unit": 1, "LW": "", "C": "", "RW": "", "LD": "", "RD": "" },
+    { "unit": 2, "LW": "", "C": "", "RW": "", "LD": "", "RD": "" }
+  ],
+  "pk": [
+    { "unit": 1, "LW": "", "C": "", "LD": "", "RD": "" },
+    { "unit": 2, "LW": "", "C": "", "LD": "", "RD": "" },
+    { "unit": 3, "LW": "", "C": "", "LD": "", "RD": "" }
+  ],
+  "goalies": [
+    { "starter": "", "backup": "" }
+  ],
+  "extras": {
+    "scratches": [],
+    "shootout_order": [],
+    "injuries": []
+  }
+}
