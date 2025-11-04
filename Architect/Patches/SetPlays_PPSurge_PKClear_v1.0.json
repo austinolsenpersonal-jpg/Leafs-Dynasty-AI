@@ -1,0 +1,9 @@
+{
+  "patch_name": "SetPlays_PPSurge_PKClear_v1.0",
+  "description": "Adds PP entries (BlueToBlue, ThreeHigh, BumperSlip) and PK clears (DasherUp, GlassOut).",
+  "modules": {
+    "powerplay_entries": ["BlueToBlue", "ThreeHigh", "BumperSlip"],
+    "penaltykill_clears": ["DasherUp", "GlassOut"]
+  },
+  "guardrails": { "pp_pk_isolation": true }
+}
