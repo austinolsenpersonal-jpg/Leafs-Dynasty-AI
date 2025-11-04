@@ -1,0 +1,10 @@
+{
+  "patch_name": "Template_Guardrails_v1.0",
+  "description": "Reapplies default sliders and goalie plan at template load.",
+  "tasks": [
+    "slider_default_reapply",
+    "goalie_plan_lock",
+    "template_hash_verify"
+  ],
+  "status": "stable"
+}
