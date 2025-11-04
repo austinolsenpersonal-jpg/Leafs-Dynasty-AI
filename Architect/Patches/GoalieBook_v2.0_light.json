@@ -1,0 +1,11 @@
+{
+  "patch_name": "GoalieBook_v2.0_light",
+  "description": "Mini HUD overlay for rebound and angle tips. Low-overhead version.",
+  "overlay": {
+    "name": "goalie_book_tip",
+    "position": "top-left",
+    "opacity": 0.85,
+    "min_relevance": 0.65
+  },
+  "status": "stable"
+}
