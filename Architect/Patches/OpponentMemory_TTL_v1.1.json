@@ -1,0 +1,10 @@
+{
+  "patch_name": "OpponentMemory_TTL_v1.1",
+  "description": "Controls opponent memory decay and TTL window for scouting relevance.",
+  "parameters": {
+    "ttl_games": 6,
+    "decay_rate": 0.15
+  },
+  "linked_modules": ["M170", "M174"],
+  "status": "active"
+}
