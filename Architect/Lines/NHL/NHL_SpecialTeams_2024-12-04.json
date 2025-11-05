@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "team": "Toronto Maple Leafs",
+    "date": "2024-12-04",
+    "source": "Austin screenshots 2024-12-04",
+    "schema": "Lines.v1",
+    "confidence": 0.94
+  },
+  "power_play": {
+    "pp1": {
+      "formation": "Umbrella",
+      "roles": {
+        "QB": "Morgan Rielly",
+        "LeftCircle": "William Nylander",
+        "RightCircle": "Auston Matthews",
+        "Bumper": "Mitch Marner",
+        "NetFront": "John Tavares"
+      },
+      "one_timer_map": {
+        "LeftCircle": "Right-shot",
+        "RightCircle": "Left-shot",
+        "verify_handedness": true,
+        "fallback": "swap_wingers"
+      }
+    },
+    "pp2": {
+      "formation": "Umbrella",
+      "roles": {
+        "QB": "O. Ekman-Larsson",
+        "LeftCircle": "Matt Dumba",
+        "RightCircle": "Nick Robertson",
+        "Bumper": "Max Domi",
+        "NetFront": "Max Pacioretty"
+      },
+      "one_timer_map": {
+        "LeftCircle": "Right-shot",
+        "RightCircle": "Left-shot",
+        "verify_handedness": true,
+        "fallback": "swap_wingers"
+      }
+    }
+  },
+  "penalty_kill": {
+    "pk1": {
+      "formation": "Diamond",
+      "fwds": ["David Kämpf", "Scott Laughton"],
+      "defs": ["Brandon Carlo", "Chris Tanev"]
+    },
+    "pk2": {
+      "formation": "Passive Box",
+      "fwds": ["Bobby McMann", "Mitch Marner"],
+      "defs": ["Jake McCabe", "O. Ekman-Larsson"]
+    }
+  },
+  "extras": {
+    "four_on_four": {
+      "unit1": { "F1": "Auston Matthews", "F2": "Mitch Marner", "D1": "Morgan Rielly", "D2": "Brandon Carlo" },
+      "unit2": { "F1": "William Nylander", "F2": "Max Domi", "D1": "Jake McCabe", "D2": "Chris Tanev" }
+    },
+    "three_on_three": {
+      "unit1": { "F1": "Auston Matthews", "F2": "Mitch Marner", "D": "Morgan Rielly" },
+      "unit2": { "F1": "William Nylander", "F2": "Matthew Knies", "D": "Matt Dumba" }
+    },
+    "goalies": { "starter": "Joseph Woll", "backup": "Anthony Stolarz", "rotation": "form+b2b" }
+  }
+}
