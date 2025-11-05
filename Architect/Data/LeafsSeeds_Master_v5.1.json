@@ -1,0 +1,16 @@
+{
+  "version": "v5.1",
+  "requires": {
+    "canon": "v4.1"
+  },
+  "description": "Unified franchise seed bundle (scouting+ahl+finance bridges).",
+  "includes": [
+    "ScoutingAssignments_seed_v5.2.json",
+    "AHLDev_tracker_v1.3.json",
+    "Finance_seed.json"
+  ],
+  "metadata": {
+    "author": "Leafs Dynasty Suite",
+    "compat": "EliteOps v5.3"
+  }
+}

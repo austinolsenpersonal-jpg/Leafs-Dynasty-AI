@@ -1,0 +1,14 @@
+{
+  "version": "v1.3",
+  "requires": {
+    "canon": "v4.1",
+    "mentor_module": "M96"
+  },
+  "fields": [
+    "player",
+    "mentor",
+    "unit",
+    "readiness_index",
+    "pp_pk_usage"
+  ]
+}

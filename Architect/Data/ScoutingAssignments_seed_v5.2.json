@@ -1,0 +1,25 @@
+{
+  "version": "v5.2",
+  "requires": {
+    "canon": "v4.1",
+    "scouting_expansion": "v5.2.1"
+  },
+  "regions": [
+    {
+      "name": "Ontario (OHL)",
+      "coverage": 0.94
+    },
+    {
+      "name": "Western Canada",
+      "coverage": 0.89
+    },
+    {
+      "name": "US Development",
+      "coverage": 0.91
+    },
+    {
+      "name": "Europe",
+      "coverage": 0.84
+    }
+  ]
+}

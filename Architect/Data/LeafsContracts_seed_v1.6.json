@@ -1,66 +1,270 @@
 {
-  "team": "Toronto Maple Leafs",
-  "schema": "Canon_v4.1_contracts",
-  "timestamp": "2024-12-04T00:00:00Z",
+  "meta": {
+    "team": "Toronto Maple Leafs Organization",
+    "timestamp": "2025-11-04_16-25-31",
+    "source": "user_screenshots_2024-12-04",
+    "schema": "v1.3-contracts"
+  },
   "nhl": [
-    { "player": "Auston Matthews",   "pos": "C",  "clause": "NMC",  "aav_24_25": 13.25, "aav_25_26": 13.25, "term_left": 3 },
-    { "player": "Mitch Marner",      "pos": "RW", "clause": "NMC",  "aav_24_25": 10.90, "aav_25_26": 9.45,  "term_left": 2 },
-    { "player": "William Nylander",  "pos": "RW", "clause": "NMC",  "aav_24_25": 11.50, "aav_25_26": 11.50, "term_left": 8 },
-    { "player": "Morgan Rielly",     "pos": "LD", "clause": "",     "aav_24_25": 7.50,  "aav_25_26": 7.50,  "term_left": 6 },
-    { "player": "John Tavares",      "pos": "C",  "clause": "NMC",  "aav_24_25": 11.00, "aav_25_26": null,  "ufa_after": true },
-    { "player": "Brandon Carlo",     "pos": "RD", "clause": "M-NTC","aav_24_25": 3.485, "aav_25_26": 3.485, "term_left": 3 },
-    { "player": "Jake McCabe",       "pos": "LD", "clause": "M-NTC","aav_24_25": 2.00,  "aav_25_26": 4.515, "term_left": 2 },
-    { "player": "Chris Tanev",       "pos": "RD", "clause": "NMC",  "aav_24_25": 4.50,  "aav_25_26": 4.50,  "term_left": 3 },
-    { "player": "Matt Dumba",        "pos": "RD", "clause": "",     "aav_24_25": 2.99,  "aav_25_26": 2.99,  "term_left": 2 },
-    { "player": "Max Domi",          "pos": "C",  "clause": "M-NTC","aav_24_25": 3.75,  "aav_25_26": 3.75,  "term_left": 2 },
-    { "player": "David Kampf",       "pos": "C",  "clause": "M-NTC","aav_24_25": 2.40,  "aav_25_26": 2.40,  "term_left": 2 },
-    { "player": "Max Pacioretty",    "pos": "LW", "clause": "",     "aav_24_25": 0.875, "aav_25_26": null,  "ufa_after": true },
-    { "player": "Bobby McMann",      "pos": "C",  "clause": "",     "aav_24_25": 1.35,  "aav_25_26": 1.35,  "term_left": 2 },
-    { "player": "Pontus Holmberg",   "pos": "RW", "clause": "",     "aav_24_25": 0.80,  "aav_25_26": 1.00,  "term_left": 2 },
-    { "player": "Scott Laughton",    "pos": "C",  "clause": "",     "aav_24_25": 1.50,  "aav_25_26": 1.50,  "term_left": 2 },
-    { "player": "Anthony Stolarz",   "pos": "G",  "clause": "",     "aav_24_25": 2.50,  "aav_25_26": 2.50,  "term_left": 2 },
-    { "player": "Joseph Woll",       "pos": "G",  "clause": "",     "aav_24_25": 0.775, "aav_25_26": 3.665, "term_left": 2 }
+    {
+      "player": "Auston Matthews",
+      "pos": "C",
+      "clause": "NMC",
+      "aav_24_25": 13250000,
+      "aav_25_26": 13250000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Mitch Marner",
+      "pos": "RW",
+      "clause": "NMC",
+      "aav_24_25": 10900000,
+      "aav_25_26": 9450000,
+      "term_years": "multi",
+      "notes": "from screenshot; confirm after season tick"
+    },
+    {
+      "player": "William Nylander",
+      "pos": "RW/C",
+      "clause": "NMC",
+      "aav_24_25": 11500000,
+      "aav_25_26": 11500000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Morgan Rielly",
+      "pos": "LD",
+      "clause": "None",
+      "aav_24_25": 7500000,
+      "aav_25_26": 7500000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "John Tavares",
+      "pos": "C",
+      "clause": "NMC",
+      "aav_24_25": 11000000,
+      "aav_25_26": null,
+      "term_years": "expiring 2025",
+      "notes": "UFA after 24-25 per screen"
+    },
+    {
+      "player": "Brandon Carlo",
+      "pos": "RD",
+      "clause": "M-NTC",
+      "aav_24_25": 3485000,
+      "aav_25_26": 3485000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Jake McCabe",
+      "pos": "LD",
+      "clause": "M-NTC",
+      "aav_24_25": 2000000,
+      "aav_25_26": 4515000,
+      "term_years": "multi",
+      "notes": "verify retention/step change"
+    },
+    {
+      "player": "Matthew Knies",
+      "pos": "LW/RW",
+      "clause": "None",
+      "aav_24_25": 925000,
+      "aav_25_26": 4675000,
+      "term_years": "ELC→new",
+      "notes": "verify extension figure in-game"
+    },
+    {
+      "player": "Max Domi",
+      "pos": "C/LW",
+      "clause": "M-NTC",
+      "aav_24_25": 3750000,
+      "aav_25_26": 3750000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Max Pacioretty",
+      "pos": "LW",
+      "clause": "None",
+      "aav_24_25": 875000,
+      "aav_25_26": null,
+      "term_years": "1 yr",
+      "notes": "UFA after 24-25 per screen"
+    },
+    {
+      "player": "Scott Laughton",
+      "pos": "C/LW",
+      "clause": "None",
+      "aav_24_25": 1500000,
+      "aav_25_26": 1500000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "David Kämpf",
+      "pos": "C/RW",
+      "clause": "M-NTC",
+      "aav_24_25": 2400000,
+      "aav_25_26": 2400000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Chris Tanev",
+      "pos": "RD",
+      "clause": "NMC",
+      "aav_24_25": 4500000,
+      "aav_25_26": 4500000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Matt Dumba",
+      "pos": "RD",
+      "clause": "None",
+      "aav_24_25": 2990000,
+      "aav_25_26": 2990000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Bobby McMann",
+      "pos": "C",
+      "clause": "None",
+      "aav_24_25": 1350000,
+      "aav_25_26": 1350000,
+      "term_years": "multi",
+      "notes": ""
+    },
+    {
+      "player": "Pontus Holmberg",
+      "pos": "RW",
+      "clause": "None",
+      "aav_24_25": 800000,
+      "aav_25_26": 1000000,
+      "term_years": "multi",
+      "notes": "from screenshot numbers"
+    },
+    {
+      "player": "Steven Lorentz",
+      "pos": "C/LW",
+      "clause": "None",
+      "aav_24_25": 775000,
+      "aav_25_26": null,
+      "term_years": "1 yr",
+      "notes": "UFA flag in screen"
+    },
+    {
+      "player": "Anthony Stolarz",
+      "pos": "G",
+      "clause": "None",
+      "aav_24_25": 2500000,
+      "aav_25_26": 2500000,
+      "term_years": "2",
+      "notes": ""
+    },
+    {
+      "player": "Joseph Woll",
+      "pos": "G",
+      "clause": "None",
+      "aav_24_25": 775000,
+      "aav_25_26": 3665000,
+      "term_years": "multi",
+      "notes": "jump per screen"
+    }
   ],
   "ahl": [
-    { "player": "Calle Jarnkrok",    "pos": "C/LW", "clause": "M-NTC", "aav_24_25": 1.150, "aav_25_26": 1.150, "term_left": 2 },
-    { "player": "Matt Murray",       "pos": "G",    "clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.950, "ufa_after": true },
-    { "player": "Dennis Hildeby",    "pos": "G",    "clause": "",      "aav_24_25": 0.845, "aav_25_26": 0.950, "term_left": 2 },
-    { "player": "Artur Akhtyamov",   "pos": "G",    "clause": "",      "aav_24_25": 0.775, "aav_25_26": null,  "rfa_after": true },
-    { "player": "Vyacheslav Peksa",  "pos": "G",    "clause": "",      "aav_24_25": 0.850, "aav_25_26": 0.850, "term_left": 2 },
-
-    { "player": "Mikko Kokkonen",    "pos": "LD",   "clause": "",      "aav_24_25": 0.845, "aav_25_26": 1.125, "term_left": 2 },
-    { "player": "Topi Niemelä",      "pos": "RD",   "clause": "",      "aav_24_25": 1.075, "aav_25_26": 1.075, "term_left": 1 },
-    { "player": "William Villeneuve", "pos": "RD",  "clause": "",      "aav_24_25": 0.820, "aav_25_26": null,  "rfa_after": true },
-    { "player": "Noah Mattinen",     "pos": "LD",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "term_left": 2, "note": "ELC guess—confirm" },
-    { "player": "Dakota Mermis",     "pos": "LD",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "ufa_after": true, "note": "confirm term" },
-    { "player": "Matt Benning",      "pos": "RD",   "clause": "",      "aav_24_25": 1.250, "aav_25_26": 1.250, "term_left": 2 },
-
-    { "player": "Alex Steeves",      "pos": "LW",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "rfa_after": true },
-    { "player": "Nick Abruzzese",    "pos": "C",    "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "rfa_after": true },
-    { "player": "Ryan Johnson",      "pos": "C",    "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "ufa_after": true, "note": "confirm rights" },
-    { "player": "Alex Nylander",     "pos": "LW",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": null,  "ufa_after": true },
-    { "player": "Roni Hirvonen",     "pos": "C/LW", "clause": "",      "aav_24_25": 0.855, "aav_25_26": 0.875, "term_left": 2, "note": "confirm" },
-    { "player": "Jack Quillan",      "pos": "C",    "clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.875, "term_left": 2, "note": "confirm" },
-    { "player": "Cameron Paré",      "pos": "C",    "clause": "",      "aav_24_25": 0.800, "aav_25_26": 0.800, "term_left": 2, "note": "confirm" },
-    { "player": "Kyle Clifford",     "pos": "LW",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": null,  "ufa_after": true },
-    { "player": "Ryan Tverberg",     "pos": "RW",   "clause": "",      "aav_24_25": 0.850, "aav_25_26": 0.850, "term_left": 2 },
-    { "player": "Ville Miettinen",   "pos": "RW",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": null,  "rfa_after": true },
-    { "player": "Logan Shaw",        "pos": "RW",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "ufa_after": true },
-
-    { "player": "Christian Webber",  "pos": "LD",   "clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.825, "term_left": 2 },
-    { "player": "Michael Koster",    "pos": "LD",   "clause": "",      "aav_24_25": 0.775, "aav_25_26": 0.775, "rfa_after": true },
-    { "player": "Brayden Kressler",  "pos": "C/RW", "clause": "",      "aav_24_25": 0.800, "aav_25_26": 0.800, "rfa_after": true, "note": "confirm" },
-    { "player": "Brandon Danford",   "pos": "RD/LD","clause": "",      "aav_24_25": 0.965, "aav_25_26": 0.965, "term_left": 3, "note": "ELC guess—confirm" },
-    { "player": "Noah Chadwick",     "pos": "LD/RD","clause": "",      "aav_24_25": 0.825, "aav_25_26": 0.825, "term_left": 3 },
-    { "player": "Marek Holinka",     "pos": "C/RW", "clause": "",      "aav_24_25": 0.825, "aav_25_26": 0.825, "term_left": 3 },
-    { "player": "Beau Valis",        "pos": "C",    "clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.875, "term_left": 2, "note": "confirm" },
-    { "player": "Sawyer McCue",      "pos": "LW/C", "clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.875, "term_left": 2, "note": "confirm" },
-    { "player": "Nolan Mayes",       "pos": "LD/RD","clause": "",      "aav_24_25": 0.875, "aav_25_26": 0.875, "term_left": 3, "note": "confirm" },
-
-    { "player": "Bokondji Imama",    "pos": "LW",   "clause": "",      "aav_24_25": null,  "aav_25_26": null,  "note": "TODO if on roster" }
-  ],
-  "notes": [
-    "Any nulls are placeholders from hard-to-read frames; importer accepts them so anti-drift can lock today.",
-    "As you drop any missing/clearer contract screens, I’ll fill each TODO and bump to v1.6."
+    {
+      "player": "Matt Murray",
+      "pos": "G",
+      "aav_24_25": 875000,
+      "aav_25_26": null,
+      "status": "UFA after 24-25"
+    },
+    {
+      "player": "Dennis Hildeby",
+      "pos": "G",
+      "aav_24_25": 845000,
+      "aav_25_26": 950000
+    },
+    {
+      "player": "Topi Niemelä",
+      "pos": "RD",
+      "aav_24_25": 855000,
+      "aav_25_26": 1075000
+    },
+    {
+      "player": "Mikko Kokkonen",
+      "pos": "LD/RD",
+      "aav_24_25": 845000,
+      "aav_25_26": 1125000
+    },
+    {
+      "player": "Alex Steeves",
+      "pos": "LW",
+      "aav_24_25": 775000,
+      "aav_25_26": 775000
+    },
+    {
+      "player": "Nick Abruzzese",
+      "pos": "C",
+      "aav_24_25": 775000,
+      "aav_25_26": 775000
+    },
+    {
+      "player": "Calle Järnkrok",
+      "pos": "C/LW",
+      "aav_24_25": 1150000,
+      "aav_25_26": 1150000,
+      "clause": "M-NTC"
+    },
+    {
+      "player": "Logan Shaw",
+      "pos": "RW",
+      "aav_24_25": 775000,
+      "aav_25_26": 775000
+    },
+    {
+      "player": "Cédric Paré",
+      "pos": "C",
+      "aav_24_25": 680000,
+      "aav_25_26": 680000
+    },
+    {
+      "player": "Alex Nylander",
+      "pos": "RW/LW",
+      "aav_24_25": 775000,
+      "aav_25_26": 775000
+    },
+    {
+      "player": "Veeti Miettinen",
+      "pos": "RW",
+      "aav_24_25": 775000,
+      "aav_25_26": null,
+      "status": "RFA"
+    },
+    {
+      "player": "Kyle Clifford",
+      "pos": "LW",
+      "aav_24_25": 775000,
+      "aav_25_26": null
+    },
+    {
+      "player": "Ryan Johnson",
+      "pos": "C",
+      "aav_24_25": 775000,
+      "aav_25_26": 775000
+    },
+    {
+      "player": "Ryan Tverberg",
+      "pos": "RW",
+      "aav_24_25": 850000,
+      "aav_25_26": 850000
+    }
   ]
 }

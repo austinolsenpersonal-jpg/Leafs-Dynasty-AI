@@ -1,0 +1,17 @@
+{
+  "version": "v1.4",
+  "requires": {
+    "canon": "v4.1",
+    "realchem": "on"
+  },
+  "schema": {
+    "players": "[]",
+    "attrs": [
+      "pos",
+      "hand",
+      "chem_group",
+      "morale_tag",
+      "role"
+    ]
+  }
+}

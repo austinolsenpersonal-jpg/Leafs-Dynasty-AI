@@ -1,0 +1,14 @@
+{
+  "version": "v1.3",
+  "requires": {
+    "canon": "v4.1",
+    "trade_contract_pack": "v5.1"
+  },
+  "fields": [
+    "targets",
+    "tiers",
+    "pick_rules",
+    "cap_buffer",
+    "timeline"
+  ]
+}
