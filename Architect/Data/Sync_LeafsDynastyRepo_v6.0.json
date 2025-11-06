@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "version": "v6.0",
+    "updated": "2024-12-06",
+    "owner": "Austin Olsen",
+    "source": "https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI"
+  },
+  "active_source_map": {
+    "roster": "Architect/Data/LeafsRoster_master_v1.4.json",
+    "contracts": "Architect/Data/LeafsContracts_seed_v1.6.json",
+    "lines_nhl": "Architect/Lines/NHL/NHL_Lines_2024-12-04.json",
+    "lines_ahl": "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+    "special_nhl": "Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json"
+  },
+  "last_trades": {
+    "2024-12-06": [
+      "TOR acquired RW Dawson Mercer from NJD",
+      "NJD acquired C Calle Jarnkrok, 2025 2nd (CAR) and 2 others from TOR",
+      "TOR acquired 2026 2nd (BOS) and 2025 2nd (CAR) from BOS",
+      "BOS acquired C Scott Laughton and RW Pontus Holmberg from TOR",
+      "TOR acquired D Matt Dumba from DAL",
+      "TOR acquired 2025 3rd (LAK) from LAK",
+      "LAK acquired D Matt Benning and 2025 5th (TOR)"
+    ]
+  }
+}
