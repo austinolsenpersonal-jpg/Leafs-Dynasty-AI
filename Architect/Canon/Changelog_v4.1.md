@@ -1,58 +1,61 @@
-# Leafs Dynasty Suite AI — Canon Changelog (v4.1)
-**Environment:** Elite v5.4 | Architect Config v6.1  
-**Last Updated:** December 7, 2024  
-**Tag:** CanonSync_2024-12-07_OPS-DISC-5.4.1  
+# 🧭 Leafs Dynasty AI — Canon Changelog v4.1
+**Environment:** Canon v4.1 | Architect Config v6.2 | PatchSuite v6.2  
+**Last Sync:** December 7, 2024  
+**Integrity:** ✅ 100% | **Drift:** 0.00  
 
 ---
 
-## 🧭 Canon Overview
-This document tracks all official updates, refinements, and operational adjustments made to the Leafs Dynasty Suite AI under Canon v4.1.  
-Only changes approved under Architect governance are reflected here.
+## 🧩 Version History Overview
+| Version | Date | Description |
+|----------|------|-------------|
+| v4.0 | Sept 2024 | Initial Canon Core established. |
+| v4.1 | Dec 2024 | Integrated Ops Discipline 5.4.1, PatchSuite 6.2, and TradeWave syncs. |
 
 ---
 
-## ⚙️ Version Index
-| Version | Category | Summary |
-|----------|-----------|----------|
-| v4.1 | Core Canon | Full-Franchise Baseline (Roster, Systems, Contracts) |
-| v5.3 | Elite Tune-Up | Core gameplay logic and template integrity |
-| v5.4 | MicroPack Integration | Modules A–L activated, QA and automation refinements |
-| **v5.4.1** | **Ops Discipline Update** | **QA and Reports Governance Separation** |
+## ⚙️ Operations Discipline & QA Governance (Ops Discipline v5.4.1)
+- QA and Reports separated into distinct canonical channels.  
+- All QA packages remain **Canon-only**; reports modular for operational summaries.  
+- Introduced **RepoHealth v2.2**, **SourceLock v6.2**, and **MatchupIntelligence v6.2** as mandatory governance layers.  
+- Added **AutoRecovery Smart Mode (M110)** to stabilize Architect systems after crash or drift.
 
 ---
 
-## 🧩 Ops Discipline v5.4.1 — QA & Reports Governance Update
-**Date:** December 7, 2024  
-**Author:** Leafs Dynasty Suite AI (System Ops)
+## 🔁 Roster & Trades Sync Events
 
-### Summary
-This update refines the handling and packaging of QA and Reports within the Leafs Dynasty Suite environment.  
-It enforces separation between Canon-critical QA deliverables and modular gameplay reports.
+### 🧭 TradeWave: Mercer + Dumba Integration  
+**Tag:** `TradeWave_Mercer_Dumba_2024-12-07`  
+**Modules Active:** M92 (Offer Laddering), M220 (TradeBoard AI), M110 (AutoRecovery Smart)
 
-| Area | Previous Behaviour | New Standard |
-|------|--------------------|---------------|
-| **QA Packages** | Contained all post-sim assets (QA + reports). | QA packages are now **Canon-only**, containing validated integrity and release files only. |
-| **Reports** | Sometimes merged into QA archives. | Reports (e.g., Game Recaps, Sim Summaries) remain **modular**, stored under /Architect/Reports/, versioned separately. |
-| **Packaging Automation** | Single bundle output. | Split packaging: /QA ZIP (Canon integrity) and /Reports ZIP (modular data). |
-| **Governance** | Implicit convention. | Explicit Canon rule logged and enforced at QA stage. |
+**Summary:**  
+Toronto acquired **RW Dawson Mercer (NJD)** and **D Matt Dumba (DAL)** to reinforce secondary scoring and stabilize RD depth.  
+Outgoing assets included **C Calle Järnkrok**, **C Scott Laughton**, **RW Pontus Holmberg**, **C Bobby McMann**, and **D Matt Benning**, alongside selective pick swaps.  
+Net outcome maintains Canon alignment with a +1 2nd, +1 3rd draft capital improvement and balanced cap structure.
 
----
-
-### Purpose
-- Preserve **Canon purity** for validation builds.  
-- Allow modular publishing for narrative and gameplay analysis.  
-- Enhance clarity in GitHub releases (QA vs Reports).  
-- Ensure traceable, auditable QA workflows across versions.
+**Metrics:**  
+- **Cap Space:** $95K remaining  
+- **SPC:** 49/50  
+- **Chemistry Delta:** +0.04 (aggregate gain via L3 synergy + RD flexibility)  
+- **Integration Status:** ✅ Canon Verified | 0.97 confidence average
 
 ---
 
-### Result
-✅ **Canon Integrity:** Maintained (100%)  
-📁 **Changelog Updated:** /Architect/Canon/Changelog_v4.1.md  
-🔒 **Status:** Active | Logged | Synced  
-🧾 **Next Review:** At Ops Discipline v5.5 threshold (future QA automation update)
+## 🧠 Canon Status Summary (as of Dec 7 2024)
+| Category | Version | Confidence | Status |
+|-----------|----------|-------------|---------|
+| Core Canon | v4.1 | 1.00 | ✅ Stable |
+| Ops Discipline | v5.4.1 | 1.00 | ✅ Active |
+| PatchSuite | v6.2 | 0.99 | ✅ Applied |
+| Repo Health | v2.2 | 0.98 | ✅ Excellent |
+| SourceLock | v6.2 | 0.98 | ✅ Locked |
+| Matchup Intelligence | v6.2 | 0.97 | ✅ Active |
+| AutoRecovery | M110 | 1.00 | ✅ Enabled |
 
 ---
 
-**© Leafs Dynasty Suite AI — Architect System v6.1 | Elite Tune-Up v5.4**  
-Maintaining Canon Integrity since v4.1 Full-Franchise
+**Next Canon Milestone:**  
+> v4.2 — to include OpponentModel v6.3 adaptive intelligence and AHL development laddering integration.
+
+---
+
+© 2024 Leafs Dynasty Suite AI — Canon Architecture maintained under Architect GPT Framework v6.2
