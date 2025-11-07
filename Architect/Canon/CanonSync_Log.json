@@ -1,0 +1,20 @@
+{
+  "tag": "CanonSync_2024-12-07_OPS-DISC-5.4.1",
+  "version": "v4.1",
+  "category": "Operations Discipline & QA Governance",
+  "date": "2024-12-07",
+  "author": "Leafs Dynasty Suite AI (System Ops)",
+  "files_updated": [
+    "Architect/Canon/Changelog_v4.1.md"
+  ],
+  "sha_placeholder": "pending_commit_sha",
+  "timestamp": "2024-12-07T22:00:00Z",
+  "integrity": "100%",
+  "status": "Active & Locked",
+  "environment": {
+    "elite": "v5.4",
+    "architect_config": "v6.1",
+    "canon": "v4.1"
+  },
+  "notes": "Ops Discipline v5.4.1 introduces QA/Reports separation, ensuring Canon-only QA bundles and modular report packaging."
+}
