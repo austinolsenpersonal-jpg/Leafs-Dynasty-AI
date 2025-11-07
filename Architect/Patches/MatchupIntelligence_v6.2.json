@@ -1,0 +1,57 @@
+{
+  "schema": "Architect.Patch.v1",
+  "patch_id": "MatchupIntelligence_v6.2",
+  "name": "Matchup Intelligence Pack",
+  "version": "6.2",
+  "type": "patch",
+  "description": "Adds adaptive learning to opponent analysis, updating forecheck, breakout, and aggression in real time based on CPU team behaviour.",
+  "requirements": {
+    "modules_required": ["M121_Analytics_Expansion_v6"],
+    "min_architect_version": "6.1",
+    "min_canon_version": "4.1"
+  },
+  "runtime": {
+    "scan_interval_minutes": 5,
+    "analysis_window_games": 10,
+    "enable_live_adjustments": true
+  },
+  "learning": {
+    "tracked_patterns": [
+      "opponent_forecheck_type",
+      "neutral_zone_entries",
+      "breakout_routes",
+      "shot_location_density",
+      "slot_chance_rate"
+    ],
+    "adjustment_rules": [
+      {
+        "if": { "opponent_forecheck_type": "2-1-2 Aggressive" },
+        "then": ["Switch own breakout to Strong Side Slant", "Lower line aggression by 1 step"]
+      },
+      {
+        "if": { "neutral_zone_entries": ">=60%", "entry_type": "Controlled" },
+        "then": ["Shift NZ strategy to 1-3-1 Trap", "Increase backcheck pressure to High"]
+      },
+      {
+        "if": { "slot_chance_rate": ">=0.45" },
+        "then": ["Switch DZ strategy to Collapse", "Activate goalie communication flag"]
+      }
+    ]
+  },
+  "outputs": {
+    "log_path": "Architect/Analytics/logs/matchup_intelligence_log.json",
+    "summary_path": "Architect/Analytics/logs/matchup_intelligence_summary.md",
+    "visual_path": "Architect/Analytics/visuals/matchup_tendency_heatmap_$(DATE).png"
+  },
+  "precreate_dirs": [
+    "Architect/Analytics/logs",
+    "Architect/Analytics/visuals"
+  ],
+  "safeguards": {
+    "ask_before_live_adjust": true,
+    "max_live_adjustments_per_game": 2,
+    "respect_strategy_lock": true,
+    "dry_run_default": false
+  },
+  "status_output": "Architect/Analytics/logs/matchup_intelligence_status.json"
+}
