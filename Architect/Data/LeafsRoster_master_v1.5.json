@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "file": "LeafsRoster_master_v1.5.json",
+    "base_version": "v1.4",
+    "version": "v1.5",
+    "team": "Toronto Maple Leafs",
+    "date": "2024-12-06",
+    "schema": "Roster.master.v1",
+    "description": "Delta-aware master roster after trades on Dec 3–6, 2024. Inherit all players from v1.4 unless explicitly added/removed below."
+  },
+  "inherit_from_previous": true,
+
+  "transactions": [
+    { "date": "2024-12-03", "type": "trade", "with": "DAL",
+      "acquired": ["Matt Dumba"],
+      "sent": ["Jani Hakanpää", "Philippe Myers", "other pieces (in-game)"] },
+
+    { "date": "2024-12-04", "type": "trade", "with": "BOS",
+      "acquired_picks": ["2026 2nd (BOS)", "2025 2nd (CAR)"],
+      "sent": ["Scott Laughton", "Pontus Holmberg"] },
+
+    { "date": "2024-12-05", "type": "trade", "with": "LAK",
+      "acquired_picks": ["2025 3rd (LAK)"],
+      "sent": ["2025 5th (TOR)", "Matt Benning"] },
+
+    { "date": "2024-12-05", "type": "trade", "with": "SEA",
+      "acquired_picks": ["2025 2nd (SEA)"],
+      "sent": ["Bobby McMann"] },
+
+    { "date": "2024-12-06", "type": "trade", "with": "NJD",
+      "acquired": ["Dawson Mercer"],
+      "sent": ["Calle Järnkrok", "2025 2nd (CAR)", "two other pieces (in-game)"] }
+  ],
+
+  "adds": [
+    { "name": "Dawson Mercer", "pos": "RW", "shoots": "R", "level": "NHL",
+      "acquired": "trade/NJD",
+      "notes": "Import ratings/contracts from your in-game file." },
+
+    { "name": "Matt Dumba", "pos": "RD", "shoots": "R", "level": "NHL",
+      "acquired": "trade/DAL",
+      "notes": "Import ratings/contracts from your in-game file." }
+  ],
+
+  "removes": [
+    { "name": "Calle Järnkrok", "to": "NJD" },
+    { "name": "Scott Laughton", "to": "BOS" },
+    { "name": "Pontus Holmberg", "to": "BOS" },
+    { "name": "Bobby McMann", "to": "SEA" },
+    { "name": "Matt Benning", "to": "LAK" }
+  ],
+
+  "picks_delta": {
+    "add": ["2026 2nd (BOS)", "2025 2nd (CAR)", "2025 2nd (SEA)", "2025 3rd (LAK)"],
+    "remove": ["2025 5th (TOR)"]
+  },
+
+  "sync_hints": {
+    "lines_file": "Architect/Lines/NHL/NHL_Lines_2024-12-04.json",
+    "special_teams_file": "Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json"
+  }
+}
