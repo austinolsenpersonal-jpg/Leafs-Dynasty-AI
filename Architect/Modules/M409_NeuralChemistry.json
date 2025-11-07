@@ -1,0 +1,75 @@
+{
+  "schema": "Architect.Module.v1",
+  "module_id": "M409_NeuralChemistry",
+  "name": "M409_NeuralChemistry",
+  "version": "1.0",
+  "type": "module",
+  "description": "Learns from last 25 games to predict chemistry drift and recommend proactive line tweaks before morale/chemistry drops.",
+  "requirements": {
+    "min_games": 10,
+    "history_window": 25,
+    "inputs": [
+      "Architect/Analytics/game_logs/*.json",
+      "Architect/Analytics/chemistry_latest.json",
+      "Architect/Lines/NHL/NHL_Lines_2024-12-04.json"
+    ]
+  },
+  "training": {
+    "window_games": 25,
+    "features": [
+      "xGF60", "xGA60", "CF%", "FF%", "OZ_Start%", "DZ_Start%",
+      "TOI_per_game", "Goals", "Primary_Assists", "Secondary_Assists",
+      "Hits", "Takeaways", "Giveaways", "Penalties",
+      "Line_Composition", "HomeAway", "BackToBack"
+    ],
+    "target": "Chemistry_Score",
+    "model": "regression_lite_v1",
+    "validation_split": 0.2,
+    "min_confidence_to_emit": 0.72
+  },
+  "run_config": {
+    "interval": "biweekly",
+    "schedule_hint": "Mon,Fri 09:00",
+    "retrain_on_new_logs": true,
+    "emit_if_delta_ge": 0.02
+  },
+  "outputs": {
+    "forecast_path": "Architect/Analytics/chemistry_forecast_next10.json",
+    "recommendations_path": "Architect/Analytics/chemistry_reco_next10.md",
+    "explain_path": "Architect/Analytics/chemistry_feature_importance.json"
+  },
+  "recommendation_logic": {
+    "rules": [
+      {
+        "if": { "Chemistry_Forecast_Drop": ">=0.03", "Confidence": ">=0.75" },
+        "then": ["Suggest winger swap on current line", "Lower Energy Bias by 1", "Raise Carry% by 1 step if CF% < 48"]
+      },
+      {
+        "if": { "Chemistry_Forecast_Rise": ">=0.03", "Confidence": ">=0.75" },
+        "then": ["Keep line intact", "Increase OZ starts by +5% next 2 games"]
+      }
+    ],
+    "guardrails": {
+      "respect_roster_guard": true,
+      "respect_strategy_lock": true,
+      "max_changes_per_window": 1
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "path": "Architect/Analytics/logs/neural_chemistry_log.json",
+    "emit_md_summary": true,
+    "md_summary_path": "Architect/Analytics/logs/neural_chemistry_summary.md"
+  },
+  "precreate_dirs": [
+    "Architect/Analytics",
+    "Architect/Analytics/game_logs",
+    "Architect/Analytics/logs"
+  ],
+  "safeguards": {
+    "ask_before_changes": true,
+    "dry_run_default": true,
+    "fallback_if_missing_logs": "emit_requirements_notice"
+  },
+  "status_output": "Architect/Analytics/logs/neural_chemistry_status.json"
+}
