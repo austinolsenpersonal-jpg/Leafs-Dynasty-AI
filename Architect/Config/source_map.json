@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "name": "Leafs Dynasty – Source Map",
+    "version": "2024-12-06",
+    "canon": "v4.1-Full-Franchise",
+    "architect_config": "v6.1",
+    "primary_source": "GitHub",
+    "fallback": "none",
+    "repo": "https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI"
+  },
+  "guardrails": {
+    "roster_guard": "strict",
+    "template_guardrails": true,
+    "pp_one_timer_lock": true,
+    "live_tracking_prompt": true
+  },
+  "maps": {
+    "roster": "Architect/Data/LeafsRoster_master_v1.5.json",
+    "contracts": "Architect/Data/LeafsContracts_seed_v1.7.json",
+    "lines_nhl": "Architect/Lines/NHL/NHL_Lines_2024-12-04.json",
+    "lines_ahl": "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+    "special_nhl": "Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json"
+  },
+  "ci": {
+    "validate_on_push": true,
+    "schema_paths": {
+      "lines": "Architect/Lines/lines.schema.json",
+      "contracts": "Architect/Data/contracts.schema.json"
+    },
+    "required_files": [
+      "Architect/Data/LeafsRoster_master_v1.5.json",
+      "Architect/Data/LeafsContracts_seed_v1.7.json",
+      "Architect/Lines/NHL/NHL_Lines_2024-12-04.json",
+      "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+      "Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json"
+    ]
+  }
+}
