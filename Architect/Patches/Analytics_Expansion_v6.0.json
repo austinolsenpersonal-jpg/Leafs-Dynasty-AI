@@ -1,0 +1,69 @@
+{
+  "schema": "ArchitectPatch.v1",
+  "id": "Analytics_Expansion_v6.0",
+  "version": "6.0",
+  "category": "analytics",
+  "description": "Deeper xG + entry/exit tracking, shot heatmaps, and export pipeline to Architect/Analytics/",
+  "prerequisites": [
+    "Architect_Config_v6.1.json",
+    "RepoHealth_v2.2.json",
+    "QA_Integrity_v5.5.json",
+    "SourceLock_v6.2.json"
+  ],
+  "install_steps": [
+    {
+      "task": "create_paths",
+      "paths": [
+        "Architect/Analytics/",
+        "Architect/Analytics/game_logs/",
+        "Architect/Analytics/exports/"
+      ]
+    },
+    {
+      "task": "enable_collectors",
+      "collectors": {
+        "xg_by_zone": true,
+        "shot_heatmap": true,
+        "entries_exits": true,
+        "rebound_chain": true,
+        "faceoff_context": true
+      }
+    },
+    {
+      "task": "export_pipeline",
+      "format": "jsonl",
+      "rollover": "per_game",
+      "destination": "Architect/Analytics/exports/"
+    },
+    {
+      "task": "overlays",
+      "hud": [
+        "xg_shotmap",
+        "entries_exits",
+        "rebound_risk",
+        "faceoff_heat"
+      ],
+      "auto_hide_states": ["PP", "PK", "Pause"]
+    }
+  ],
+  "validations": {
+    "paths_exist": [
+      "Architect/Analytics/",
+      "Architect/Analytics/exports/"
+    ],
+    "sample_writable": true,
+    "telemetry_hook": "M121",
+    "confidence_threshold": 0.9
+  },
+  "post_install": {
+    "qa": [
+      "repo_integrity_scan",
+      "analytics_baseline"
+    ],
+    "savepoint_tag": "Post_Patch_Analytics_v6.0"
+  },
+  "notes": [
+    "Writes one JSONL export per game with xG, shot locations, entries/exits, rebounds.",
+    "Overlays respect your live-tracking prompt and auto-hide on PP/PK."
+  ]
+}
