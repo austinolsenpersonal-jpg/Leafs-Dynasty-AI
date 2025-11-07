@@ -1,0 +1,24 @@
+{
+  "team": "Toronto Marlies",
+  "level": "AHL",
+  "date": "2024-12-07",
+  "even_strength": {
+    "lines": [
+      { "line": 1, "LW": "J. Quillan",  "C": "R. Johnson",  "RW": "A. Nylander" },
+      { "line": 2, "LW": "B. Baddock",  "C": "N. Abruzzese","RW": "L. Shaw" },
+      { "line": 3, "LW": "K. Clifford", "C": "J. Blandisi", "RW": "R. Tverberg" },
+      { "line": 4, "LW": "M. Barbolini","C": "R. Hirvonen","RW": "Z. Solow" }
+    ],
+    "pairs": [
+      { "pair": 1, "LD": "M. Kokkonen",  "RD": "T. Niemelä" },
+      { "pair": 2, "LD": "W. Villeneuve","RD": "N. Mattinen" },
+      { "pair": 3, "LD": "C. Webber",    "RD": "D. Mermis" }
+    ]
+  },
+  "goalies": { "starter": "M. Murray", "backup": "D. Hildeby" },
+  "scratches": [
+    "V. Miettinen","M. Rifai","B. Kressler","A. Akhtyamov","S. Stevens",
+    "T. Miller","R. Mastrosimone","C. Paré","V. Peksa","B. Valis","M. Koster"
+  ],
+  "metadata": { "source": "screenshots 2024-12-07", "author": "Austin Olsen" }
+}
