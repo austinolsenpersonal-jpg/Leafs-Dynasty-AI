@@ -1,0 +1,95 @@
+{
+  "schema": "ArchitectPatch.v1",
+  "id": "TradeBoard_AI_v2.3",
+  "version": "2.3",
+  "category": "trades",
+  "description": "Smarter trade sanity engine with morale + contract-year weighting and WAR impact.",
+  "prerequisites": [
+    "Architect_Config_v6.1.json",
+    "RepoHealth_v2.2.json",
+    "QA_Integrity_v5.5.json",
+    "SourceLock_v6.2.json",
+    "Analytics_Expansion_v6.0.json"
+  ],
+  "install_steps": [
+    {
+      "task": "create_paths",
+      "paths": [
+        "Architect/TradeAI/",
+        "Architect/TradeAI/profiles/",
+        "Architect/TradeAI/reports/"
+      ]
+    },
+    {
+      "task": "load_profiles",
+      "profiles": {
+        "valuation_weights": {
+          "war_weight": 0.45,
+          "term_security_weight": 0.20,
+          "cap_hit_efficiency_weight": 0.20,
+          "morale_impact_weight": 0.10,
+          "age_curve_weight": 0.05
+        },
+        "contract_year_adjustments": {
+          "rental_penalty": -0.15,
+          "expiring_rfa_bonus": 0.08,
+          "bridge_flex_bonus": 0.04
+        },
+        "pick_valuation": {
+          "R1": 1.00,
+          "R2": 0.60,
+          "R3": 0.35,
+          "R4": 0.22,
+          "R5": 0.14,
+          "R6": 0.09,
+          "R7": 0.06
+        },
+        "morale_bands": {
+          "very_low": -0.12,
+          "low": -0.06,
+          "neutral": 0.00,
+          "high": 0.04,
+          "very_high": 0.08
+        }
+      }
+    },
+    {
+      "task": "enable_sanity_rules",
+      "rules": [
+        "reject_negative_war_without_comp",
+        "cap_overflow_block",
+        "no_multi_pick_overpay_for_rental",
+        "slot_count_protection",
+        "prospect_pool_guard"
+      ]
+    },
+    {
+      "task": "report_templates",
+      "templates": {
+        "summary_md": "Architect/TradeAI/reports/template_summary.md",
+        "detail_json": "Architect/TradeAI/reports/template_detail.json"
+      }
+    }
+  ],
+  "validations": {
+    "paths_exist": [
+      "Architect/TradeAI/",
+      "Architect/TradeAI/reports/"
+    ],
+    "profiles_loaded": true,
+    "sanity_rules_active": true,
+    "confidence_threshold": 0.9
+  },
+  "post_install": {
+    "qa": [
+      "repo_integrity_scan",
+      "cap_guardrails"
+    ],
+    "savepoint_tag": "Post_Patch_TradeBoard_AI_v2.3"
+  },
+  "notes": [
+    "Evaluates each trade for WAR delta, morale effect, cap fit, and term security.",
+    "Blocks common overpays for rentals and protects contract slot counts.",
+    "Outputs a Markdown summary + JSON detail under Architect/TradeAI/reports/."
+  ]
+}
