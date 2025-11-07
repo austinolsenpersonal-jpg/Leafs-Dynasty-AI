@@ -1,0 +1,25 @@
+{
+  "name": "SourceLock_v6.2",
+  "version": "6.2",
+  "type": "config_patch",
+  "description": "Adds dual-factor verification (checksum + timestamp) to /config verify source_map for zero-phantom-version protection.",
+  "validation": {
+    "enable_dual_factor": true,
+    "verify_checksum": true,
+    "verify_timestamp": true,
+    "allowed_drift_seconds": 5
+  },
+  "enforcement": {
+    "reject_on_mismatch": true,
+    "auto_log": "Architect/QA/logs/sourcelock_validation.log",
+    "notify_on_reject": true
+  },
+  "tasks": {
+    "on_config_verify": ["verify_checksum", "verify_timestamp"],
+    "on_commit_push": ["update_timestamp"]
+  },
+  "outputs": {
+    "emit_status": true,
+    "status_channel": "Architect/QA/logs/sourcelock_status.json"
+  }
+}
