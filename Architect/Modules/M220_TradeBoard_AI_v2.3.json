@@ -1,0 +1,61 @@
+{
+  "schema": "Architect.Module.v1",
+  "module_id": "M220_TradeBoard_AI_v2.3",
+  "name": "M220_TradeBoard_AI_v2.3",
+  "version": "2.3",
+  "type": "module",
+  "description": "Trade sanity filter and advisory system that evaluates morale, WAR, and contract-year weighting before approving deals.",
+  "inputs": {
+    "roster": "Architect/Data/LeafsRoster_master_v1.5.json",
+    "contracts": "Architect/Data/LeafsContracts_seed_v1.7.json",
+    "player_metrics": "Architect/Analytics/game_logs/*.json",
+    "trade_targets": "Architect/Data/TradeDeadlinePlanner_seed_v1.3.json"
+  },
+  "analysis": {
+    "evaluate_factors": [
+      "WAR_value",
+      "AAV_delta",
+      "term_remaining",
+      "NTC_clause",
+      "morale_impact",
+      "positional_depth",
+      "age_curve",
+      "contract_year_weight"
+    ],
+    "trade_sanity_threshold": 0.85,
+    "walkaway_delta": 0.15
+  },
+  "advisor_logic": {
+    "rules": [
+      {
+        "if": { "WAR_delta": "<-0.25", "morale_impact": "<-0.03" },
+        "then": ["Reject deal", "Emit morale risk flag"]
+      },
+      {
+        "if": { "AAV_delta": ">2.0", "term_remaining": "<2" },
+        "then": ["Flag as rental risk", "Require draft pick offset"]
+      },
+      {
+        "if": { "positional_depth": "<=1", "WAR_delta": ">=0.1" },
+        "then": ["Approve", "Recommend depth trade"]
+      }
+    ],
+    "override_policy": "GM_Approval_Required"
+  },
+  "outputs": {
+    "log_path": "Architect/QA/logs/tradeboard_v2.3_log.json",
+    "summary_path": "Architect/QA/logs/tradeboard_summary.md",
+    "audit_path": "Architect/QA/audits/trade_audit_$(DATE).json"
+  },
+  "precreate_dirs": [
+    "Architect/QA/logs",
+    "Architect/QA/audits"
+  ],
+  "safeguards": {
+    "dry_run_default": true,
+    "ask_before_apply": true,
+    "respect_cap_guard": true,
+    "respect_roster_guard": true
+  },
+  "status_output": "Architect/QA/logs/tradeboard_status.json"
+}
