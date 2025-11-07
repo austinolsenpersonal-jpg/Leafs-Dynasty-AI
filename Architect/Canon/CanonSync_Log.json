@@ -1,20 +1,25 @@
 {
-  "tag": "CanonSync_2024-12-07_OPS-DISC-5.4.1",
-  "version": "v4.1",
-  "category": "Operations Discipline & QA Governance",
-  "date": "2024-12-07",
-  "author": "Leafs Dynasty Suite AI (System Ops)",
-  "files_updated": [
-    "Architect/Canon/Changelog_v4.1.md"
-  ],
-  "sha_placeholder": "pending_commit_sha",
-  "timestamp": "2024-12-07T22:00:00Z",
-  "integrity": "100%",
-  "status": "Active & Locked",
-  "environment": {
-    "elite": "v5.4",
-    "architect_config": "v6.1",
-    "canon": "v4.1"
-  },
-  "notes": "Ops Discipline v5.4.1 introduces QA/Reports separation, ensuring Canon-only QA bundles and modular report packaging."
+    "commit_tag": "CanonSync_2024-12-07_TradeWave_Mercer_Dumba",
+    "category": "Roster & Trades Sync Event",
+    "description": "Integration of Dawson Mercer and Matt Dumba trades under Canon v4.1 with full QA and cap validation.",
+    "version": "v4.1",
+    "environment": {
+        "elite": "v5.4",
+        "architect_config": "v6.2",
+        "patchsuite": "v6.2"
+    },
+    "status": "Active",
+    "author": "Leafs Dynasty Suite AI (System Ops)",
+    "integrity": "100%",
+    "timestamp": "2025-11-07 23:24:40",
+    "sha_placeholder": "SHA-PENDING-COMMIT",
+    "files_updated": [
+        "/Architect/Canon/Changelog_v4.1.md",
+        "/Architect/Reports/TradeWave_Mercer_Dumba_2024-12-07.md"
+    ],
+    "notes": [
+        "Roster & Trades sync completed \u2014 Mercer + Dumba integrated successfully.",
+        "Cap buffer $95K, SPC 49/50, chemistry delta +0.04.",
+        "Canonical validation gates (Roster, Cap, Systems) all passed with confidence \u2265 0.96."
+    ]
 }
