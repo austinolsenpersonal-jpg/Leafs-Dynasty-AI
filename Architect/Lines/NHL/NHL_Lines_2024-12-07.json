@@ -1,21 +1,27 @@
 {
-  "team": "Toronto Maple Leafs",
-  "level": "NHL",
-  "date": "2024-12-07",
-  "even_strength": {
-    "lines": [
-      { "line": 1, "LW": "M. Knies",     "C": "A. Matthews", "RW": "M. Marner" },
-      { "line": 2, "LW": "N. Robertson", "C": "J. Tavares",  "RW": "W. Nylander" },
-      { "line": 3, "LW": "M. Domi",      "C": "D. Kämpf",    "RW": "D. Mercer" },
-      { "line": 4, "LW": "S. Lorentz",   "C": "A. Steeves",  "RW": "M. Pacioretty" }
-    ],
-    "pairs": [
-      { "pair": 1, "LD": "M. Rielly",        "RD": "C. Tanev" },
-      { "pair": 2, "LD": "J. McCabe",        "RD": "B. Carlo" },
-      { "pair": 3, "LD": "O. Ekman-Larsson", "RD": "M. Dumba" }
-    ]
+  "meta": {
+    "team": "TOR",
+    "level": "NHL",
+    "date": "2024-12-07",
+    "schema": "lines.v1",
+    "notes": "Exact in-game lines per screenshots (Knies-Matthews-Marner | Robertson-Tavares-Nylander | Domi-Kampf-Mercer | Lorentz-Steeves-Pacioretty). D pairs: Rielly-Tanev, McCabe-Carlo, Ekman-Larsson-Dumba."
   },
-  "goalies": { "starter": "A. Stolarz", "backup": "J. Woll" },
-  "scratches": [],
-  "metadata": { "source": "screenshots 2024-12-07", "author": "Austin Olsen" }
+  "even_strength": {
+    "forwards": [
+      {"line": 1, "LW": "Matthew Knies (L)",      "C": "Auston Matthews (R)", "RW": "Mitchell Marner (R)"},
+      {"line": 2, "LW": "Nick Robertson (L)",     "C": "John Tavares (R)",    "RW": "William Nylander (R)"},
+      {"line": 3, "LW": "Max Domi (L)",           "C": "David Kampf (R)",     "RW": "Dawson Mercer (R)"},
+      {"line": 4, "LW": "Steven Lorentz (L)",     "C": "Alex Steeves (L)",    "RW": "Max Pacioretty (L)"}
+    ],
+    "defense": [
+      {"pair": 1, "LD": "Morgan Rielly (L)",      "RD": "Chris Tanev (R)"},
+      {"pair": 2, "LD": "Jake McCabe (L)",        "RD": "Brandon Carlo (R)"},
+      {"pair": 3, "LD": "Oliver Ekman-Larsson (L)","RD": "Matt Dumba (R)"}
+    ],
+    "goalies": [
+      {"order": 1, "G": "Anthony Stolarz (L)"},
+      {"order": 2, "G": "Joseph Woll (L)"}
+    ],
+    "scratches": []
+  }
 }
