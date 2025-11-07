@@ -1,0 +1,15 @@
+{
+  "team": "Toronto Marlies",
+  "level": "AHL",
+  "date": "2024-12-07",
+  "powerplay": {
+    "pp1": { "LW": "A. Nylander", "C": "R. Johnson", "RW": "L. Shaw", "LD": "N. Mattinen", "RD": "T. Niemelä", "formation": "1-3-1" },
+    "pp2": { "LW": "N. Abruzzese","C": "J. Quillan", "RW": "R. Hirvonen","LD": "M. Kokkonen","RD": "D. Mermis","formation": "1-3-1" }
+  },
+  "penaltykill": {
+    "pk1": { "F1": "R. Johnson", "F2": "L. Shaw",     "D1": "T. Niemelä", "D2": "C. Webber",    "formation": "Diamond" },
+    "pk2": { "F1": "B. Baddock", "F2": "K. Clifford", "D1": "W. Villeneuve","D2": "N. Mattinen","formation": "Large Box" },
+    "pk3": { "F1": "J. Blandisi","F2": "R. Tverberg","D1": "M. Kokkonen","D2": "D. Mermis",    "formation": "Passive Box" }
+  },
+  "metadata": { "source": "screenshots 2024-12-07", "author": "Austin Olsen" }
+}
