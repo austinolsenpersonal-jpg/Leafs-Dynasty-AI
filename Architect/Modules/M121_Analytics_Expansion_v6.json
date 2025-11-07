@@ -1,0 +1,65 @@
+{
+  "schema": "Architect.Module.v1",
+  "module_id": "M121_Analytics_Expansion_v6",
+  "name": "M121_Analytics_Expansion_v6",
+  "version": "6.0",
+  "type": "module",
+  "description": "Adds enhanced xG, shot heatmap, and zone-entry tracking. Replaces M121_Analytics_Expansion (v5.x) with expanded metric set and live exports.",
+  "inputs": {
+    "game_logs": "Architect/Analytics/game_logs/*.json",
+    "telemetry": "Architect/Telemetry/*",
+    "lines_file": "Architect/Lines/NHL/NHL_Lines_2024-12-04.json"
+  },
+  "metrics": {
+    "capture_interval": "per_game",
+    "tracked_events": [
+      "shots_on_goal",
+      "missed_shots",
+      "blocked_shots",
+      "entries_controlled",
+      "entries_dump",
+      "exits_controlled",
+      "high_danger_chances",
+      "rebound_chances",
+      "slot_passes",
+      "expected_goals"
+    ],
+    "derived": {
+      "xGF60": "expected_goals_for / TOI * 60",
+      "xGA60": "expected_goals_against / TOI * 60",
+      "CF%": "Corsi_For / (Corsi_For + Corsi_Against)",
+      "HD%": "High_Danger_For / (High_Danger_For + High_Danger_Against)"
+    }
+  },
+  "exports": {
+    "summary_path": "Architect/Analytics/game_summaries/summary_$(DATE).json",
+    "rolling_10_path": "Architect/Analytics/rolling10/rolling10_$(DATE).json",
+    "heatmap_path": "Architect/Analytics/visuals/shot_heatmap_$(DATE).png",
+    "trend_dashboard_path": "Architect/Analytics/visuals/performance_trend_dashboard.json"
+  },
+  "visualization": {
+    "enable_dashboard": true,
+    "refresh_after_games": 3,
+    "rolling_window": 10,
+    "chart_types": ["heatmap", "trend_line", "radar"]
+  },
+  "logging": {
+    "enabled": true,
+    "path": "Architect/Analytics/logs/analytics_v6_log.json",
+    "emit_md_summary": true,
+    "md_summary_path": "Architect/Analytics/logs/analytics_v6_summary.md"
+  },
+  "precreate_dirs": [
+    "Architect/Analytics",
+    "Architect/Analytics/game_summaries",
+    "Architect/Analytics/rolling10",
+    "Architect/Analytics/visuals",
+    "Architect/Analytics/logs"
+  ],
+  "safeguards": {
+    "ask_before_overwrite": false,
+    "require_lines_sync": true,
+    "auto_heal_missing_logs": true
+  },
+  "status_output": "Architect/Analytics/logs/analytics_v6_status.json"
+}
