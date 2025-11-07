@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "file": "LeafsContracts_seed_v1.7.json",
+    "base_version": "v1.6",
+    "version": "v1.7",
+    "team": "Toronto Maple Leafs",
+    "date": "2024-12-06",
+    "schema": "Contracts.seed.v1",
+    "description": "Contract deltas from Dec 3–6, 2024 trades. Keep all other entries from v1.6 unchanged."
+  },
+  "inherit_from_previous": true,
+
+  "remove_contracts_for": [
+    "Calle Järnkrok",
+    "Scott Laughton",
+    "Pontus Holmberg",
+    "Bobby McMann",
+    "Matt Benning"
+  ],
+
+  "add_or_update": [
+    {
+      "player": "Dawson Mercer",
+      "team": "TOR",
+      "acquired": "trade/NJD",
+      "contract": {
+        "source": "import_from_game",
+        "aav": null,
+        "term_years": null,
+        "expiry_status": "auto",
+        "clause": "auto",
+        "note": "On load, read values from in-game contract and fill nulls."
+      }
+    },
+    {
+      "player": "Matt Dumba",
+      "team": "TOR",
+      "acquired": "trade/DAL",
+      "contract": {
+        "source": "import_from_game",
+        "aav": null,
+        "term_years": null,
+        "expiry_status": "auto",
+        "clause": "auto",
+        "note": "On load, read values from in-game contract and fill nulls."
+      }
+    }
+  ],
+
+  "validation": {
+    "spc_cap": { "max_spc": 50, "expected_after_move": "<=50" },
+    "notes": "Engine should recalc cap hits once nulls are populated from in-game."
+  }
+}
