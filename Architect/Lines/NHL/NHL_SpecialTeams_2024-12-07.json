@@ -1,47 +1,55 @@
 {
-  "team": "Toronto Maple Leafs",
-  "level": "NHL",
-  "date": "2024-12-07",
+  "meta": {
+    "team": "TOR",
+    "level": "NHL",
+    "date": "2024-12-07",
+    "schema": "special.v1",
+    "notes": "PP/PK units per screenshots. One-timer locks set for Nylander (off-left) and Marner (off-right) on PP1."
+  },
   "powerplay": {
     "pp1": {
-      "LW": "A. Matthews",
-      "C":  "J. Tavares",
-      "RW": "M. Marner",
-      "LD": "W. Nylander",
-      "RD": "M. Rielly",
-      "formation": "1-3-1"
+      "formation": "1-3-1",
+      "QB": "Morgan Rielly (L)",
+      "LFlank": "William Nylander (R)",
+      "Bumper": "John Tavares (R)",
+      "RFlank": "Mitchell Marner (R)",
+      "NetFront": "Auston Matthews (R)",
+      "one_timers": {"LFlank": true, "RFlank": true}
     },
     "pp2": {
-      "LW": "M. Knies",
-      "C":  "M. Domi",
-      "RW": "M. Pacioretty",
-      "LD": "D. Mercer",
-      "RD": "O. Ekman-Larsson",
-      "formation": "1-3-1"
+      "formation": "Umbrella",
+      "PointL": "Morgan Rielly (L)",
+      "PointR": "Oliver Ekman-Larsson (L)",
+      "Middle": "Dawson Mercer (R)",
+      "LowL": "Matthew Knies (L)",
+      "LowR": "Max Pacioretty (L)"
     }
   },
-  "penaltykill": {
+  "penalty_kill": {
     "pk1": {
-      "F1": "D. Kämpf",
-      "F2": "D. Mercer",
-      "D1": "J. McCabe",
-      "D2": "C. Tanev",
-      "formation": "Diamond"
+      "formation": "Large Box",
+      "F1": "David Kampf (R)",
+      "F2": "Dawson Mercer (R)",
+      "D1": "Jake McCabe (L)",
+      "D2": "Chris Tanev (R)"
     },
     "pk2": {
-      "F1": "J. Tavares",
-      "F2": "M. Knies",
-      "D1": "M. Rielly",
-      "D2": "B. Carlo",
-      "formation": "Large Box"
+      "formation": "Diamond",
+      "F1": "John Tavares (R)",
+      "F2": "Matthew Knies (L)",
+      "D1": "Morgan Rielly (L)",
+      "D2": "Brandon Carlo (R)"
     },
     "pk3": {
-      "F1": "A. Steeves",
-      "F2": "M. Domi",
-      "D1": "O. Ekman-Larsson",
-      "D2": "M. Dumba",
-      "formation": "Passive Box"
+      "formation": "Large Box",
+      "F1": "Max Domi (L)",
+      "F2": "Alex Steeves (L)",
+      "D1": "Oliver Ekman-Larsson (L)",
+      "D2": "Matt Dumba (R)"
     }
   },
-  "metadata": { "source": "screenshots 2024-12-07", "author": "Austin Olsen" }
+  "goalies": {
+    "starter": "Anthony Stolarz (L)",
+    "backup": "Joseph Woll (L)"
+  }
 }
