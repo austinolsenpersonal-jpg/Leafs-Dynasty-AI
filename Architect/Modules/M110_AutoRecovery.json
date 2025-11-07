@@ -1,4 +1,6 @@
 {
+  "schema": "Architect.Module.v1",
+  "module_id": "M110_AutoRecovery",
   "name": "M110_AutoRecovery",
   "version": "1.0",
   "type": "module",
@@ -29,6 +31,10 @@
     "emit_incident_report": true,
     "incident_report_path": "Architect/QA/logs/incidents/auto_recovery_$(DATE).json"
   },
+  "precreate_dirs": [
+    "Architect/QA/logs",
+    "Architect/QA/logs/incidents"
+  ],
   "safeguards": {
     "max_recovers_per_day": 3,
     "cooldown_minutes": 10,
