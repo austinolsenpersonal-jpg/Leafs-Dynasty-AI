@@ -1,0 +1,21 @@
+{
+  "team": "Toronto Maple Leafs",
+  "level": "NHL",
+  "date": "2024-12-07",
+  "even_strength": {
+    "lines": [
+      { "line": 1, "LW": "M. Knies",     "C": "A. Matthews", "RW": "M. Marner" },
+      { "line": 2, "LW": "N. Robertson", "C": "J. Tavares",  "RW": "W. Nylander" },
+      { "line": 3, "LW": "M. Domi",      "C": "D. Kämpf",    "RW": "D. Mercer" },
+      { "line": 4, "LW": "S. Lorentz",   "C": "A. Steeves",  "RW": "M. Pacioretty" }
+    ],
+    "pairs": [
+      { "pair": 1, "LD": "M. Rielly",        "RD": "C. Tanev" },
+      { "pair": 2, "LD": "J. McCabe",        "RD": "B. Carlo" },
+      { "pair": 3, "LD": "O. Ekman-Larsson", "RD": "M. Dumba" }
+    ]
+  },
+  "goalies": { "starter": "A. Stolarz", "backup": "J. Woll" },
+  "scratches": [],
+  "metadata": { "source": "screenshots 2024-12-07", "author": "Austin Olsen" }
+}
