@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "name": "OpponentModel_v6.3",
+    "schema": "MatchupIntelligence.Config.v2",
+    "date": "2025-11-07",
+    "notes": [
+      "Adaptive opponent planner with goalie pick, starting lines, and true NHL25 sliders.",
+      "Outputs strategy card with offense/defense line detail."
+    ]
+  },
+
+  "goalie_selection": {
+    "rules": [
+      { "if": { "is_b2b": true }, "then": "start_rested" },
+      { "if": { "starter_last3_sv%": "< 0.900" }, "then": "start_other" },
+      { "if": { "starter_fatigue": ">= 0.65" }, "then": "start_other" }
+    ],
+    "fallback": "hot_hand"
+  },
+
+  "decision_rules": {
+    "vs_speed_rush": {
+      "detect": { "opponent_rush_entries_per60": ">= 12" },
+      "set": {
+        "team_strategies": {
+          "forecheck": "1-2-2 Aggressive",
+          "neutral_zone": "1-3-1",
+          "defensive_pressure": "Contain Puck",
+          "defensive_strategy": "Tight Point",
+          "offensive_pressure": "Aggressive",
+          "control_breakout": "Strong Side Slant",
+          "quick_breakout": "Stay Wide"
+        },
+        "starting_lines": {
+          "offense": ["Knies-Matthews-Marner","Robertson-Tavares-Nylander","Domi-Kampf-Mercer","Pacioretty-Lorentz-Steeves"],
+          "defense": ["Rielly-Tanev","McCabe-Carlo","EkmanLarsson-Dumba"]
+        },
+        "offensive_line_sliders": {
+          "L1": { "strategy": "Overload", "carry_dump": 3, "cycle_shoot": 3, "efficiency_energy": 6, "block": 2 },
+          "L2": { "strategy": "Behind the Net", "carry_dump": 4, "cycle_shoot": 4, "efficiency_energy": 5, "block": 3 },
+          "L3": { "strategy": "Crash the Net", "carry_dump": 6, "cycle_shoot": 4, "efficiency_energy": 7, "block": 5 },
+          "L4": { "strategy": "Crash the Net", "carry_dump": 7, "cycle_shoot": 5, "efficiency_energy": 8, "block": 6 }
+        },
+        "defensive_pair_sliders": {
+          "D1": { "hold_pinch": 6, "cycle_shoot": 5 },
+          "D2": { "hold_pinch": 5, "cycle_shoot": 6 },
+          "D3": { "hold_pinch": 4, "cycle_shoot": 6 }
+        }
+      }
+    },
+
+    "vs_heavy_cycle": {
+      "detect": { "opponent_cycle_time_avg_sec": ">= 45" },
+      "set": {
+        "team_strategies": {
+          "forecheck": "2-3",
+          "neutral_zone": "1-2-2 Red",
+          "defensive_pressure": "Protect Net",
+          "defensive_strategy": "Collapsing",
+          "offensive_pressure": "Standard",
+          "control_breakout": "Blue to Blue",
+          "quick_breakout": "Close Support"
+        },
+        "starting_lines": {
+          "offense": ["Knies-Matthews-Marner","Robertson-Tavares-Nylander","Domi-Kampf-Mercer","Pacioretty-Lorentz-Steeves"],
+          "defense": ["Rielly-Tanev","McCabe-Carlo","EkmanLarsson-Dumba"]
+        },
+        "offensive_line_sliders": {
+          "L1": { "strategy": "Behind the Net", "carry_dump": 4, "cycle_shoot": 3, "efficiency_energy": 6, "block": 3 },
+          "L2": { "strategy": "Overload", "carry_dump": 5, "cycle_shoot": 4, "efficiency_energy": 6, "block": 4 },
+          "L3": { "strategy": "Crash the Net", "carry_dump": 6, "cycle_shoot": 5, "efficiency_energy": 7, "block": 5 },
+          "L4": { "strategy": "Crash the Net", "carry_dump": 7, "cycle_shoot": 6, "efficiency_energy": 8, "block": 6 }
+        },
+        "defensive_pair_sliders": {
+          "D1": { "hold_pinch": 5, "cycle_shoot": 6 },
+          "D2": { "hold_pinch": 4, "cycle_shoot": 6 },
+          "D3": { "hold_pinch": 3, "cycle_shoot": 7 }
+        }
+      }
+    },
+
+    "vs_trap_teams": {
+      "detect": { "opponent_trap_usage": ">= 0.6" },
+      "set": {
+        "team_strategies": {
+          "forecheck": "Weak Side Lock",
+          "neutral_zone": "1-2-2 Blue",
+          "defensive_pressure": "Normal",
+          "defensive_strategy": "Staggered",
+          "offensive_pressure": "Full Attack",
+          "control_breakout": "Strong Side Slant",
+          "quick_breakout": "Leave Zone Early"
+        },
+        "starting_lines": {
+          "offense": ["Knies-Matthews-Marner","Robertson-Tavares-Nylander","Domi-Kampf-Mercer","Pacioretty-Lorentz-Steeves"],
+          "defense": ["Rielly-Tanev","McCabe-Carlo","EkmanLarsson-Dumba"]
+        },
+        "offensive_line_sliders": {
+          "L1": { "strategy": "Overload", "carry_dump": 2, "cycle_shoot": 2, "efficiency_energy": 5, "block": 2 },
+          "L2": { "strategy": "Overload", "carry_dump": 3, "cycle_shoot": 3, "efficiency_energy": 6, "block": 3 },
+          "L3": { "strategy": "Crash the Net", "carry_dump": 4, "cycle_shoot": 5, "efficiency_energy": 7, "block": 4 },
+          "L4": { "strategy": "Behind the Net", "carry_dump": 5, "cycle_shoot": 5, "efficiency_energy": 8, "block": 5 }
+        },
+        "defensive_pair_sliders": {
+          "D1": { "hold_pinch": 7, "cycle_shoot": 5 },
+          "D2": { "hold_pinch": 6, "cycle_shoot": 6 },
+          "D3": { "hold_pinch": 5, "cycle_shoot": 6 }
+        }
+      }
+    }
+  },
+
+  "outputs": {
+    "write_matchup_card": "Architect/Matchups/NHL/Generated/MatchupCard_$(OPP)_$(DATE).md",
+    "sections": [
+      "opponent_summary",
+      "starting_goalie_recommendation",
+      "starting_lines",
+      "team_strategies",
+      "offensive_line_sliders",
+      "defensive_pair_sliders",
+      "pp_variant_and_one_timers"
+    ]
+  }
+}
