@@ -1,0 +1,26 @@
+{
+  "name": "RepoHealth_v2.2",
+  "version": "2.2",
+  "type": "repo_patch",
+  "description": "Ensures folder and file consistency; prevents duplicate version conflicts and adds nightly auto-clean.",
+  "rules": {
+    "detect_duplicates": true,
+    "valid_prefixes": ["LeafsRoster_", "LeafsContracts_", "NHL_Lines_", "AHL_Lines_", "NHL_SpecialTeams_"],
+    "max_versions_allowed": 1,
+    "scan_paths": [
+      "Architect/Data/",
+      "Architect/Lines/NHL/",
+      "Architect/Lines/AHL/"
+    ]
+  },
+  "tasks": {
+    "auto_clean_enabled": true,
+    "auto_clean_schedule": "nightly",
+    "log_duplicates": "Architect/QA/logs/repohealth_duplicates.log",
+    "repo_health_summary": "Architect/QA/logs/repohealth_summary.json"
+  },
+  "outputs": {
+    "alerts_channel": "Architect/QA/logs/repohealth_alerts.log",
+    "emit_repo_score": true
+  }
+}
