@@ -1,0 +1,38 @@
+{
+  "name": "M110_AutoRecovery",
+  "version": "1.0",
+  "type": "module",
+  "description": "Watches validation gates; if any fall < 0.85, auto-restore last good snapshot and re-sync source_map files.",
+  "triggers": {
+    "on_qa_gate_below": 0.85,
+    "on_missing_file": true,
+    "on_checksum_mismatch": true
+  },
+  "actions": {
+    "preflight": [
+      "/config verify source_map",
+      "/qa_pre_game --focus \"roster_guard,lines_sync,contracts_map,pp_one_timer_map\""
+    ],
+    "recover": [
+      "/snapshot_restore --tag LAST_GOOD",
+      "/resync_baseline --from \"v4.1-Full-Franchise\"",
+      "/config verify source_map",
+      "/verify_strategies"
+    ],
+    "post_recover": [
+      "/dynasty_savepoint --tag \"AutoRecovery_Restore_$(DATE)\""
+    ]
+  },
+  "logging": {
+    "enabled": true,
+    "path": "Architect/QA/logs/auto_recovery_log.json",
+    "emit_incident_report": true,
+    "incident_report_path": "Architect/QA/logs/incidents/auto_recovery_$(DATE).json"
+  },
+  "safeguards": {
+    "max_recovers_per_day": 3,
+    "cooldown_minutes": 10,
+    "ask_before_restore": false
+  },
+  "status_output": "Architect/QA/logs/auto_recovery_status.json"
+}
