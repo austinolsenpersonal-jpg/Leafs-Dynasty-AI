@@ -1,0 +1,33 @@
+{
+  "name": "QA_Integrity_v5.5",
+  "version": "5.5",
+  "type": "qa_patch",
+  "description": "Reduces false positives in pre-game QA, adds checksum delay for GitHub fetches, and validates JSON schemas before locks.",
+  "tasks": {
+    "checksum_delay_ms": 100,
+    "schema_validate": true,
+    "schema_targets": [
+      "Architect/Lines/NHL/NHL_Lines_2024-12-04.json",
+      "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+      "Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json",
+      "Architect/Data/LeafsContracts_seed_v1.6.json",
+      "Architect/Data/LeafsContracts_seed_v1.7.json",
+      "Architect/Data/LeafsRoster_master_v1.4.json",
+      "Architect/Data/LeafsRoster_master_v1.5.json"
+    ],
+    "qa_overrides": {
+      "lines_sync_fp_reduction": 0.40,
+      "pp_map_grace_window_ms": 250,
+      "repo_fetch_grace_ms": 150
+    }
+  },
+  "hooks": {
+    "pre_lock": ["schema_validate", "checksum_delay"],
+    "pre_qa": ["checksum_delay"],
+    "pre_matchup": ["checksum_delay"]
+  },
+  "outputs": {
+    "log_channel": "Architect/QA/logs/qa_integrity_v5.5.log",
+    "emit_compact_pass_table": true
+  }
+}
