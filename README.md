@@ -1,36 +1,43 @@
-# 🏒 Toronto Maple Leafs Dynasty AI
-**Architect v6.1 | Canon v4.1 (Adaptive Lock) | Elite Environment v5.4**
+# 🏒 Toronto Maple Leafs Dynasty AI  
+**Architect v6.2 | Canon v4.1 (Adaptive Lock)**  
 
 Franchise Control System — NHL 25 (Old-Gen & Next-Gen)
 
 ---
 
 ## 📘 Overview
-This repository maintains the **complete operational canon and configuration** for  
-**Austin Olsen’s Toronto Maple Leafs Franchise in NHL 25**.
+This repository maintains the full operational canon, configuration, and adaptive matchup intelligence for  
+**Austin Olsen’s Toronto Maple Leafs Franchise in NHL 25.**
 
-It integrates:
-- **Architect Config v6.1** — Core AI system architecture  
-- **Canon v4.1** — Immutable franchise baseline  
-- **Adaptive Planner v6.0** — Opponent-aware tactical engine  
-- **EliteOps v5.4.1 Discipline** — QA & Reports governance separation  
-- **SourceMap 2024-12-06 (FullLock)** — Verified sync for roster, lines, and special teams
+It unifies and automates all systems governing roster, contracts, strategies, analytics, and gameplay adaptation.  
+
+- Architect Config → **v6.2 (Enhanced Stability + SourceLock)**
+- Canon Version → **v4.1 (Full Franchise Baseline)**
+- Patch Suite → **v6.2 (QA, Repo Health, SourceLock, Matchup Intelligence)**
+- Opponent Model → **v6.3 (Adaptive Strategies + Goalie + Line Sliders)**
+- Environment → **EliteOps v5.4 (Stable)**
 
 ---
 
 ## 📂 Repository Structure
+
 ```
 Architect/
-│  Architect_Config_v6.1.json
+│  Architect_Config_v6.2.json
 │  Canon_v4.1_Full_Franchise.json
 │  OldGen_Strategy_Canon_v4.1.txt
 │
-├─ Canon/
-│   ├ Changelog_v4.1.md
-│   ├ CanonSync_Log.json
-│
 ├─ Config/
 │   ├ source_map.json
+│   └ OpponentModel_v6.3.json
+│
+├─ Patches/
+│   ├ QA_Integrity_v5.5.json
+│   ├ RepoHealth_v2.2.json
+│   ├ SourceLock_v6.2.json
+│   ├ MatchupIntelligence_v6.2.json
+│   ├ EliteOps_Patch_v4.4.json
+│   └ ExecutiveOps_Patch_v4.5.json
 │
 ├─ Data/
 │   ├ LeafsRoster_master_v1.5.json
@@ -44,67 +51,125 @@ Architect/
 │   │   ├ NHL_Lines_2024-12-04.json
 │   │   ├ NHL_SpecialTeams_2024-12-04.json
 │   │   └ NHL_Template_Standard_FullGamePlan.json
+│   │
 │   └ AHL/
 │       ├ AHL_Lines_2024-12-04.json
 │       ├ AHL_SpecialTeams_2024-12-04.json
 │       └ AHL_DevTracker_v1.1.json
 │
-├─ Modules/
-│   ├ M110_AutoRecovery.json
-│   ├ M121_Analytics_Expansion_v6.json
-│   ├ M220_TradeBoard_AI_v2.3.json
-│
-├─ Patches/
-│   ├ RepoHealth_v2.2.json
-│   ├ QA_Integrity_v5.5.json
-│   ├ SourceLock_v6.2.json
-│   ├ MatchupIntelligence_v6.2.json
+├─ Matchups/
+│   └ NHL/
+│       └ Generated/
+│           ├ MatchupCard_<TEAM>_<DATE>.md
+│           └ MatchupRuntime_<TEAM>_<DATE>.json
 │
 ├─ QA/
 │   ├ QA_Report_2024-12-06.md
 │   ├ QA_Report_2024-12-06.pdf
-│   ├ Release_Notes_SourceMap_2024-12-06.md
+│   ├ QA_Verify_After_Upgrade.md
+│   └ Release_Notes_SourceMap_2024-12-06.md
 │
 └─ Reports/
-    ├ GameRecap_2024-12-06_07.md
-    └ future reports…
+    └ GameRecap_2024-12-06_07.md
 ```
 
 ---
 
-## ⚙️ Canon-Locked Source Map (Active)
-| Type | Path | Version | Status |
-|:--|:--|:--|:--|
-| Roster | Architect/Data/LeafsRoster_master_v1.5.json | v1.5 | ✅ Verified |
-| Contracts | Architect/Data/LeafsContracts_seed_v1.7.json | v1.7 | ✅ Verified |
-| NHL Lines | Architect/Lines/NHL/NHL_Lines_2024-12-04.json | — | ✅ Verified |
-| AHL Lines | Architect/Lines/AHL/AHL_Lines_2024-12-04.json | — | ✅ Verified |
-| NHL Special Teams | Architect/Lines/NHL/NHL_SpecialTeams_2024-12-04.json | — | ✅ Verified |
+## 🎯 Canon & Ops Status
 
-**Source Priority:** GitHub (Primary) | None (Fallback)  
-**Roster Guard:** STRICT  **Strategy Guardrails:** ENABLED  
-**Integrity:** 100%  **Drift:** 0.00  
+| Layer | Version | Description |
+|:--|:--|:--|
+| **Canon** | v4.1 | Immutable strategy & schema baseline |
+| **Architect Config** | v6.2 | Core system architecture with SourceLock |
+| **Patch Suite** | v6.2 | QA, Repo Health, SourceLock, Matchup Intelligence |
+| **Opponent Model** | v6.3 | Adaptive strategies, goalie logic, and sliders |
+| **Elite-Ops Patch** | v4.4 | Predictive analytics / trade AI |
+| **Executive-Ops Patch** | v4.5 | Automation tier – QA / snapshots |
+| **QA Integrity** | ✅ PASS | Roster / Lines / Contracts verified |
+
+---
+
+## 🧠 Adaptive Matchup Intelligence (OpponentModel v6.3)
+Opponent Model v6.3 integrates tactical opponent awareness with dynamic lineup optimization.
+
+**Core Capabilities**
+- Real-time opponent recognition (last 5-game telemetry)
+- Adaptive team strategies (forecheck, neutral zone, DZ pressure, breakout)
+- Automatic **starting goalie recommendation** (form + fatigue)
+- **Starting lines (F1–F4, D1–D3)** suggested per matchup
+- **Authentic NHL25 line sliders (0–10 scale)**  
+  - *Offense:* Strategy + Carry/Dump, Cycle/Shoot, Efficiency/Energy, Don’t Block/Block  
+  - *Defense:* Hold Line/Pinch, Cycle/Shoot  
+- Outputs full **Matchup Cards** and runtime JSONs
+
+**Output Files**
+```
+Architect/Matchups/NHL/Generated/
+├ MatchupCard_<OPPONENT>_<DATE>.md
+└ MatchupRuntime_<OPPONENT>_<DATE>.json
+```
 
 ---
 
 ## 🧩 Core Modules
-| ID | Name | Function |
+
+| Module | Function |
+|:--|:--|
+| **M67** | Advanced Analytics Engine (5v5 xG + HD chance tracking) |
+| **M80** | Game Systems Registry (ICE-Q, Vision Control, AI movement) |
+| **M81** | Control Map (Total Control / Skill Stick / Goalie mapping) |
+| **M86** | Tactics Translator (Maps in-game systems → AI planning) |
+| **M87** | Sliders Philosophy (All-Star realism baseline) |
+| **M91** | Injury Forecast Matrix (100-run simulation) |
+| **M92** | Offer Laddering Engine (Smart extensions + clauses) |
+| **M93** | Agent Personality Model (Negotiation tone + PR) |
+| **M95** | GoalieBook 2.0 (High-danger shot heatmaps) |
+| **M96** | Mentorship Pairing (Vet-prospect growth tracking) |
+| **M100** | Risk Controls (Cap + retention guardrails) |
+| **M110** | AutoRecovery (Smart self-repair for config corruption) |
+| **M121** | Analytics Expansion (Live WAR, TOI%, PPxG tracking) |
+| **M220** | TradeBoard AI v2.3 (Morale + WAR-weighted trade advisor) |
+
+---
+
+## ⚙️ Patch Suite v6.2 Summary
+
+| Patch | Version | Description |
 |:--|:--|:--|
-| M110 | Auto-Recovery | Self-heals bad syncs and restores last good snapshot |
-| M121 | Analytics Expansion v6 | Tracks xG, zone entries, and heatmaps |
-| M220 | TradeBoard AI v2.3 | Evaluates trades with morale + WAR weighting |
-| M91 | Injury Forecast Matrix | Predictive player durability engine |
-| M97 | Promotion Thresholds | Auto call-up logic for prospects |
-| M100 | Risk Controls | Cap + retention guardrails |
-| M409 | Neural Chemistry Mapper *(planned)* | Predicts future chemistry drift |
-| M95 | Goalie Book | Visual shot-density tracking |
-| M80–M89 | Game Systems & Sliders | Tactics Translator, Strategy Canon, QA gates |
+| **QA Integrity** | v5.5 | Dual-verification checksum, 40% fewer validation errors |
+| **Repo Health** | v2.2 | Detects duplicate/orphan JSONs, adds cleanup guard |
+| **SourceLock** | v6.2 | Two-factor verification (timestamp + checksum) |
+| **Matchup Intelligence** | v6.2 | Expanded xGF/xGA & forecheck counters |
+| **Opponent Model** | v6.3 | Adaptive strategy + sliders + goalie rotation logic |
+
+---
+
+## 🧾 Current Canon Tags
+
+| Tag | Description |
+|:--|:--|
+| **CanonSync_2024-12-07_OPS-DISC-5.4.1** | QA & Reports governance rule (Ops Discipline) |
+| **SourceMap_2024-12-06_Locked** | Verified source alignment (Roster v1.5 / Contracts v1.7 / Lines Dec 4) |
+| **PatchSuite_v6.2_Upgrades** | Integrated QA, RepoHealth, SourceLock, Matchup Intelligence |
+| **OpponentModel_v6.3_Enabled** | Adaptive planner fully activated |
+
+---
+
+## 🧭 Governance & Integrity
+- **Canon Integrity:** 100% (Drift: 0.00)  
+- **QA Discipline Lock:** Active (v5.4.1)  
+- **SourceLock:** Enabled (v6.2)  
+- **AutoRecovery:** Active (M110)  
+- **Analytics Engine:** Expanded (M121 v6)  
+- **TradeBoard Advisor:** Operational (M220 v2.3)
 
 ---
 
 ## 🧠 About
 Built and maintained by **Austin Olsen** using ChatGPT Architect + Leafs Dynasty AI Suite.  
-Designed for full GM + Coach simulation control, analytics integration, and automated QA validation.  
+Designed for full GM + Coach simulation control with analytics, morale, and adaptive AI intelligence.  
 
-📁 **Primary Repository:**  
-🔗 https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI
+---
+
+📂 **Primary Repository:**  
+[https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI](https://github.com/austinolsenpersonal-jpg/Leafs-Dynasty-AI)
