@@ -1,0 +1,55 @@
+{
+  "$schema": "Architect/Reports/schemas/ingest_config.schema.json",
+  "manifest_type": "game_log_index",
+  "version": "1.0.0",
+  "updated": "2024-12-10",
+  "description": "Index of all recorded Toronto Maple Leafs 2024–25 season game logs (manual ingest).",
+  
+  "team": "Toronto Maple Leafs",
+  "season": "2024-25",
+  "source": {
+    "maintained_by": "Austin Olsen",
+    "repository": "Leafs-Dynasty-AI",
+    "auto_ingest_enabled": true
+  },
+
+  "entries": [
+    {
+      "game_id": "2024-12-02_CHI_at_TOR",
+      "date_local": "2024-12-02",
+      "opponent": "Chicago Blackhawks",
+      "venue": "Scotiabank Arena",
+      "result": "W 7–3",
+      "file_path": "Architect/Reports/GameLogs/2024-12-02_CHI_at_TOR.json",
+      "schema": "Architect/Reports/schemas/game_log.schema.json",
+      "verified": true
+    },
+    {
+      "game_id": "2024-12-04_NSH_at_TOR",
+      "date_local": "2024-12-04",
+      "opponent": "Nashville Predators",
+      "venue": "Scotiabank Arena",
+      "result": "W 5–2",
+      "file_path": "Architect/Reports/GameLogs/2024-12-04_NSH_at_TOR.json",
+      "schema": "Architect/Reports/schemas/game_log.schema.json",
+      "verified": true
+    },
+    {
+      "game_id": "2024-12-08_WSH_at_TOR",
+      "date_local": "2024-12-08",
+      "opponent": "Washington Capitals",
+      "venue": "Scotiabank Arena",
+      "result": "W 5–1",
+      "file_path": "Architect/Reports/GameLogs/2024-12-08_WSH_at_TOR.json",
+      "schema": "Architect/Reports/schemas/game_log.schema.json",
+      "verified": true
+    }
+  ],
+
+  "integrity": {
+    "total_entries": 3,
+    "checksum_method": "sha256",
+    "last_validation": "2024-12-10",
+    "status": "clean"
+  }
+}
