@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "version": "1.0",
+    "schema_ref": "Architect/Reports/schemas/player_stats.schema.json",
+    "league": "AHL",
+    "team": "Toronto Marlies",
+    "season": "2024-25",
+    "last_updated": "2024-12-10"
+  },
+  "players": [
+    {
+      "name": "PLACEHOLDER",
+      "position": "C",
+      "games_played": 0,
+      "goals": 0,
+      "assists": 0,
+      "points": 0,
+      "plus_minus": 0,
+      "power_play_goals": 0,
+      "shorthanded_goals": 0,
+      "shots": 0,
+      "hits": 0,
+      "blocked_shots": 0,
+      "average_toi": "00:00",
+      "penalty_minutes": 0,
+      "game_winning_goals": 0
+    }
+  ]
+}
