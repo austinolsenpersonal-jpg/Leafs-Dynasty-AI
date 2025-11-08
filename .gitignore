@@ -1,1 +1,46 @@
+# Leafs Dynasty AI Repo – Optimized .gitignore
+# Prevents clutter, temp files, and mobile duplicates from uploading.
 
+# macOS & iOS system files
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+
+# Mobile uploads & cache
+*.HEIC
+*.jpeg.tmp
+*.jpg.tmp
+*.icloud
+*.icloud~*
+
+# VS Code / IDE folders
+.vscode/
+.idea/
+
+# Node modules (if ever reinstated)
+node_modules/
+
+# Architect auto-generated cache
+Architect/tmp/
+Architect/sanity/cache/
+Architect/QA/tmp/
+Architect/Reports/_archive/
+
+# Local environment metadata
+.env
+.env.local
+*.lock
