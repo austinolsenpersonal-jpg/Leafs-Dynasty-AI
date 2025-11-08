@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "season": "2024-25",
+  "game_date": "2024-12-04",
+  "game_id": "NSH@TOR-2024-12-04",
+  "venue": "home",
+  "opponent": "NSH",
+  "result": {"tor": 5, "opp": 2},
+  "summary": {
+    "period_goals": {"1": {"TOR": 0, "OPP": 0}, "2": {"TOR": 2, "OPP": 2}, "3": {"TOR": 3, "OPP": 0}},
+    "notes": "Trade Deadline note appears in March; ignore here."
+  },
+  "events": [
+    {"period":2,"time":"00:10","team":"NSH","type":"GOAL","scorer":"F. Forsberg","assists":["R. Josi","J. Marchessault"]},
+    {"period":2,"time":"07:35","team":"NSH","type":"GOAL","scorer":"C. Smith","assists":["M. McCarron"]},
+    {"period":2,"time":"13:16","team":"TOR","type":"GOAL","scorer":"A. Matthews","assists":["M. Knies","J. Woll"]},
+    {"period":2,"time":"17:08","team":"TOR","type":"GOAL","scorer":"N. Robertson","assists":["J. McCabe","B. Carlo"]},
+    {"period":3,"time":"00:52","team":"TOR","type":"GOAL","scorer":"M. Rielly","assists":["M. Marner","B. Carlo"]},
+    {"period":3,"time":"19:19","team":"TOR","type":"GOAL","scorer":"M. Knies","assists":["C. Tanev","A. Matthews"]},
+    {"period":3,"time":"19:51","team":"TOR","type":"GOAL","scorer":"A. Matthews","assists":["M. Knies","M. Marner"]}
+  ],
+  "team_stats": {
+    "shots_tor": 38, "shots_opp": 22,
+    "hits_tor": 31, "hits_opp": 46,
+    "time_on_attack_tor": "08:33", "time_on_attack_opp": "04:40",
+    "passing_tor_pct": 86.0, "passing_opp_pct": 93.9,
+    "faceoffs_won_tor": 11, "faceoffs_won_opp": 19,
+    "pims_tor": 2, "pims_opp": 2,
+    "pp_tor": "0/1 (02:00)", "pp_opp": "1/1 (00:16)",
+    "shg_tor": 0, "shg_opp": 0
+  },
+  "leafs_skaters": [
+    {"player":"M. Knies","min":"17:56","g":1,"a":2,"pts":3,"plusMinus":4,"shots":3,"hits":3},
+    {"player":"A. Matthews","min":"19:09","g":2,"a":1,"pts":3,"plusMinus":4,"shots":4},
+    {"player":"B. Carlo","min":"25:03","g":0,"a":2,"pts":2,"plusMinus":3},
+    {"player":"M. Marner","min":"15:59","g":0,"a":2,"pts":2,"plusMinus":4,"shots":5},
+    {"player":"N. Robertson","min":"17:41","g":1,"a":0,"pts":1,"plusMinus":1},
+    {"player":"J. McCabe","min":"24:08","g":0,"a":1,"pts":1,"plusMinus":2},
+    {"player":"M. Rielly","min":"22:00","g":1,"a":0,"pts":1,"plusMinus":3},
+    {"player":"C. Tanev","min":"21:26","g":0,"a":1,"pts":1,"plusMinus":1},
+    {"player":"M. Domi","min":"17:27","g":0,"a":0,"pts":0},
+    {"player":"D. Kämpf","min":"16:02","g":0,"a":0,"pts":0},
+    {"player":"M. Dumba","min":"09:48","g":0,"a":0,"pts":0},
+    {"player":"O. Ekman-Larsson","min":"13:52","g":0,"a":0,"pts":0,"plusMinus":-1}
+  ],
+  "leafs_goalies": [
+    {"goalie":"J. Woll","min":"60:00","sa":22,"saves":20,"sv_pct":0.909,"ga":2,"gaa":2.00}
+  ]
+}
