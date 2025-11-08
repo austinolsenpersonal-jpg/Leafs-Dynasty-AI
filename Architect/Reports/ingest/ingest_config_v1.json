@@ -1,0 +1,67 @@
+{
+  "version": "v1.0",
+  "team": "Toronto Maple Leafs",
+  "leagues": ["NHL", "AHL"],
+
+  "input_patterns": {
+    "nhl": {
+      "game_log": [
+        "Architect/Reports/games/NHL/2024-25/*.json"
+      ],
+      "team_stats": [
+        "Architect/Reports/stats/NHL/team_stats_*.json"
+      ],
+      "player_stats": [
+        "Architect/Reports/stats/NHL/player_stats_*.json"
+      ]
+    },
+    "ahl": {
+      "game_log": [
+        "Architect/Reports/games/AHL/2024-25/*.json"
+      ],
+      "team_stats": [
+        "Architect/Reports/stats/AHL/team_stats_*.json"
+      ],
+      "player_stats": [
+        "Architect/Reports/stats/AHL/player_stats_*.json"
+      ]
+    }
+  },
+
+  "filename_conventions": {
+    "game_log": "Architect/Reports/games/${league}/${season}/${date}_${opponent}_${homeAway}.json",
+    "team_stats": "Architect/Reports/stats/${league}/team_stats_${date}.json",
+    "player_stats": "Architect/Reports/stats/${league}/player_stats_${date}.json"
+  },
+
+  "placeholders": {
+    "league": "${league}",
+    "season": "${season}",
+    "date": "${date}",
+    "opponent": "${opponent}",
+    "homeAway": "${homeAway}"
+  },
+
+  "auto_fields": {
+    "season": "2024-25",
+    "timezone": "America/Toronto",
+    "home_tag": "vs",
+    "away_tag": "@"
+  },
+
+  "validation": {
+    "schemas": {
+      "game_log": "Architect/Reports/schemas/game_log.schema.json",
+      "team_stats": "Architect/Reports/schemas/team_stats.schema.json",
+      "player_stats": "Architect/Reports/schemas/player_stats.schema.json"
+    },
+    "fail_on_warning": false,
+    "strict_dates": true
+  },
+
+  "hooks": {
+    "build_gameplanner_cache": true,
+    "update_opponent_model": true,
+    "recalculate_lines_confidence": true
+  }
+}
