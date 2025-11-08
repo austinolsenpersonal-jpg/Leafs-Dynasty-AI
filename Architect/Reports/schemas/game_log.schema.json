@@ -1,135 +1,258 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Game Log Schema",
+  "$id": "https://leafs-dynasty-ai/schemas/game_log.schema.json",
+  "title": "Game Log",
+  "description": "Standardized per-game log for NHL/AHL matches so Dynasty AI and validators can ingest box scores, usage, and systems cleanly.",
   "type": "object",
-  "required": ["meta", "teams", "score", "stats"],
+  "additionalProperties": false,
+  "required": ["meta", "score", "team_stats", "goalies", "lines_snapshot"],
   "properties": {
     "meta": {
       "type": "object",
-      "required": ["game_id", "date", "opponent", "location", "league", "season", "result"],
+      "additionalProperties": false,
+      "required": ["league", "season", "game_id", "date", "opponent", "home_away", "venue", "source_images"],
       "properties": {
-        "game_id": { "type": "string" },
-        "date": { "type": "string", "format": "date" },
-        "opponent": { "type": "string" },
-        "location": { "type": "string", "enum": ["home", "away"] },
         "league": { "type": "string", "enum": ["NHL", "AHL"] },
-        "season": { "type": "string" },
-        "result": { "type": "string", "enum": ["win", "loss", "ot_loss", "so_win", "so_loss"] },
-        "final_score": { "type": "string", "pattern": "^[0-9]+-[0-9]+$" },
-        "save_file_ref": { "type": "string" }
-      },
-      "additionalProperties": false
-    },
-
-    "teams": {
-      "type": "object",
-      "required": ["home", "away"],
-      "properties": {
-        "home": { "type": "string" },
-        "away": { "type": "string" }
-      },
-      "additionalProperties": false
+        "season": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+        "game_id": { "type": "string", "description": "Your unique id, e.g., NHL-2024-12-10-NJD" },
+        "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "opponent": { "type": "string", "minLength": 2 },
+        "home_away": { "type": "string", "enum": ["HOME", "AWAY"] },
+        "venue": { "type": "string" },
+        "result": { "type": "string", "enum": ["W", "L", "OTL", "SOL"], "nullable": true },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Optional tags like 'back_to_back', 'rivalry', 'injury_return'"
+        },
+        "source_images": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "description": "Filename or path to the uploaded screenshot(s)" }
+        }
+      }
     },
 
     "score": {
       "type": "object",
-      "required": ["home_goals", "away_goals", "period_by_period"],
+      "additionalProperties": false,
+      "required": ["team", "opponent", "periods"],
       "properties": {
-        "home_goals": { "type": "integer", "minimum": 0 },
-        "away_goals": { "type": "integer", "minimum": 0 },
-        "period_by_period": {
+        "team": { "type": "integer", "minimum": 0 },
+        "opponent": { "type": "integer", "minimum": 0 },
+        "periods": {
           "type": "array",
+          "minItems": 3,
           "items": {
             "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "team", "opponent"],
             "properties": {
-              "period": { "type": "integer" },
-              "home": { "type": "integer" },
-              "away": { "type": "integer" }
-            },
-            "required": ["period", "home", "away"]
-          }
-        }
-      },
-      "additionalProperties": false
-    },
-
-    "stats": {
-      "type": "object",
-      "required": ["shots", "hits", "faceoffs", "powerplay", "penaltykill", "goaltending"],
-      "properties": {
-        "shots": {
-          "type": "object",
-          "properties": {
-            "home": { "type": "integer" },
-            "away": { "type": "integer" }
-          }
-        },
-        "hits": {
-          "type": "object",
-          "properties": {
-            "home": { "type": "integer" },
-            "away": { "type": "integer" }
-          }
-        },
-        "faceoffs": {
-          "type": "object",
-          "properties": {
-            "won": { "type": "integer" },
-            "lost": { "type": "integer" },
-            "percentage": { "type": "number" }
-          }
-        },
-        "powerplay": {
-          "type": "object",
-          "properties": {
-            "attempts": { "type": "integer" },
-            "goals": { "type": "integer" },
-            "percentage": { "type": "number" }
-          }
-        },
-        "penaltykill": {
-          "type": "object",
-          "properties": {
-            "times_shorthanded": { "type": "integer" },
-            "goals_allowed": { "type": "integer" },
-            "percentage": { "type": "number" }
-          }
-        },
-        "goaltending": {
-          "type": "object",
-          "properties": {
-            "starter": { "type": "string" },
-            "saves": { "type": "integer" },
-            "shots_against": { "type": "integer" },
-            "save_pct": { "type": "number" },
-            "goals_allowed": { "type": "integer" }
-          }
-        },
-        "penalties": {
-          "type": "object",
-          "properties": {
-            "minutes": { "type": "integer" },
-            "infractions": { "type": "array", "items": { "type": "string" } }
-          }
-        },
-        "top_performers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "player": { "type": "string" },
-              "goals": { "type": "integer" },
-              "assists": { "type": "integer" },
-              "points": { "type": "integer" },
-              "plus_minus": { "type": "integer" },
-              "shots": { "type": "integer" },
-              "toi": { "type": "string" }
+              "label": { "type": "string", "enum": ["P1", "P2", "P3", "OT", "SO"] },
+              "team": { "type": "integer", "minimum": 0 },
+              "opponent": { "type": "integer", "minimum": 0 }
             }
           }
         }
-      },
-      "additionalProperties": false
+      }
+    },
+
+    "team_stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shots_for", "shots_against", "hits", "fo_pct", "pp", "pk", "toa_mm", "toa_ss"],
+      "properties": {
+        "shots_for": { "type": "integer", "minimum": 0 },
+        "shots_against": { "type": "integer", "minimum": 0 },
+        "hits": { "type": "integer", "minimum": 0 },
+        "fo_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "pp": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goals", "attempts"],
+          "properties": {
+            "goals": { "type": "integer", "minimum": 0 },
+            "attempts": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "pk": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["goals_against", "kills"],
+          "properties": {
+            "goals_against": { "type": "integer", "minimum": 0 },
+            "kills": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "toa_mm": { "type": "integer", "minimum": 0, "description": "Time on attack (minutes)" },
+        "toa_ss": { "type": "integer", "minimum": 0, "maximum": 59, "description": "Time on attack (seconds remainder)" },
+        "blocks": { "type": "integer", "minimum": 0 },
+        "giveaways": { "type": "integer", "minimum": 0 },
+        "takeaways": { "type": "integer", "minimum": 0 }
+      }
+    },
+
+    "goalies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "minutes", "shots_against", "saves", "ga", "result"],
+        "properties": {
+          "name": { "type": "string" },
+          "minutes": { "type": "number", "minimum": 0 },
+          "shots_against": { "type": "integer", "minimum": 0 },
+          "saves": { "type": "integer", "minimum": 0 },
+          "ga": { "type": "integer", "minimum": 0 },
+          "result": { "type": "string", "enum": ["W", "L", "ND"], "description": "ND = no decision" }
+        }
+      }
+    },
+
+    "skaters": {
+      "type": "array",
+      "description": "Optional per-skater line for the game (lite form; full season stats live elsewhere).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "pos"],
+        "properties": {
+          "name": { "type": "string" },
+          "pos": { "type": "string", "enum": ["C", "LW", "RW", "D"] },
+          "g": { "type": "integer", "minimum": 0 },
+          "a": { "type": "integer", "minimum": 0 },
+          "pts": { "type": "integer", "minimum": 0 },
+          "pm": { "type": "integer" },
+          "shots": { "type": "integer", "minimum": 0 },
+          "hits": { "type": "integer", "minimum": 0 },
+          "blocks": { "type": "integer", "minimum": 0 },
+          "toi_mm": { "type": "integer", "minimum": 0 },
+          "toi_ss": { "type": "integer", "minimum": 0, "maximum": 59 },
+          "fo_pct": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+
+    "lines_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nhl_lines_file", "active_lines"],
+      "properties": {
+        "nhl_lines_file": { "type": "string", "description": "Path in repo used for this game (e.g., Architect/Lines/NHL/NHL_Lines_2024-12-10.json)" },
+        "active_lines": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["L1", "L2", "L3", "L4", "D1", "D2", "D3", "starter_goalie"],
+          "properties": {
+            "L1": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 3 },
+            "L2": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 3 },
+            "L3": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 3 },
+            "L4": { "type": "array", "items": { "type": "string" }, "minItems": 3, "maxItems": 3 },
+            "D1": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 },
+            "D2": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 },
+            "D3": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 },
+            "scratches": { "type": "array", "items": { "type": "string" } },
+            "starter_goalie": { "type": "string" }
+          }
+        },
+        "pp_units": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pp1", "pp2"],
+          "properties": {
+            "pp1": { "type": "array", "items": { "type": "string" }, "minItems": 5, "maxItems": 5 },
+            "pp2": { "type": "array", "items": { "type": "string" }, "minItems": 5, "maxItems": 5 }
+          }
+        },
+        "pk_units": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pk1", "pk2"],
+          "properties": {
+            "pk1": { "type": "array", "items": { "type": "string" }, "minItems": 4, "maxItems": 4 },
+            "pk2": { "type": "array", "items": { "type": "string" }, "minItems": 4, "maxItems": 4 }
+          }
+        }
+      }
+    },
+
+    "systems_used": {
+      "type": "object",
+      "description": "What you actually used in-game (for learning/adaptation).",
+      "additionalProperties": false,
+      "required": ["forecheck", "neutral_zone", "def_pressure", "def_strategy", "off_pressure", "control_breakout", "quick_breakout"],
+      "properties": {
+        "forecheck": { "type": "string", "enum": ["1-2-2 Passive", "1-2-2 Aggressive", "2-3", "Weak Side Lock"] },
+        "neutral_zone": { "type": "string", "enum": ["1-3-1", "1-2-2 Red", "1-2-2 Blue", "1-4"] },
+        "def_pressure": { "type": "string", "enum": ["Protect Net", "Contain Puck", "Normal", "Puck Side Attack", "High Pressure"] },
+        "def_strategy": { "type": "string", "enum": ["Collapsing", "Staggered", "Tight Point"] },
+        "off_pressure": { "type": "string", "enum": ["Defend Lead", "Conservative", "Standard", "Aggressive", "Full Attack"] },
+        "control_breakout": { "type": "string", "enum": ["Strong Side Slant", "Blue to Blue", "Three High"] },
+        "quick_breakout": { "type": "string", "enum": ["Close Support", "Stay Wide", "Leave Zone Early"] }
+      }
+    },
+
+    "sliders_used": {
+      "type": "object",
+      "description": "Snapshot of the exact line sliders used (your preferred output format).",
+      "additionalProperties": false,
+      "properties": {
+        "offense": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "L1": { "$ref": "#/$defs/offense_line" },
+            "L2": { "$ref": "#/$defs/offense_line" },
+            "L3": { "$ref": "#/$defs/offense_line" },
+            "L4": { "$ref": "#/$defs/offense_line" }
+          }
+        },
+        "defense": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "D1": { "$ref": "#/$defs/def_pair" },
+            "D2": { "$ref": "#/$defs/def_pair" },
+            "D3": { "$ref": "#/$defs/def_pair" }
+          }
+        }
+      }
+    },
+
+    "notes": {
+      "type": "string",
+      "description": "Any quick context: injuries, matchups, adjustments you made."
     }
   },
-  "additionalProperties": false
+
+  "$defs": {
+    "offense_line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "carry", "dump", "cycle", "shoot", "efficiency", "energy", "dont_block", "block"],
+      "properties": {
+        "strategy": { "type": "string", "enum": ["Overload", "Behind the Net", "Crash the Net"] },
+        "carry": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "dump": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "cycle": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "shoot": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "efficiency": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "energy": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "dont_block": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "block": { "type": "integer", "minimum": 0, "maximum": 10 }
+      }
+    },
+    "def_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hold_line", "pinch", "cycle", "shoot"],
+      "properties": {
+        "hold_line": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "pinch": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "cycle": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "shoot": { "type": "integer", "minimum": 0, "maximum": 10 }
+      }
+    }
+  }
 }
