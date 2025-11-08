@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Season Player Stats",
+  "type": "object",
+  "required": ["season", "team", "players"],
+  "properties": {
+    "season": { "type": "string", "pattern": "^2024-25$" },
+    "team": { "type": "string", "const": "TOR" },
+    "updated_at": { "type": "string" },
+    "players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "pos", "gp", "g", "a", "p"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "pos": { "type": "string" },
+          "hand": { "type": "string", "enum": ["L", "R"] },
+          "gp": { "type": "integer" },
+          "g": { "type": "integer" },
+          "a": { "type": "integer" },
+          "p": { "type": "integer" },
+          "pm": { "type": "integer" },
+          "s": { "type": "integer" },
+          "sh_pct": { "type": "number" },
+          "ppg": { "type": "integer" },
+          "ppa": { "type": "integer" },
+          "shg": { "type": "integer" },
+          "sha": { "type": "integer" },
+          "gwg": { "type": "integer" },
+          "toi_avg": { "type": "string" },
+          "hits": { "type": "integer" },
+          "blk": { "type": "integer" },
+          "fo_pct": { "type": "number" }
+        }
+      }
+    }
+  }
+}
