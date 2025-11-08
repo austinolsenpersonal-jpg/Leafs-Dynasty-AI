@@ -1,0 +1,60 @@
+{
+  "$schema": "Architect/Reports/schemas/ingest_config.schema.json",
+  "manifest_type": "player_stats_index",
+  "version": "1.0.0",
+  "updated": "2024-12-10",
+  "team": "Toronto Maple Leafs",
+  "organization": "Toronto Maple Leafs / Toronto Marlies",
+  "season": "2024-25",
+  "source": {
+    "maintained_by": "Austin Olsen",
+    "repository": "Leafs-Dynasty-AI",
+    "auto_ingest_enabled": true
+  },
+
+  "entries": [
+    {
+      "level": "NHL",
+      "category": "team_stats",
+      "date_local": "2024-12-10",
+      "file_path": "Architect/Reports/TeamStats/NHL/2024-12-10_team_stats.json",
+      "schema": "Architect/Reports/schemas/team_stats.schema.json",
+      "verified": false,
+      "notes": "League table + special teams + last 10"
+    },
+    {
+      "level": "NHL",
+      "category": "player_stats",
+      "date_local": "2024-12-10",
+      "file_path": "Architect/Reports/PlayerStats/NHL/2024-12-10_player_stats.json",
+      "schema": "Architect/Reports/schemas/player_stats.schema.json",
+      "verified": false,
+      "notes": "Skaters + goalies snapshot"
+    },
+    {
+      "level": "AHL",
+      "category": "team_stats",
+      "date_local": "2024-12-10",
+      "file_path": "Architect/Reports/TeamStats/AHL/2024-12-10_team_stats.json",
+      "schema": "Architect/Reports/schemas/team_stats.schema.json",
+      "verified": false,
+      "notes": "Marlies standings + special teams + last 10"
+    },
+    {
+      "level": "AHL",
+      "category": "player_stats",
+      "date_local": "2024-12-10",
+      "file_path": "Architect/Reports/PlayerStats/AHL/2024-12-10_player_stats.json",
+      "schema": "Architect/Reports/schemas/player_stats.schema.json",
+      "verified": false,
+      "notes": "Marlies skaters + goalies snapshot"
+    }
+  ],
+
+  "integrity": {
+    "total_entries": 4,
+    "checksum_method": "sha256",
+    "last_validation": "2024-12-10",
+    "status": "pending_uploads"
+  }
+}
