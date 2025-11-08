@@ -1,0 +1,58 @@
+{
+  "$schema": "Architect/Reports/schemas/game_log.schema.json",
+  "game_id": "2024-12-04_NSH_at_TOR",
+  "season": "2024-25",
+  "date_local": "2024-12-04",
+  "venue": "Scotiabank Arena",
+  "source": {
+    "captured_by": "Austin",
+    "screens": ["final_team_stats", "events", "leafs_skater_stats", "leafs_goalie_stats"],
+    "ingest_method": "manual"
+  },
+
+  "teams": {
+    "home": { "name": "Toronto Maple Leafs", "abbr": "TOR" },
+    "away": { "name": "Nashville Predators", "abbr": "NSH" }
+  },
+
+  "result": { "winner": "TOR", "decision": "regulation" },
+
+  "score": {
+    "final": { "TOR": 5, "NSH": 2 },
+    "by_period": [
+      { "period": 1, "TOR": 0, "NSH": 0 },
+      { "period": 2, "TOR": 2, "NSH": 2 },
+      { "period": 3, "TOR": 3, "NSH": 0 }
+    ]
+  },
+
+  "events": {
+    "goals": [
+      { "period": 2, "time": "00:10", "team": "NSH", "scorer": "F. Forsberg", "assists": ["R. Josi", "J. Marchessault"] },
+      { "period": 2, "time": "07:35", "team": "NSH", "scorer": "C. Smith", "assists": ["M. McCarron"] },
+
+      { "period": 2, "time": "13:16", "team": "TOR", "scorer": "A. Matthews", "assists": ["M. Knies", "J. Woll"] },
+      { "period": 2, "time": "17:08", "team": "TOR", "scorer": "N. Robertson", "assists": ["J. McCabe", "B. Carlo"] },
+
+      { "period": 3, "time": "00:52", "team": "TOR", "scorer": "M. Rielly", "assists": ["M. Marner", "B. Carlo"] },
+      { "period": 3, "time": "19:19", "team": "TOR", "scorer": "M. Knies", "assists": ["C. Tanev", "A. Matthews"] },
+      { "period": 3, "time": "19:51", "team": "TOR", "scorer": "A. Matthews", "assists": ["M. Knies", "M. Marner"] }
+    ],
+    "penalties": [
+      { "period": 1, "time": "19:53", "team": "TOR", "player": "C. Tanev", "infraction": "Slashing", "minutes": 2 }
+    ]
+  },
+
+  "goalies": {
+    "TOR": [
+      { "player": "J. Woll", "toi": "60:00", "sa": 22, "sv": 20, "ga": 2, "sv_pct": 0.909, "gaa": 2.00, "so": 0 }
+    ],
+    "NSH": []
+  },
+
+  "notes": [
+    "Team totals screen shows TOR 38 shots to NSH 22; PP: TOR 0/1, NSH 1/1.",
+    "Third-period surge sealed it: Rielly early, Knies and Matthews in final minute.",
+    "Penalty at 07:21 of 3rd shown as NSH Interference; name looked like 'B. Skjei' on-screen (likely UI mix-up). Omitted from penalties for accuracy."
+  ]
+}
