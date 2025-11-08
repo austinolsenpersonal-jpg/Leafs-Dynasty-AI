@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "team": "Toronto Marlies",
+    "league": "AHL",
+    "date": "2024-12-10",
+    "season": "2024-25",
+    "games_played": 19
+  },
+  "skaters": [
+    { "player": "R. Hirvonen", "pos": "C", "gp": 16, "g": 8, "a": 7, "pts": 15, "+/-": 2, "pim": 6, "s": 30, "s%": 26.7, "gwg": 1, "ppg": 1, "ppp": 3 },
+    { "player": "N. Abruzzese", "pos": "C", "gp": 19, "g": 8, "a": 7, "pts": 15, "+/-": 2, "pim": 10, "s": 46, "s%": 17.4, "gwg": 1, "ppg": 1, "ppp": 4 },
+    { "player": "N. Mattinen", "pos": "RD/LD", "gp": 19, "g": 4, "a": 8, "pts": 12, "+/-": 5, "pim": 17, "s": 36, "s%": 11.1, "gwg": 1, "ppg": 0, "ppp": 0 },
+    { "player": "L. Shaw", "pos": "RW/C", "gp": 19, "g": 7, "a": 4, "pts": 11, "+/-": 7, "pim": 26, "s": 41, "s%": 17.1, "gwg": 1, "ppg": 1, "ppp": 1 },
+    { "player": "J. Quillan", "pos": "C/LW", "gp": 19, "g": 3, "a": 8, "pts": 11, "+/-": 7, "pim": 20, "s": 26, "s%": 11.5, "gwg": 1, "ppg": 0, "ppp": 1 },
+    { "player": "T. Niemelä", "pos": "RD", "gp": 19, "g": 3, "a": 6, "pts": 9, "+/-": -1, "pim": 4, "s": 35, "s%": 8.6, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "D. Mermis", "pos": "LD/RD", "gp": 19, "g": 0, "a": 9, "pts": 9, "+/-": 8, "pim": 4, "s": 24, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "A. Nylander", "pos": "RW/LW", "gp": 19, "g": 4, "a": 4, "pts": 8, "+/-": 3, "pim": 2, "s": 39, "s%": 10.3, "gwg": 0, "ppg": 0, "ppp": 2 },
+    { "player": "R. Johnson", "pos": "C/RW", "gp": 19, "g": 2, "a": 6, "pts": 8, "+/-": 3, "pim": 4, "s": 29, "s%": 6.9, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "M. Kokkonen", "pos": "LD/RD", "gp": 19, "g": 0, "a": 7, "pts": 7, "+/-": -4, "pim": 6, "s": 20, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "R. Tverberg", "pos": "RW", "gp": 16, "g": 3, "a": 2, "pts": 5, "+/-": -8, "pim": 6, "s": 29, "s%": 10.3, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "C. Paré", "pos": "C", "gp": 17, "g": 3, "a": 1, "pts": 4, "+/-": 1, "pim": 2, "s": 23, "s%": 13.0, "gwg": 1, "ppg": 0, "ppp": 0 },
+    { "player": "W. Villeneuve", "pos": "RD/LD", "gp": 16, "g": 2, "a": 1, "pts": 3, "+/-": 3, "pim": 8, "s": 26, "s%": 7.7, "gwg": 1, "ppg": 0, "ppp": 0 },
+    { "player": "V. Miettinen", "pos": "RW", "gp": 10, "g": 2, "a": 0, "pts": 2, "+/-": -1, "pim": 0, "s": 11, "s%": 18.2, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "T. Miller", "pos": "RD/LD", "gp": 3, "g": 1, "a": 1, "pts": 2, "+/-": -1, "pim": 2, "s": 1, "s%": 100.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "C. Webber", "pos": "LD", "gp": 2, "g": 0, "a": 2, "pts": 2, "+/-": 4, "pim": 0, "s": 1, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "K. Clifford", "pos": "LW", "gp": 12, "g": 0, "a": 1, "pts": 1, "+/-": -2, "pim": 9, "s": 16, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "M. Barbolini", "pos": "C/LW", "gp": 2, "g": 1, "a": 0, "pts": 1, "+/-": -1, "pim": 0, "s": 3, "s%": 33.3, "gwg": 1, "ppg": 1, "ppp": 0 },
+    { "player": "B. Baddock", "pos": "LW/C", "gp": 12, "g": 0, "a": 1, "pts": 1, "+/-": 4, "pim": 4, "s": 10, "s%": 10.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "Z. Solow", "pos": "C/RW", "gp": 2, "g": 0, "a": 0, "pts": 0, "+/-": -1, "pim": 0, "s": 3, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "J. Blandisi", "pos": "C/LW", "gp": 5, "g": 0, "a": 0, "pts": 0, "+/-": -2, "pim": 2, "s": 8, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 }
+  ],
+  "goalies": [
+    { "player": "M. Murray", "gp": 10, "w": 7, "l": 3, "otl": 0, "so": 2, "sv%": 0.924, "gaa": 2.09, "shots": 277, "saves": 256, "ga": 21, "min": 603 },
+    { "player": "D. Hildeby", "gp": 9, "w": 7, "l": 1, "otl": 1, "so": 0, "sv%": 0.917, "gaa": 2.50, "shots": 279, "saves": 256, "ga": 23, "min": 553 }
+  ]
+}
