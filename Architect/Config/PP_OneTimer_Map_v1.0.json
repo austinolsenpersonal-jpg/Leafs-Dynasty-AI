@@ -1,0 +1,6 @@
+{
+  "meta": {"version":"1.0","team":"TOR","schema":"pp_map.v1"},
+  "pp1": {"qb":"Rielly","l_flank":"Matthews","r_flank":"Marner","bumper":"Nylander","net":"Tavares"},
+  "pp2": {"point_l":"Rielly","point_r":"Dumba","middle":"Mercer","low_l":"Domi","low_r":"Robertson"},
+  "rules":{"one_timer_lock":true,"handedness_enforce":true}
+}
