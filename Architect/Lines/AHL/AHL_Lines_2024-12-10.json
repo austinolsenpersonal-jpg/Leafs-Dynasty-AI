@@ -1,0 +1,61 @@
+{
+  "team": "Toronto Marlies",
+  "level": "AHL",
+  "schema_version": "1.3",
+  "timestamp": "2024-12-10",
+  "context": {
+    "source": "in-game screenshots (you provided)",
+    "note": "Exact mirror of current AHL lines & special teams"
+  },
+
+  "even_strength": {
+    "forward_lines": [
+      { "line": 1, "lw": "J. Quillan",   "c": "R. Johnson",  "rw": "A. Nylander",  "chemistry_hint": 0 },
+      { "line": 2, "lw": "B. Baddock",   "c": "N. Abruzzese","rw": "L. Shaw",      "chemistry_hint": 0 },
+      { "line": 3, "lw": "K. Clifford",  "c": "J. Blandisi", "rw": "R. Tverberg",  "chemistry_hint": 0 },
+      { "line": 4, "lw": "M. Barbolini", "c": "R. Hirvonen", "rw": "Z. Solow",     "chemistry_hint": 0 }
+    ],
+    "defense_pairs": [
+      { "pair": 1, "ld": "M. Kokkonen",  "rd": "T. Niemelä" },
+      { "pair": 2, "ld": "W. Villeneuve","rd": "N. Mattinen" },
+      { "pair": 3, "ld": "C. Webber",    "rd": "D. Mermis" }
+    ],
+    "goalies": [
+      { "slot": 1, "g": "M. Murray",   "role": "starter" },
+      { "slot": 2, "g": "D. Hildeby",  "role": "backup" }
+    ]
+  },
+
+  "special_teams": {
+    "power_play": {
+      "pp1": {
+        "formation": "1-3-1",
+        "qb_d": "N. Mattinen",
+        "flank_left": "A. Nylander",
+        "flank_right": "L. Shaw",
+        "bumper": "R. Johnson",
+        "net_front": "—",
+        "second_d": "T. Niemelä"
+      },
+      "pp2": {
+        "formation": "Umbrella",
+        "c": "J. Quillan",
+        "lw": "N. Abruzzese",
+        "rw": "R. Hirvonen",
+        "ld": "M. Kokkonen",
+        "rd": "D. Mermis"
+      }
+    },
+    "penalty_kill": {
+      "pk1": { "c": "R. Johnson", "w": "L. Shaw",   "ld": "T. Niemelä",  "rd": "C. Webber",    "shape": "Box" },
+      "pk2": { "c": "B. Baddock", "w": "K. Clifford","ld": "W. Villeneuve","rd": "N. Mattinen","shape": "Box" },
+      "pk3": { "c": "J. Blandisi","w": "R. Tverberg","ld": "M. Kokkonen","rd": "D. Mermis",   "shape": "Box" }
+    }
+  },
+
+  "scratches": [
+    "V. Miettinen", "S. Stevens", "T. Miller", "R. Mastrosimone",
+    "C. Paré", "B. Valis", "M. Koster",
+    "I. Akhtyamov", "A. Peksa"
+  ]
+}
