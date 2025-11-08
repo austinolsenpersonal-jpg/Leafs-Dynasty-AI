@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "version": "1.0",
+    "schema_ref": "Architect/Reports/schemas/player_stats.schema.json",
+    "team": "Toronto Maple Leafs",
+    "season": "2024-25",
+    "last_updated": "2024-12-10"
+  },
+  "players": [
+    {
+      "name": "Auston Matthews",
+      "position": "C",
+      "games_played": 28,
+      "goals": 23,
+      "assists": 15,
+      "points": 38,
+      "plus_minus": 12,
+      "power_play_goals": 8,
+      "shorthanded_goals": 0,
+      "shots": 142,
+      "hits": 25,
+      "blocked_shots": 12,
+      "average_toi": "20:42",
+      "penalty_minutes": 10,
+      "game_winning_goals": 3
+    },
+    {
+      "name": "Mitchell Marner",
+      "position": "RW",
+      "games_played": 28,
+      "goals": 11,
+      "assists": 24,
+      "points": 35,
+      "plus_minus": 8,
+      "power_play_goals": 3,
+      "shorthanded_goals": 1,
+      "shots": 98,
+      "hits": 14,
+      "blocked_shots": 9,
+      "average_toi": "21:05",
+      "penalty_minutes": 8,
+      "game_winning_goals": 2
+    }
+  ]
+}
