@@ -1,0 +1,26 @@
+name: Validate Game Logs
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "Architect/Reports/GameLogs/**.json"
+      - "Architect/Reports/schemas/GameLog.schema.json"
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ajv-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install AJV CLI
+        run: npm i -D ajv@8 ajv-cli@5
+      - name: Validate game logs
+        run: |
+          npx ajv -s Architect/Reports/schemas/GameLog.schema.json \
+                  -d 'Architect/Reports/GameLogs/**.json'
