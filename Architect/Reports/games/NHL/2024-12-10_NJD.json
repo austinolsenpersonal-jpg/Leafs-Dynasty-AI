@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "game_id": "NHL-2024-12-10-NJD",
+    "date": "2024-12-10",
+    "opponent": "New Jersey Devils",
+    "location": "away",
+    "league": "NHL",
+    "season": "2024-25",
+    "result": "win",
+    "final_score": "3-2",
+    "save_file_ref": "UPDATE_ME_AFTER_GAME"
+  },
+  "teams": {
+    "home": "New Jersey Devils",
+    "away": "Toronto Maple Leafs"
+  },
+  "score": {
+    "home_goals": 2,
+    "away_goals": 3,
+    "period_by_period": [
+      { "period": 1, "home": 0, "away": 1 },
+      { "period": 2, "home": 1, "away": 1 },
+      { "period": 3, "home": 1, "away": 1 }
+    ]
+  },
+  "stats": {
+    "shots": { "home": 28, "away": 30 },
+    "hits": { "home": 21, "away": 26 },
+    "faceoffs": { "won": 28, "lost": 30, "percentage": 48.3 },
+    "powerplay": { "attempts": 3, "goals": 1, "percentage": 33.3 },
+    "penaltykill": { "times_shorthanded": 2, "goals_allowed": 0, "percentage": 100.0 },
+    "goaltending": {
+      "starter": "Anthony Stolarz",
+      "saves": 26,
+      "shots_against": 28,
+      "save_pct": 0.929,
+      "goals_allowed": 2
+    },
+    "penalties": {
+      "minutes": 6,
+      "infractions": ["Hooking", "Tripping", "Interference"]
+    },
+    "top_performers": [
+      {
+        "player": "Auston Matthews",
+        "goals": 1,
+        "assists": 0,
+        "points": 1,
+        "plus_minus": 0,
+        "shots": 5,
+        "toi": "20:45"
+      },
+      {
+        "player": "Mitch Marner",
+        "goals": 0,
+        "assists": 2,
+        "points": 2,
+        "plus_minus": 1,
+        "shots": 3,
+        "toi": "21:12"
+      },
+      {
+        "player": "Anthony Stolarz",
+        "goals": 0,
+        "assists": 0,
+        "points": 0,
+        "plus_minus": 0,
+        "shots": 0,
+        "toi": "60:00"
+      }
+    ]
+  }
+}
