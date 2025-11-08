@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "season": "2024-25",
+  "game_date": "2024-12-06",
+  "game_id": "WSH@TOR-2024-12-06",
+  "venue": "home",
+  "opponent": "WSH",
+  "result": {"tor": 5, "opp": 1},
+  "summary": {
+    "period_goals": {"1": {"TOR": 1, "OPP": 0}, "2": {"TOR": 0, "OPP": 1}, "3": {"TOR": 4, "OPP": 0}}
+  },
+  "events": [
+    {"period":1,"time":"17:22","team":"TOR","type":"GOAL","scorer":"M. Domi","assists":[]},
+    {"period":2,"time":"10:21","team":"WSH","type":"GOAL","scorer":"N. Dowd","assists":["S. Milano","T. Raddysh"]},
+    {"period":3,"time":"03:38","team":"TOR","type":"GOAL","scorer":"J. Tavares","assists":["B. Carlo"]},
+    {"period":3,"time":"07:45","team":"TOR","type":"GOAL","scorer":"D. Mercer","assists":[]},
+    {"period":3,"time":"11:24","team":"TOR","type":"GOAL","scorer":"A. Matthews","assists":["J. Tavares"]},
+    {"period":3,"time":"12:12","team":"TOR","type":"GOAL","scorer":"M. Domi","assists":["B. Carlo"]}
+  ],
+  "leafs_skaters": [
+    {"player":"J. Tavares","min":"14:52","g":1,"a":1,"pts":2,"shots":4,"ppg":1,"fow":7,"fol":12},
+    {"player":"M. Domi","min":"15:53","g":2,"a":0,"pts":2,"plusMinus":3,"shots":2,"gwg":0},
+    {"player":"B. Carlo","min":"22:17","g":0,"a":2,"pts":2,"pim":"02:00"},
+    {"player":"D. Mercer","min":"14:43","g":1,"a":0,"pts":1,"shots":3},
+    {"player":"A. Matthews","min":"19:33","g":1,"a":0,"pts":1,"shots":3},
+    {"player":"M. Pacioretty","min":"09:51","g":0,"a":0,"pts":0},
+    {"player":"M. Knies","min":"20:54","g":0,"a":0,"pts":0,"hits":3},
+    {"player":"O. Ekman-Larsson","min":"18:13","g":0,"a":0,"pts":0,"plusMinus":-1},
+    {"player":"M. Rielly","min":"21:48","g":0,"a":0,"pts":0,"plusMinus":1},
+    {"player":"C. Tanev","min":"19:13","g":0,"a":0,"pts":0,"plusMinus":2},
+    {"player":"W. Nylander","min":"13:31","g":0,"a":0,"pts":0}
+  ],
+  "leafs_goalies": [
+    {"goalie":"A. Stolarz","min":"60:00","sa":21,"saves":20,"sv_pct":0.952,"ga":1,"gaa":1.00}
+  ]
+}
