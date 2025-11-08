@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "name": "Leafs Dynasty – Matchup Output Spec",
+    "version": "1.0",
+    "canon": "v4.1",
+    "architect_config_min": "v6.2",
+    "notes": "Fixes a single, predictable output shape for /matchup while allowing adaptive values."
+  },
+  "format": {
+    "sections_order": [
+      "header",
+      "team_systems",
+      "line_strategies_offense",
+      "line_sliders_defense",
+      "special_teams",
+      "starting_goalie_and_matchups",
+      "coaching_triggers",
+      "why_rationale"
+    ],
+    "header": "🧭 Game Plan – @ {{opponent}} ({{date}})",
+    "team_systems_keys": [
+      "Forecheck",
+      "Neutral Zone",
+      "Defensive Strategy",
+      "Defensive Pressure",
+      "Offensive Pressure",
+      "Control Breakout",
+      "Quick Breakout"
+    ],
+    "offense_line_row": "offense: {{strategy}} | Carry {{carry}}/Dump {{dump}} | Cycle {{cycle}}/Shoot {{shoot}} | Efficiency {{eff}}/Energy {{eng}} | Don’t Block {{dontblock}}/Block {{block}}",
+    "defense_pair_row": "defense: Hold Line {{hold}}/Pinch {{pinch}} | Cycle {{dcycle}}/Shoot {{dshoot}}",
+    "lines_block_order": ["L1","L2","L3","L4"],
+    "pairs_block_order": ["D1","D2","D3"],
+    "always_include": {
+      "starting_goalie": true,
+      "line_matchups": true,
+      "pp_pk_units": true,
+      "one_timer_map_check": true
+    },
+    "naming": {
+      "dont_infer_injuries": true,
+      "dont_invent_players": true,
+      "use_players_from": "source_map.lines_nhl",
+      "scratches_policy": "reflect_lines_file_only"
+    }
+  },
+  "rules": {
+    "roster_guard": "strict",
+    "unknown_player_policy": "reject_and_prompt_for_lines_import",
+    "handedness_check": "enforce_one_timers",
+    "pp_pk_formations_legal": {
+      "pp": ["1-3-1", "Umbrella", "Shooting", "Overload"],
+      "pk": ["1-1-2", "Diamond", "Passive Box", "Large Box", "Wedge + 1"]
+    },
+    "systems_legal": {
+      "Forecheck": ["1-2-2 Passive", "1-2-2 Aggressive", "2-3", "Weak Side Lock"],
+      "Neutral Zone": ["1-3-1", "1-2-2 Red", "1-2-2 Blue", "1-4"],
+      "Defensive Strategy": ["Collapsing", "Staggered", "Tight Point"],
+      "Defensive Pressure": ["Protect Net", "Contain Puck", "Normal", "Puck Side Attack", "High Pressure"],
+      "Offensive Pressure": ["Defend Lead", "Conservative", "Standard", "Aggressive", "Full Attack"],
+      "Control Breakout": ["Strong Side Slant", "Blue to Blue", "Three High"],
+      "Quick Breakout": ["Close Support", "Stay Wide", "Leave Zone Early"]
+    },
+    "slider_scales": {
+      "min": 0,
+      "max": 10,
+      "enforce_integers": true
+    },
+    "goalie_rule": {
+      "prefer_from_lines_file": true,
+      "allow_override": true
+    }
+  },
+  "outputs": {
+    "force_template": true,
+    "markdown_safe": true,
+    "iphone_safe_blocks": true,
+    "no_extra_sections": true,
+    "no_renaming": true
+  }
+}
