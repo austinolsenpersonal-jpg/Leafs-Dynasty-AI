@@ -1,0 +1,91 @@
+{
+  "name": "Matchup Template – Standard v5.0",
+  "version": "5.0",
+  "type": "matchup_template",
+  "context": {
+    "team": "Toronto Maple Leafs",
+    "canon_version": "v4.1",
+    "architect_config": "v6.2",
+    "slider_reference": "Architect/Config/Leafs_SliderReference_v4.8.json",
+    "description": "Defines standard matchup layout and logic for game plan generation with adaptive opponent tuning."
+  },
+
+  "structure_order": [
+    "team_strategies",
+    "goalie_plan",
+    "offensive_line_strategies",
+    "defensive_pair_sliders",
+    "suggested_starting_lines",
+    "line_matchups",
+    "special_teams",
+    "in_game_adjustments",
+    "key_player_objectives",
+    "game_projection"
+  ],
+
+  "behavior_rules": {
+    "respect_current_lines": true,
+    "respect_scratches": true,
+    "auto_scratches": false,
+    "use_goalie_rotation_plan": true,
+    "require_user_confirmation_for_line_changes": true,
+    "fallback_strategy": "Hybrid Adaptive",
+    "enforce_slider_reference": true
+  },
+
+  "formatting": {
+    "include_slider_format": true,
+    "indentation": 2,
+    "max_line_length": 120,
+    "use_emoji_headers": true,
+    "section_spacing": "standard"
+  },
+
+  "adaptive_logic": {
+    "opponent_analysis_source": "Architect/Config/OpponentModel_v6.3.json",
+    "consider_last_games": 3,
+    "analyze_trends": ["rush_entries", "pp_efficiency", "slot_shots", "giveaways"],
+    "adjust_forecheck_dynamically": true,
+    "adjust_goalie_starts_based_on_form": true,
+    "adapt_slider_bias": true
+  },
+
+  "output_format": {
+    "sliders": {
+      "offense": "<Strategy> | Carry X/Dump Y | Cycle X/Shoot Y | Efficiency X/Energy Y | Don’t Block X/Block Y",
+      "defense": "Hold Line X/Pinch Y | Cycle X/Shoot Y"
+    },
+    "line_format": "L# (LW – C – RW)",
+    "pair_format": "D# (LD – RD)",
+    "goaltender_format": "Starter: <Name> | Backup: <Name> | Rotation: <Logic>"
+  },
+
+  "safeguards": {
+    "min_confidence_threshold": 0.85,
+    "require_current_roster_lock": true,
+    "warn_if_missing_lines": true,
+    "abort_on_unknown_player": true,
+    "abort_on_injury_status_mismatch": true
+  },
+
+  "integration": {
+    "modules": [
+      "M121_Analytics_Expansion_v6",
+      "M220_TradeBoard_AI_v2.3",
+      "M110_AutoRecovery"
+    ],
+    "qa_hooks": [
+      "lines_sync",
+      "roster_guard",
+      "pp_one_timer_map",
+      "goalie_plan"
+    ]
+  },
+
+  "notes": {
+    "author": "Austin Olsen",
+    "created": "2024-12-10",
+    "purpose": "Ensures all matchup plans follow Austin’s preferred order, slider layout, and realism standards.",
+    "tested_on": "NJD 2024-12-10 Pre-Game"
+  }
+}
