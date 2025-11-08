@@ -1,0 +1,82 @@
+{
+  "schema": "player_stats_v1.0",
+  "meta": {
+    "level": "NHL",
+    "team": "Toronto Maple Leafs",
+    "opponent": "New Jersey Devils",
+    "game_date": "2024-12-10",
+    "game_id": "NJD@TOR_2024-12-10",
+    "source": "manual_entry_from_screens",
+    "notes": "Individual skater and goalie stats from post-game summary."
+  },
+  "skaters": [
+    {
+      "name": "Auston Matthews",
+      "position": "C",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    },
+    {
+      "name": "Mitch Marner",
+      "position": "RW",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    },
+    {
+      "name": "William Nylander",
+      "position": "LW",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    }
+  ],
+  "goalies": [
+    {
+      "name": "Anthony Stolarz",
+      "result": null,
+      "shots_against": null,
+      "saves": null,
+      "save_pct": null,
+      "goals_against": null,
+      "gaa": null,
+      "toi": null
+    },
+    {
+      "name": "Joseph Woll",
+      "result": "DNP",
+      "shots_against": null,
+      "saves": null,
+      "save_pct": null,
+      "goals_against": null,
+      "gaa": null,
+      "toi": null
+    }
+  ],
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
