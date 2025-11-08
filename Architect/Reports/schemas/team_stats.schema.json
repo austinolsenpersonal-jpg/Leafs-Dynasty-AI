@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team Stats Schema",
+  "type": "object",
+  "required": ["meta", "stats"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["version", "schema_ref", "league", "team", "season", "last_updated"],
+      "properties": {
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+        "schema_ref": { "type": "string" },
+        "league": { "type": "string", "enum": ["NHL", "AHL"] },
+        "team": { "type": "string" },
+        "season": { "type": "string", "pattern": "^(\\d{4})-(\\d{2})$|^(\\d{4}-\\d{2}|\\d{4}-\\d{4})$" },
+        "last_updated": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "stats": {
+      "type": "object",
+      "required": ["games_played", "record", "goals_for", "goals_against"],
+      "properties": {
+        "games_played": { "type": "integer", "minimum": 0 },
+        "record": {
+          "type": "object",
+          "required": ["wins", "losses"],
+          "properties": {
+            "wins": { "type": "integer", "minimum": 0 },
+            "losses": { "type": "integer", "minimum": 0 },
+            "ot": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "home_record": {
+          "type": "object",
+          "properties": {
+            "wins": { "type": "integer", "minimum": 0 },
+            "losses": { "type": "integer", "minimum": 0 },
+            "ot": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "away_record": {
+          "type": "object",
+          "properties": {
+            "wins": { "type": "integer", "minimum": 0 },
+            "losses": { "type": "integer", "minimum": 0 },
+            "ot": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "streak": { "type": "string" },
+        "last10": {
+          "type": "object",
+          "properties": {
+            "wins": { "type": "integer", "minimum": 0 },
+            "losses": { "type": "integer", "minimum": 0 },
+            "ot": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "goals_for": { "type": "integer", "minimum": 0 },
+        "goals_against": { "type": "integer", "minimum": 0 },
+        "goal_diff": { "type": "integer" },
+
+        "power_play": {
+          "type": "object",
+          "properties": {
+            "attempts": { "type": "integer", "minimum": 0 },
+            "goals": { "type": "integer", "minimum": 0 },
+            "percentage": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "penalty_kill": {
+          "type": "object",
+          "properties": {
+            "times_shorthanded": { "type": "integer", "minimum": 0 },
+            "goals_allowed": { "type": "integer", "minimum": 0 },
+            "percentage": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+
+        "shots_for": { "type": "integer", "minimum": 0 },
+        "shots_against": { "type": "integer", "minimum": 0 },
+        "hits": { "type": "integer", "minimum": 0 },
+        "blocks": { "type": "integer", "minimum": 0 },
+        "faceoff_win_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "save_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+        "shooting_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+
+        "advanced": {
+          "type": "object",
+          "properties": {
+            "xGF": { "type": "number", "minimum": 0 },
+            "xGA": { "type": "number", "minimum": 0 },
+            "PDO": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
