@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "team": "Toronto Marlies",
+    "league": "AHL",
+    "date": "2024-12-10",
+    "season": "2024-25",
+    "games_played": 19,
+    "record": {
+      "wins": 14,
+      "losses": 4,
+      "otl": 1,
+      "home": "9-1-0",
+      "away": "5-3-1",
+      "last10": "8-2-0"
+    },
+    "rank": 1,
+    "conference": "Eastern",
+    "division": "North",
+    "clinched_playoff_spot": false
+  },
+  "performance": {
+    "points": 29,
+    "points_percentage": 76.3,
+    "goals_for": 63,
+    "goals_against": 46,
+    "goals_for_per_game": 3.32,
+    "goals_against_per_game": 2.42,
+    "power_play": {
+      "goals": 7,
+      "attempts": 53,
+      "percentage": 13.2
+    },
+    "penalty_kill": {
+      "times_shorthanded": 54,
+      "goals_allowed": 2,
+      "percentage": 96.3
+    },
+    "shorthanded_goals_for": 1,
+    "shorthanded_goals_against": 0,
+    "special_teams_index": 109.5,
+    "shooting_percentage": 10.8,
+    "save_percentage_team": 0.915
+  },
+  "context": {
+    "streak": "W3",
+    "team_leaders": {
+      "points": "Niemelä (14)",
+      "goals": "Ovchinnikov (9)",
+      "assists": "Steeves (10)",
+      "plus_minus": "Kokkonen (+12)",
+      "pp_points": "Hirvonen (5)",
+      "gw_goals": "Niemelä (2)"
+    },
+    "notes": [
+      "Marlies rank 1st in AHL North with 76.3% P%",
+      "League-best PK at 96.3%",
+      "Team trending upward with +17 goal differential"
+    ]
+  }
+}
