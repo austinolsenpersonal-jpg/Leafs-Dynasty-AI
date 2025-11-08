@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.3",
+  "timestamp": "2024-12-10T21:00:00-05:00",
+  "team": "Toronto Maple Leafs",
+  "context_tag": "Pre-NJD",
+  "canon_ref": "v4.1-Full-Franchise",
+  "active_goalie": "Stolarz",
+  "lines": {
+    "forward_lines": {
+      "L1": ["Knies", "Matthews", "Marner"],
+      "L2": ["Robertson", "Tavares", "Nylander"],
+      "L3": ["Domi", "Kämpf", "Mercer"],
+      "L4": ["Lorentz", "Steeves", "Pacioretty"]
+    },
+    "defense_pairs": {
+      "D1": ["McCabe", "Carlo"],
+      "D2": ["Rielly", "Tanev"],
+      "D3": ["OEL", "Dumba"]
+    },
+    "goalies": ["Stolarz", "Woll"]
+  },
+  "special_teams": {
+    "pp1": {
+      "formation": "Umbrella",
+      "players": ["Matthews", "Tavares", "Marner", "Nylander", "Rielly"],
+      "notes": "Matthews L-flank trigger; Tavares bumper; Marner primary distributor"
+    },
+    "pp2": {
+      "formation": "Overload",
+      "players": ["Domi", "Knies", "Pacioretty", "Mercer", "OEL"],
+      "notes": "Mercer RH half-wall playmaker; OEL point shooter"
+    },
+    "pk1": {
+      "formation": "Large Box",
+      "players": ["Kämpf", "Mercer", "McCabe", "Carlo"],
+      "notes": "Carlo front-net zone coverage"
+    },
+    "pk2": {
+      "formation": "Diamond",
+      "players": ["Tavares", "Knies", "Rielly", "Tanev"],
+      "notes": "Knies pressures point man; Tavares covers slot lane"
+    }
+  },
+  "chemistry": {
+    "L1": 5,
+    "L2": 4,
+    "L3": 4,
+    "L4": 3,
+    "D1": 5,
+    "D2": 4,
+    "D3": 3
+  },
+  "metadata": {
+    "game_context": "Dec 10 @ New Jersey Devils",
+    "planner_version": "Adaptive_v6.2b",
+    "goaltending_plan": {
+      "Stolarz": "start",
+      "Woll": "next_game"
+    },
+    "author": "Austin Olsen",
+    "verified_by": "Leafs Dynasty Suite AI"
+  }
+}
