@@ -1,0 +1,11 @@
+name: Keep Workflows Active
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: echo "No validation workflow defined — skipping."
