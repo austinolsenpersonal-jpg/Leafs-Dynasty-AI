@@ -1,57 +1,61 @@
 {
+  "schema_version": "1.3",
+  "timestamp": "2024-12-04T21:00:00-05:00",
   "team": "Toronto Marlies",
-  "schema": "Canon_v4.1_lines",
-  "timestamp": "2024-12-04T00:00:00Z",
-  "source": "screenshots_2024-12-04",
-  "even_strength": {
-    "forwards": [
-      {
-        "line": 1,
-        "lw": "Alex Steeves",
-        "c": "Nick Abruzzese",
-        "rw": "Calle Jarnkrok",
-        "strategy": "Overload",
-        "sliders": { "carry_dump": 4, "cycle_shoot": 5, "efficiency_energy": 5, "block": 6 }
-      },
-      {
-        "line": 2,
-        "lw": "Roni Hirvonen",
-        "c": "Jack Quillan",
-        "rw": "Logan Shaw",
-        "strategy": "Behind the Net",
-        "sliders": { "carry_dump": 5, "cycle_shoot": 5, "efficiency_energy": 5, "block": 6 }
-      },
-      {
-        "line": 3,
-        "lw": "Alex Nylander",
-        "c": "Cameron Paré",
-        "rw": "Ville Miettinen",
-        "strategy": "Crash the Net",
-        "sliders": { "carry_dump": 6, "cycle_shoot": 6, "efficiency_energy": 6, "block": 6 }
-      },
-      {
-        "line": 4,
-        "lw": "Kyle Clifford",
-        "c": "Ryan Johnson",
-        "rw": "Ryan Tverberg",
-        "strategy": "Overload",
-        "sliders": { "carry_dump": 6, "cycle_shoot": 5, "efficiency_energy": 6, "block": 7 }
-      }
-    ],
-    "defense": [
-      { "pair": 1, "ld": "Mikko Kokkonen", "rd": "Topi Niemelä" },
-      { "pair": 2, "ld": "Noah Mattinen", "rd": "William Villeneuve" },
-      { "pair": 3, "ld": "Dakota Mermis", "rd": "Matt Benning" }
-    ],
-    "starting_forward_line": 1,
-    "starting_defense_pair": 1
+  "canon_ref": "v4.1-Full-Franchise",
+  "context_tag": "AHL_DevFocus_Dec2024",
+  "active_goalie": "Hildeby",
+  "lines": {
+    "forward_lines": {
+      "L1": ["Steeves", "Hirvonen", "Ovchinnikov"],
+      "L2": ["Holmberg", "Abruzzese", "Miller"],
+      "L3": ["Clifford", "Tverberg", "Cowan"],
+      "L4": ["Gogolev", "Douglas", "Minton"]
+    },
+    "defense_pairs": {
+      "D1": ["Niemelä", "Kokkonen"],
+      "D2": ["Villeneuve", "Hollowell"],
+      "D3": ["Rindell", "Lajoie"]
+    },
+    "goalies": ["Hildeby", "Petruzzelli"]
   },
-  "goalies": {
-    "starter": "Matt Murray",
-    "backup": "Dennis Hildeby"
+  "special_teams": {
+    "pp1": {
+      "formation": "1-3-1",
+      "players": ["Steeves", "Hirvonen", "Ovchinnikov", "Niemelä", "Kokkonen"],
+      "notes": "Niemelä PP1 QB; Steeves left flank shooter"
+    },
+    "pp2": {
+      "formation": "Umbrella",
+      "players": ["Abruzzese", "Holmberg", "Miller", "Rindell", "Villeneuve"],
+      "notes": "Abruzzese half-wall playmaker"
+    },
+    "pk1": {
+      "formation": "Box",
+      "players": ["Clifford", "Tverberg", "Niemelä", "Kokkonen"],
+      "notes": "Top PK pair; dev pair gets heavy minutes"
+    },
+    "pk2": {
+      "formation": "Diamond",
+      "players": ["Holmberg", "Cowan", "Villeneuve", "Hollowell"],
+      "notes": "Focus on active stick pressure and puck retrieval"
+    }
   },
-  "scratches_hint": [
-    "R. Mastrosimone", "C. Webber", "B. Smith", "M. Koster", "A. Akhtyamov",
-    "T. Miller", "B. Valis", "S. Stevens", "B. Kressler", "B. Baddock", "M. Rifai"
-  ]
+  "development": {
+    "pair_roles": {
+      "Niemelä": "offensive",
+      "Kokkonen": "defensive"
+    },
+    "mentor_links": {
+      "Niemelä": "Kokkonen"
+    },
+    "context_tag": "DevPair_Top",
+    "notes": "This pairing receives PP1 + PK1 time for balanced development."
+  },
+  "metadata": {
+    "ahl_version": "2024-12-04",
+    "planner_version": "Adaptive_v6.2b",
+    "author": "Austin Olsen",
+    "verified_by": "Leafs Dynasty Suite AI"
+  }
 }
