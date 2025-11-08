@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "architect.reports.schemas.ingest_config.schema.json",
+  "title": "Dynasty AI – Ingest Config Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "team", "leagues", "input_patterns", "filename_conventions", "auto_fields", "validation"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v\\d+\\.\\d+$",
+      "description": "Config version tag (e.g., v1.0)."
+    },
+    "team": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Primary organization name used for default tags (e.g., 'Toronto Maple Leafs')."
+    },
+    "leagues": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["NHL", "AHL"] },
+      "description": "Leagues enabled for ingestion."
+    },
+    "input_patterns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nhl", "ahl"],
+      "properties": {
+        "nhl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["game_log", "team_stats", "player_stats"],
+          "properties": {
+            "game_log": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Glob patterns (relative to repo root) that contain NHL game log JSON files."
+            },
+            "team_stats": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Glob patterns for NHL team stats JSON files."
+            },
+            "player_stats": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Glob patterns for NHL player stats JSON files."
+            }
+          }
+        },
+        "ahl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["game_log", "team_stats", "player_stats"],
+          "properties": {
+            "game_log": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "team_stats": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "player_stats": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "filename_conventions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["game_log", "team_stats", "player_stats"],
+      "properties": {
+        "game_log": {
+          "type": "string",
+          "description": "Template for game log filenames.",
+          "examples": [
+            "Architect/Reports/games/${league}/${season}/${date}_${opponent}_${homeAway}.json"
+          ]
+        },
+        "team_stats": {
+          "type": "string",
+          "examples": [
+            "Architect/Reports/stats/${league}/team_stats_${date}.json"
+          ]
+        },
+        "player_stats": {
+          "type": "string",
+          "examples": [
+            "Architect/Reports/stats/${league}/player_stats_${date}.json"
+          ]
+        }
+      }
+    },
+    "placeholders": {
+      "type": "object",
+      "description": "Documentation for allowed template placeholders.",
+      "additionalProperties": false,
+      "properties": {
+        "league": { "const": "${league}" },
+        "season": { "const": "${season}" },
+        "date": { "const": "${date}" },
+        "opponent": { "const": "${opponent}" },
+        "homeAway": { "const": "${homeAway}" }
+      }
+    },
+    "auto_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["season", "timezone", "home_tag", "away_tag"],
+      "properties": {
+        "season": {
+          "type": "string",
+          "pattern": "^(19|20)\\d{2}-(19|20)\\d{2}$",
+          "description": "Season string, e.g., '2024-25'."
+        },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone for timestamp normalization (e.g., 'America/Toronto')."
+        },
+        "home_tag": { "type": "string", "default": "vs" },
+        "away_tag": { "type": "string", "default": "@"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemas"],
+      "properties": {
+        "schemas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["game_log", "team_stats", "player_stats"],
+          "properties": {
+            "game_log": { "type": "string", "description": "Path to game_log.schema.json" },
+            "team_stats": { "type": "string", "description": "Path to team_stats.schema.json" },
+            "player_stats": { "type": "string", "description": "Path to player_stats.schema.json" }
+          }
+        },
+        "fail_on_warning": { "type": "boolean", "default": false },
+        "strict_dates": { "type": "boolean", "default": true }
+      }
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Optional post-ingest actions (human-readable; used by workflow).",
+      "additionalProperties": false,
+      "properties": {
+        "build_gameplanner_cache": { "type": "boolean", "default": true },
+        "update_opponent_model": { "type": "boolean", "default": true },
+        "recalculate_lines_confidence": { "type": "boolean", "default": false }
+      }
+    }
+  }
+}
