@@ -1,0 +1,56 @@
+{
+  "$schema": "Architect/Reports/schemas/game_log.schema.json",
+  "game_id": "2024-12-02_CHI_at_TOR",
+  "season": "2024-25",
+  "date_local": "2024-12-02",
+  "venue": "Scotiabank Arena",
+  "source": {
+    "captured_by": "Austin",
+    "screens": ["final_team_stats", "event_summary", "goal_scorers"],
+    "ingest_method": "manual"
+  },
+
+  "teams": {
+    "home": { "name": "Toronto Maple Leafs", "abbr": "TOR" },
+    "away": { "name": "Chicago Blackhawks", "abbr": "CHI" }
+  },
+
+  "result": { "winner": "TOR", "decision": "regulation" },
+
+  "score": {
+    "final": { "TOR": 7, "CHI": 3 },
+    "by_period": [
+      { "period": 1, "TOR": 2, "CHI": 1 },
+      { "period": 2, "TOR": 3, "CHI": 1 },
+      { "period": 3, "TOR": 2, "CHI": 1 }
+    ]
+  },
+
+  "events": {
+    "goals": [],
+    "penalties": []
+  },
+
+  "team_totals": {
+    "shots": { "TOR": 43, "CHI": 27 },
+    "hits": { "TOR": 35, "CHI": 42 },
+    "time_on_attack": { "TOR": "07:11", "CHI": "05:33" },
+    "passing_pct": { "TOR": 77.3, "CHI": 86.8 },
+    "faceoffs_won": { "TOR": 19, "CHI": 17 },
+    "penalty_minutes": { "TOR": 0, "CHI": 4 },
+    "powerplays": { "TOR": "2/2", "CHI": "0/0" },
+    "pp_minutes": { "TOR": "01:16", "CHI": "00:00" },
+    "sh_goals": { "TOR": 0, "CHI": 0 }
+  },
+
+  "goalies": {
+    "TOR": [],
+    "CHI": []
+  },
+
+  "notes": [
+    "Leafs dominated on special teams (2/2 PP, no penalties).",
+    "43 shots for TOR vs 27 against; even possession at even strength.",
+    "Game stats verified from end-of-game summary screen; detailed event log not captured."
+  ]
+}
