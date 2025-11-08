@@ -1,0 +1,64 @@
+{
+  "name": "TemplateLegalNames_Hotfix",
+  "version": "5.0",
+  "type": "patch",
+  "description": "Blocks non-legal tactic names and normalizes aliases to NHL 25 legal values. Enforces PP/PK formations list and your slider output format.",
+  "legal_sets": {
+    "forecheck": ["1-2-2 Passive", "1-2-2 Aggressive", "2-3", "Weak Side Lock"],
+    "neutral_zone": ["1-3-1", "1-2-2 Red", "1-2-2 Blue", "1-4"],
+    "defensive_strategy": ["Collapsing", "Staggered", "Tight Point"],
+    "defensive_pressure": ["Protect Net", "Contain Puck", "Normal", "Puck Side Attack", "High Pressure"],
+    "offensive_pressure": ["Defend Lead", "Conservative", "Standard", "Aggressive", "Full Attack"],
+    "breakout_control": ["Strong Side Slant", "Blue to Blue", "Three High"],
+    "breakout_quick": ["Close Support", "Stay Wide", "Leave Zone Early"],
+    "offensive_strategy": ["Overload", "Behind the Net", "Crash the Net"],
+    "pp_formations": ["1-3-1", "Umbrella", "Shooting", "Overload"],
+    "pk_formations": ["1-1-2", "Diamond", "Passive Box", "Large Box"]
+  },
+  "alias_map": {
+    "forecheck": {
+      "1-2-2 Hybrid": {"map_to": "1-2-2 Passive", "trigger": "bump_to=1-2-2 Aggressive;when=OZ_FO_win AND score_lead>=1"},
+      "Hybrid": {"map_to": "1-2-2 Passive", "trigger": "bump_to=1-2-2 Aggressive;when=OZ_FO_win AND score_lead>=1"}
+    },
+    "defensive_pressure": {
+      "Contain Puck Carrier": {"map_to": "Contain Puck"}
+    },
+    "pk_formations": {
+      "Wedge + 1": {"reject": true},
+      "Wedge+1": {"reject": true}
+    }
+  },
+  "enforcement": {
+    "reject_on_illegal": true,
+    "auto_correct_aliases": true,
+    "log_corrections": true
+  },
+  "pp_rules": {
+    "pp1_default": "1-3-1",
+    "one_timer_locks": [
+      "Matthews@RightCircle",
+      "Nylander@LeftFlank"
+    ],
+    "validate_handedness": true
+  },
+  "output_format": {
+    "sliders": "offense: <Strategy> | Carry x/Dump y | Cycle x/Shoot y | Efficiency x/Energy y | Don’t Block x/Block y ; defense: Hold Line x/Pinch y | Cycle x/Shoot y",
+    "enforce_on_matchup_print": true
+  },
+  "runtime_checks": {
+    "on_matchup_generate": [
+      "validate_systems_legal",
+      "normalize_aliases",
+      "ensure_pp_pk_legal",
+      "enforce_output_format"
+    ],
+    "on_verify_strategies": [
+      "validate_systems_legal",
+      "ensure_pp_pk_legal"
+    ]
+  },
+  "logging": {
+    "path": "Architect/QA/logs/template_legalname_hotfix.log.json",
+    "include_examples": true
+  }
+}
