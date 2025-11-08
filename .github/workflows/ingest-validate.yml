@@ -1,0 +1,121 @@
+name: Validate Game Logs & Stats
+
+on:
+  push:
+    paths:
+      - "Architect/Reports/ingest/ingest_config_v1.json"
+      - "Architect/Reports/schemas/**"
+      - "Architect/Reports/games/**"
+      - "Architect/Reports/stats/**"
+      - ".github/workflows/ingest-validate.yml"
+  pull_request:
+    paths:
+      - "Architect/Reports/ingest/ingest_config_v1.json"
+      - "Architect/Reports/schemas/**"
+      - "Architect/Reports/games/**"
+      - "Architect/Reports/stats/**"
+      - ".github/workflows/ingest-validate.yml"
+
+jobs:
+  ajv-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install AJV CLI
+        run: npm i -g ajv-cli@5
+
+      # ---- Validate schemas exist & are structurally sound (optional but helpful) ----
+      - name: Validate schema files are valid JSON
+        run: |
+          set -e
+          for f in Architect/Reports/schemas/*.json; do
+            node -e "JSON.parse(require('fs').readFileSync(process.argv[1],'utf8'))" "$f"
+            echo "✔ Schema JSON OK: $f"
+          done
+
+      # ---- Validate ingest config against its schema ----
+      - name: Validate ingest_config_v1.json
+        run: |
+          ajv -s Architect/Reports/schemas/ingest_config.schema.json \
+              -d Architect/Reports/ingest/ingest_config_v1.json \
+              --strict=true
+
+      # ---- Validate NHL game logs ----
+      - name: Validate NHL game logs
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/game_log.schema.json \
+              -d "Architect/Reports/games/NHL/2024-25/*.json" \
+              --strict=true || true
+          # AJV returns nonzero if glob has no matches; rerun strictly only when files exist
+          ls Architect/Reports/games/NHL/2024-25/*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/game_log.schema.json \
+              -d "Architect/Reports/games/NHL/2024-25/*.json" \
+              --strict=true
+
+      # ---- Validate AHL game logs ----
+      - name: Validate AHL game logs
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/game_log.schema.json \
+              -d "Architect/Reports/games/AHL/2024-25/*.json" \
+              --strict=true || true
+          ls Architect/Reports/games/AHL/2024-25/*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/game_log.schema.json \
+              -d "Architect/Reports/games/AHL/2024-25/*.json" \
+              --strict=true
+
+      # ---- Validate NHL team stats ----
+      - name: Validate NHL team stats
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/team_stats.schema.json \
+              -d "Architect/Reports/stats/NHL/team_stats_*.json" \
+              --strict=true || true
+          ls Architect/Reports/stats/NHL/team_stats_*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/team_stats.schema.json \
+              -d "Architect/Reports/stats/NHL/team_stats_*.json" \
+              --strict=true
+
+      # ---- Validate AHL team stats ----
+      - name: Validate AHL team stats
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/team_stats.schema.json \
+              -d "Architect/Reports/stats/AHL/team_stats_*.json" \
+              --strict=true || true
+          ls Architect/Reports/stats/AHL/team_stats_*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/team_stats.schema.json \
+              -d "Architect/Reports/stats/AHL/team_stats_*.json" \
+              --strict=true
+
+      # ---- Validate NHL player stats ----
+      - name: Validate NHL player stats
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/player_stats.schema.json \
+              -d "Architect/Reports/stats/NHL/player_stats_*.json" \
+              --strict=true || true
+          ls Architect/Reports/stats/NHL/player_stats_*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/player_stats.schema.json \
+              -d "Architect/Reports/stats/NHL/player_stats_*.json" \
+              --strict=true
+
+      # ---- Validate AHL player stats ----
+      - name: Validate AHL player stats
+        if: ${{ always() }}
+        run: |
+          ajv -s Architect/Reports/schemas/player_stats.schema.json \
+              -d "Architect/Reports/stats/AHL/player_stats_*.json" \
+              --strict=true || true
+          ls Architect/Reports/stats/AHL/player_stats_*.json >/dev/null 2>&1 && \
+          ajv -s Architect/Reports/schemas/player_stats.schema.json \
+              -d "Architect/Reports/stats/AHL/player_stats_*.json" \
+              --strict=true
