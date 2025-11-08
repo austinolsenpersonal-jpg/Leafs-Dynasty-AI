@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "version": "1.0",
+    "schema_ref": "Architect/Reports/schemas/team_stats.schema.json",
+    "league": "AHL",
+    "team": "Toronto Marlies",
+    "season": "2024-25",
+    "last_updated": "2024-12-10T00:00:00Z"
+  },
+  "stats": {
+    "games_played": 0,
+    "record": { "wins": 0, "losses": 0, "ot": 0 },
+    "home_record": { "wins": 0, "losses": 0, "ot": 0 },
+    "away_record": { "wins": 0, "losses": 0, "ot": 0 },
+    "streak": "N/A",
+    "last10": { "wins": 0, "losses": 0, "ot": 0 },
+
+    "goals_for": 0,
+    "goals_against": 0,
+    "goal_diff": 0,
+
+    "power_play": {
+      "attempts": 0,
+      "goals": 0,
+      "percentage": 0
+    },
+    "penalty_kill": {
+      "times_shorthanded": 0,
+      "goals_allowed": 0,
+      "percentage": 0
+    },
+
+    "shots_for": 0,
+    "shots_against": 0,
+    "hits": 0,
+    "blocks": 0,
+    "faceoff_win_pct": 0,
+    "save_pct": 0,
+    "shooting_pct": 0,
+
+    "advanced": {
+      "xGF": 0,
+      "xGA": 0,
+      "PDO": 0
+    }
+  }
+}
