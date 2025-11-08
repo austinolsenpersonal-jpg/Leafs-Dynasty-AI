@@ -1,0 +1,66 @@
+{
+  "$schema": "Architect/Reports/schemas/game_log.schema.json",
+  "game_id": "2024-12-08_WSH_at_TOR",
+  "season": "2024-25",
+  "date_local": "2024-12-08",
+  "venue": "Scotiabank Arena",
+  "source": {
+    "captured_by": "Austin",
+    "screens": ["box_score", "events", "tor_stats", "tor_goalie"],
+    "ingest_method": "manual"
+  },
+
+  "teams": {
+    "home": {
+      "name": "Toronto Maple Leafs",
+      "abbr": "TOR"
+    },
+    "away": {
+      "name": "Washington Capitals",
+      "abbr": "WSH"
+    }
+  },
+
+  "result": {
+    "winner": "TOR",
+    "decision": "regulation"
+  },
+
+  "score": {
+    "final": { "TOR": 5, "WSH": 1 },
+    "by_period": [
+      { "period": 1, "TOR": 1, "WSH": 0 },
+      { "period": 2, "TOR": 0, "WSH": 1 },
+      { "period": 3, "TOR": 4, "WSH": 0 }
+    ]
+  },
+
+  "events": {
+    "goals": [
+      { "period": 1, "time": "17:22", "team": "TOR", "scorer": "M. Domi", "assists": [] },
+
+      { "period": 2, "time": "10:21", "team": "WSH", "scorer": "N. Dowd", "assists": ["S. Milano", "T. Raddysh"] },
+
+      { "period": 3, "time": "03:38", "team": "TOR", "scorer": "J. Tavares", "assists": ["B. Carlo"] },
+      { "period": 3, "time": "07:45", "team": "TOR", "scorer": "D. Mercer", "assists": [] },
+      { "period": 3, "time": "11:24", "team": "TOR", "scorer": "A. Matthews", "assists": ["J. Tavares"] },
+      { "period": 3, "time": "12:12", "team": "TOR", "scorer": "M. Domi", "assists": ["B. Carlo"] }
+    ],
+    "penalties": [
+      { "period": 1, "time": "15:57", "team": "TOR", "player": "B. Carlo", "infraction": "Boarding", "minutes": 2 },
+      { "period": 3, "time": "10:28", "team": "WSH", "player": "E. Bear", "infraction": "Interference", "minutes": 2 }
+    ]
+  },
+
+  "goalies": {
+    "TOR": [
+      { "player": "A. Stolarz", "toi": "60:00", "sa": 21, "sv": 20, "ga": 1, "sv_pct": 0.952, "gaa": 1.00, "so": 0 }
+    ],
+    "WSH": []
+  },
+
+  "notes": [
+    "TOR wins 5–1; third-period surge with four goals.",
+    "Events and TOR goalie stats taken from screenshots; WSH goalie line not shown."
+  ]
+}
