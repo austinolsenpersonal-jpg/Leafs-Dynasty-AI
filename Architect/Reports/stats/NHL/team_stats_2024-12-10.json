@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "team": "Toronto Maple Leafs",
+    "league": "NHL",
+    "date": "2024-12-10",
+    "season": "2024-25",
+    "games_played": 27,
+    "record": {
+      "wins": 22,
+      "losses": 4,
+      "otl": 1,
+      "home": "12-3-1",
+      "away": "10-1-0",
+      "last10": "8-1-1"
+    },
+    "rank": 2,
+    "conference": "Eastern",
+    "division": "Atlantic",
+    "clinched_playoff_spot": false
+  },
+  "performance": {
+    "points": 45,
+    "points_percentage": 83.3,
+    "goals_for": 138,
+    "goals_against": 68,
+    "goals_for_per_game": 5.11,
+    "goals_against_per_game": 2.52,
+    "power_play": {
+      "goals": 20,
+      "attempts": 27,
+      "percentage": 74.1
+    },
+    "penalty_kill": {
+      "times_shorthanded": 21,
+      "goals_allowed": 8,
+      "percentage": 61.9
+    },
+    "shorthanded_goals_for": 3,
+    "shorthanded_goals_against": 0,
+    "special_teams_index": 136.0,
+    "shooting_percentage": 11.8,
+    "save_percentage_team": 0.912,
+    "average_shots_for_per_game": 32.5,
+    "average_shots_against_per_game": 29.8
+  },
+  "context": {
+    "streak": "W2",
+    "team_leaders": {
+      "points": "W. Nylander (31)",
+      "goals": "A. Matthews (15)",
+      "assists": "M. Marner (19)",
+      "plus_minus": "B. Carlo (+14)",
+      "pp_points": "J. Tavares (8)",
+      "gw_goals": "A. Matthews (5)"
+    },
+    "notes": [
+      "Leafs rank 1st in Goals For per Game (5.11)",
+      "Leafs rank 4th in Goals Against per Game (2.52)",
+      "PK efficiency remains lowest in top 10 teams (61.9%)"
+    ]
+  }
+}
