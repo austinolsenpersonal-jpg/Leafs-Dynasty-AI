@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "team": "Toronto Maple Leafs",
+    "league": "NHL",
+    "date": "2024-12-10",
+    "season": "2024-25",
+    "games_played": 27
+  },
+  "skaters": [
+    { "player": "W. Nylander", "pos": "RW/C", "gp": 27, "g": 19, "a": 12, "pts": 31, "+/-": 22, "pim": 2, "s": 81, "s%": 23.5, "gwg": 4, "ppg": 3, "ppp": 6 },
+    { "player": "M. Knies", "pos": "LW/RW", "gp": 27, "g": 13, "a": 11, "pts": 24, "+/-": 14, "pim": 4, "s": 77, "s%": 16.9, "gwg": 1, "ppg": 1, "ppp": 3 },
+    { "player": "O. Ekman-Larsson", "pos": "LD", "gp": 27, "g": 11, "a": 13, "pts": 24, "+/-": 5, "pim": 0, "s": 48, "s%": 22.9, "gwg": 3, "ppg": 3, "ppp": 9 },
+    { "player": "A. Matthews", "pos": "C", "gp": 27, "g": 15, "a": 8, "pts": 23, "+/-": 0, "pim": 2, "s": 119, "s%": 12.6, "gwg": 0, "ppg": 0, "ppp": 5 },
+    { "player": "J. Tavares", "pos": "C/LW", "gp": 25, "g": 10, "a": 13, "pts": 23, "+/-": 12, "pim": 2, "s": 72, "s%": 13.9, "gwg": 0, "ppg": 0, "ppp": 6 },
+    { "player": "J. McCabe", "pos": "LD/RD", "gp": 27, "g": 4, "a": 18, "pts": 22, "+/-": 26, "pim": 6, "s": 76, "s%": 15.4, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "B. Carlo", "pos": "RD", "gp": 27, "g": 1, "a": 21, "pts": 22, "+/-": 34, "pim": 8, "s": 22, "s%": 3.6, "gwg": 0, "ppg": 0, "ppp": 6 },
+    { "player": "M. Marner", "pos": "RW", "gp": 27, "g": 9, "a": 11, "pts": 20, "+/-": 12, "pim": 2, "s": 53, "s%": 17.0, "gwg": 0, "ppg": 2, "ppp": 4 },
+    { "player": "M. Pacioretty", "pos": "LW", "gp": 26, "g": 9, "a": 10, "pts": 19, "+/-": 14, "pim": 2, "s": 53, "s%": 17.0, "gwg": 0, "ppg": 0, "ppp": 2 },
+    { "player": "M. Domi", "pos": "C/LW", "gp": 27, "g": 9, "a": 10, "pts": 19, "+/-": 21, "pim": 6, "s": 46, "s%": 19.6, "gwg": 1, "ppg": 1, "ppp": 6 },
+    { "player": "M. Rielly", "pos": "LD", "gp": 27, "g": 5, "a": 12, "pts": 17, "+/-": 17, "pim": 5, "s": 44, "s%": 11.4, "gwg": 1, "ppg": 0, "ppp": 2 },
+    { "player": "C. Tanev", "pos": "RD", "gp": 27, "g": 3, "a": 21, "pts": 24, "+/-": 24, "pim": 6, "s": 32, "s%": 9.4, "gwg": 0, "ppg": 1, "ppp": 6 },
+    { "player": "D. Mercer", "pos": "RW/C", "gp": 24, "g": 7, "a": 10, "pts": 17, "+/-": -3, "pim": 0, "s": 49, "s%": 13.0, "gwg": 0, "ppg": 0, "ppp": 5 },
+    { "player": "N. Robertson", "pos": "C/LW", "gp": 26, "g": 4, "a": 14, "pts": 18, "+/-": 18, "pim": 10, "s": 53, "s%": 7.5, "gwg": 0, "ppg": 0, "ppp": 2 },
+    { "player": "M. Dumba", "pos": "RD", "gp": 27, "g": 3, "a": 7, "pts": 10, "+/-": 7, "pim": 0, "s": 34, "s%": 8.8, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "D. Kampf", "pos": "C/RW", "gp": 27, "g": 0, "a": 9, "pts": 9, "+/-": 10, "pim": 7, "s": 34, "s%": 8.8, "gwg": 0, "ppg": 0, "ppp": 0 },
+    { "player": "S. Lorentz", "pos": "C/LW", "gp": 21, "g": 5, "a": 3, "pts": 8, "+/-": 9, "pim": 0, "s": 35, "s%": 14.3, "gwg": 1, "ppg": 0, "ppp": 0 },
+    { "player": "A. Steeves", "pos": "C", "gp": 2, "g": 0, "a": 2, "pts": 2, "+/-": 3, "pim": 1, "s": 1, "s%": 0.0, "gwg": 0, "ppg": 0, "ppp": 0 }
+  ],
+  "goalies": [
+    { "player": "J. Woll", "gp": 15, "w": 12, "l": 1, "otl": 0, "so": 1, "sv%": 0.882, "gaa": 2.56, "shots": 307, "saves": 271, "ga": 36, "min": 842 },
+    { "player": "A. Stolarz", "gp": 14, "w": 10, "l": 3, "otl": 1, "so": 1, "sv%": 0.896, "gaa": 2.46, "shots": 309, "saves": 277, "ga": 32, "min": 780 }
+  ]
+}
