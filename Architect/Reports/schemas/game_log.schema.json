@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Log Schema",
+  "type": "object",
+  "required": ["meta", "teams", "score", "stats"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["game_id", "date", "opponent", "location", "league", "season", "result"],
+      "properties": {
+        "game_id": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "opponent": { "type": "string" },
+        "location": { "type": "string", "enum": ["home", "away"] },
+        "league": { "type": "string", "enum": ["NHL", "AHL"] },
+        "season": { "type": "string" },
+        "result": { "type": "string", "enum": ["win", "loss", "ot_loss", "so_win", "so_loss"] },
+        "final_score": { "type": "string", "pattern": "^[0-9]+-[0-9]+$" },
+        "save_file_ref": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "teams": {
+      "type": "object",
+      "required": ["home", "away"],
+      "properties": {
+        "home": { "type": "string" },
+        "away": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "score": {
+      "type": "object",
+      "required": ["home_goals", "away_goals", "period_by_period"],
+      "properties": {
+        "home_goals": { "type": "integer", "minimum": 0 },
+        "away_goals": { "type": "integer", "minimum": 0 },
+        "period_by_period": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "period": { "type": "integer" },
+              "home": { "type": "integer" },
+              "away": { "type": "integer" }
+            },
+            "required": ["period", "home", "away"]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "stats": {
+      "type": "object",
+      "required": ["shots", "hits", "faceoffs", "powerplay", "penaltykill", "goaltending"],
+      "properties": {
+        "shots": {
+          "type": "object",
+          "properties": {
+            "home": { "type": "integer" },
+            "away": { "type": "integer" }
+          }
+        },
+        "hits": {
+          "type": "object",
+          "properties": {
+            "home": { "type": "integer" },
+            "away": { "type": "integer" }
+          }
+        },
+        "faceoffs": {
+          "type": "object",
+          "properties": {
+            "won": { "type": "integer" },
+            "lost": { "type": "integer" },
+            "percentage": { "type": "number" }
+          }
+        },
+        "powerplay": {
+          "type": "object",
+          "properties": {
+            "attempts": { "type": "integer" },
+            "goals": { "type": "integer" },
+            "percentage": { "type": "number" }
+          }
+        },
+        "penaltykill": {
+          "type": "object",
+          "properties": {
+            "times_shorthanded": { "type": "integer" },
+            "goals_allowed": { "type": "integer" },
+            "percentage": { "type": "number" }
+          }
+        },
+        "goaltending": {
+          "type": "object",
+          "properties": {
+            "starter": { "type": "string" },
+            "saves": { "type": "integer" },
+            "shots_against": { "type": "integer" },
+            "save_pct": { "type": "number" },
+            "goals_allowed": { "type": "integer" }
+          }
+        },
+        "penalties": {
+          "type": "object",
+          "properties": {
+            "minutes": { "type": "integer" },
+            "infractions": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "top_performers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "player": { "type": "string" },
+              "goals": { "type": "integer" },
+              "assists": { "type": "integer" },
+              "points": { "type": "integer" },
+              "plus_minus": { "type": "integer" },
+              "shots": { "type": "integer" },
+              "toi": { "type": "string" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
