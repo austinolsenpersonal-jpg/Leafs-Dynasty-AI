@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "team": "TOR",
+  "season": "2024-2025",
+  "games": [
+    {
+      "game_id": "2024-12-10-TOR-NJD",
+      "date": "2024-12-10",
+      "home_away": "away",
+      "opponent": "NJD",
+      "result": "W 4-3 OT",
+      "log_path": "Architect/Reports/GameLogs/NHL/NJD/2024-12-10_TOR_at_NJD.json"
+    }
+  ],
+  "notes": "Append new games to the 'games' array. Keep chronological order."
+}
