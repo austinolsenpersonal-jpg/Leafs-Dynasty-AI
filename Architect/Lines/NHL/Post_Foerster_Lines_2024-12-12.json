@@ -1,0 +1,66 @@
+{
+  "schema": "roster_lines_v4.1",
+  "team": "TOR",
+  "season": "2024-25",
+  "snapshot_label": "Post_Foerster_Lines_2024-12-12",
+  "captured_at": "2024-12-12",
+  "source": "NHL 25 screenshots (Even Strength, PP/PK, Goalies)",
+  "even_strength": {
+    "L1": ["W. Nylander - LW", "A. Matthews - C", "M. Marner - RW"],
+    "L2": ["M. Knies - LW", "J. Tavares - C", "D. Mercer - RW"],
+    "L3": ["N. Robertson - LW", "M. Domi - C", "T. Foerster - RW"],
+    "L4": ["M. Pacioretty - LW", "A. Steeves - C", "D. Kämpf - RW"],
+    "D1": ["M. Rielly - LD", "B. Carlo - RD"],
+    "D2": ["O. Ekman-Larsson - LD", "M. Dumba - RD"],
+    "D3": ["J. McCabe - LD", "C. Tanev - RD"]
+  },
+  "goalies": {
+    "starter": "J. Woll",
+    "backup": "A. Stolarz"
+  },
+  "special_teams": {
+    "pp1": {
+      "LW": "A. Matthews",
+      "C": "J. Tavares",
+      "RW": "M. Marner",
+      "LD": "W. Nylander",
+      "RD": "M. Rielly"
+    },
+    "pp2": {
+      "LW": "M. Knies",
+      "C": "M. Domi",
+      "RW": "N. Robertson",
+      "LD": "D. Mercer",
+      "RD": "O. Ekman-Larsson"
+    },
+    "pk1": {
+      "LW": "D. Mercer",
+      "C": "D. Kämpf",
+      "RW": null,
+      "LD": "J. McCabe",
+      "RD": "C. Tanev"
+    },
+    "pk2": {
+      "LW": "M. Knies",
+      "C": "J. Tavares",
+      "RW": null,
+      "LD": "M. Rielly",
+      "RD": "B. Carlo"
+    },
+    "pk3": {
+      "LW": "A. Steeves",
+      "C": "M. Domi",
+      "RW": null,
+      "LD": "O. Ekman-Larsson",
+      "RD": "M. Dumba"
+    }
+  },
+  "scratches": [],
+  "validation": {
+    "roster_gate": true,
+    "systems_gate": true,
+    "cap_gate": true,
+    "schedule_gate": false,
+    "notes": "PK units verified from screenshots; RW slots intentionally null for two-forward box setups."
+  }
+}
