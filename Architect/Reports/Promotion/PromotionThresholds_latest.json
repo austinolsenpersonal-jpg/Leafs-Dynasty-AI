@@ -1,0 +1,63 @@
+{
+  "team": "TOR",
+  "window": {"start": "2024-12-10", "end": "2024-12-31"},
+  "guards": {
+    "rvg": "strict",
+    "cap_buffer_min_m": 0.5,
+    "schedule_linked": true,
+    "mentor_links_respected": true
+  },
+  "candidates": [
+    {
+      "player": "Alex Steeves",
+      "positions": ["LW","RW"],
+      "readiness_score": 0.84,
+      "earliest_date": "2024-12-10",
+      "recommended_slot": "NHL L4 wing",
+      "conditions": ["no_cap_move", "paper_down_on_off_days"],
+      "cap_impact_m": 0.0,
+      "notes": "Neutral chem; adds puck retrievals; safe rotation with Lorentz/Pacioretty"
+    },
+    {
+      "player": "Topi Niemelä",
+      "positions": ["RD"],
+      "readiness_score": 0.86,
+      "earliest_date": "2024-12-20",
+      "recommended_slot": "NHL RD3 with OEL",
+      "conditions": ["min_14min_TOI", "PP2_or_sheltered_OZ"],
+      "cap_impact_m": 0.0,
+      "notes": "Call-up should be short (3–5 GP). Mentor link with Kokkonen active."
+    },
+    {
+      "player": "Roni Hirvonen",
+      "positions": ["C","LW","RW"],
+      "readiness_score": 0.78,
+      "earliest_date": "2024-12-31",
+      "recommended_slot": "NHL L4 utility",
+      "conditions": ["limited_DZ_draws", "PK2_candidate"],
+      "cap_impact_m": 0.0,
+      "notes": "Strength trend improving; near-term promotion after window."
+    },
+    {
+      "player": "Pontus Holmberg",
+      "positions": ["C","RW","LW"],
+      "readiness_score": 0.74,
+      "earliest_date": "on_injury",
+      "recommended_slot": "First injury replacement (bottom-six)",
+      "conditions": ["paper_safe"],
+      "cap_impact_m": 0.0,
+      "notes": "FO% asset; chemistry neutral; waiver-safe usage."
+    }
+  ],
+  "cap_summary": {
+    "active_cap_m": 87.855,
+    "buffer_m": 0.645,
+    "lti_m": 0.0
+  },
+  "schedule": {
+    "b2b_protection": true,
+    "post_asg_override": true
+  },
+  "generated_at": "2024-12-10T21:00:00-05:00",
+  "engine": "PromotionThresholds_v1.1"
+}
