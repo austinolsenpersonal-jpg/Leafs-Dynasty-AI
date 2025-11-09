@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "version": "v1.0",
+    "feature": "Season2CarrySimulation",
+    "enabled": true
+  },
+  "weights": {
+    "coach_change_impact": 0.45,
+    "top6_forward_turnover": 0.25,
+    "top4_defense_turnover": 0.15,
+    "goaltending_change": 0.10,
+    "special_teams_coach_change": 0.05
+  },
+  "decay": {
+    "seasons_without_play": 0.25,
+    "max_decay": 0.60
+  },
+  "outputs": {
+    "write_forecast_cards": true,
+    "path": "Architect/Opponent_Profiles/_Forecast/",
+    "file_pattern": "{TEAM}_Season2_Forecast.json"
+  },
+  "integration": {
+    "use_forecast_for_first_meeting": true,
+    "require_min_confidence": 0.62,
+    "fallback_to_last_year": true
+  }
+}
