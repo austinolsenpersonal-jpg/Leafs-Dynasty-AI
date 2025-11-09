@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "name": "TradeWatch",
+  "version": "1.0.0",
+  "owner": "Leafs-Dynasty-AI",
+  "description": "Watches repo trade + cap sources and regenerates a TOR-focused trade & cap snapshot whenever inputs change.",
+  "watch": {
+    "paths": [
+      "Architect/Transactions/trades_log.json",
+      "Architect/Data/LeafsContracts_seed_v1.7.json",
+      "Architect/Lines/NHL/NHL_Lines_2024-12-10.json",
+      "Architect/Config/OpponentModel_v6.3.json"
+    ],
+    "team": "TOR",
+    "window": "Dec 2024 → Apr 2025"
+  },
+  "on_update": {
+    "commands": [
+      "/ingest trades --source repo --verify schema --team TOR",
+      "/cap_delta --team TOR --window \"last 14d\"",
+      "/trade_report --team TOR --scope \"last 30d\" --source repo",
+      "/verify_trades --source repo --sync roster"
+    ],
+    "write_outputs": [
+      {
+        "path": "Architect/Reports/TradeWatch/TradeWatch_latest.json",
+        "fields": [
+          "timestamp",
+          "team",
+          "cap_delta_summary",
+          "trade_report_table",
+          "spc_count",
+          "notes"
+        ]
+      },
+      {
+        "path": "Architect/Reports/TradeWatch/TradeWatch_status.txt",
+        "template": "TradeWatch OK @ {{timestamp}} | Team={{team}} | SPC={{spc_count}}"
+      }
+    ]
+  },
+  "alerts": {
+    "notify_on": [
+      {"type": "cap_buffer_below", "value_millions": 0.50},
+      {"type": "spc_at_or_above", "value": 49},
+      {"type": "trade_added_for_team", "team": "TOR"}
+    ],
+    "routes": [
+      {"type": "gpt_echo", "channel": "DynastyAI"},
+      {"type": "file_append", "path": "Architect/Reports/TradeWatch/alerts.log"}
+    ]
+  },
+  "safety": {
+    "require_team_flag": true,
+    "deny_league_scan_without_team": true
+  },
+  "metadata": {
+    "created_by": "Architect v6.2",
+    "canon": "v4.1",
+    "notes": "Prevents accidental league-wide scans; pins to TOR unless explicitly overridden."
+  }
+}
