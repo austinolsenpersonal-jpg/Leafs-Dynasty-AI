@@ -1,0 +1,65 @@
+{
+  "schema": "team_stats_v1.0",
+  "meta": {
+    "level": "AHL",
+    "team": "Toronto Marlies",
+    "opponent": null,
+    "game_date": "2024-12-10",
+    "game_id": "AHL_2024-12-10",
+    "home_away": null,
+    "source": "manual_entry_from_screens",
+    "notes": "Enter AHL team totals for most recent game; leave nulls where unavailable."
+  },
+  "result": {
+    "outcome": null,
+    "score_for": null,
+    "score_against": null,
+    "record_after_game": {
+      "wins": null,
+      "losses": null,
+      "ot": null
+    }
+  },
+  "team_totals": {
+    "shots_for": null,
+    "shots_against": null,
+    "hits_for": null,
+    "hits_against": null,
+    "blocks_for": null,
+    "giveaways": null,
+    "takeaways": null,
+    "penalty_minutes": null,
+    "pp_goals": null,
+    "pp_opportunities": null,
+    "pk_goals_against": null,
+    "pk_times_shorthanded": null,
+    "faceoff_win_pct": null,
+    "time_on_attack_mm_ss": null
+  },
+  "splits": {
+    "period_scoring": {
+      "P1": { "for": null, "against": null },
+      "P2": { "for": null, "against": null },
+      "P3": { "for": null, "against": null },
+      "OT": { "for": null, "against": null }
+    },
+    "special_teams": {
+      "pp_pct": null,
+      "pk_pct": null
+    },
+    "home_road_record": {
+      "home": { "w": null, "l": null, "ot": null },
+      "road": { "w": null, "l": null, "ot": null }
+    }
+  },
+  "advanced": {
+    "expected_goals_for": null,
+    "expected_goals_against": null,
+    "hd_chances_for": null,
+    "hd_chances_against": null
+  },
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
