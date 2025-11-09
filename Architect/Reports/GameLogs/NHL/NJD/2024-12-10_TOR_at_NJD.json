@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "game_id": "2024-12-10-TOR-NJD",
+  "date": "2024-12-10",
+  "season": "2024-2025",
+  "game_type": "regular",
+  "venue": "Prudential Center",
+  "home_team": {
+    "name": "New Jersey Devils",
+    "abbr": "NJD"
+  },
+  "away_team": {
+    "name": "Toronto Maple Leafs",
+    "abbr": "TOR"
+  },
+  "score": {
+    "final": { "TOR": 4, "NJD": 3 },
+    "decision": "TOR in OT"
+  },
+  "period_scoring": [
+    { "period": "1", "TOR": 1, "NJD": 1 },
+    { "period": "2", "TOR": 2, "NJD": 2 },
+    { "period": "3", "TOR": 0, "NJD": 0 },
+    { "period": "OT", "TOR": 1, "NJD": 0 }
+  ],
+  "shots_by_period": [
+    { "period": "1", "TOR": 11, "NJD": 9 },
+    { "period": "2", "TOR": 7, "NJD": 13 },
+    { "period": "3", "TOR": 9, "NJD": 5 },
+    { "period": "OT", "TOR": 3, "NJD": 2 }
+  ],
+  "team_totals": {
+    "shots": { "TOR": 30, "NJD": 29 }
+  },
+  "events": [
+    {
+      "time": "05:04",
+      "period": 1,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "D. Mercer",
+      "scorer_goal_number": 8,
+      "assists": ["O. Ekman-Larsson", "A. Stolarz"],
+      "strength": "EV"
+    },
+    {
+      "time": "06:00",
+      "period": 1,
+      "team": "NJD",
+      "type": "goal",
+      "scorer": "O. Palat",
+      "scorer_goal_number": 3,
+      "assists": ["N. Hischier", "D. Hamilton"],
+      "strength": "EV"
+    },
+    {
+      "time": "02:40",
+      "period": 2,
+      "team": "NJD",
+      "type": "goal",
+      "scorer": "J. Bratt",
+      "scorer_goal_number": 10,
+      "assists": ["T. Meier", "J. Hughes"],
+      "strength": "EV"
+    },
+    {
+      "time": "14:33",
+      "period": 2,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "M. Knies",
+      "scorer_goal_number": 14,
+      "assists": ["M. Marner", "J. McCabe"],
+      "strength": "EV"
+    },
+    {
+      "time": "15:53",
+      "period": 2,
+      "team": "NJD",
+      "type": "goal",
+      "scorer": "E. Haula",
+      "scorer_goal_number": 6,
+      "assists": ["B. Dillon", "S. Nemec"],
+      "strength": "EV"
+    },
+    {
+      "time": "18:10",
+      "period": 2,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "M. Marner",
+      "scorer_goal_number": 10,
+      "assists": ["M. Domi"],
+      "strength": "EV"
+    },
+    {
+      "time": "04:03",
+      "period": "OT",
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "W. Nylander",
+      "scorer_goal_number": 20,
+      "assists": ["J. Tavares"],
+      "strength": "EV",
+      "game_winning_goal": true
+    }
+  ],
+  "leafs_skaters_summary": [
+    { "player": "M. Marner", "g": 1, "a": 1, "p": 2 },
+    { "player": "M. Knies", "g": 1, "a": 0, "p": 1 },
+    { "player": "D. Mercer", "g": 1, "a": 0, "p": 1 },
+    { "player": "W. Nylander", "g": 1, "a": 0, "p": 1 },
+    { "player": "J. Tavares", "g": 0, "a": 1, "p": 1 },
+    { "player": "M. Domi", "g": 0, "a": 1, "p": 1 },
+    { "player": "J. McCabe", "g": 0, "a": 1, "p": 1 },
+    { "player": "O. Ekman-Larsson", "g": 0, "a": 1, "p": 1 }
+  ],
+  "leafs_goalies": [
+    {
+      "player": "A. Stolarz",
+      "time_on_ice": "64:02",
+      "shots_against": 29,
+      "saves": 26,
+      "goals_against": 3,
+      "save_pct": 0.897,
+      "gaa": 2.81,
+      "assist": 1
+    }
+  ],
+  "three_stars": [],
+  "source_images": [
+    "A9463527-AE1B-481C-A53A-2BA7CC1E513C.jpg",
+    "62197695-EE31-4636-A41E-900DC528E1AC.jpg",
+    "378AF236-8E55-4321-B184-98760BABEB2A.jpg",
+    "FCD394CA-3A59-49A6-9793-75D9F635B2D6.jpg",
+    "F5EC0AC8-9D5D-41D7-ACC5-E295D0D38A22.jpg",
+    "5E3A2F2F-E085-428B-89B3-A8CD1D3AFBB4.jpg",
+    "10A6443B-4F4F-41A8-B83D-637EC3DDE5A6.jpg"
+  ],
+  "notes": "OT winner by Nylander at 04:03. Shots TOR 30–29 NJD. Data transcribed from in-game box score and event feed screenshots."
+}
