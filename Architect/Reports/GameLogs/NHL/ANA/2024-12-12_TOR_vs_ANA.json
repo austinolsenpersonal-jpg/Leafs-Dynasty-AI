@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "game_id": "2024-12-12-TOR-ANA",
+  "date": "2024-12-12",
+  "home_team": "TOR",
+  "away_team": "ANA",
+  "venue": "Scotiabank Arena",
+  "result": "TBD",
+  "score": { "TOR": null, "ANA": null },
+  "goaltenders": {
+    "starter_TOR": "Woll",
+    "starter_ANA": "TBD",
+    "notes": "Rotation plan: Woll vs ANA (v6.2b)."
+  },
+  "team_stats": {
+    "shots": { "TOR": null, "ANA": null },
+    "hits": { "TOR": null, "ANA": null },
+    "pp": { "TOR": { "goals": null, "opportunities": null }, "ANA": { "goals": null, "opportunities": null } },
+    "fo_pct": { "TOR": null, "ANA": null },
+    "toa": { "TOR": null, "ANA": null }
+  },
+  "player_stats": {
+    "TOR": [],
+    "ANA": []
+  },
+  "events": [],
+  "notes": "Populate after game with boxscore, FO%, PP, and key events."
+}
