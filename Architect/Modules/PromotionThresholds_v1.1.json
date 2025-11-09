@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "module": "PromotionThresholds",
+  "version": "1.1.0",
+  "owner": "Leafs-Dynasty-AI",
+  "team": "TOR",
+  "description": "Monitors AHL player readiness, form, and NHL vacancies to recommend call-ups or short-term evaluations.",
+  "inputs": {
+    "devpulse_report": "Architect/Reports/Development/DevPulse_latest.json",
+    "ahl_lines": "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+    "nhl_lines": "Architect/Lines/NHL/NHL_Lines_2024-12-10.json",
+    "injury_report": "Architect/Reports/Injuries/injury_report_latest.json",
+    "capflex_forecast": "Architect/Reports/Finance/CapFlex_latest.json"
+  },
+  "thresholds": {
+    "growth_rate_min": 1.05,
+    "morale_score_min": 0.80,
+    "ahl_toi_min": 16,
+    "cap_space_min_millions": 0.50,
+    "chemistry_fit_score_min": 0.85
+  },
+  "outputs": {
+    "reports_dir": "Architect/Reports/Promotion/",
+    "latest_json": "Architect/Reports/Promotion/PromotionThresholds_latest.json",
+    "latest_md": "Architect/Reports/Promotion/PromotionThresholds_latest.md",
+    "alerts_log": "Architect/Reports/Promotion/alerts.log"
+  },
+  "schedule": {
+    "on_demand": true,
+    "post_game_autorun": false,
+    "weekly_audit_day": "Monday"
+  },
+  "alerts": {
+    "notify_on": [
+      {"type": "promotion_triggered", "growth_above": 1.05},
+      {"type": "injury_vacancy_match", "trigger": true},
+      {"type": "cap_limit_block", "cap_space_below": 0.50}
+    ],
+    "routes": [
+      {"type": "gpt_echo", "channel": "DynastyAI"},
+      {"type": "file_append", "path": "Architect/Reports/Promotion/alerts.log"}
+    ]
+  },
+  "safety": {
+    "require_team_flag": true,
+    "deny_if_missing": [
+      "Architect/Reports/Development/DevPulse_latest.json",
+      "Architect/Reports/Finance/CapFlex_latest.json"
+    ]
+  },
+  "metadata": {
+    "canon": "v4.1",
+    "architect": "v6.2",
+    "notes": "Evaluates AHL readiness weekly or on demand. Syncs with DevPulse growth metrics and CapFlex forecast for legality checks."
+  }
+}
