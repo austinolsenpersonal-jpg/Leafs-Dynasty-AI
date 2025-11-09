@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "module": "AnalyticsExpansion",
+  "version": "6.0.0",
+  "owner": "Leafs-Dynasty-AI",
+  "team": "TOR",
+  "description": "Adds rolling xGF/xGA trends, morale–chemistry cross-map, PP zone-entry tracking, and last-7/14 form snapshots for NHL & AHL.",
+  "inputs": {
+    "nhl_lines": "Architect/Lines/NHL/NHL_Lines_2024-12-10.json",
+    "ahl_lines": "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+    "game_logs_dir": "Architect/Reports/GameLogs/",
+    "player_stats_schema": "Architect/Reports/schemas/player_stats.schema.json",
+    "team_stats_schema": "Architect/Reports/schemas/team_stats.schema.json"
+  },
+  "metrics": {
+    "windows_games": [5, 10],
+    "windows_days": [7, 14],
+    "compute": [
+      "xgf_xga_trend",
+      "war_delta_estimate",
+      "chemistry_morale_cormap",
+      "pp_zone_entry_rate",
+      "pk_denial_rate",
+      "goalie_high_danger_fsv%"
+    ]
+  },
+  "outputs": {
+    "reports_dir": "Architect/Reports/Analytics/",
+    "latest_summary": "Architect/Reports/Analytics/latest_summary.json",
+    "latest_md": "Architect/Reports/Analytics/latest_summary.md"
+  },
+  "schedule": {
+    "on_demand": true,
+    "post_game_autorun": true
+  },
+  "safety": {
+    "require_team_flag": true,
+    "fail_on_missing_sources": false
+  },
+  "metadata": {
+    "canon": "v4.1",
+    "architect": "v6.2",
+    "notes": "Reads any valid game logs present; partial data allowed."
+  }
+}
