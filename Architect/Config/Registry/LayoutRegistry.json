@@ -1,0 +1,14 @@
+{
+  "registry_version": "1.0",
+  "gameplan_layouts": {
+    "default": "Architect/Config/OutputLayouts/Pregame_Layout_Default_v1.2.json"
+  },
+  "resolution_rules": {
+    "order_of_precedence": [
+      "opponent_specific",
+      "date_specific",
+      "default"
+    ],
+    "fallback": "default"
+  }
+}
