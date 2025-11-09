@@ -1,0 +1,46 @@
+{
+  "schema": "goalie_plan_v6.2",
+  "team": "Toronto Maple Leafs",
+  "season": "2024-25",
+  "mode": "Balanced",
+  "linked_schedule": "/Architect/Schedule/Parsed/NHL_Schedule_2024-25_Dec-Apr.json",
+  "goalies": {
+    "starter": {
+      "name": "Joseph Woll",
+      "max_consecutive_starts": 3,
+      "min_rest_days": 1,
+      "form_bias": "Positive",
+      "target_games": 53,
+      "fatigue_threshold": 0.80
+    },
+    "backup": {
+      "name": "Anthony Stolarz",
+      "max_consecutive_starts": 2,
+      "min_rest_days": 0,
+      "form_bias": "Neutral",
+      "target_games": 29,
+      "fatigue_threshold": 0.85
+    }
+  },
+  "b2b_logic": {
+    "rule": "Split",
+    "description": "Starter plays game one of back-to-backs; backup takes second unless form bias > +0.10."
+  },
+  "special_rules": {
+    "home_bias": "Starter",
+    "away_bias": "Backup (vs sub-.500 teams)",
+    "ot_bias": "Starter",
+    "injury_emergency": "Backup consecutive max = 3 games"
+  },
+  "guardrails": {
+    "cap_gate": true,
+    "roster_gate": true,
+    "schedule_gate": true,
+    "systems_gate": true
+  },
+  "status": {
+    "verified": true,
+    "integrity": 0.98,
+    "last_check": "2024-12-12"
+  }
+}
