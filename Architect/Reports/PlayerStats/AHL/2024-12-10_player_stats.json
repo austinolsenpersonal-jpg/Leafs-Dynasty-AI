@@ -1,0 +1,82 @@
+{
+  "schema": "player_stats_v1.0",
+  "meta": {
+    "level": "AHL",
+    "team": "Toronto Marlies",
+    "opponent": null,
+    "game_date": "2024-12-10",
+    "game_id": "AHL_2024-12-10",
+    "source": "manual_entry_from_screens",
+    "notes": "Populate skater and goalie stats for the AHL game; leave nulls for missing data."
+  },
+  "skaters": [
+    {
+      "name": "Alex Steeves",
+      "position": "LW",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    },
+    {
+      "name": "Roni Hirvonen",
+      "position": "C",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    },
+    {
+      "name": "Topi Niemelä",
+      "position": "D",
+      "goals": null,
+      "assists": null,
+      "points": null,
+      "plus_minus": null,
+      "shots": null,
+      "hits": null,
+      "pim": null,
+      "pp_points": null,
+      "sh_points": null,
+      "toi": null
+    }
+  ],
+  "goalies": [
+    {
+      "name": "Dennis Hildeby",
+      "result": null,
+      "shots_against": null,
+      "saves": null,
+      "save_pct": null,
+      "goals_against": null,
+      "gaa": null,
+      "toi": null
+    },
+    {
+      "name": "Keith Petruzzelli",
+      "result": "DNP",
+      "shots_against": null,
+      "saves": null,
+      "save_pct": null,
+      "goals_against": null,
+      "gaa": null,
+      "toi": null
+    }
+  ],
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
