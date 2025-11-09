@@ -1,0 +1,7 @@
+{
+  "feature": "PregameLayout.Default",
+  "enabled": true,
+  "template_path": "Architect/Config/OutputLayouts/Pregame_Layout_Default_v1.2.json",
+  "override_per_game_allowed": true,
+  "notes": "Automatically applies the default pregame layout for every future matchup."
+}
