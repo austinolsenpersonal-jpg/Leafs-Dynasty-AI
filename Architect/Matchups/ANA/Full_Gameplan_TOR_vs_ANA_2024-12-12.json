@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "version": "v1.2",
+    "team": "TOR",
+    "opponent": "ANA",
+    "date": "2024-12-12",
+    "generated_by": "Leafs Dynasty AI",
+    "layout_locked": true,
+    "lines_source": "Architect/Lines/NHL/Post_Foerster_Lines_2024-12-12.json"
+  },
+
+  "layout_order": [
+    "team_strategies",
+    "offense_line_strategies",
+    "defense_pair_strategies",
+    "starting_goalie",
+    "starting_lines"
+  ],
+
+  "team_strategies": {
+    "forecheck": "1-2-2 Passive",
+    "neutral_zone": "1-3-1",
+    "trap_forecheck_slider_0to6": 3,
+    "defensive_pressure": "Contain Puck",
+    "defensive_strategy": "Collapsing",
+    "offensive_pressure": "Standard",
+    "control_breakout": "Strong Side Slant",
+    "quick_breakout": "Stay Wide"
+  },
+
+  "offense_line_strategies": [
+    { "line": "Line 1 (Knies–Matthews–Marner)", "strategy": "Overload", "carry_dump_0to10": 7, "cycle_shoot_0to10": 6, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
+    { "line": "Line 2 (Nylander–Tavares–Foerster)", "strategy": "Overload", "carry_dump_0to10": 7, "cycle_shoot_0to10": 6, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
+    { "line": "Line 3 (Mercer–Domi–Pacioretty)", "strategy": "Crash the Net", "carry_dump_0to10": 5, "cycle_shoot_0to10": 5, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
+    { "line": "Line 4 (Robertson–Kämpf–Steeves)", "strategy": "Crash the Net", "carry_dump_0to10": 4, "cycle_shoot_0to10": 5, "efficiency_energy_0to10": 5, "dont_block_block_0to10": 4 }
+  ],
+
+  "defense_pair_strategies": [
+    { "pair": "Pair 1 (Rielly–Tanev)", "hold_line_pinch_0to10": 6, "cycle_shoot_0to10": 5 },
+    { "pair": "Pair 2 (Ekman-Larsson–Dumba)", "hold_line_pinch_0to10": 5, "cycle_shoot_0to10": 5 },
+    { "pair": "Pair 3 (McCabe–Carlo)", "hold_line_pinch_0to10": 7, "cycle_shoot_0to10": 4 }
+  ],
+
+  "starting_goalie": {
+    "starter": "Joseph Woll",
+    "backup": "Anthony Stolarz",
+    "note": "Start Woll vs ANA (low-pace trap, 26–30 SA expected). Pull if 4 GA or SV% < .850 after 2nd."
+  },
+
+  "starting_lines": {
+    "forwards": [
+      "Knies – Matthews – Marner",
+      "Nylander – Tavares – Foerster",
+      "Mercer – Domi – Pacioretty",
+      "Robertson – Kämpf – Steeves"
+    ],
+    "defense": [
+      "Rielly – Tanev",
+      "Ekman-Larsson – Dumba",
+      "McCabe – Carlo"
+    ],
+    "power_play": {
+      "pp1": "Rielly | Nylander | Matthews | Tavares | Knies",
+      "pp2": "OEL | Dumba | Foerster | Domi | Mercer"
+    },
+    "penalty_kill": {
+      "pk1": "Kämpf–Mercer | Carlo–McCabe",
+      "pk2": "Tavares–Knies | Tanev–Rielly"
+    }
+  }
+}
