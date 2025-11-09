@@ -1,0 +1,122 @@
+{
+  "preset_name": "Leafs_SliderReference_v5.0",
+  "version": "v5.0",
+  "timestamp": "2024-12-10T21:55:00",
+  "team": "Toronto Maple Leafs",
+  "matchup_context": {
+    "opponent": "Anaheim Ducks",
+    "date": "2024-12-12",
+    "home_away": "Home"
+  },
+  "systems": {
+    "forecheck": "1-2-2 Passive (Trigger → Aggressive on OZ_FO_win & lead≥1)",
+    "neutral_zone": "1-3-1",
+    "defensive_pressure": "Contain Puck",
+    "defensive_strategy": "Collapsing",
+    "offensive_pressure": "Standard (auto → Aggressive if trailing 3rd)",
+    "control_breakout": "Strong Side Slant",
+    "quick_breakout": "Close Support",
+    "power_play": [
+      "1-3-1",
+      "Umbrella"
+    ],
+    "penalty_kill": [
+      "Large Box",
+      "Diamond"
+    ]
+  },
+  "goalie_plan": {
+    "starter": "Joseph Woll",
+    "backup": "Anthony Stolarz",
+    "pull_condition": "GA>=3 OR SV%<.870 after 35:00",
+    "notes": "Alternate rotation active; Stolarz starts @ NJD, Woll vs ANA"
+  },
+  "starting_units": {
+    "offence_start_line": 1,
+    "defence_start_pair": 1
+  },
+  "offensive_lines": [
+    {
+      "line": 1,
+      "strategy": "Overload",
+      "unit": "Knies – Matthews – Marner",
+      "sliders": {
+        "carry_to_dump": "7→3",
+        "cycle_to_shoot": "6→4",
+        "efficiency_to_energy": "9→1",
+        "dont_block_to_block": "5→5"
+      }
+    },
+    {
+      "line": 2,
+      "strategy": "Behind the Net",
+      "unit": "Pacioretty – Tavares – Mercer",
+      "sliders": {
+        "carry_to_dump": "6→4",
+        "cycle_to_shoot": "5→5",
+        "efficiency_to_energy": "8→2",
+        "dont_block_to_block": "6→4"
+      }
+    },
+    {
+      "line": 3,
+      "strategy": "Crash the Net",
+      "unit": "Domi – Kämpf – Nylander",
+      "sliders": {
+        "carry_to_dump": "5→5",
+        "cycle_to_shoot": "4→6",
+        "efficiency_to_energy": "6→4",
+        "dont_block_to_block": "6→4"
+      }
+    },
+    {
+      "line": 4,
+      "strategy": "Dump and Chase",
+      "unit": "Steeves – Lorentz – Robertson",
+      "sliders": {
+        "carry_to_dump": "4→6",
+        "cycle_to_shoot": "3→7",
+        "efficiency_to_energy": "4→6",
+        "dont_block_to_block": "7→3"
+      }
+    }
+  ],
+  "defensive_pairs": [
+    {
+      "pair": 1,
+      "unit": "Rielly – Tanev",
+      "sliders": {
+        "hold_line_to_pinch": "5→5",
+        "protect_net_to_press": "5→5"
+      }
+    },
+    {
+      "pair": 2,
+      "unit": "Ekman-Larsson – Dumba",
+      "sliders": {
+        "hold_line_to_pinch": "6→4",
+        "protect_net_to_press": "4→6"
+      }
+    },
+    {
+      "pair": 3,
+      "unit": "McCabe – Carlo",
+      "sliders": {
+        "hold_line_to_pinch": "4→6",
+        "protect_net_to_press": "7→3"
+      }
+    }
+  ],
+  "roster_status": {
+    "injuries": [],
+    "scratches": [],
+    "notes": "Steeves active on L4; Holmberg traded; roster 47/50 SPC"
+  },
+  "canon_rules": {
+    "slider_format": "0→10 directional arrows",
+    "order_constraints": [
+      "Show Offensive Strategy before sliders for each line",
+      "Mirror in-game UI order"
+    ]
+  }
+}
