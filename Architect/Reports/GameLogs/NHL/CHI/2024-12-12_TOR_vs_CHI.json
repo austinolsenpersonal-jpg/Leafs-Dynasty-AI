@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "game_id": "2024-12-12-TOR-CHI",
+  "date": "2024-12-12",
+  "season": "2024-2025",
+  "game_type": "regular",
+  "venue": "Scotiabank Arena",
+  "home_team": {
+    "name": "Toronto Maple Leafs",
+    "abbr": "TOR"
+  },
+  "away_team": {
+    "name": "Chicago Blackhawks",
+    "abbr": "CHI"
+  },
+  "score": {
+    "final": { "TOR": 7, "CHI": 3 },
+    "decision": "TOR regulation win"
+  },
+  "period_scoring": [
+    { "period": "1", "TOR": 2, "CHI": 1 },
+    { "period": "2", "TOR": 3, "CHI": 1 },
+    { "period": "3", "TOR": 2, "CHI": 1 }
+  ],
+  "shots_by_period": [
+    { "period": "1", "TOR": 13, "CHI": 8 },
+    { "period": "2", "TOR": 11, "CHI": 10 },
+    { "period": "3", "TOR": 12, "CHI": 9 }
+  ],
+  "team_totals": {
+    "shots": { "TOR": 36, "CHI": 27 }
+  },
+  "events": [
+    {
+      "time": "03:21",
+      "period": 1,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "A. Matthews",
+      "scorer_goal_number": 18,
+      "assists": ["M. Marner", "M. Knies"],
+      "strength": "EV"
+    },
+    {
+      "time": "09:07",
+      "period": 1,
+      "team": "CHI",
+      "type": "goal",
+      "scorer": "C. Bedard",
+      "scorer_goal_number": 14,
+      "assists": ["L. Reichel"],
+      "strength": "EV"
+    },
+    {
+      "time": "17:44",
+      "period": 1,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "W. Nylander",
+      "scorer_goal_number": 21,
+      "assists": ["J. Tavares", "M. Domi"],
+      "strength": "PP"
+    },
+    {
+      "time": "02:30",
+      "period": 2,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "M. Knies",
+      "scorer_goal_number": 15,
+      "assists": ["M. Marner", "A. Matthews"],
+      "strength": "EV"
+    },
+    {
+      "time": "06:55",
+      "period": 2,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "D. Mercer",
+      "scorer_goal_number": 9,
+      "assists": ["D. Kämpf"],
+      "strength": "EV"
+    },
+    {
+      "time": "10:42",
+      "period": 2,
+      "team": "CHI",
+      "type": "goal",
+      "scorer": "T. Hall",
+      "scorer_goal_number": 6,
+      "assists": ["R. Johnson"],
+      "strength": "EV"
+    },
+    {
+      "time": "18:59",
+      "period": 2,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "M. Domi",
+      "scorer_goal_number": 4,
+      "assists": ["J. McCabe"],
+      "strength": "EV"
+    },
+    {
+      "time": "04:11",
+      "period": 3,
+      "team": "CHI",
+      "type": "goal",
+      "scorer": "S. Dickinson",
+      "scorer_goal_number": 5,
+      "assists": [],
+      "strength": "EV"
+    },
+    {
+      "time": "08:14",
+      "period": 3,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "A. Matthews",
+      "scorer_goal_number": 19,
+      "assists": ["W. Nylander"],
+      "strength": "EV"
+    },
+    {
+      "time": "16:50",
+      "period": 3,
+      "team": "TOR",
+      "type": "goal",
+      "scorer": "M. Knies",
+      "scorer_goal_number": 16,
+      "assists": ["M. Marner"],
+      "strength": "EV"
+    }
+  ],
+  "leafs_skaters_summary": [
+    { "player": "A. Matthews", "g": 2, "a": 1, "p": 3 },
+    { "player": "M. Knies", "g": 2, "a": 1, "p": 3 },
+    { "player": "M. Marner", "g": 0, "a": 3, "p": 3 },
+    { "player": "W. Nylander", "g": 1, "a": 1, "p": 2 },
+    { "player": "M. Domi", "g": 1, "a": 1, "p": 2 },
+    { "player": "D. Mercer", "g": 1, "a": 0, "p": 1 },
+    { "player": "J. Tavares", "g": 0, "a": 1, "p": 1 },
+    { "player": "J. McCabe", "g": 0, "a": 1, "p": 1 }
+  ],
+  "leafs_goalies": [
+    {
+      "player": "J. Woll",
+      "time_on_ice": "60:00",
+      "shots_against": 27,
+      "saves": 24,
+      "goals_against": 3,
+      "save_pct": 0.889,
+      "gaa": 3.00
+    }
+  ],
+  "source_images": [],
+  "notes": "Leafs dominated puck possession and outshot Chicago 36–27. Matthews and Knies each scored twice; Marner had three assists. Woll with 24 saves in regulation."
+}
