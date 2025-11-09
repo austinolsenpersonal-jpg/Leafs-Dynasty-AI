@@ -1,0 +1,39 @@
+{
+  "schema": "autosavepoint_sync_v1.0",
+  "meta": {
+    "system": "Leafs Dynasty AI",
+    "environment": "Architect v6.2",
+    "description": "Automatically triggers dynasty_savepoint after new game logs, summaries, or stat updates are added.",
+    "last_updated": "2024-12-10"
+  },
+  "watch_paths": [
+    "Architect/Reports/GameLogs/",
+    "Architect/Reports/GameSummaries/",
+    "Architect/Reports/PlayerStats/",
+    "Architect/Reports/TeamStats/"
+  ],
+  "actions": {
+    "on_new_file": [
+      "/dynasty_savepoint --tag \"AutoSync_$(BASENAME)_$(DATE)\"",
+      "/qa_pre_game --focus \"repo_integrity,lines_sync,pp_one_timer_map\""
+    ],
+    "on_file_update": [
+      "/dynasty_savepoint --tag \"AutoUpdate_$(BASENAME)_$(DATE)\""
+    ]
+  },
+  "options": {
+    "delay_seconds": 5,
+    "batch_mode": true,
+    "log_activity": true,
+    "log_path": "Architect/QA/logs/AutoSavepoint_Sync_Log.json"
+  },
+  "safeguards": {
+    "max_daily_savepoints": 10,
+    "cooldown_minutes": 15,
+    "ignore_patterns": ["*.tmp", "*.bak"]
+  },
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
