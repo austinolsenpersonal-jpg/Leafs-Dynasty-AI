@@ -1,0 +1,93 @@
+{
+  "game_date": "2024-12-14",
+  "opponent": "Detroit Red Wings",
+  "location": "Little Caesars Arena (Away)",
+  "source_baseline": "TOR_Base_Strategy_2024-12-12.json",
+  "record_before_game": "23-5-1",
+  "opponent_record": "16-10-3",
+  "goalies": {
+    "starting_goalie": "J. Woll",
+    "backup_goalie": "A. Stolarz",
+    "rotation_note": "Woll remains starter after solid performance vs ANA (.900 SV%). Stolarz expected next start if back-to-back arises."
+  },
+  "opponent_scouting": {
+    "identity": "Fast-transition, forecheck-heavy team built around Larkin and Raymond. Likes 1-2-2 Aggressive Neutral Zone with quick stretch passes.",
+    "pp_focus": "High umbrella through Seider; Larkin bumper looks low-slot.",
+    "pk_tendency": "High pressure, collapses late if puck controlled low."
+  },
+  "team_strategies": {
+    "defense": {
+      "forecheck": "1-2-2 Passive",
+      "neutral_zone": "1-3-1",
+      "trap_forecheck_slider_0_to_6": 3,
+      "defensive_pressure": "Contain Puck",
+      "defensive_strategy": "Staggered",
+      "notes": "Detroit thrives on neutral-zone turnovers — reduce pinches early and tighten support through middle lane."
+    },
+    "offense": {
+      "offensive_pressure": "Standard → Aggressive if trailing after 2",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide",
+      "entry_focus": "Controlled zone entries over dump-and-chase to counter Detroit's mobile D."
+    }
+  },
+  "line_strategies": {
+    "forwards": {
+      "offensive_strategy": "Overload (default) → Crash the Net situational",
+      "sliders_0_to_10": {
+        "carry_vs_dump": 6,
+        "cycle_vs_shoot": 5,
+        "efficiency_vs_energy": 5,
+        "dont_block_vs_block": 5
+      },
+      "notes": "Top six emphasize sustained O-zone pressure; bottom six tasked with low-cycle grind shifts vs Larkin line."
+    },
+    "defense": {
+      "pairing_sliders_0_to_10": {
+        "hold_line_vs_pinch": 4,
+        "cycle_vs_shoot": 5
+      },
+      "matchups": {
+        "pair1": "Rielly / Carlo — vs Larkin line",
+        "pair2": "Dumba / Tanev — physical containment vs Raymond/Berggren speed",
+        "pair3": "OEL / Timmins — puck movement, 3rd pairing ozone starts"
+      }
+    }
+  },
+  "special_teams_plan": {
+    "powerplay": {
+      "unit1_focus": "Left-flank Marner, right-slot Nylander, Tavares bumper.",
+      "unit2_focus": "Mercer–Foerster combo, look short-side wrister seam.",
+      "pp_entry": "Carry — no dump until forced.",
+      "pp_adapt": "If DET pressures high, drop Nylander low-side and rotate bumper high."
+    },
+    "penalty_kill": {
+      "structure": "Diamond vs umbrella; box vs overload.",
+      "pressure_level": "Medium",
+      "notes": "Detroit likes to feed Seider high — stay tight to Larkin bumper."
+    }
+  },
+  "situational_adjustments": {
+    "trailing_by_1_after_2": {
+      "trap_forecheck_slider_0_to_6": 6,
+      "offensive_pressure": "Aggressive",
+      "forecheck": "2-3",
+      "defensive_pressure": "Contain Puck",
+      "note": "Push tempo with high forecheck, trust Woll rebound control."
+    },
+    "leading_late": {
+      "trap_forecheck_slider_0_to_6": 2,
+      "offensive_pressure": "Conservative",
+      "neutral_zone": "1-3-1 tight",
+      "matchups": "Deploy Carlo/Tanev vs Larkin every shift final 3 mins."
+    }
+  },
+  "keys_to_win": [
+    "1️⃣ Avoid east-west passes through DET neutral trap.",
+    "2️⃣ Force them low with quick entries; use cycle to draw their wingers deep.",
+    "3️⃣ Stay disciplined — DET's PP top-10 in conversion rate.",
+    "4️⃣ Test Husso early — glove side low shots in traffic.",
+    "5️⃣ Keep Woll sharp: low shot volume against = focus lapses possible."
+  ],
+  "coach_quote": "Detroit punishes mistakes through the neutral zone — stay patient, grind, and let our structure wear them down. Don’t force pretty plays through their trap."
+}
