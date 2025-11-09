@@ -1,0 +1,65 @@
+{
+  "schema": "trades_log_v1.0",
+  "meta": {
+    "system": "Leafs Dynasty AI",
+    "season": "2024-25",
+    "description": "Chronological record of all Toronto Maple Leafs trades (NHL + AHL)."
+  },
+  "entries": [
+    {
+      "id": "TRADE-2024-12-03-001",
+      "date": "2024-12-03",
+      "teams_involved": ["TOR", "DAL"],
+      "status": "completed",
+      "assets_out": ["Jani Hakanpää (D)", "Philippe Myers (D)", "3 others (depth contracts)"],
+      "assets_in": ["Matt Dumba (D)"],
+      "cap_change_tor": 450000,
+      "comments": "Acquired Dumba from DAL to add veteran right-shot depth.",
+      "verified": true
+    },
+    {
+      "id": "TRADE-2024-12-04-001",
+      "date": "2024-12-04",
+      "teams_involved": ["TOR", "BOS"],
+      "status": "completed",
+      "assets_out": ["Scott Laughton (C)", "Pontus Holmberg (RW)"],
+      "assets_in": ["2026 2nd Round Pick (BOS)", "2025 2nd Round Pick (CAR)"],
+      "cap_change_tor": -875000,
+      "comments": "Cleared depth forwards for future picks.",
+      "verified": true
+    },
+    {
+      "id": "TRADE-2024-12-05-001",
+      "date": "2024-12-05",
+      "teams_involved": ["TOR", "LAK"],
+      "status": "completed",
+      "assets_out": ["Matt Benning (D)", "2025 5th Round Pick (TOR)"],
+      "assets_in": ["2025 3rd Round Pick (LAK)"],
+      "cap_change_tor": 950000,
+      "comments": "Moved Benning for mid-round pick upgrade and cap space.",
+      "verified": true
+    },
+    {
+      "id": "TRADE-2024-12-05-002",
+      "date": "2024-12-05",
+      "teams_involved": ["TOR", "SEA"],
+      "status": "completed",
+      "assets_out": ["Bobby McMann (C)"],
+      "assets_in": ["2025 2nd Round Pick (SEA)"],
+      "cap_change_tor": -775000,
+      "comments": "Traded McMann to SEA for 2nd round pick.",
+      "verified": true
+    },
+    {
+      "id": "TRADE-2024-12-06-001",
+      "date": "2024-12-06",
+      "teams_involved": ["TOR", "NJD"],
+      "status": "completed",
+      "assets_out": ["Calle Järnkrok (C)", "2025 2nd Round Pick (CAR)", "2 other minor assets"],
+      "assets_in": ["Dawson Mercer (RW)"],
+      "cap_change_tor": 250000,
+      "comments": "Major roster upgrade — Mercer acquired from NJD for Järnkrok and futures.",
+      "verified": true
+    }
+  ]
+} 
