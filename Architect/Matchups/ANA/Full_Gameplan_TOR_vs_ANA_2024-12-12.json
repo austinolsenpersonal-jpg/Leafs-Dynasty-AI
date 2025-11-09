@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "v1.2",
+    "version": "v1.4",
     "team": "TOR",
     "opponent": "ANA",
     "date": "2024-12-12",
@@ -29,22 +29,62 @@
   },
 
   "offense_line_strategies": [
-    { "line": "Line 1 (Knies–Matthews–Marner)", "strategy": "Overload", "carry_dump_0to10": 7, "cycle_shoot_0to10": 6, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
-    { "line": "Line 2 (Nylander–Tavares–Foerster)", "strategy": "Overload", "carry_dump_0to10": 7, "cycle_shoot_0to10": 6, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
-    { "line": "Line 3 (Mercer–Domi–Pacioretty)", "strategy": "Crash the Net", "carry_dump_0to10": 5, "cycle_shoot_0to10": 5, "efficiency_energy_0to10": 6, "dont_block_block_0to10": 4 },
-    { "line": "Line 4 (Robertson–Kämpf–Steeves)", "strategy": "Crash the Net", "carry_dump_0to10": 4, "cycle_shoot_0to10": 5, "efficiency_energy_0to10": 5, "dont_block_block_0to10": 4 }
+    {
+      "line": "Line 1 (Knies–Matthews–Marner)",
+      "strategy": "Overload",
+      "carry_dump_0to10": 3,
+      "cycle_shoot_0to10": 4,
+      "efficiency_energy_0to10": 5,
+      "dont_block_block_0to10": 4
+    },
+    {
+      "line": "Line 2 (Nylander–Tavares–Foerster)",
+      "strategy": "Overload",
+      "carry_dump_0to10": 4,
+      "cycle_shoot_0to10": 5,
+      "efficiency_energy_0to10": 5,
+      "dont_block_block_0to10": 4
+    },
+    {
+      "line": "Line 3 (Mercer–Domi–Pacioretty)",
+      "strategy": "Crash the Net",
+      "carry_dump_0to10": 6,
+      "cycle_shoot_0to10": 6,
+      "efficiency_energy_0to10": 5,
+      "dont_block_block_0to10": 6
+    },
+    {
+      "line": "Line 4 (Robertson–Kämpf–Steeves)",
+      "strategy": "Crash the Net",
+      "carry_dump_0to10": 7,
+      "cycle_shoot_0to10": 6,
+      "efficiency_energy_0to10": 6,
+      "dont_block_block_0to10": 7
+    }
   ],
 
   "defense_pair_strategies": [
-    { "pair": "Pair 1 (Rielly–Tanev)", "hold_line_pinch_0to10": 6, "cycle_shoot_0to10": 5 },
-    { "pair": "Pair 2 (Ekman-Larsson–Dumba)", "hold_line_pinch_0to10": 5, "cycle_shoot_0to10": 5 },
-    { "pair": "Pair 3 (McCabe–Carlo)", "hold_line_pinch_0to10": 7, "cycle_shoot_0to10": 4 }
+    {
+      "pair": "Pair 1 (Rielly–Tanev)",
+      "hold_line_pinch_0to10": 4,
+      "cycle_shoot_0to10": 5
+    },
+    {
+      "pair": "Pair 2 (Ekman-Larsson–Dumba)",
+      "hold_line_pinch_0to10": 5,
+      "cycle_shoot_0to10": 5
+    },
+    {
+      "pair": "Pair 3 (McCabe–Carlo)",
+      "hold_line_pinch_0to10": 6,
+      "cycle_shoot_0to10": 4
+    }
   ],
 
   "starting_goalie": {
     "starter": "Joseph Woll",
     "backup": "Anthony Stolarz",
-    "note": "Start Woll vs ANA (low-pace trap, 26–30 SA expected). Pull if 4 GA or SV% < .850 after 2nd."
+    "note": "Start Woll vs ANA (trap-paced game, 26–30 SA expected). Pull if 4 GA or SV% < .850 after 2nd."
   },
 
   "starting_lines": {
