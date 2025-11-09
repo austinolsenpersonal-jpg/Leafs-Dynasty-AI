@@ -60,6 +60,17 @@
       "cap_change_tor": 250000,
       "comments": "Major roster upgrade — Mercer acquired from NJD for Järnkrok and futures.",
       "verified": true
+    },
+    {
+      "id": "TRADE-2024-12-11-001",
+      "date": "2024-12-11",
+      "teams_involved": ["TOR", "PHI"],
+      "status": "completed",
+      "assets_out": ["Steven Lorentz (C)", "2026 3rd Round Pick (TOR)", "2025 5th Round Pick (PIT)", "2025 6th Round Pick (PHI)"],
+      "assets_in": ["Tyson Foerster (RW)"],
+      "cap_change_tor": 90000,
+      "comments": "Acquired Tyson Foerster from PHI for Lorentz and three draft picks. Adds controllable young RW with top-9 potential while staying cap compliant.",
+      "verified": true
     }
   ]
-} 
+}
