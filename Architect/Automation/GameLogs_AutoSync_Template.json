@@ -1,0 +1,43 @@
+{
+  "schema": "game_log_automation_v1.0",
+  "meta": {
+    "system": "Leafs Dynasty AI",
+    "environment": "Architect v6.2",
+    "description": "Automates creation and linkage of game logs, player stats, and team summaries per matchup.",
+    "last_updated": "2024-12-10"
+  },
+  "watchers": {
+    "nhl_game_reports": "Architect/Reports/GameLogs/NHL/",
+    "ahl_game_reports": "Architect/Reports/GameLogs/AHL/",
+    "player_stats_nhl": "Architect/Reports/PlayerStats/NHL/",
+    "player_stats_ahl": "Architect/Reports/PlayerStats/AHL/",
+    "team_stats_nhl": "Architect/Reports/TeamStats/NHL/",
+    "team_stats_ahl": "Architect/Reports/TeamStats/AHL/"
+  },
+  "automation": {
+    "trigger_on_new_file": true,
+    "link_game_to_schedule": true,
+    "extract_opponent_from_filename": true,
+    "generate_summary_md": true,
+    "summary_output_path": "Architect/Reports/GameSummaries/",
+    "summary_format": "compact",
+    "create_savepoint_after_sync": true,
+    "savepoint_path": "Architect/Savepoints/"
+  },
+  "summary_template": {
+    "title_format": "Game Summary – {team} vs {opponent} ({game_date})",
+    "sections": [
+      "Result Overview",
+      "Top Skaters",
+      "Goalie Performance",
+      "Special Teams Summary",
+      "Notable Stats",
+      "Next Opponent Preview"
+    ],
+    "include_stats": ["goals", "assists", "shots", "hits", "pp%", "pk%"]
+  },
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
