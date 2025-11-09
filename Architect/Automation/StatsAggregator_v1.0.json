@@ -1,0 +1,91 @@
+{
+  "schema": "stats_aggregator_v1.0",
+  "meta": {
+    "system": "Leafs Dynasty AI",
+    "environment": "Architect v6.2",
+    "season": "2024-25",
+    "description": "Aggregates game logs + per-game stat files into rolling and season totals for NHL/AHL; emits matchup-ready summaries."
+  },
+  "inputs": {
+    "watch_paths": [
+      "Architect/Reports/GameLogs/",
+      "Architect/Reports/GameSummaries/",
+      "Architect/Reports/PlayerStats/",
+      "Architect/Reports/TeamStats/"
+    ],
+    "schemas": {
+      "game_log": "Architect/Reports/schemas/game_log.schema.json",
+      "player_stats": "Architect/Reports/schemas/player_stats.schema.json",
+      "team_stats": "Architect/Reports/schemas/team_stats.schema.json"
+    }
+  },
+  "outputs": {
+    "season_totals": {
+      "nhl_players": "Architect/Analytics/Season/NHL_PlayerTotals_2024-25.json",
+      "nhl_team": "Architect/Analytics/Season/NHL_TeamTotals_2024-25.json",
+      "ahl_players": "Architect/Analytics/Season/AHL_PlayerTotals_2024-25.json",
+      "ahl_team": "Architect/Analytics/Season/AHL_TeamTotals_2024-25.json"
+    },
+    "rolling_form": {
+      "nhl_last5": "Architect/Analytics/Rolling/RollingForm_NHL_Last5.json",
+      "ahl_last5": "Architect/Analytics/Rolling/RollingForm_AHL_Last5.json"
+    },
+    "matchup_digest": "Architect/Analytics/Rolling/Matchup_Digest_Current.json",
+    "logs": "Architect/QA/logs/StatsAggregator_Log.json"
+  },
+  "aggregate_rules": {
+    "players": {
+      "sum_fields": ["GP", "G", "A", "PIM", "SOG", "Hits", "Blocks", "PPP", "SHP"],
+      "calc_fields": {
+        "P": "G + A",
+        "S%": "SOG > 0 ? round((G / SOG) * 100, 1) : null",
+        "P/GP": "GP > 0 ? round((G + A) / GP, 2) : null",
+        "TOI_avg": "GP > 0 ? round(TOI_total / GP, 2) : null"
+      },
+      "carry_fields_if_present": ["FO%", "xGF", "xGA", "CF%", "Rel_CF%"]
+    },
+    "team": {
+      "sum_fields": ["GF", "GA", "SF", "SA", "Hits", "Blocks", "PP_G", "PP_Opportunities", "PK_GA", "PK_Times"],
+      "calc_fields": {
+        "GoalDiff": "GF - GA",
+        "PP%": "PP_Opportunities > 0 ? round((PP_G / PP_Opportunities) * 100, 1) : null",
+        "PK%": "PK_Times > 0 ? round((1 - (PK_GA / PK_Times)) * 100, 1) : null",
+        "SF/GP": "GP > 0 ? round(SF / GP, 1) : null",
+        "SA/GP": "GP > 0 ? round(SA / GP, 1) : null"
+      }
+    },
+    "rolling_last_n": 5
+  },
+  "triggers": {
+    "on_new_file": ["aggregate", "emit_matchup_digest", "log_result"],
+    "on_file_update": ["aggregate", "emit_matchup_digest", "log_result"]
+  },
+  "matchup_digest_settings": {
+    "include": [
+      "team.PP%",
+      "team.PK%",
+      "team.GoalDiff",
+      "team.SF/GP",
+      "team.SA/GP",
+      "hot_players_top5_by_P/GP",
+      "goalies_form_last5"
+    ],
+    "write_path": "Architect/Analytics/Rolling/Matchup_Digest_Current.json"
+  },
+  "options": {
+    "delay_seconds": 5,
+    "batch_mode": true,
+    "strict_schema_validation": true,
+    "fail_on_schema_error": false,
+    "write_empty_if_missing": false
+  },
+  "safeguards": {
+    "max_aggregations_per_hour": 12,
+    "cooldown_minutes": 5,
+    "ignore_patterns": ["*.tmp", "*.bak"]
+  },
+  "validation": {
+    "checksum": null,
+    "verified": false
+  }
+}
