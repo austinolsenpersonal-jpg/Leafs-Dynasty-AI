@@ -1,0 +1,61 @@
+{
+  "team": "TOR",
+  "version": "1.2",
+  "updated_at": "2024-12-12",
+  "notes": [
+    "Post-ANA update: goalie loss; emphasize shot quality over volume.",
+    "Discipline tone-down to reduce stick fouls from D pair (OEL/Carlo)."
+  ],
+  "team_strategies": {
+    "defense": {
+      "forecheck": "2-3",
+      "neutral_zone": "1-3-1",
+      "trap_forecheck_slider_0_to_6": 4,
+      "defensive_pressure": "Contain Puck",
+      "defensive_strategy": "Staggered"
+    },
+    "offense": {
+      "offensive_pressure": "Standard",
+      "control_breakout": "Strong Side Slant",
+      "quick_breakout": "Stay Wide"
+    }
+  },
+  "line_strategies": {
+    "forwards": {
+      "default_offensive_strategy": "Overload",
+      "sliders_0_to_10": {
+        "carry_vs_dump": 5,
+        "cycle_vs_shoot": 5,
+        "efficiency_vs_energy": 5,
+        "dont_block_vs_block": 5
+      }
+    },
+    "defense": {
+      "sliders_0_to_10": {
+        "hold_line_vs_pinch": 5,
+        "cycle_vs_shoot": 5
+      }
+    }
+  },
+  "special_teams_directives": {
+    "pp_focus": "Right-side low-stick looks (Tavares bumper/crease, Nylander right flank).",
+    "pk_note": "Stay tighter to slot; avoid stick-lift spam leading to trips."
+  },
+  "situational_adjustments": {
+    "trailing_by_1_after_2": {
+      "trap_forecheck_slider_0_to_6": 6,
+      "offensive_pressure": "Aggressive",
+      "pinch_frequency": "Selective"
+    },
+    "leading_late": {
+      "trap_forecheck_slider_0_to_6": 2,
+      "offensive_pressure": "Conservative",
+      "matchups": "Hard match Tanev/Carlo vs top line"
+    }
+  },
+  "discipline_profile": {
+    "stick_checks": "Slightly Reduced",
+    "hit_frequency": "Maintain",
+    "aim": "Fewer stick minors without losing physical edge"
+  }
+}
