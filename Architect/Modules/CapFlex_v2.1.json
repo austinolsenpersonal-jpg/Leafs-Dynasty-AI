@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "module": "CapFlex",
+  "version": "2.1.0",
+  "owner": "Leafs-Dynasty-AI",
+  "team": "TOR",
+  "description": "Simulates forward-looking salary cap projection (1–2 seasons) using contract, bonus, and escrow data. Flags risk scenarios before trade or signing.",
+  "inputs": {
+    "contracts": "Architect/Data/LeafsContracts_seed_v1.7.json",
+    "finance": "Architect/Finance/CapTracker_v1.2.json",
+    "trades_log": "Architect/Transactions/trades_log.json",
+    "extensions_dir": "Architect/Finance/Extensions/",
+    "league_cap_forecast": "Architect/Finance/LeagueCapForecast_v2025-27.json"
+  },
+  "outputs": {
+    "reports_dir": "Architect/Reports/Finance/",
+    "latest_json": "Architect/Reports/Finance/CapFlex_latest.json",
+    "latest_md": "Architect/Reports/Finance/CapFlex_latest.md"
+  },
+  "modes": {
+    "forecast_years": 2,
+    "threshold_alerts": {
+      "cap_overage_millions": 1.0,
+      "bonus_overage_millions": 0.5,
+      "ltir_usage_millions": 2.0
+    },
+    "highlight_players_expiring_in": [1, 2]
+  },
+  "schedule": {
+    "on_demand": true,
+    "post_trade_autorun": true,
+    "monthly_audit_day": 1
+  },
+  "alerts": {
+    "notify_on": [
+      {"type": "cap_buffer_below", "value_millions": 0.50},
+      {"type": "expiring_contracts_next_year", "count": 4},
+      {"type": "ltir_usage_over", "value_millions": 2.0}
+    ],
+    "routes": [
+      {"type": "gpt_echo", "channel": "DynastyAI"},
+      {"type": "file_append", "path": "Architect/Reports/Finance/alerts.log"}
+    ]
+  },
+  "safety": {
+    "require_team_flag": true,
+    "deny_if_missing_contracts": true
+  },
+  "metadata": {
+    "canon": "v4.1",
+    "architect": "v6.2",
+    "notes": "Projects Leafs’ financial state across 2-year horizon. Integrates TradeWatch + CapTracker updates automatically."
+  }
+}
