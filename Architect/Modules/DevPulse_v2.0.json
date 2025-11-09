@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "module": "DevPulse",
+  "version": "2.0.0",
+  "owner": "Leafs-Dynasty-AI",
+  "team": "TOR",
+  "description": "Tracks AHL/NHL player development, form, and promotion readiness. Calculates growth rate, chemistry delta, and mentor influence.",
+  "inputs": {
+    "ahl_lines": "Architect/Lines/AHL/AHL_Lines_2024-12-04.json",
+    "ahl_stats": "Architect/Reports/Stats/AHL_PlayerStats_latest.json",
+    "nhl_stats": "Architect/Reports/Stats/NHL_PlayerStats_latest.json",
+    "ahl_team_stats": "Architect/Reports/Stats/AHL_TeamStats_latest.json",
+    "nhl_team_stats": "Architect/Reports/Stats/NHL_TeamStats_latest.json",
+    "mentor_links": "Architect/Reports/Mentorship/mentor_map.json"
+  },
+  "metrics": {
+    "growth_window_days": 14,
+    "form_trend_games": 5,
+    "promotion_thresholds": {
+      "toi_avg_min": 17,
+      "growth_rate_min": 1.05,
+      "chem_delta_min": 0.02,
+      "morale_score_min": 0.80
+    }
+  },
+  "outputs": {
+    "reports_dir": "Architect/Reports/Development/",
+    "latest_json": "Architect/Reports/Development/DevPulse_latest.json",
+    "latest_md": "Architect/Reports/Development/DevPulse_latest.md",
+    "alerts_log": "Architect/Reports/Development/alerts.log"
+  },
+  "schedule": {
+    "on_demand": true,
+    "post_game_autorun": true,
+    "weekly_audit_day": "Sunday"
+  },
+  "alerts": {
+    "notify_on": [
+      {"type": "promotion_ready", "threshold_met": true},
+      {"type": "stagnation_warning", "growth_below": 0.9},
+      {"type": "mentor_mismatch", "chem_delta_negative": true}
+    ],
+    "routes": [
+      {"type": "gpt_echo", "channel": "DynastyAI"},
+      {"type": "file_append", "path": "Architect/Reports/Development/alerts.log"}
+    ]
+  },
+  "safety": {
+    "require_team_flag": true,
+    "deny_when_missing_sources": [
+      "Architect/Lines/AHL/AHL_Lines_2024-12-04.json"
+    ]
+  },
+  "metadata": {
+    "canon": "v4.1",
+    "architect": "v6.2",
+    "notes": "Runs after each AHL game or weekly on Sunday. Computes growth, morale, chemistry trends, and promotion triggers."
+  }
+}
