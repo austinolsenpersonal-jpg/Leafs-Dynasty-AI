@@ -12,13 +12,13 @@
       "log_path": "Architect/Reports/GameLogs/NHL/NJD/2024-12-10_TOR_at_NJD.json"
     },
     {
-      "game_id": "2024-12-12-TOR-CHI",
+      "game_id": "2024-12-12-TOR-ANA",
       "date": "2024-12-12",
       "home_away": "home",
-      "opponent": "CHI",
-      "result": "W 7-3",
-      "log_path": "Architect/Reports/GameLogs/NHL/CHI/2024-12-12_TOR_vs_CHI.json"
+      "opponent": "ANA",
+      "result": "TBD",
+      "log_path": "Architect/Reports/GameLogs/NHL/ANA/2024-12-12_TOR_vs_ANA.json"
     }
   ],
-  "notes": "Append new games to the 'games' array. Keep chronological order. Each log path should point to its own JSON under Architect/Reports/GameLogs/NHL/<OPP>/."
+  "notes": "Append new games in chronological order. Each 'log_path' should point to its own JSON under Architect/Reports/GameLogs/NHL/<OPP>/"
 }
