@@ -1,0 +1,28 @@
+{
+  "title": "Experimental_Foerster_Test_2024-12-14",
+  "team": "Toronto Maple Leafs",
+  "context": "Test configuration vs Detroit – integrates Foerster on 3RW with balanced two-way depth lines.",
+  "lines": {
+    "forward_lines": [
+      { "line": 1, "LW": "W. Nylander", "C": "A. Matthews", "RW": "M. Marner", "chemistry": "+5" },
+      { "line": 2, "LW": "M. Knies", "C": "J. Tavares", "RW": "D. Mercer", "chemistry": "+1" },
+      { "line": 3, "LW": "M. Pacioretty", "C": "D. Kampf", "RW": "T. Foerster", "chemistry": "0" },
+      { "line": 4, "LW": "A. Steeves", "C": "M. Domi", "RW": "N. Robertson", "chemistry": "0" }
+    ],
+    "defense_pairs": [
+      { "pair": 1, "LD": "M. Rielly", "RD": "B. Carlo" },
+      { "pair": 2, "LD": "M. Dumba", "RD": "C. Tanev" },
+      { "pair": 3, "LD": "O. Ekman-Larsson", "RD": "C. Timmins" }
+    ],
+    "goalies": {
+      "starter": "J. Woll",
+      "backup": "A. Stolarz"
+    }
+  },
+  "notes": {
+    "style": "Balanced 4-line roll with controlled O-zone focus.",
+    "powerplay_impact": "Use Foerster occasionally on PP2 flank (Mercer bumper).",
+    "usage": "Evaluate chemistry and zone pressure metrics post-game."
+  },
+  "created_at": "2024-12-14T09:00:00-05:00"
+}
