@@ -1,0 +1,43 @@
+{
+  "game_date": "2024-12-12",
+  "opponent": "Anaheim Ducks",
+  "location": "Scotiabank Arena (Home)",
+  "result": "Loss",
+  "final_score": { "TOR": 1, "ANA": 2 },
+  "goal_summary": [
+    { "period": 2, "time": "02:25", "team": "ANA", "scorer": "L. Carlsson", "assists": ["T. Zegras", "A. Killorn"], "strength": "PP" },
+    { "period": 2, "time": "04:35", "team": "TOR", "scorer": "J. Tavares", "assists": ["O. Ekman-Larsson"], "strength": "PP" },
+    { "period": 3, "time": "03:30", "team": "ANA", "scorer": "C. Gauthier", "assists": ["O. Zellweger"], "strength": "EVEN" }
+  ],
+  "team_stats": {
+    "shots": { "TOR": 35, "ANA": 20 },
+    "hits": { "TOR": 51, "ANA": 36 },
+    "time_on_attack": { "TOR": "8:19", "ANA": "4:35" },
+    "passing": { "TOR": "83.9%", "ANA": "88.1%" },
+    "faceoffs_won": { "TOR": 18, "ANA": 18 },
+    "penalty_minutes": { "TOR": 11, "ANA": 7 },
+    "powerplay": { "TOR": "1/1", "ANA": "1/3" }
+  },
+  "goalies": {
+    "TOR": { "name": "J. Woll", "shots_against": 20, "saves": 18, "sv_pct": 0.900, "gaa": 2.02 },
+    "ANA": { "name": "L. Dostal", "shots_against": 35, "saves": 34, "sv_pct": 0.971, "gaa": 1.00 }
+  },
+  "performance_notes": {
+    "discipline": "11 PIM gave ANA too many PP looks; OEL & Carlo took avoidable stick fouls.",
+    "offense": "35 shots but 16 from perimeter; shot quality over quantity required.",
+    "goalie": "Woll solid (.900 SV%) but not a difference-maker. Dostal stole the game.",
+    "stars": [
+      "J. Tavares – 1 G (PP), 100% shooting",
+      "O. Ekman-Larsson – 1 A, 3 Hits",
+      "M. Marner & A. Matthews – 0 PTS, 13 combined shots"
+    ]
+  },
+  "coaching_adjustments_next_game": {
+    "forecheck": "2-3 (raise trap slider to 6 if trailing)",
+    "neutral_zone": "1-3-1",
+    "defensive_pressure": "Contain Puck",
+    "cycle_shoot": "6 → 5",
+    "discipline": "Reduce stick lift/check tendency slightly"
+  },
+  "coach_quote": "This was a goalie loss. We dictated play but couldn’t solve Dostal. Keep attacking, stay disciplined."
+}
