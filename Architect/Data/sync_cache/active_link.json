@@ -1,0 +1,21 @@
+{
+  "schema": "architect_active_link_v1.0",
+  "enabled": true,
+  "last_update": "2024-12-15T23:50-05:00",
+  "polling": {
+    "frequency": "daily",
+    "window_local": "03:00-03:10",
+    "retries": 2,
+    "backoff_minutes": 15
+  },
+  "registry_pointer": "/Architect/Config/registry.json",
+  "handshake_pointer": "/Architect/QA/handshakes/2024-12-15.json",
+  "authorities": {
+    "json_owner": "NHL GPT Architect (v6.2)",
+    "tactical_owner": "Leafs Dynasty Suite (v5.0.1)"
+  },
+  "canon": {
+    "version": "v4.1",
+    "patchsuite": "v6.2"
+  }
+}
