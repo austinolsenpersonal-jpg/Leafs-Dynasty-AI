@@ -2,7 +2,7 @@
 
 **Last Check:** 2024-12-15  |  **Local Time:** 23:52 EST  
 **System Pair:** Architect v6.2  ⇄  Leafs Dynasty Suite v5.0.1  
-**Canon:** v4.1 | **PatchSuite:** v6.2  
+**Canon:** v4.1 | **PatchSuite:** v1.6.0  
 **Sync Scope:** GameplayOnly  
 
 ---
