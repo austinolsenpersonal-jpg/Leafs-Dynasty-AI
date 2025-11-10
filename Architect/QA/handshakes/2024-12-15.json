@@ -1,27 +1,13 @@
 {
   "schema": "architect_handshake_v1.0",
   "timestamp": "2024-12-15T23:48-05:00",
-  "initiator": {
-    "name": "NHL GPT Architect",
-    "version": "v6.2",
-    "role": "Primary Data & JSON Authority"
-  },
-  "partner": {
-    "name": "Leafs Dynasty Suite",
-    "version": "v5.0.1",
-    "role": "Primary Tactical Engine"
-  },
+  "initiator": { "name": "NHL GPT Architect", "version": "v6.2", "role": "Primary Data & JSON Authority" },
+  "partner": { "name": "Leafs Dynasty Suite", "version": "v5.0.1", "role": "Primary Tactical Engine" },
   "sync_context": {
     "scope": "GameplayOnly",
     "canon_version": "v4.1",
-    "patchsuite_version": "v6.2",
-    "modules_verified": [
-      "GameLog Automation",
-      "DevPulse v2.0",
-      "TradeWatch v1.0",
-      "CapFlex v2.1",
-      "PromotionThresholds v1.1"
-    ]
+    "patchsuite_version": "v1.6.0",
+    "modules_verified": ["GameLog Automation","DevPulse v2.0","TradeWatch v1.0","CapFlex v2.1","PromotionThresholds v1.1"]
   },
   "verification": {
     "status": "PASS",
@@ -35,7 +21,7 @@
   "meta": {
     "author": "Austin Olsen",
     "repository": "Leafs-Dynasty-AI",
-    "note": "Handshake established confirming role split between Architect (data authority) and Dynasty (tactical engine).",
+    "note": "Handshake confirms Architect (JSON authority) + Dynasty (tactical) under Canon v4.1 / Patch 1.6.0.",
     "signature": "ArchitectSync_2024-12-15_AO"
   }
 }
