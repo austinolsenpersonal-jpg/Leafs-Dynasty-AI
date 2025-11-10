@@ -1,0 +1,35 @@
+{
+  "schema": "architect_registry_v1.0",
+  "timestamp": "2024-12-15T23:46-05:00",
+  "registry": {
+    "active_partner": {
+      "name": "Leafs Dynasty Suite",
+      "version": "v5.0.1",
+      "role": "Primary Tactical Engine",
+      "sync_scope": "GameplayOnly"
+    },
+    "architect": {
+      "name": "NHL GPT Architect",
+      "version": "v6.2",
+      "role": "Primary Data & JSON Authority",
+      "modules_active": [
+        "GameLog Automation",
+        "DevPulse v2.0",
+        "TradeWatch v1.0",
+        "CapFlex v2.1",
+        "PromotionThresholds v1.1"
+      ]
+    },
+    "sync": {
+      "canon_version": "v4.1",
+      "patchsuite_version": "v6.2",
+      "status": "Linked and Verified",
+      "last_check": "2024-12-15 23:46 EST"
+    }
+  },
+  "meta": {
+    "author": "Austin Olsen",
+    "system": "Leafs Dynasty AI Project",
+    "notes": "Registry link between Architect GPT and Leafs Dynasty Suite GPT established. Architect handles JSON + Canon; Dynasty handles tactical gameplay logic."
+  }
+}
