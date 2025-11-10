@@ -1,0 +1,17 @@
+{
+  "schema": "qa_schedule_v1.0",
+  "task_name": "Nightly QA Sweep",
+  "enabled": true,
+  "schedule_local": "03:15",
+  "frequency": "daily",
+  "tasks": [
+    "verify_strategies",
+    "goalie_plan_check",
+    "cap_guardrails",
+    "pp_pk_review"
+  ],
+  "last_run": null,
+  "next_run": "2024-12-16T03:15:00-05:00",
+  "author": "Austin Olsen",
+  "notes": "Runs 15 minutes after daily handshake to ensure Canon and cap integrity."
+}
