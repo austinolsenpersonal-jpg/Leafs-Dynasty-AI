@@ -16,6 +16,10 @@
       "- Context: {context}",
       "- Source: {source}",
       "- Timestamp: {timestamp}",
+      "- Opponent: {opponent}",
+      "- Result: {result}",
+      "- Score: {score}",
+      "- Starting Goalie: {goalie}",
       "- Notes: {notes}"
     ]
   },
@@ -23,6 +27,10 @@
     "artifact": "JSON update",
     "context": "Architect↔Dynasty sync",
     "source": "Architect GPT (auto)",
+    "opponent": "TBD",
+    "result": "Pending",
+    "score": "0-0",
+    "goalie": "N/A",
     "notes": "Auto-commit enabled per Austin’s preference (iPhone 14 Pro Max)."
   },
   "device_profile": {
@@ -38,5 +46,20 @@
       "Architect/Private/"
     ],
     "required_suffix_check": true
+  },
+  "metadata_capture": {
+    "enabled": true,
+    "data_sources": [
+      "GameTracker/boxscore.json",
+      "GameTracker/live_tracker.json",
+      "Lines/current_goalie.json"
+    ],
+    "parse_fields": {
+      "opponent": "opponent_team",
+      "result": "game_result",
+      "score": "final_score",
+      "goalie": "starting_goalie"
+    },
+    "fallback_behavior": "TBD"
   }
 }
