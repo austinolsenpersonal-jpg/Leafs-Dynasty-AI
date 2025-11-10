@@ -22,7 +22,7 @@
     },
     "sync": {
       "canon_version": "v4.1",
-      "patchsuite_version": "v6.2",
+      "patchsuite_version": "v1.6.0",
       "status": "Linked and Verified",
       "last_check": "2024-12-15 23:46 EST"
     }
@@ -30,6 +30,6 @@
   "meta": {
     "author": "Austin Olsen",
     "system": "Leafs Dynasty AI Project",
-    "notes": "Registry link between Architect GPT and Leafs Dynasty Suite GPT established. Architect handles JSON + Canon; Dynasty handles tactical gameplay logic."
+    "notes": "Registry link between Architect GPT and Leafs Dynasty Suite GPT. Architect handles JSON + Canon; Dynasty handles tactical gameplay logic."
   }
 }
