@@ -61,5 +61,20 @@
       "goalie": "starting_goalie"
     },
     "fallback_behavior": "TBD"
+  },
+  "branching": {
+    "enabled": true,
+    "mode": "per_opponent",
+    "pattern": "gameplan/{opponent_sanitized}-{date}",
+    "date_format": "YYYY-MM-DD",
+    "sanitize_rules": {
+      "lowercase": true,
+      "replace_spaces_with": "-",
+      "strip_chars": ["(", ")", "[", "]", "{", "}", ",", ".", "!", "?", ":", ";", "'", "\"", "#", "@", "&", "%", "$", "*", "+", "="]
+    },
+    "automerge": true,
+    "merge_strategy": "squash",
+    "delete_branch_after_merge": true,
+    "labels": ["auto", "gameplan", "{opponent_sanitized}"]
   }
 }
