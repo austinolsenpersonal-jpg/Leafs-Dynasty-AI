@@ -1,0 +1,42 @@
+{
+  "auto_commit": true,
+  "include_commands": [
+    "resync",
+    "gameplan",
+    "qa_pre_game",
+    "dynasty_savepoint",
+    "verify_strategies"
+  ],
+  "commit_format": {
+    "headline_prefix": "create",
+    "headline_template": "create: {artifact} — {context}",
+    "description_template": [
+      "- Command: {command}",
+      "- Artifact: {artifact}",
+      "- Context: {context}",
+      "- Source: {source}",
+      "- Timestamp: {timestamp}",
+      "- Notes: {notes}"
+    ]
+  },
+  "defaults": {
+    "artifact": "JSON update",
+    "context": "Architect↔Dynasty sync",
+    "source": "Architect GPT (auto)",
+    "notes": "Auto-commit enabled per Austin’s preference (iPhone 14 Pro Max)."
+  },
+  "device_profile": {
+    "author": "Austin Olsen",
+    "platform": "iPhone 14 Pro Max",
+    "layout": "mobile-friendly"
+  },
+  "safety": {
+    "dry_run": false,
+    "max_commits_per_minute": 6,
+    "blocklist_paths": [
+      "Architect/Secrets/",
+      "Architect/Private/"
+    ],
+    "required_suffix_check": true
+  }
+}
