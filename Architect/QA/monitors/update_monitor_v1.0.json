@@ -1,0 +1,12 @@
+{
+  "schema": "update_monitor_v1.0",
+  "baselines": {
+    "architect": "v6.2",
+    "dynasty": "v5.0.1",
+    "canon": "v4.1",
+    "patchsuite": "v1.6.0"
+  },
+  "schedule_local": "09:00",
+  "frequency": "daily",
+  "notes": "Automation alerts if any component publishes a newer stable version."
+}
