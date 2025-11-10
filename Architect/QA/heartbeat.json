@@ -8,20 +8,9 @@
   "source_registry": "/Architect/Config/registry.json",
   "source_handshake": "/Architect/QA/handshakes/2024-12-15.json",
   "sync_cache_pointer": "/Architect/Data/sync_cache/active_link.json",
-  "partner": {
-    "name": "Leafs Dynasty Suite",
-    "version": "v5.0.1",
-    "role": "Primary Tactical Engine"
-  },
-  "architect": {
-    "name": "NHL GPT Architect",
-    "version": "v6.2",
-    "role": "Primary JSON Authority"
-  },
-  "canon": {
-    "version": "v4.1",
-    "patchsuite": "v6.2"
-  },
+  "partner": { "name": "Leafs Dynasty Suite", "version": "v5.0.1", "role": "Primary Tactical Engine" },
+  "architect": { "name": "NHL GPT Architect", "version": "v6.2", "role": "Primary JSON Authority" },
+  "canon": { "version": "v4.1", "patchsuite": "v1.6.0" },
   "poll_window_local": "03:00-03:10",
   "heartbeat_notes": "Daily verification pulse confirming Architect ↔ Dynasty GPT sync operational. Integrity set to 1.00 = 100% linked."
 }
