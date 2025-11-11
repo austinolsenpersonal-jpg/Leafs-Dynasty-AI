@@ -1,0 +1,64 @@
+{
+  "planner_name": "Trade Planner v2.1",
+  "version": "2.1",
+  "context": "Dynamic trade evaluation and value-banding for Leafs Dynasty AI with Fog-of-War discounts.",
+  "trade_parameters": {
+    "max_retained_salaries": 2,
+    "min_cap_buffer_millions": 1.0,
+    "protected_picks": ["1st", "2nd"],
+    "prospect_priority": ["Niemelä", "Kokkonen", "Steeves", "Hirvonen"],
+    "auto_adjust_fow_discount": true,
+    "fog_of_war_discounts": {
+      "unscouted": -0.25,
+      "C_rating": -0.15,
+      "B_rating": -0.10,
+      "A_rating": -0.05,
+      "fully_scouted": 0.0
+    }
+  },
+  "target_bands": {
+    "Top4_Defenseman": {
+      "expected_value": 82,
+      "acceptable_range": [80, 84],
+      "cost_band": "A",
+      "asset_requirements": ["Roster D", "Pick (3rd)", "Prospect B+"]
+    },
+    "Middle6_Winger": {
+      "expected_value": 80,
+      "acceptable_range": [78, 82],
+      "cost_band": "B",
+      "asset_requirements": ["Roster F", "Pick (4th)"]
+    },
+    "Depth_PK_Forward": {
+      "expected_value": 78,
+      "acceptable_range": [76, 80],
+      "cost_band": "C",
+      "asset_requirements": ["Depth F", "Pick (5th)"]
+    }
+  },
+  "value_multipliers": {
+    "RFA": 1.05,
+    "UFA": 0.90,
+    "AgeUnder25": 1.10,
+    "AgeOver30": 0.85,
+    "CapFriendlyDeal": 1.10,
+    "InjuryRiskHigh": 0.80
+  },
+  "market_behaviour": {
+    "deadline_inflation": 1.15,
+    "offseason_discount": 0.90,
+    "buyer_mode_threshold": 0.580,
+    "seller_mode_threshold": 0.450,
+    "neutral_mode_range": [0.451, 0.579]
+  },
+  "adaptive_rules": [
+    {"when": "buyer_mode_active", "do": {"max_pick_offered": "3rd"}},
+    {"when": "seller_mode_active", "do": {"prospect_priority_sell_block": ["Niemelä", "Steeves"]}},
+    {"when": "deadline_window", "do": {"inflate_values": true}}
+  ],
+  "automation_hooks": {
+    "qa_verify_on_commit": true,
+    "auto_run_trade_value_projection": true,
+    "link_to_trade_outlook": "Architect/Reports/Trade/TradeOutlook_latest.md"
+  }
+}
