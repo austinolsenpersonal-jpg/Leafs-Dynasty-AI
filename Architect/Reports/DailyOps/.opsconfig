@@ -1,0 +1,20 @@
+# Architect DailyOps Configuration (v1.0)
+# ----------------------------------------------------------
+# This file defines local automation paths and commit lookup rules
+# for the Leafs Dynasty Architect system. It is automatically read
+# by /dailyops, /ops_verify, and related automation hooks.
+
+[dailyops]
+directory = Architect/Reports/DailyOps
+branch = main
+commit_grep_key = Architect Daily Ops Summary
+schema_file = dailyops_schema_v1.0.json
+mirror_format = md
+overwrite = true
+update_readme = true
+update_index = true
+
+[security]
+repo_guard_enabled = true
+canon_guard_enabled = true
+autosnapshot = enabled
