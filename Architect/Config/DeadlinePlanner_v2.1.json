@@ -1,0 +1,144 @@
+{
+  "planner_name": "Deadline Planner",
+  "version": "2.1",
+  "context": "Trade deadline operating rules for Leafs Dynasty AI. Splits plans into Win-Now vs Futures-Guard, applies inflation/discount logic, enforces retention and cap buffer limits, and ties into TradePlanner/ContractPlanner.",
+  "global_guards": {
+    "cap_buffer_millions": 1.0,
+    "max_retentions": 2,
+    "min_contract_slots_open": 1,
+    "protected_picks": ["1st", "2nd"],
+    "futures_guard_on": true,
+    "cup_window_override": false
+  },
+  "time_windows": {
+    "pre_deadline_warmup_days": 14,
+    "deadline_week_days": 7,
+    "final_48h_priority_multiplier": 1.20,
+    "medical_hold_cutoff_hours": 6
+  },
+  "market_modifiers": {
+    "baseline_inflation": 1.10,
+    "deadline_week_inflation": 1.15,
+    "divisional_trade_surcharge": 1.08,
+    "retention_surcharge_per_million": 1.05,
+    "offseason_discount": 0.90,
+    "fog_of_war_floor_discount": -0.10
+  },
+  "modes": {
+    "Win-Now": {
+      "enabled": true,
+      "allow_rental_ufas": true,
+      "offer_ceiling": {
+        "max_pick_out": "3rd",
+        "allow_prospect": ["B", "B+"],
+        "forbid_prospect": ["A", "A+"]
+      },
+      "target_bands": ["Top4_Defenseman", "Middle6_Winger", "Depth_PK_Forward"],
+      "gate_conditions": {
+        "standings_pts_pct_min": 0.600,
+        "goalie_form_bias_min": 0.10
+      }
+    },
+    "Futures-Guard": {
+      "enabled": true,
+      "sell_list_sources": ["expiring_depth", "blocked_prospects", "redundant_depth_D"],
+      "offer_floor": {
+        "min_pick_in": "4th",
+        "prefer_multi_asset": true
+      },
+      "forbid": {
+        "no_retain_beyond_this_year": true,
+        "no_cap_dump_if_pts_pct_ge": 0.580
+      }
+    }
+  },
+  "priority_targets": {
+    "Top4_Defenseman": {
+      "fit_notes": "Right-shot preferred, can play PK1, Hold/Pinch 5–6, D-Cycle 5",
+      "examples": ["RHD_top4_archetype"],
+      "price_expectation_band": "A"
+    },
+    "Middle6_Winger": {
+      "fit_notes": "Right-shot sniper/playmaker for PP2 or 2RW, Cycle 6–7",
+      "price_expectation_band": "B"
+    },
+    "Depth_PK_Forward": {
+      "fit_notes": "FO ≥ 60 preferred, PK utility, Block bias 6",
+      "price_expectation_band": "C"
+    }
+  },
+  "retention_rules": {
+    "allow_retain_if": {
+      "term_remaining_years_max": 1,
+      "cap_hit_millions_max": 4.0
+    },
+    "retain_pct_bands": {
+      "low": 0.15,
+      "mid": 0.25,
+      "high": 0.35
+    },
+    "notes": "Never exceed max_retentions. Apply retention_surcharge_per_million to price."
+  },
+  "integration": {
+    "link_trade_planner": "Architect/Config/TradePlanner_v2.1.json",
+    "link_contract_planner": "Architect/Config/ContractPlanner_v2.0.json",
+    "report_out_md": "Architect/Reports/Trade/Deadline_Playbook_latest.md",
+    "report_out_json": "Architect/Reports/Trade/Deadline_Playbook_latest.json"
+  },
+  "proposal_builder": {
+    "templates": [
+      {
+        "name": "Top4D_WinNow",
+        "assets_out": ["Roster D (surplus)", "Pick (3rd)", "Prospect (B/B+)"],
+        "conditions": ["cap_buffer_millions>=1.0", "retentions_used<max_retentions"],
+        "apply_inflation": "deadline_week_inflation"
+      },
+      {
+        "name": "Middle6W_WinNow",
+        "assets_out": ["Roster F (surplus)", "Pick (4th)"],
+        "conditions": ["cap_buffer_millions>=1.0"],
+        "apply_inflation": "baseline_inflation"
+      },
+      {
+        "name": "DepthPK_Cheap",
+        "assets_out": ["Depth F", "Pick (5th)"],
+        "apply_inflation": "baseline_inflation"
+      },
+      {
+        "name": "FuturesGuard_SellDepth",
+        "assets_out": ["Expiring depth"],
+        "assets_in": ["Pick (4th/5th)"],
+        "apply_discount": "offseason_discount"
+      }
+    ]
+  },
+  "qa_rules": {
+    "block_if": [
+      "offer_contains_protected_pick",
+      "retentions_used_exceeds_max",
+      "cap_buffer_millions<1.0",
+      "prospect_on_sell_blocked_list"
+    ],
+    "warn_if": [
+      "divisional_trade_surcharge_applied",
+      "fog_of_war_floor_discount_applied",
+      "deadline_week_inflation_applied"
+    ],
+    "required_checks": [
+      "schema_valid",
+      "cap_math_pass",
+      "slot_count<=50",
+      "buy_or_sell_mode_consistent"
+    ]
+  },
+  "automation_hooks": {
+    "pre_commit": [
+      "/trade_outlook --scope \"Dec 2024\"",
+      "/trade_value_projection --targets \"Top4_Defenseman, Middle6_Winger\""
+    ],
+    "post_commit": [
+      "/qa_pre_commit --focus \"schema_validation,missing_refs,checksum\"",
+      "/dailyops generate --force --mirror md --overwrite true --update_readme true --update_index true"
+    ]
+  }
+}
