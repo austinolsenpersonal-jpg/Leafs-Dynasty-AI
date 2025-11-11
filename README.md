@@ -3,6 +3,17 @@
 
 Franchise Control System — NHL 25 (Old-Gen & Next-Gen)
 
+<!-- ARCHITECT-STATUS:START -->
+## 🧩 Leafs Dynasty AI – System Status
+
+**Integrity:** 100%  |  **Canon:** v4.1  |  **PatchSuite:** v1.6.0  
+**Architect:** v6.2  |  **Dynasty:** v5.0.1  
+**Last Sync:** (pending first auto-update)  |  **Next QA:** (pending)
+
+*This banner auto-updates after each Daily Ops run.*
+<!-- ARCHITECT-STATUS:END -->
+
+
 ---
 
 ## 📘 Overview
