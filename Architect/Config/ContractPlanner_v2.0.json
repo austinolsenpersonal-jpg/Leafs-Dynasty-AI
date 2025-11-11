@@ -1,0 +1,74 @@
+{
+  "planner_name": "Contract Planner v2.0",
+  "version": "2.0",
+  "context": "Extension and negotiation logic for all player tiers with Offer Laddering, NTC/NMC awareness, and walk-away thresholds.",
+  "global_rules": {
+    "protected_picks": ["1st", "2nd"],
+    "cap_buffer_millions": 0.5,
+    "max_contract_slots": 50,
+    "offer_timing": {
+      "in_season_window": ["Jan 1", "Mar 1"],
+      "off_season_window": ["Jul 1", "Sep 15"]
+    },
+    "bonus_overage_protection": true
+  },
+  "offer_laddering": {
+    "structure": {
+      "min_offer": "Team-friendly bridge; 1–2 years; AAV 85% of expected",
+      "target_offer": "Balanced term/value; 3–5 years; AAV = expected",
+      "max_offer": "Long-term core; 6–8 years; AAV up to 115% of expected"
+    },
+    "ntc_nmc_rules": {
+      "core_players": "Offer NMC only on max-term deals ≥6 years",
+      "veterans": "Limited NTC (10–team list)",
+      "prospects": "No-trade protection not applicable"
+    },
+    "walk_away_threshold": {
+      "forwards": 0.18,
+      "defensemen": 0.20,
+      "goalies": 0.15
+    }
+  },
+  "value_factors": {
+    "WAR_equivalent": true,
+    "age_curve_bias": {
+      "Under25": +0.10,
+      "25to29": +0.05,
+      "30to33": -0.05,
+      "Over33": -0.15
+    },
+    "morale_bonus": +0.03,
+    "injury_risk_penalty": -0.05
+  },
+  "negotiation_personas": {
+    "conservative_agent": {
+      "bias": "term_length",
+      "term_preference": "short",
+      "bonus_focus": false,
+      "tolerance": 0.10
+    },
+    "standard_agent": {
+      "bias": "aav_fairness",
+      "term_preference": "balanced",
+      "bonus_focus": true,
+      "tolerance": 0.15
+    },
+    "aggressive_agent": {
+      "bias": "aav_maximization",
+      "term_preference": "long",
+      "bonus_focus": true,
+      "tolerance": 0.20
+    }
+  },
+  "adaptive_rules": [
+    {"when": "player_is_rfa", "do": {"ladder": "min→target"}},
+    {"when": "player_is_ufa", "do": {"ladder": "target→max"}},
+    {"when": "morale_low_or_declining", "do": {"walk_away": true}},
+    {"when": "team_cap_space_below_1m", "do": {"halt_all_new_offers": true}}
+  ],
+  "automation_hooks": {
+    "verify_on_commit": true,
+    "auto_run_cap_guard": true,
+    "export_summary_to": "Architect/Reports/Contracts/ContractPlanner_latest.md"
+  }
+}
