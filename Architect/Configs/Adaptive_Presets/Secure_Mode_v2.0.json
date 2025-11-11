@@ -1,0 +1,39 @@
+{
+  "preset_name": "Secure Mode — Lead by 2+ (v2.0)",
+  "version": "2.0",
+  "context": "Protect multi-goal lead in 3rd; your slider scale = 0 trap ↔ 6 full forecheck",
+  "systems": {
+    "forecheck_system": "1-2-2 Passive",
+    "neutral_zone": "1-3-1",
+    "trap_slider_0to6": 2,
+    "defensive_pressure": "Contain Puck",
+    "defensive_strategy": "Collapsing",
+    "offensive_pressure_now": "Standard",
+    "offensive_pressure_at_5min": "Defend Lead",
+    "control_breakout": "Strong Side Slant",
+    "quick_breakout": "Close Support"
+  },
+  "lines_sliders": {
+    "forwards": {
+      "L1": {"strategy": "Behind the Net", "carry": 6, "cycle": 6, "efficiency": 7, "block": 3},
+      "L2": {"strategy": "Overload",        "carry": 5, "cycle": 6, "efficiency": 5, "block": 4},
+      "L3": {"strategy": "Crash the Net",   "carry": 4, "cycle": 6, "efficiency": 5, "block": 6},
+      "L4": {"strategy": "Overload",        "carry": 5, "cycle": 7, "efficiency": 4, "block": 4}
+    },
+    "defense": {
+      "P1_Rielly-Carlo": {"hold_pinch": 6, "d_cycle_shoot": 5},
+      "P2_OEL-Dumba":    {"hold_pinch": 6, "d_cycle_shoot": 5},
+      "P3_McCabe-Tanev": {"hold_pinch": 4, "d_cycle_shoot": 6}
+    }
+  },
+  "bench_rules": {
+    "dz_draws": "Deploy Kämpf line; McCabe–Tanev vs top line",
+    "oz_draws": "Matthews, then Tavares",
+    "shift_caps_top6_seconds": 40
+  },
+  "adaptive_triggers": [
+    {"when": "lead_shrinks_to_1", "do": {"trap_slider_0to6": 3, "offensive_pressure": "Standard"}},
+    {"when": "pp_ineffective_0for2", "do": {"pp_usage": "PP2_governor_on"}},
+    {"when": "dz_icing", "do": {"current_pair_hold_pinch_delta": -1}}
+  ]
+}
