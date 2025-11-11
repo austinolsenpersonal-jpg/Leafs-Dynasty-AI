@@ -1,0 +1,17 @@
+{
+  "schema": "readme_status_embed_v1.0",
+  "enabled": true,
+  "target_file": "README.md",
+  "marker_start": "<!-- ARCHITECT-STATUS:START -->",
+  "marker_end": "<!-- ARCHITECT-STATUS:END -->",
+  "fields": {
+    "integrity": true,
+    "canon_version": "v4.1",
+    "patchsuite_version": "v1.6.0",
+    "architect_version": "v6.2",
+    "dynasty_version": "v5.0.1",
+    "last_sync": true,
+    "next_qa": true
+  },
+  "schedule": "after_dailyops_commit"
+}
