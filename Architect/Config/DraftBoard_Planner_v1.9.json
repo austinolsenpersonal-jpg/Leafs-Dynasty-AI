@@ -1,0 +1,39 @@
+{
+  "planner_name": "Draft Board Planner",
+  "version": "1.9",
+  "context": "Tiered draft board with org-need weighting and trade up/down ladders.",
+  "tiers": {
+    "A": { "overall_min": 83, "target_rounds": [1], "traits": ["Top6F", "Top4D", "StarterG"] },
+    "B": { "overall_min": 80, "target_rounds": [1, 2], "traits": ["Middle6F", "SecondPairD"] },
+    "C": { "overall_min": 77, "target_rounds": [2, 3, 4], "traits": ["DepthF", "DepthD", "ProjectG"] }
+  },
+  "org_needs": {
+    "priority_order": ["RHD", "LW", "G", "C", "RW", "LHD"],
+    "weighting": { "RHD": 1.25, "LW": 1.15, "G": 1.10, "C": 1.05, "RW": 1.00, "LHD": 0.95 }
+  },
+  "fog_of_war": {
+    "apply_discounts": true,
+    "discounts": { "unscouted": -0.20, "C": -0.12, "B": -0.07, "A": -0.03, "fully_scouted": 0.0 }
+  },
+  "trade_ladders": {
+    "up": [
+      { "from_round": 2, "to_round": 1, "price": ["Pick(2nd)+Pick(4th)"] },
+      { "from_round": 3, "to_round": 2, "price": ["Pick(3rd)+Pick(5th)"] }
+    ],
+    "down": [
+      { "from_round": 1, "to_round": 2, "return": ["Pick(2nd)+Pick(3rd)"] }
+    ]
+  },
+  "rules": {
+    "protect_picks": ["1st", "2nd"],
+    "cap_buffer_millions": 1.0,
+    "max_contract_slots": 50
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true",
+      "/qa_pre_commit --focus \"schema_validation,missing_refs\""
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
