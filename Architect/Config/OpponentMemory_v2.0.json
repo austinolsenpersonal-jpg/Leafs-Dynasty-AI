@@ -1,0 +1,30 @@
+{
+  "module": "Opponent Memory",
+  "version": "2.0",
+  "context": "Stores last 6 games of tendencies per opponent; pre-tilts matchup sliders.",
+  "memory": {
+    "games_to_store": 6,
+    "decay": 0.15,
+    "ttl_games": 6
+  },
+  "tracked_signals": [
+    "forecheck_style",
+    "nz_scheme",
+    "pp_entry_route",
+    "pk_aggression",
+    "shot_location_bias",
+    "rush_vs_cycle_ratio"
+  ],
+  "integration": {
+    "matchup_card_template": "matchup_card_v1.2",
+    "bench_card_template": "bench_card_v1.0",
+    "export_json": "Architect/Reports/Matchups/OpponentMemory_latest.json",
+    "export_md": "Architect/Reports/Matchups/OpponentMemory_latest.md"
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true"
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
