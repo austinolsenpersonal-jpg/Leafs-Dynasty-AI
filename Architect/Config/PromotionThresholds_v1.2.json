@@ -1,0 +1,27 @@
+{
+  "planner_name": "Promotion Thresholds",
+  "version": "1.2",
+  "context": "Call-up gates using form + chemistry + injuries; AHL→NHL readiness alerts.",
+  "gates": {
+    "form_bias": { "xGF60_min": 0.75, "primary_pts_rate_min": 0.9, "dz_turnover_max": 1.1 },
+    "chemistry_bias": { "line_chem_min": 0.10, "pair_chem_min": 0.08 },
+    "injury_bias": { "nhl_injury_severity_min": 2, "position_match_required": true }
+  },
+  "priority_prospects": ["Niemelä", "Kokkonen", "Hirvonen", "Steeves"],
+  "callup_rules": {
+    "temporary_callup_days_max": 14,
+    "waiver_check_required": true,
+    "paper_down_allowed": true
+  },
+  "notifications": {
+    "on_ready": "Architect/Reports/Dev/PromotionAlerts_latest.md",
+    "include_devpulse_deltas": true
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true",
+      "/verify_strategies --scope \"planners\""
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
