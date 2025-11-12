@@ -1,0 +1,38 @@
+{
+  "module": "ScoutingCycle",
+  "version": "2.0",
+  "context": "Monthly scout allocation with Fog-of-War discounts and Focus List export.",
+  "inputs": {
+    "assignments_seed": "ScoutingAssignments_seed_v5.2.json",
+    "draft_board": "Architect/Config/DraftBoard_Planner_v1.9.json"
+  },
+  "allocations": {
+    "cycle_days": 28,
+    "regions": {
+      "OHL": 0.18,
+      "WHL": 0.16,
+      "QMJHL": 0.12,
+      "USHL/NTDP": 0.14,
+      "NCAA": 0.12,
+      "SHL": 0.10,
+      "Liiga": 0.08,
+      "KHL/VHL/MHL": 0.05,
+      "Czech/Swiss/Other": 0.05
+    }
+  },
+  "fog_of_war": {
+    "apply_discounts": true,
+    "discounts": { "unscouted": -0.20, "C": -0.12, "B": -0.07, "A": -0.03, "fully_scouted": 0.0 }
+  },
+  "outputs": {
+    "focus_list_json": "Architect/Reports/Scouting/Focus_List_latest.json",
+    "focus_list_md": "Architect/Reports/Scouting/Focus_List_latest.md",
+    "allocation_plan_md": "Architect/Reports/Scouting/Allocation_Plan_latest.md"
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true"
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
