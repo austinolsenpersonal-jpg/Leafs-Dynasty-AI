@@ -1,0 +1,35 @@
+{
+  "planner": "Waivers & Call-Up",
+  "version": "2.0",
+  "waiver_rules": {
+    "eligibility_window_days": 30,
+    "emergency_recall": true,
+    "pto_ato_guardrails": true
+  },
+  "callup_policy": {
+    "temporary_callup_days_max": 14,
+    "waiver_check_required": true,
+    "paper_down_allowed": true
+  },
+  "depth_chart": {
+    "first_phone_call": ["Kämpf", "Steeves", "Hirvonen"],
+    "injury_backup_order": {
+      "C": ["Kämpf","Steeves"],
+      "LW": ["Knies","Robertson"],
+      "RW": ["Foerster","Mercer"],
+      "LD": ["McCabe","Kokkonen"],
+      "RD": ["Tanev","Niemelä"],
+      "G": ["Woll","Hildeby"]
+    }
+  },
+  "outputs": {
+    "waiver_status_md": "Architect/Reports/Waivers/Waiver_Status_latest.md",
+    "callup_matrix_md": "Architect/Reports/Waivers/CallUp_Matrix_latest.md"
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true"
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
