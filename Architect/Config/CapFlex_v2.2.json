@@ -1,0 +1,25 @@
+{
+  "module": "CapFlex",
+  "version": "2.2",
+  "features": {
+    "daily_cap_accrual": true,
+    "bonus_overage_forecast": true,
+    "paper_down_simulator": true,
+    "retention_slots_tracker": true
+  },
+  "guards": {
+    "min_cap_buffer_millions": 1.0,
+    "max_retentions": 2,
+    "slot_limit": 50
+  },
+  "reports": {
+    "snapshot_json": "Architect/Reports/Cap/CapFlex_snapshot_latest.json",
+    "deadline_forecast_md": "Architect/Reports/Cap/Deadline_CapPlan_latest.md"
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true"
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
