@@ -1,0 +1,27 @@
+{
+  "module_name": "Injury Insurance Tie-In",
+  "version": "1.1",
+  "context": "Links M91 injury Monte Carlo scan to Waivers & TradePlanner with ready fallback targets.",
+  "inputs": {
+    "injury_model_runs": 100,
+    "severity_threshold": 2,
+    "positions_covered": ["C", "LW", "RW", "LD", "RD", "G"]
+  },
+  "actions": {
+    "waiver_targets_list": "Architect/Reports/Waivers/Waiver_Targets_latest.md",
+    "trade_targets_list": "Architect/Reports/Trade/InjuryFallback_Targets_latest.md",
+    "promotion_integration": "Architect/Config/PromotionThresholds_v1.2.json"
+  },
+  "rules": {
+    "retention_limit": 2,
+    "cap_buffer_millions_min": 1.0,
+    "forbid": { "no_1st_or_2nd": true }
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true",
+      "/qa_pre_commit --focus \"schema_validation,missing_refs,checksum\""
+    ]
+  },
+  "meta": { "canon": "v4.1", "author": "Architect GPT" }
+}
