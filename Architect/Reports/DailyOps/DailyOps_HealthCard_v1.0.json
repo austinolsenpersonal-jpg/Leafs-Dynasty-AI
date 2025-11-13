@@ -1,0 +1,67 @@
+{
+  "card_name": "DailyOps Health Card",
+  "version": "1.0",
+  "schema_version": "1.0",
+  "meta": {
+    "system": "Leafs Dynasty AI",
+    "owner": "Architect",
+    "description": "Single-source health summary for DailyOps, Watchdog, Matchup QA, and Opponent Memory.",
+    "last_manual_edit": "UNKNOWN"
+  },
+  "status": {
+    "dailyops_summary": {
+      "last_run_iso": "UNKNOWN",
+      "last_commit_sha": "UNKNOWN",
+      "last_run_ok": false,
+      "hours_since_last_run": null,
+      "max_allowed_hours": 24
+    },
+    "watchdog_scan": {
+      "last_run_iso": "UNKNOWN",
+      "last_run_ok": false,
+      "drift_detected": false,
+      "drift_modules": [],
+      "max_allowed_hours": 24
+    },
+    "matchup_qa": {
+      "last_run_iso": "UNKNOWN",
+      "last_run_ok": false,
+      "last_target_team": "UNKNOWN",
+      "max_allowed_hours": 48
+    },
+    "slider_audit": {
+      "last_run_iso": "UNKNOWN",
+      "last_run_ok": false,
+      "ea_sdr_model": "EA_SDR_v2",
+      "canon_version": "v4.1",
+      "inversion_detected": false
+    },
+    "opponent_memory": {
+      "module_version": "2.0",
+      "ttl_games": 6,
+      "decay_rate": 0.15,
+      "last_refresh_iso": "UNKNOWN",
+      "last_refresh_ok": false
+    }
+  },
+  "thresholds": {
+    "dailyops_warning_hours": 24,
+    "dailyops_critical_hours": 36,
+    "watchdog_warning_hours": 24,
+    "matchup_qa_warning_hours": 72
+  },
+  "automation_links": {
+    "dailyops_verify_task": "DailyOps Verify + AutoFix (Nightly)",
+    "module_watchdog_task": "Module Watchdog (Post-Commit)",
+    "alerts_config": "Architect/Config/Alerts_Config_v1.0.json"
+  },
+  "notes": {
+    "usage": "This file is meant to be updated by automation jobs (DailyOps, Watchdog, MatchupQA). Do not hand-edit timestamps unless repairing.",
+    "health_rules": [
+      "If dailyops_summary.hours_since_last_run > thresholds.dailyops_warning_hours, raise a warning.",
+      "If watchdog_scan.drift_detected is true, block risky preset/planner changes.",
+      "If matchup_qa.last_run_ok is false within last 48h, re-run matchup QA before big games.",
+      "If slider_audit.inversion_detected is true, block any new slider presets until resolved."
+    ]
+  }
+}
