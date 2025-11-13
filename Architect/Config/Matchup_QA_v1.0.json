@@ -1,0 +1,140 @@
+{
+  "config_name": "Matchup_QA",
+  "version": "1.0",
+  "context": "Pre-flight QA checks for matchup_card_v1.2 and bench_card_v1.0 before they are finalized and exported.",
+  "targets": {
+    "matchup_cards_dir": "Architect/Reports/Matchups/",
+    "bench_cards_dir": "Architect/Reports/Matchups/BenchCards/",
+    "latest_matchup_tag": "latest",
+    "slider_rule_source": "Architect/Config/SliderDirectionRule_v1.json",
+    "canon_schema_version": "v4.1"
+  },
+  "limits": {
+    "slider_min": 0,
+    "slider_max": 10,
+    "trap_min": 0,
+    "trap_max": 6
+  },
+  "checks": {
+    "systems": {
+      "enabled": true,
+      "allowed_forecheck": [
+        "1-2-2 Passive",
+        "1-2-2 Blue",
+        "1-2-2 Red",
+        "2-3"
+      ],
+      "allowed_neutral_zone": [
+        "1-2-2 Red",
+        "1-3-1"
+      ],
+      "allowed_defensive_pressure": [
+        "Contain Puck",
+        "Tight Point",
+        "High Pressure"
+      ],
+      "allowed_defensive_strategy": [
+        "Staggered",
+        "Collapsing"
+      ],
+      "allowed_offensive_pressure": [
+        "Conservative",
+        "Standard",
+        "Aggressive",
+        "Full Attack",
+        "Defend Lead"
+      ],
+      "allowed_breakouts": [
+        "Strong Side Slant",
+        "Stay Wide",
+        "Close Support",
+        "Three High",
+        "Leave Zone Early"
+      ]
+    },
+    "sliders": {
+      "enabled": true,
+      "enforce_slider_range": true,
+      "enforce_trap_range": true,
+      "require_line_entries": [
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "require_pair_entries": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "flag_if_missing": true
+    },
+    "special_teams": {
+      "enabled": true,
+      "require_pp_units": [
+        "PP1",
+        "PP2"
+      ],
+      "require_pk_units": [
+        "PK1",
+        "PK2"
+      ],
+      "enforce_handedness": true,
+      "enforce_positions": true,
+      "flag_if_role_missing": true
+    },
+    "opponent_memory": {
+      "enabled": true,
+      "source": "Architect/Config/OpponentMemory_v2.0.json",
+      "require_recent_games": 3,
+      "flag_if_insufficient_data": true
+    }
+  },
+  "outputs": {
+    "qa_json": "Architect/Reports/Integrity/Matchup_QA_Results_latest.json",
+    "qa_md": "Architect/Reports/Integrity/Matchup_QA_Results_latest.md",
+    "inject_into_matchup_card": true,
+    "inject_section_label": "QA Summary"
+  },
+  "behaviour": {
+    "on_pass": {
+      "allow_export": true,
+      "mark_status": "✅ QA PASS"
+    },
+    "on_warn": {
+      "allow_export": true,
+      "mark_status": "⚠️ QA WARNING",
+      "add_notes": true
+    },
+    "on_fail": {
+      "allow_export": false,
+      "mark_status": "❌ QA FAIL",
+      "add_notes": true
+    }
+  },
+  "failure_rules": {
+    "treat_as_warning": [
+      "missing_opponent_memory",
+      "incomplete_pk2",
+      "slider_out_of_range_non_critical"
+    ],
+    "treat_as_fail": [
+      "illegal_forecheck_value",
+      "illegal_neutral_zone_value",
+      "illegal_defensive_pressure",
+      "missing_pp1_or_pp2",
+      "trap_slider_out_of_range"
+    ]
+  },
+  "automation_hooks": {
+    "run_before_matchup_export": true,
+    "run_before_benchcard_export": true,
+    "include_in_dailyops_integrity": true
+  },
+  "meta": {
+    "canon": "v4.1",
+    "author": "Architect GPT",
+    "created": "2025-11-12",
+    "notes": "Ensures matchup_card_v1.2 and bench_card_v1.0 stay Canon-legal, slider-correct (0–10, trap 0–6), and structurally sound before export."
+  }
+}
