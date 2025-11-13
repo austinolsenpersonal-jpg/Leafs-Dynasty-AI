@@ -1,0 +1,38 @@
+{
+  "preset_name": "Push Mode — Trailing by 1 (v2.2)",
+  "version": "2.2",
+  "context": "Used when trailing by one goal with 10:00 or less remaining. Moderate offensive push using EA-correct slider model.",
+  "systems": {
+    "forecheck_system": "1-2-2 Aggressive",
+    "neutral_zone": "1-3-1",
+    "trap_slider_0to6": 4,
+    "defensive_pressure": "Tight Point",
+    "defensive_strategy": "Staggered",
+    "offensive_pressure": "Aggressive",
+    "control_breakout": "Strong Side Slant",
+    "quick_breakout": "Stay Wide"
+  },
+  "lines_sliders": {
+    "forwards": {
+      "L1": { "strategy": "Behind the Net", "carry_vs_dump": 8, "cycle_vs_shoot": 6, "efficiency_vs_energy": 6, "dontblock_vs_block": 4 },
+      "L2": { "strategy": "Overload",        "carry_vs_dump": 7, "cycle_vs_shoot": 6, "efficiency_vs_energy": 6, "dontblock_vs_block": 4 },
+      "L3": { "strategy": "Crash the Net",   "carry_vs_dump": 6, "cycle_vs_shoot": 6, "efficiency_vs_energy": 6, "dontblock_vs_block": 5 },
+      "L4": { "strategy": "Overload",        "carry_vs_dump": 6, "cycle_vs_shoot": 7, "efficiency_vs_energy": 6, "dontblock_vs_block": 5 }
+    },
+    "defense": {
+      "P1_Rielly-Carlo": { "holdline_vs_pinch": 5, "dcycle_vs_dshoot": 6 },
+      "P2_OEL-Dumba":    { "holdline_vs_pinch": 5, "dcycle_vs_dshoot": 6 },
+      "P3_McCabe-Tanev": { "holdline_vs_pinch": 3, "dcycle_vs_dshoot": 5 }
+    }
+  },
+  "bench_rules": {
+    "oz_draws": "Prioritize Matthews line, then Tavares line for follow-up OZ draws.",
+    "dz_draws": "Deploy Kämpf line after icings, immediate change if pinned.",
+    "shift_caps_top6_seconds": 45
+  },
+  "adaptive_triggers": [
+    { "when": "trailing_by_2", "do": { "trap_slider_0to6": 5, "offensive_pressure": "Full Attack" } },
+    { "when": "pp_opportunity", "do": { "activate_pp1_focus": "Nylander-Matthews one-timer seam" } },
+    { "when": "momentum_dip", "do": { "forecheck_system": "1-2-2 Aggressive", "quick_breakout": "Stay Wide" } }
+  ]
+}
