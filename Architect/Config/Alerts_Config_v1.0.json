@@ -1,0 +1,73 @@
+{
+  "config_name": "Alerts_Config",
+  "version": "1.0",
+  "context": "Central alert rules for PromotionThresholds, CapFlex, Injury Insurance, DraftBoard/ScoutingCycle, and Opponent Memory. Controls what gets surfaced as high-priority alerts in DailyOps.",
+  "channels": {
+    "dailyops_integrity": true,
+    "dailyops_summary": true,
+    "matchup_pregame_note": true
+  },
+  "promotion_thresholds": {
+    "enabled": true,
+    "source": "Architect/Config/PromotionThresholds_v1.2.json",
+    "alert_when_ready_pct_at_or_above": 0.80,
+    "high_priority_players": ["Niemelä", "Kokkonen", "Steeves", "Hirvonen"],
+    "min_games_sample": 5,
+    "output_tag": "PROMOTION_ALERT"
+  },
+  "capflex": {
+    "enabled": true,
+    "source": "Architect/Config/CapFlex_v2.2.json",
+    "alert_if_bonus_overage_risk_pct_at_or_above": 10,
+    "alert_if_cap_buffer_millions_below": 1.0,
+    "alert_if_retentions_used_at_or_above": 2,
+    "output_tag": "CAP_ALERT"
+  },
+  "injury_insurance": {
+    "enabled": true,
+    "source": "Architect/Config/InjuryInsurance_TieIn_v1.1.json",
+    "alert_if_position_group_thin": [
+      {
+        "position": "RD",
+        "min_nhl_ready": 2
+      },
+      {
+        "position": "C",
+        "min_nhl_ready": 3
+      }
+    ],
+    "alert_if_m91_risk_score_at_or_above": 0.20,
+    "output_tag": "INJURY_ALERT"
+  },
+  "draft_and_scouting": {
+    "enabled": true,
+    "draftboard_source": "Architect/Config/DraftBoard_Planner_v1.9.json",
+    "scoutingcycle_source": "Architect/Config/ScoutingCycle_v2.0.json",
+    "alert_if_focus_list_targets_at_or_above": 3,
+    "alert_if_round_value_gap_ge": 1.5,
+    "output_tag": "DRAFT_ALERT"
+  },
+  "opponent_memory": {
+    "enabled": true,
+    "source": "Architect/Config/OpponentMemory_v2.0.json",
+    "alert_if_exposed_tendency_seen_in_last_n_games": 3,
+    "alert_if_pp_weakness_detected": true,
+    "alert_if_pk_weakness_detected": true,
+    "output_tag": "OPPONENT_ALERT"
+  },
+  "outputs": {
+    "alerts_json": "Architect/Reports/Integrity/Alerts_Config_Results_latest.json",
+    "alerts_md": "Architect/Reports/Integrity/Alerts_Config_Results_latest.md"
+  },
+  "automation_hooks": {
+    "include_in_dailyops": true,
+    "include_in_matchup_cards": true,
+    "include_in_bench_cards": false
+  },
+  "meta": {
+    "canon": "v4.1",
+    "author": "Architect GPT",
+    "created": "2025-11-12",
+    "notes": "Thresholds tuned for Leafs Dynasty: cautious cap guard, strong focus on Niemelä/Kokkonen/Steeves/Hirvonen promotions, and proactive draft/scouting signals."
+  }
+}
