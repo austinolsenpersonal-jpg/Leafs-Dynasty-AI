@@ -1,0 +1,21 @@
+{
+  "module_name": "DailyOps Slider Audit",
+  "version": "1.0",
+  "context": "Embed slider-direction model and latest slider QA results into DailyOps rollups.",
+  "slider_model_ref": "Architect/Config/MatchupQA_v1.3.json",
+  "sections": {
+    "include_slider_model_summary": true,
+    "include_latest_matchupqa_result": true,
+    "include_preset_status": true
+  },
+  "output": {
+    "md_append_to": "Architect/Reports/DailyOps/DailyOps_Summary_latest.md",
+    "json_export": "Architect/Reports/DailyOps/DailyOps_SliderAudit_latest.json"
+  },
+  "automation_hooks": {
+    "on_dailyops_generate": [
+      "/matchup_qa run --config \"Architect/Config/MatchupQA_v1.3.json\" --latest",
+      "write_slider_audit_section"
+    ]
+  }
+}
