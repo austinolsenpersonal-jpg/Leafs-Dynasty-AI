@@ -1,0 +1,162 @@
+{
+  "game": {
+    "opponent": "WPG",
+    "date": "2024-12-21",
+    "arena": "Canada Life Centre",
+    "home_away": "Away",
+    "starting_goalie": "Anthony Stolarz",
+    "backup_goalie": "Joseph Woll",
+    "build": {
+      "architect_version": "v6.2",
+      "canon_version": "v4.3.3",
+      "energy_model": "v2.0",
+      "adaptation": true
+    }
+  },
+
+  "team_systems": {
+    "forecheck_structure": "1-2-2 Passive",
+    "forecheck_trigger_trailing": "2-3 Press",
+    "neutral_zone": "1-3-1",
+    "trap_forecheck_slider": {
+      "start": 3,
+      "lead_2_plus": 1,
+      "trail_1_plus": 5,
+      "late_trail_full": 6,
+      "scale": "0 = full trap, 6 = full forecheck"
+    },
+    "def_pressure": {
+      "default": "Contain Puck",
+      "vs_top_unit": "Tight Point"
+    },
+    "def_strategy": "Collapsing",
+    "off_pressure": {
+      "default": "Standard",
+      "trailing": "Aggressive"
+    },
+    "breakout": "Strong Side Slant",
+    "quick_breakout": {
+      "default": "Close Support",
+      "heavy_forecheck": "Stay Wide"
+    }
+  },
+
+  "energy_model": {
+    "top6_forwards": { "energy": "94%", "bias": "Balanced" },
+    "bottom6_forwards": { "energy": "92%", "bias": "Aggressive" },
+    "top4_defense": { "energy": "88%", "bias": "Conserve" },
+    "third_pair": { "energy": "95%", "bias": "Active" },
+    "goalie": { "starter": "Stolarz", "energy": "100%", "form_bias": "+0.15" }
+  },
+
+  "offensive_lines": [
+    {
+      "line": "1",
+      "players": "Knies – Matthews – Marner",
+      "strategy": "Behind the Net",
+      "sliders": {
+        "carry_dump": 6,
+        "cycle_shoot": 6,
+        "efficiency_energy": 7,
+        "block": 3
+      },
+      "notes": "Attack weak side of Hellebuyck glove."
+    },
+    {
+      "line": "2",
+      "players": "Robertson – Tavares – Nylander",
+      "strategy": "Overload",
+      "sliders": {
+        "carry_dump": 5,
+        "cycle_shoot": 6,
+        "efficiency_energy": 5,
+        "block": 4
+      }
+    },
+    {
+      "line": "3",
+      "players": "Domi – Kampf – Mercer",
+      "strategy": "Crash the Net",
+      "sliders": {
+        "carry_dump": 4,
+        "cycle_shoot": 6,
+        "efficiency_energy": 5,
+        "block": 6
+      }
+    },
+    {
+      "line": "4",
+      "players": "Pacioretty – Steeves – Foerster",
+      "strategy": "Overload Lite",
+      "sliders": {
+        "carry_dump": 5,
+        "cycle_shoot": 7,
+        "efficiency_energy": 4,
+        "block": 4
+      }
+    }
+  ],
+
+  "defensive_pairs": [
+    {
+      "pair": "1",
+      "players": "Rielly – Carlo",
+      "sliders": {
+        "hold_line_pinch": 7,
+        "cycle_shoot": 5
+      }
+    },
+    {
+      "pair": "2",
+      "players": "OEL – Dumba",
+      "sliders": {
+        "hold_line_pinch": 6,
+        "cycle_shoot": 5
+      }
+    },
+    {
+      "pair": "3",
+      "players": "McCabe – Tanev",
+      "sliders": {
+        "hold_line_pinch": 4,
+        "cycle_shoot": 6
+      }
+    }
+  ],
+
+  "special_teams": {
+    "pp1": {
+      "formation": "1-3-1",
+      "unit": "Rielly (QB), Nylander (L flank RH), Marner (R flank RH), Tavares (Bumper), Knies (Net)",
+      "one_timer_priority": ["Nylander", "Matthews"]
+    },
+    "pp2": {
+      "formation": "Umbrella",
+      "unit": "OEL, Dumba, Mercer, Domi, Robertson"
+    },
+    "pk1": {
+      "formation": "Large Box",
+      "unit": "Kampf / Mercer — Carlo / McCabe"
+    },
+    "pk2": {
+      "formation": "Diamond",
+      "unit": "Tavares / Knies — Dumba / Tanev"
+    }
+  },
+
+  "adaptation_rules": {
+    "lead_2_plus": "Trap-1, OffPressure-1",
+    "trail_1_plus": "Trap+2, OffPressure+1",
+    "momentum_spike_jets": "QuickBreakout → Stay Wide",
+    "dz_faceoff_losses": "Collapse tighter, no pinches",
+    "pp_fail_2": "Activate PP2 governor",
+    "b2b_detected": "All pinch sliders -1"
+  },
+
+  "matchup_targets": {
+    "line1": "Scheifele line",
+    "line2": "Perfetti line",
+    "line3": "Lowry line",
+    "line4": "Jets 3rd pair"
+  }
+}
