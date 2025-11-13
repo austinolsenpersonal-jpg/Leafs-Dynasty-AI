@@ -1,0 +1,64 @@
+{
+  "qa_name": "Matchup QA Engine",
+  "version": "1.2",
+  "context": "Validates every matchup card before gameplay. Checks: systems, sliders, PP/PK, score-state triggers, bench rules, OPP Memory, and Canon v4.1 compliance.",
+
+  "checks": {
+    "systems_validation": {
+      "enabled": true,
+      "legal_forechecks": ["1-2-2 Passive", "1-2-2 Aggressive", "1-2-2 Red", "2-3"],
+      "legal_neutral_zone": ["1-2-2 Red", "1-3-1"],
+      "legal_def_pressure": ["Contain Puck", "Tight Point", "High Pressure"],
+      "legal_def_strategy": ["Staggered", "Collapsing"],
+      "legal_off_pressure": ["Standard", "Aggressive", "Full Attack", "Defend Lead"]
+    },
+
+    "slider_validation": {
+      "enabled": true,
+      "direction_rule": "0 = left term, 10 = right term, 5 = neutral",
+      "max_delta_warning": 7,
+      "line_groups": ["L1", "L2", "L3", "L4", "P1", "P2", "P3"]
+    },
+
+    "special_teams_validation": {
+      "enabled": true,
+      "pp1_required": ["QB", "LFlank", "RFlank", "Bumper", "Net"],
+      "pp2_required": ["QB", "LFlank", "RFlank", "Bumper", "Net"],
+      "pk_required": ["F1", "F2", "D1", "D2"],
+      "pp2_governor": true
+    },
+
+    "bench_rules": {
+      "enabled": true,
+      "oz_draw_logic_required": true,
+      "dz_draw_logic_required": true,
+      "shift_caps_must_exist": true,
+      "pull_goalie_logic_required": true
+    },
+
+    "score_state_logic": {
+      "enabled": true,
+      "states": ["tied", "down1", "down2", "up1", "protect_lead"],
+      "validate_toggles": true
+    },
+
+    "opponent_memory": {
+      "enabled": true,
+      "min_games_required": 3,
+      "warnings_if_missing": true,
+      "adapt_slider_targets": true
+    },
+
+    "canonical_schema": {
+      "enabled": true,
+      "schema_version_required": "v4.1",
+      "block_if_schema_mismatch": false
+    }
+  },
+
+  "output": {
+    "verbose": true,
+    "format": "md",
+    "save_path": "Architect/Reports/QA/Matchup_QA_latest.md"
+  }
+}
