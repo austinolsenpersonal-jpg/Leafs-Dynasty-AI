@@ -1,0 +1,83 @@
+{
+  "module": "ModuleWatchdog",
+  "version": "1.0",
+  "context": "Tracks core planner/config modules for unexpected drift (checksum or version changes) and surfaces alerts into DailyOps.",
+  "tracked_modules": [
+    {
+      "name": "CapFlex",
+      "path": "Architect/Config/CapFlex_v2.2.json",
+      "critical": true
+    },
+    {
+      "name": "TradePlanner",
+      "path": "Architect/Config/TradePlanner_v2.1.json",
+      "critical": true
+    },
+    {
+      "name": "ContractPlanner",
+      "path": "Architect/Config/ContractPlanner_v2.0.json",
+      "critical": true
+    },
+    {
+      "name": "DeadlinePlanner",
+      "path": "Architect/Config/DeadlinePlanner_v2.1.json",
+      "critical": true
+    },
+    {
+      "name": "DraftBoard_Planner",
+      "path": "Architect/Config/DraftBoard_Planner_v1.9.json",
+      "critical": true
+    },
+    {
+      "name": "ScoutingCycle",
+      "path": "Architect/Config/ScoutingCycle_v2.0.json",
+      "critical": false
+    },
+    {
+      "name": "PromotionThresholds",
+      "path": "Architect/Config/PromotionThresholds_v1.2.json",
+      "critical": true
+    },
+    {
+      "name": "Waivers_CallUp_Planner",
+      "path": "Architect/Config/Waivers_CallUp_Planner_v2.0.json",
+      "critical": true
+    },
+    {
+      "name": "InjuryInsurance_TieIn",
+      "path": "Architect/Config/InjuryInsurance_TieIn_v1.1.json",
+      "critical": true
+    },
+    {
+      "name": "OpponentMemory",
+      "path": "Architect/Config/OpponentMemory_v2.0.json",
+      "critical": false
+    }
+  ],
+  "thresholds": {
+    "checksum_drift_allowed": 0,
+    "version_mismatch_alert": true,
+    "max_critical_drift_before_red": 1
+  },
+  "outputs": {
+    "alerts_json": "Architect/Reports/Integrity/ModuleWatchdog_Alerts_latest.json",
+    "alerts_md": "Architect/Reports/Integrity/ModuleWatchdog_Alerts_latest.md"
+  },
+  "behaviour": {
+    "on_drift_detected": {
+      "log_to_dailyops": true,
+      "raise_severity_for_critical": true,
+      "suggest_snapshot_restore": true
+    }
+  },
+  "automation_hooks": {
+    "post_commit": [
+      "/dailyops generate --mirror md,json --update_index true"
+    ]
+  },
+  "meta": {
+    "canon": "v4.1",
+    "author": "Architect GPT",
+    "created": "2025-11-12"
+  }
+}
