@@ -1,0 +1,128 @@
+{
+  "name": "MatchupEngine",
+  "version": "3.0",
+  "updated": "2025-11-14",
+  "canon": "4.1",
+  "architect_version": "6.2",
+  "description": "Primary engine for full matchups, slider rules, opponent memory, bench cards, toggles, and in-game adjustments.",
+
+  "dependencies": {
+    "slider_map": "slider_map_v4.1",
+    "one_timer_map": "PP_OneTimer_Map_v1.0.json",
+    "energy_model": "EnergyModel_v2.0",
+    "opponent_memory": "OpponentMemory_v2.0"
+  },
+
+  "settings": {
+    "show_line_sliders": true,
+    "show_defense_sliders": true,
+    "show_pp_pk": true,
+    "show_bench_card": true,
+    "show_energy_projection": true,
+    "show_adjustment_rules": true
+  },
+
+  "slider_rules": {
+    "scale": "0-10",
+    "balanced": 5,
+    "offense": {
+      "carry_dump": {
+        "0": "max_dump",
+        "10": "max_carry"
+      },
+      "cycle_shoot": {
+        "0": "max_shoot",
+        "10": "max_cycle"
+      },
+      "efficiency_energy": {
+        "0": "energy_focus",
+        "10": "efficiency_focus"
+      },
+      "block": {
+        "0": "dont_block",
+        "10": "block_shots"
+      }
+    },
+    "defense": {
+      "holdline_pinch": {
+        "0": "hold_line",
+        "10": "full_pinch"
+      },
+      "cycle_shoot": {
+        "0": "attack_puck",
+        "10": "protect_slot"
+      }
+    },
+    "trap_scale": {
+      "range": "0-6",
+      "0": "neutral_zone_trap",
+      "6": "max_forecheck"
+    }
+  },
+
+  "team_systems_template": {
+    "forecheck_default": "1-2-2 Passive",
+    "neutral_zone_default": "1-3-1",
+    "offensive_pressure_default": "Standard",
+    "defensive_pressure_default": "Protect Net",
+    "defense_strategy_default": "Collapsing",
+    "breakout_control_default": "Strong Side Slant",
+    "breakout_quick_default": "Close Support"
+  },
+
+  "bench_card_template": {
+    "auto_subs": true,
+    "fatigue_threshold": 78,
+    "injury_replacements": "auto",
+    "penalty_rules": {
+      "after_penalty": "lower pair pinch by 1",
+      "2_penalties": "switch to secure_mode"
+    }
+  },
+
+  "adjustment_rules": {
+    "leading": {
+      "2_goals": {
+        "trap": 2,
+        "forecheck": "1-2-2 Passive",
+        "defense_pinching": -1
+      },
+      "3_goals": {
+        "trap": 1,
+        "forecheck": "1-4",
+        "d_pair_3": {
+          "holdline_pinch": 2
+        }
+      }
+    },
+    "trailing": {
+      "1_goal": {
+        "forecheck": "2-3",
+        "trap": 4,
+        "cycle_shoot": +1
+      },
+      "2_goals": {
+        "forecheck": "3-2",
+        "trap": 5,
+        "pinch_all": +1
+      },
+      "3_goals": {
+        "all_in": true
+      }
+    }
+  },
+
+  "opponent_memory_rules": {
+    "ttl_games": 6,
+    "reuse_within_ttl": true,
+    "decay_percent": 15,
+    "carryover_to_next_season": true
+  },
+
+  "goalie_recommendation_rules": {
+    "form_weight": 0.45,
+    "fatigue_weight": 0.35,
+    "opponent_style_weight": 0.20,
+    "b2b_protection": true
+  }
+}
