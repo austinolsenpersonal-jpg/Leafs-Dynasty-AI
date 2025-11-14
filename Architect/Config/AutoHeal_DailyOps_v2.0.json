@@ -1,0 +1,33 @@
+{
+  "auto_heal_name": "DailyOps Auto-Heal v2.0",
+  "version": "2.0",
+  "scope": "DailyOps Summary",
+  "target_commit_key": "Architect Daily Ops Summary",
+  "window_hours": 24,
+  "conditions": {
+    "missing_commit": true,
+    "zero_files_merged": true,
+    "allowed_branch": "main"
+  },
+  "actions": {
+    "on_missing_or_empty": [
+      "/repo_guard temp_unlock --duration \"10m\"",
+      "/dailyops generate --mirror md,json --overwrite true --update_readme true --update_index true",
+      "/snapshot_save \"DailyOps_AutoHeal_$(date)\"",
+      "/repo_guard relock"
+    ],
+    "on_healthy": [
+      "/log note \"DailyOps healthy in last 24h (Auto-Heal v2.0)\""
+    ]
+  },
+  "logging": {
+    "status_md": "Architect/Reports/DailyOps/DailyOps_AutoHeal_Status.md",
+    "status_json": "Architect/Reports/DailyOps/DailyOps_AutoHeal_Status.json",
+    "include_last_verify_window_hours": 24
+  },
+  "notifications": {
+    "on_fix_applied": true,
+    "on_persistent_failure": true,
+    "failure_threshold_runs": 3
+  }
+}
