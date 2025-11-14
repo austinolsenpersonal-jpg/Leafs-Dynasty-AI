@@ -1,0 +1,515 @@
+{
+  "name": "Leafs Dynasty AI – Full Export",
+  "version": "1.0.0",
+  "base_bootstrap": "Architect/Config/Leafs_Dynasty_MasterBootstrap_v1.0.json",
+  "updated": "2025-11-13",
+  "owner": "Austin Olsen",
+  "repo": "austinolsenpersonal-jpg/Leafs-Dynasty-AI",
+
+  "environment": {
+    "canon_version": "v4.1",
+    "architect_version": "v6.2",
+    "patchsuite_version": "v6.2",
+    "opponent_model_version": "v6.3",
+    "platform": "Xbox Cloud Gaming (Series X|S build)",
+    "difficulty": "All-Star",
+    "rules_preset": "Authentic",
+    "period_length_min": [6, 7],
+    "morale": true,
+    "salary_cap": true,
+    "relocation": false
+  },
+
+  "file_map": {
+    "bootstrap_master": "Architect/Config/Leafs_Dynasty_MasterBootstrap_v1.0.json",
+    "lines_nhl_current": "Architect/Lines/NHL/Full_Lines_2024-12-12.json",
+    "lines_ahl_current": "Architect/Lines/AHL/AHL_Lines_2024-12-10.json",
+    "lines_nhl_post_foerster": "Architect/Lines/NHL/Post_Foerster_Lines_2024-12-12.json",
+    "lines_slider_reference": "Architect/Config/Leafs_SliderReference_v4.8.json",
+    "roster_seed": "Architect/Data/LeafsRoster_master_v1.5.json",
+    "contracts_seed": "Architect/Data/LeafsContracts_seed_v1.7.json",
+    "schedule_active": "Architect/Schedule/Parsed/NHL_Schedule_2024-25_Dec-Apr.json",
+    "pp_one_timer_map": "Architect/Config/PP_OneTimer_Map_v1.0.json",
+    "matchup_template": "Architect/Config/MatchupTemplate_Standard_v5.0.json",
+    "matchup_output_spec": "Architect/Config/MatchupOutputSpec_v1.0.json",
+    "gameplans_dir": "GamePlans/",
+    "dailyops_dir": "Architect/Reports/DailyOps",
+    "promotion_report_latest": "Architect/Reports/Promotion/PromotionThresholds_latest"
+  },
+
+  "github_prefs": {
+    "commit_prefix": "create",
+    "enforce_commit_prefix": true,
+    "iphone_formatting": true,
+    "notes": [
+      "Use short, clear titles like: create TOR_vs_NYI_2024-12-21_FullGameplan.json",
+      "Use descriptions with 2–4 lines max, friendly for iPhone 14 Pro Max.",
+      "Always include path + content + headline + description in separate copy blocks when generating instructions."
+    ]
+  },
+
+  "gameplay_defaults": {
+    "forecheck_default": "1-2-2 Passive",
+    "neutral_zone_default": "1-3-1",
+    "defensive_strategy_default": "Collapsing",
+    "defensive_pressure_default": "Contain Puck",
+    "offensive_pressure_default": "Standard",
+    "breakout_control_default": "Strong Side Slant",
+    "breakout_quick_default": "Close Support",
+    "pk_base_shape": "Box",
+    "pp_base_formation": "1-3-1",
+    "pp2_base_formation": "Umbrella"
+  },
+
+  "slider_rules": {
+    "scale": "0-10",
+    "balanced_value": 5,
+    "offense": {
+      "carry_vs_dump": {
+        "label": "Carry/Dump",
+        "min_is": "max_dump",
+        "max_is": "max_carry",
+        "balanced": 5
+      },
+      "cycle_vs_shoot": {
+        "label": "Cycle/Shoot",
+        "min_is": "max_shoot",
+        "max_is": "max_cycle",
+        "balanced": 5
+      },
+      "efficiency_vs_energy": {
+        "label": "Efficiency/Energy",
+        "min_is": "energy_focus",
+        "max_is": "efficiency_focus",
+        "balanced": 5
+      },
+      "dont_block_vs_block": {
+        "label": "Don’t Block/Block",
+        "min_is": "dont_block",
+        "max_is": "block_shots",
+        "balanced": 5
+      }
+    },
+    "defense": {
+      "holdline_vs_pinch": {
+        "label": "Hold Line/Pinch",
+        "min_is": "hold_line",
+        "max_is": "pinch",
+        "balanced": 5
+      },
+      "cycle_vs_shoot": {
+        "label": "Cycle/Shoot",
+        "min_is": "attack_puck",
+        "max_is": "protect_slot",
+        "balanced": 5
+      }
+    },
+    "trap_scale": {
+      "range": "0-6",
+      "description": "0 = full neutral-zone trap, 6 = full forecheck pressure",
+      "balanced": 3
+    },
+    "validation": {
+      "enforce_slider_direction_rule": true,
+      "map_source": "slider_map_v4.1",
+      "notes": [
+        "All line slider suggestions must respect the direction rule.",
+        "5 is always the neutral/balanced midpoint on 0–10 scale.",
+        "For trap: 0 = NZ trap/turtle, 6 = max forecheck pressure."
+      ]
+    }
+  },
+
+  "modules": {
+    "capflex": {
+      "version": "v2.2",
+      "mode": "forecast",
+      "settings": {
+        "min_inseason_cap_buffer_millions": 1.0,
+        "min_general_cap_buffer_millions": 0.5,
+        "max_retentions": 2,
+        "note": "Keep ≥$0.5M buffer always, ≥$1.0M within 30 days of deadline."
+      }
+    },
+    "devpulse": {
+      "version": "v2.0",
+      "mode": "mentor_track",
+      "priority_prospects": [
+        "Topi Niemelä",
+        "Mikko Kokkonen",
+        "Alex Steeves"
+      ]
+    },
+    "promotion_thresholds": {
+      "version": "v1.2",
+      "mode": "monitor",
+      "rules": [
+        "Do not recall key AHL D until TOI > 20 min and form is positive.",
+        "Call-up alerts tied to injuries + form + role fit."
+      ]
+    },
+    "trade_planner": {
+      "version": "v2.1",
+      "notes": [
+        "Protect 1st and 2nd round picks unless explicit Win-Now trigger.",
+        "Use value bands + Fog-of-War discounts + deadline inflation.",
+        "Use Easy Trade slider but still respect internal fairness logic."
+      ]
+    },
+    "contract_planner": {
+      "version": "v2.0",
+      "features": [
+        "Offer Laddering: min/target/max",
+        "Agent personas: conservative/standard/aggressive",
+        "Walk-away thresholds based on age curve + role + WAR-style value"
+      ]
+    },
+    "deadline_planner": {
+      "version": "v2.1",
+      "modes": [
+        "Win-Now",
+        "Futures-Guard"
+      ],
+      "rules": [
+        "Max 2 retained contracts.",
+        "Keep at least one 1st or 2nd each upcoming 2 drafts when possible."
+      ]
+    },
+    "opponent_memory": {
+      "version": "v2.0",
+      "ttl_games": 6,
+      "decay_percent": 15,
+      "note": "Re-use tendencies when facing same opponent within TTL; carry into next season via Cross-Series Memory."
+    },
+    "energy_model": {
+      "version": "v2.0",
+      "features": [
+        "Line energy bias",
+        "Form-based goalie weighting",
+        "B2B fatigue protection",
+        "Pinch limits when energy low"
+      ]
+    }
+  },
+
+  "automation": {
+    "dailyops": {
+      "monitor_enabled": true,
+      "auto_heal_enabled": true,
+      "index_rebuild_weekly": true,
+      "note": "If 'Architect Daily Ops Summary' commit missing/0 files, auto-generate and re-verify."
+    },
+    "presets_verify": {
+      "enabled": true,
+      "description": "Nightly verify presets then update DailyOps."
+    },
+    "modules_auto_verify_q3d": {
+      "enabled": true,
+      "description": "Every 3 days: /verify_strategies --scope 'modules' --deep true then regenerate DailyOps."
+    }
+  },
+
+  "trade_and_roster_philosophy": {
+    "core_rules": [
+      "Maintain ≥$0.5M cap buffer at all times.",
+      "Protect 1st and 2nd round picks unless clearly in a Win-Now window.",
+      "Prioritize RH D with good fit and manageable term.",
+      "Use AHL for development, not just depth parking."
+    ],
+    "recent_key_moves_examples": [
+      "Foerster trade: targeted young RH forward with system fit for middle-six and PP usage."
+    ],
+    "waivers_and_callups": {
+      "planner_version": "v2.0",
+      "notes": [
+        "Track waiver-exempt clocks for prospects (e.g., Robertson, Steeves, Niemelä).",
+        "Prefer emergency recalls or short-term call-ups before waiving depth vets."
+      ]
+    }
+  },
+
+  "goalie_plan": {
+    "philosophy": "Rotation with form bias",
+    "defaults": {
+      "starter_sharing": "Stolarz and Woll split starts with form bias",
+      "b2b_logic": "Prefer fresh goalie on second half of B2B; avoid 3 straight starts when energy < 90%.",
+      "form_bias": "Lean to hotter goalie unless fatigue or opponent-specific reason."
+    },
+    "current_state": {
+      "primary_starter": "Stolarz (form edge after recent strong starts)",
+      "secondary": "Woll",
+      "note": "Next confirmed start: Woll @ DET (Dec 27). Stolarz started vs NYI; Woll accidentally started vs BUF; Stolarz vs WPG as chosen."
+    },
+    "example_policy": [
+      "If Stolarz or Woll has SV% trend above 0.915 over last 3 games, grant extra start unless B2B conflict.",
+      "Protect starter on heavy travel or 3-in-4 stretches."
+    ]
+  },
+
+  "matchup_and_gameplan": {
+    "template": "matchup_card_v1.1",
+    "show_line_sliders": true,
+    "show_dpair_sliders": true,
+    "show_special_teams": true,
+    "show_toggles": true,
+    "show_slider_deltas": true,
+    "integrity_check": true,
+    "energy_projection_prompt": true,
+    "output_format": {
+      "top_level": [
+        "Team systems",
+        "Line strategies + offensive sliders",
+        "Defensive pair sliders",
+        "Special teams (PP/PK)",
+        "Goalie recommendation",
+        "Energy & adaptation notes",
+        "In-game adjustment rules"
+      ]
+    }
+  },
+
+  "pp_pk_config": {
+    "pp1_roles": {
+      "formation": "1-3-1",
+      "qb": "Morgan Rielly",
+      "l_flank": "William Nylander (RH)",
+      "r_flank": "Mitch Marner (RH)",
+      "bumper": "John Tavares (RH)",
+      "netfront": "Matthew Knies (LH)",
+      "notes": [
+        "Primary one-timers from Matthews and Nylander depending on side.",
+        "Use cross-seam passes from Marner to Nylander or bumper pop plays."
+      ]
+    },
+    "pp2_roles": {
+      "formation": "Umbrella",
+      "note": "Flexible unit; often includes OEL, Dumba, Mercer, Domi, Robertson or Foerster depending on fatigue and form."
+    },
+    "pk_units": {
+      "pk1": {
+        "forwards": ["Kampf", "Mercer"],
+        "defense": ["Carlo", "McCabe"]
+      },
+      "pk2": {
+        "forwards": ["Tavares", "Knies"],
+        "defense": ["Dumba", "Tanev"]
+      },
+      "shape_rules": [
+        "Box as default.",
+        "Diamond on failed clears or against strong umbrella shot threats."
+      ]
+    }
+  },
+
+  "alerts_and_checks": {
+    "dailyops_commit_watch": true,
+    "note": "If 'Architect Daily Ops Summary' commit is missing/failed/0 files in the last 24h, raise an alert to user.",
+    "lines_sync_required": true,
+    "strategy_bounds_required": true,
+    "pp_one_timer_map_required": true,
+    "roster_guard_strict": true
+  },
+
+  "current_state": {
+    "season_phase": "Regular Season, late December 2024",
+    "next_games": [
+      {
+        "date": "2024-12-23",
+        "opponent": "WPG",
+        "location": "Away",
+        "planned_goalie": "Stolarz"
+      },
+      {
+        "date": "2024-12-27",
+        "opponent": "DET",
+        "location": "Away",
+        "planned_goalie": "Woll"
+      }
+    ],
+    "notes": [
+      "Lines have stabilized after Foerster acquisition.",
+      "Energy Model v2.0 and Adaptation are ON and calibrated.",
+      "Matchup cards exist for BUF, NYI and WPG with opponent-specific tuning."
+    ]
+  },
+
+  "lines_nhl": {
+    "forwards": [
+      {
+        "line": 1,
+        "players": ["Matthew Knies", "Auston Matthews", "Mitch Marner"],
+        "strategy": "Behind the Net",
+        "role_notes": "Primary scoring line; use cross-ice seams and low-to-high plays."
+      },
+      {
+        "line": 2,
+        "players": ["Nick Robertson", "John Tavares", "William Nylander"],
+        "strategy": "Overload",
+        "role_notes": "Heavy OZ cycle; Tavares bumper, Robertson shooter, Nylander dual-threat."
+      },
+      {
+        "line": 3,
+        "players": ["Max Domi", "David Kampf", "Dawson Mercer"],
+        "strategy": "Crash the Net",
+        "role_notes": "Checking line with offensive pop; strong on retrievals and net-front."
+      },
+      {
+        "line": 4,
+        "players": ["Max Pacioretty", "Alex Steeves", "Tyson Foerster"],
+        "strategy": "Overload Lite",
+        "role_notes": "Depth scoring; Foerster shot threat, Pacioretty support and Steeves energy."
+      }
+    ],
+    "defense": [
+      {
+        "pair": 1,
+        "players": ["Morgan Rielly", "Brandon Carlo"],
+        "role_notes": "Top pair; Rielly puck mover, Carlo stay-at-home, primary DZ starts."
+      },
+      {
+        "pair": 2,
+        "players": ["Oliver Ekman-Larsson", "Chris Tanev"],
+        "role_notes": "Stabilizing pair; OEL puck-moving LD, Tanev shutdown RD."
+      },
+      {
+        "pair": 3,
+        "players": ["Jake McCabe", "Matt Dumba"],
+        "role_notes": "Physical and aggressive; good for heavy matchups and PK duty."
+      }
+    ],
+    "goalies": [
+      {
+        "name": "Anthony Stolarz",
+        "status": "1A",
+        "notes": "Currently on a strong run; form-biased starts when rested."
+      },
+      {
+        "name": "Joseph Woll",
+        "status": "1B",
+        "notes": "Next planned start @ DET; protect confidence with structured DZ play."
+      }
+    ]
+  },
+
+  "lines_ahl": {
+    "notes": [
+      "Representative structure only; exact lines should sync from AHL_Lines_2024-12-10.json when loaded.",
+      "Core rule: Niemelä and Kokkonen anchor top pair; prospects prioritized for PP/PK usage."
+    ],
+    "defense_core": [
+      {
+        "pair": 1,
+        "players": ["Topi Niemelä", "Mikko Kokkonen"],
+        "role_notes": "Primary development pair; heavy minutes, PP1/Pk1 usage."
+      }
+    ]
+  },
+
+  "gameplans": {
+    "BUF_home_example": {
+      "file": "GamePlans/Full_Gameplan_TOR_vs_BUF_2024-12-15.json",
+      "goalie": "Woll (accidentally started instead of Stolarz)",
+      "theme": "Exploit BUF defensive gaps with aggressive forecheck, lean on top-6 scoring.",
+      "result_summary": "7–4 win vs BUF; top lines produced, Foerster line clicked."
+    },
+    "NYI_home": {
+      "file": "GamePlans/Full_Gameplan_TOR_vs_NYI_2024-12-21.json",
+      "goalie": "Stolarz",
+      "theme": "Beat heavy defensive shell; stretch wide vs NYI trap, attack east–west.",
+      "result_summary": "Multi-goal win; Pacioretty and Robertson contributed, late goal against with 1s left."
+    },
+    "WPG_away": {
+      "file": "GamePlans/Full_Gameplan_TOR_at_WPG_2024-12-23.json",
+      "goalie": "Stolarz",
+      "theme": "Stretch WPG 1–3–1 trap, use wide entries and royal-road seams vs Protect Net + Collapsing.",
+      "status": "Planned",
+      "notes": [
+        "Opponent strategy: 2–3 forecheck (trap), 1–3–1 NZ, Conservative offense, Protect Net + Collapsing, Passive PK.",
+        "Use stretch-wide plan with Knies/Nylander speed to break trap."
+      ]
+    }
+  },
+
+  "opponent_memory_log": {
+    "ttl_games": 6,
+    "entries": [
+      {
+        "opponent": "ANA",
+        "type": "Home",
+        "notes": [
+          "Dangerous PP; scored early on man advantage.",
+          "Responded well with Tavares PP goal; low-stick success near right side of net.",
+          "Keep PK tighter vs cross-crease passes."
+        ]
+      },
+      {
+        "opponent": "DET",
+        "type": "Away",
+        "notes": [
+          "High-event game; careful with rush chances against.",
+          "Need better lockdown with lead; avoid over-pinch when up."
+        ]
+      },
+      {
+        "opponent": "BUF",
+        "type": "Home",
+        "notes": [
+          "BUF gave up lots of rush and slot chances; Leafs exploited defensive breakdowns.",
+          "Top lines and Foerster depth scoring were effective.",
+          "Can afford more aggressive forecheck vs BUF."
+        ]
+      },
+      {
+        "opponent": "DAL",
+        "type": "Road",
+        "notes": [
+          "Tight game; DAL can push pace and attack off the rush.",
+          "Holding trap moderate and protecting slot was key when leading 3–2 going into 3rd."
+        ]
+      },
+      {
+        "opponent": "NYI",
+        "type": "Home",
+        "notes": [
+          "Strong defensive shell; low-event at times.",
+          "Success came from east–west plays and point shots (OEL goal from Tavares feed).",
+          "They scored with 1 second left; PROTECT NET focus in final minute is mandatory."
+        ]
+      }
+    ]
+  },
+
+  "trades_recent": {
+    "key_trades": [
+      {
+        "label": "Foerster Acquisition",
+        "summary": "Acquired Tyson Foerster from PHI as RH shot winger with good lineup fit.",
+        "details": "Lorentz + mid-round pick package sent to PHI under Easy Trade slider; Steeves retained in organization.",
+        "impact": [
+          "Foerster slotted on 4th line as scoring depth and PP2 option.",
+          "Maintained core picks; no 2025 1st owned, so futures guarded."
+        ]
+      },
+      {
+        "label": "Depth Moves",
+        "summary": "Holmberg and McMann were moved earlier; neither is on current NHL/AHL Leafs rosters used here.",
+        "impact": [
+          "Clarified depth chart; prevented roster gate confusion.",
+          "Reinforced focus on current core (Foerster, Steeves, Niemelä, Kokkonen)."
+        ]
+      }
+    ],
+    "draft_picks_note": "2025 1st is not available; future plans must rely on later picks, prospects, and hockey trades rather than pure 1st-round capital."
+  },
+
+  "restore_notes": {
+    "intended_use": "New Leafs Dynasty AI chats should load this export as full state.",
+    "usage_command": "/dynasty_bootstrap --config \"Architect/Exports/LeafsDynasty_FullExport_v1.0.json\" --load all --sync true",
+    "behavior": [
+      "Treat file_map.bootstrap_master as canonical baseline for long-term settings.",
+      "Treat lines_nhl and lines_ahl blocks as current best-known line structure until superseded by new lines JSON.",
+      "Use modules, automation and goalie_plan as active policies immediately on load.",
+      "Use gameplans and opponent_memory_log as seeds for Opponent Memory v2.0 and Matchup templates."
+    ]
+  }
+}
